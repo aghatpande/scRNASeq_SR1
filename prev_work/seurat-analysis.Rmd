@@ -1,0 +1,691 @@
+---
+title: GSE146609 scRNA-Seq Analysis
+author:
+  name: Shilpa Rao
+  email: raos23@gene.com
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r include=FALSE}
+library(Seurat)
+library(dplyr)
+library(tidyverse)
+library(Matrix)
+library(scater)
+library(patchwork)
+```
+
+```{r}
+setwd("/gstore/project/ci_collabs/Murthy_Adi/GSE146609")
+data_dir = "/gstore/project/ci_collabs/Murthy_Adi/GSE146609"
+list.files(data_dir)
+
+ids <- c("YR", "DR18", "WT18")
+
+con=Read10X(data.dir="YR")
+con <- CreateSeuratObject(counts = con, project = "YR", min.cells = 3, min.features = 200)
+con$treat <- "YR"
+con$batch <- 1
+
+dr=Read10X(data.dir="DR18")
+dr <- CreateSeuratObject(counts = dr, project = "DR18", min.cells = 3, min.features = 200)
+dr$treat <- "DR18"
+dr$batch <- 2
+
+wt=Read10X(data.dir="WT18")
+wt <- CreateSeuratObject(counts = wt, project = "WT18", min.cells = 3, min.features = 200)
+wt$treat <- "WT18"
+wt$batch <- 3
+
+combined <- merge(con, y = c(dr,wt), add.cell.ids = ids, project = "GSE146609")
+
+```
+
+
+## QC using Seurat
+
+```{r}
+
+combined$log10GenesPerUMI <- log10(combined$nFeature_RNA) / log10(combined$nCount_RNA)
+
+### Gapdh expression
+
+combined$gapdh.exp = combined@assays$RNA@counts["Gapdh",]
+
+combined[["percent.Gapdh"]] <- PercentageFeatureSet(combined, pattern = "Gapdh")
+
+### Eno1 expression
+
+combined$Eno1.exp = combined@assays$RNA@counts["Eno1",]
+
+## Add Mito percentage column
+
+combined[["percent.mt"]] <- PercentageFeatureSet(combined, pattern = "^mt-")
+combined$mito.ratio <- combined@meta.data$percent.mt / 100
+
+## Percent largest gene
+apply(
+  combined@assays$RNA@counts,
+  2,
+  function(x)(100*max(x))/sum(x)
+) -> combined$Percent.Largest.Gene
+
+head(combined$Percent.Largest.Gene)
+combined
+
+table(combined$orig.ident)
+
+head(combined@meta.data)
+
+metadata <- combined@meta.data
+
+metadata$cells <- rownames(metadata)
+
+# Rename columns
+metadata <- metadata %>%
+        dplyr::rename(nUMI = nCount_RNA,
+                      nGene = nFeature_RNA)
+
+combined@meta.data <- metadata
+
+```
+
+
+## Plots
+
+```{r}
+
+### Gapdh and Eno1
+
+ metadata %>%
+   	ggplot(aes(x=treat, y=log10(gapdh.exp), fill=treat)) +
+   	geom_boxplot() +
+   	theme_classic() +
+   	theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+   	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+   	ggtitle("Gapdh Expr")
+
+metadata %>%
+   	ggplot(aes(x=treat, y=log10(Eno1.exp), fill=treat)) +
+   	geom_boxplot() +
+   	theme_classic() +
+   	theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+   	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+   	ggtitle("Eno1 Expr")
+
+metadata %>% 
+  	ggplot(aes(color=treat, x=gapdh.exp, fill=treat)) + 
+  	geom_density(alpha = 0.2) + 
+  	scale_x_log10() +
+  	theme_classic() +
+  	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	ggtitle("Gapdh Expr") +
+   geom_vline(xintercept = 1 )
+
+metadata %>% 
+  	ggplot(aes(color=treat, x=Eno1.exp, fill=treat)) + 
+  	geom_density(alpha = 0.2) + 
+  	scale_x_log10() +
+  	theme_classic() +
+  	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	ggtitle("Eno1 Expr") +
+   geom_vline(xintercept = 1)
+
+
+### Percent largest genne
+
+metadata %>%
+  ggplot(aes(Percent.Largest.Gene)) + geom_histogram(binwidth = 0.5) +
+  ggtitle("Distribution of Percentage Largest Gene") +
+  geom_vline(xintercept = 10)
+
+### Cell counts
+
+metadata %>% 
+  	ggplot(aes(x=treat, fill=treat)) + 
+  	geom_bar() +
+  	theme_classic() +
+  	theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	ggtitle("NCells")
+
+### UMI counts
+
+metadata %>% 
+  	ggplot(aes(color=treat, x=nUMI, fill= treat)) + 
+  	geom_density(alpha = 0.2) + 
+  	scale_x_log10() + 
+  	theme_classic() +
+  	ylab("Cell density") +
+  	geom_vline(xintercept = 500)
+
+### Genes detected per cell
+
+# Visualize the distribution of genes detected per cell via histogram
+
+metadata %>% 
+  	ggplot(aes(color=treat, x=nGene, fill= treat)) + 
+  	geom_density(alpha = 0.2) + 
+  	theme_classic() +
+  	scale_x_log10() + 
+  	geom_vline(xintercept = 300)
+
+# Visualize the distribution of genes detected per cell via boxplot
+
+metadata %>% 
+  	ggplot(aes(x=treat, y=log10(nGene), fill=treat)) + 
+  	geom_boxplot() + 
+  	theme_classic() +
+  	theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	ggtitle("NCells vs NGenes")
+
+### UMIs vs. genes detected
+
+metadata %>% 
+  	ggplot(aes(x=nUMI, y=nGene, color=mito.ratio)) + 
+  	geom_point() + scale_colour_gradient(low = "gray90", high = "black") +
+  	stat_smooth(method=lm) +
+  	scale_x_log10() + 
+  	scale_y_log10() + 
+  	theme_classic() +
+  	geom_vline(xintercept = 500) +
+  	geom_hline(yintercept = 250) +
+  	facet_wrap(~treat)
+
+### Mito counts ratio
+
+metadata %>% 
+  	ggplot(aes(color=treat, x=mito.ratio, fill=treat)) + 
+  	geom_density(alpha = 0.2) + 
+  	scale_x_log10() + 
+  	theme_classic() +
+  	geom_vline(xintercept = 0.2)
+
+## Complexity
+
+metadata %>%
+  	ggplot(aes(x=log10GenesPerUMI, color = treat, fill=treat)) +
+  	geom_density(alpha = 0.2) +
+  	theme_classic() +
+  	geom_vline(xintercept = 0.75)
+
+```
+
+### Violin Plots
+
+```{r}
+
+#VlnPlot(combined, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+
+VlnPlot(combined, features = c("nGene", "nUMI", "percent.mt"), ncol = 3)
+
+
+```
+
+
+### Feature Scatter plots
+
+```{r}
+plot1 <- FeatureScatter(combined, feature1 = "nUMI", feature2 = "percent.mt")
+plot2 <- FeatureScatter(combined, feature1 = "nUMI", feature2 = "nGene")
+plot1 + plot2
+```
+
+
+### Apply filtering ( Remove cells with low UMI and gene counts, Mito percentage > 10%, select cells with Gapdh and Eno1 gene counts > 5)
+
+
+```{r}
+
+
+filt = subset(x = combined, 
+                         subset= (nUMI >= 500) & 
+                           (nGene >= 250) & 
+                           (log10GenesPerUMI > 0.75) & 
+                           (mito.ratio < 0.10) &
+                           (gapdh.exp > 5) & (Eno1.exp > 5))
+
+
+### Gene-level filtering
+
+# Output a logical vector for every gene on whether the more than zero counts per cell
+# Extract counts
+counts <- GetAssayData(object = filt, slot = "counts")
+
+# Output a logical vector for every gene on whether the more than zero counts per cell
+nonzero <- counts > 0
+
+# Sums all TRUE values and returns TRUE if more than 10 TRUE values per gene
+keep_genes <- Matrix::rowSums(nonzero) >= 10
+
+# Only keeping those genes expressed in more than 10 cells
+filtered_counts <- counts[keep_genes, ]
+
+# Reassign to filtered Seurat object
+filt <- CreateSeuratObject(filtered_counts, meta.data = filt@meta.data)
+
+```
+
+## Normalize with no cell cycle scoring
+
+```{r}
+
+nor = NormalizeData(filt)
+
+```
+
+## Find most variable genes
+
+```{r}
+
+vargenes <- FindVariableFeatures(nor, selection.method = "vst", nfeatures = 2500)
+
+# Identify the 10 most highly variable genes
+top10 <- head(VariableFeatures(vargenes), 10)
+
+# plot variable features with and without labels
+plot1 <- VariableFeaturePlot(vargenes)
+plot2 <- LabelPoints(plot = plot1, points = top10, repel = TRUE)
+plot1 + plot2
+```
+
+
+## Scaling the data
+
+```{r}
+
+all.genes <- rownames(vargenes)
+comb.sc <- ScaleData(vargenes, features = all.genes)
+
+```
+
+
+
+## Perform linear dimensional reduction
+
+```{r}
+comb.pca <- RunPCA(comb.sc, features = VariableFeatures(object = comb.sc))
+print(comb.pca[["pca"]], dims = 1:5, nfeatures = 5)
+
+```
+
+
+## Visualize PCA
+
+
+```{r}
+
+VizDimLoadings(comb.pca, dims = 1:2, reduction = "pca")
+DimPlot(comb.pca, reduction = "pca")
+DimPlot(comb.pca, group.by="treat", split.by="treat", reduction = "pca")
+```
+
+
+## Heatmap
+
+```{r include=FALSE,eval=FALSE}
+
+DimHeatmap(comb.pca, dims = 1, cells = 500, balanced = TRUE)
+DimHeatmap(comb.pca, dims = 1:15, cells = 500, balanced = TRUE)
+```
+
+
+
+## Determine dimensionality of dataset
+
+```{r eval=FALSE}
+comb.pca <- JackStraw(comb.pca, dims=50, num.replicate = 100)
+comb.pca <- ScoreJackStraw(comb.pca, dims = 1:50)
+JackStrawPlot(comb.pca, dims = 1:50)
+```
+
+
+## Elbow Plots
+
+```{r}
+
+ElbowPlot(comb.pca,ndims=50)
+
+```
+
+
+## Cluster the cells
+
+```{r}
+comb.nn <- FindNeighbors(comb.pca, dims = 1:50)
+comb.c <- FindClusters(comb.nn, resolution = 1)
+```
+
+
+## Run non-linear dimensional reduction ( UMAP )
+
+```{r}
+comb.c <- RunUMAP(comb.c, dims = 1:50)
+```
+
+
+## UMAP Clustering
+
+```{r}
+## Plot
+
+DimPlot(comb.c, reduction = "umap",label=T)
+
+## Highlight sample groups
+
+DimPlot(comb.c, reduction = "umap", group.by="orig.ident",ncol=1)
+
+DimPlot(comb.c, reduction = "umap", split.by = "orig.ident",label=T)
+
+```
+
+## Finding differentially expressed features (cluster biomarkers)
+
+```{r eval=FALSE}
+## Top 20 markers in Cluster0
+cluster0.markers <- FindMarkers(comb.c, ident.1 = 0, min.pct = 0.25)
+head(cluster0.markers, n = 10)
+
+```
+
+
+## Find markers for every cluster compared to all remaining cells, report only the positive ones
+
+
+```{r eval=FALSE}
+markers <- FindAllMarkers(comb.c, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+markers %>% group_by(cluster) %>% top_n(n = 5, wt = avg_logFC)
+```
+
+
+## Identify CD8+T and CD4+T clusters
+
+
+```{r}
+## Tumor
+VlnPlot(comb.c, features = c("gene-eGFP"))
+
+## CD8_1 T_Eff
+VlnPlot(comb.c, features = c("Cd3e"))
+VlnPlot(comb.c, features = c("Ifng"))
+VlnPlot(comb.c, features = c("Il18r1"))
+VlnPlot(comb.c, features = c("Il18rap"))
+
+## CD8_2 T_Ex
+VlnPlot(comb.c, features = c("Fasl"))
+VlnPlot(comb.c,features = c("Tox"))
+VlnPlot(comb.c,features = c("Il2rb"))
+
+## CD8_4_TG2-M
+VlnPlot(comb.c, features = c("Cdk1"))
+
+## CD4_1
+VlnPlot(comb.c, features = c("Foxp3"))
+
+## MAC_1
+VlnPlot(comb.c, features = c("Tgfbr1"))
+
+## MAC_2
+VlnPlot(comb.c, features = c("Nos2"))
+
+## MAC_3
+VlnPlot(comb.c, features = c("Tgfbi"))
+
+## NK1
+VlnPlot(comb.c, features = c("Ncr1"))
+
+## Granulocyte
+VlnPlot(comb.c, features = c("Lcn2"))
+
+## Fibroblast
+VlnPlot(comb.c, features = c("Col1a1"))
+
+## All Myeloid
+VlnPlot(comb.c, features = c("Cd68"))
+
+
+```
+
+
+## Visualize markers in clusters
+
+```{r fig.height=10, fig.width=8}
+features=c("Cd3e","Cd8a","Il7r","Il18r1","Il18rap","Ifng","Cd28","Tox","Cd38","Tcf7","Id3","Eomes","Foxp3","gene-eGFP","Tgfbr1","Nos2","Cdk1","Ccr2","Lcn2","Ncr1","Col1a1","Gapdh")
+
+FeaturePlot(comb.c, features = features, combine=TRUE, order=TRUE) & NoLegend() & NoAxes() + theme(plot.title = element_text(color="black", size=10, face="bold.italic"))
+
+#options(repr.plot.width = 7, repr.plot.height = 15)
+
+aspect_ratio <- 1
+height <- 7
+ggsave("markers.png", height = 8 , width = 10 * aspect_ratio)
+```
+
+
+```{r include=FALSE,eval=FALSE}
+top20 <- markers %>% group_by(cluster) %>% top_n(n = 20, wt = avg_logFC)
+DoHeatmap(comb.c, features = top20$gene) + NoLegend()
+
+```
+
+## Cluster identities
+
+```{r}
+#tab = read.table("Cluster_Identities.txt", sep="\t", header=T)
+tab = read.table("Cluster_Identities_3_groups.txt", sep="\t", header=T)
+
+names(tab)
+ids = as.vector(tab$CellType)
+ids
+
+comb.umap = comb.c
+names(ids) = levels(comb.umap)
+
+comb.umap <- RenameIdents(comb.umap, ids)
+comb.umap$cellType = Idents(comb.umap)
+
+```
+
+
+## Plot UMAP with cluster identities
+
+```{r}
+DimPlot(comb.umap, reduction = "umap", label = TRUE, pt.size = 0.5)
+DimPlot(comb.umap, reduction = "umap", pt.size = 0.5, group.by = "orig.ident")
+```
+
+
+
+## Plot Frequency of celltypes by Treatment
+
+```{r}
+
+comb.umap@meta.data %>%
+  group_by(cellType,treat) %>%
+  dplyr::count() %>%
+  group_by(cellType) %>%
+  mutate(percent=100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=cellType,y=percent, fill=treat)) +
+  geom_col() +
+  ggtitle("Percentage of cells in each cluster by treatment") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+
+## Differential expression analysis in CD8 T-cells, CD4 T-cells and NK1 cells
+
+
+```{r include=TRUE,message=FALSE,warning=FALSE}
+## Pairwise comparisons in CD8 cells
+
+comb.umap$broad.CT = gsub(pattern = "^CD8.*", replacement = "CD8", x = comb.umap$cellType)
+Idents(comb.umap) = comb.umap$broad.CT
+table(Idents(comb.umap), comb.umap$treat)
+
+cd8 = subset(comb.umap, ident = "CD8")
+Idents(cd8) = cd8$treat
+table(Idents(cd8),cd8$broad.CT)
+
+cd4 = subset(comb.umap, ident = "CD4_1")
+Idents(cd4) = cd4$treat
+table(Idents(cd4),cd4$broad.CT)
+
+nk = subset(comb.umap, ident = "NK1")
+Idents(nk) = nk$treat
+table(Idents(nk),nk$broad.CT)
+
+CT=c("CD8","CD4_1","NK1")
+
+treat = c("DR18","YR","WT18")
+
+i=0;j=0;
+score=comb.umap
+for (ct in 1:length(CT)){
+   so = subset(comb.umap, ident = CT[ct])
+   Idents(so) = so$treat
+   for (i in 1:(length(treat)-1)){
+      for (j in (i+1):length(treat)){
+      diffgenes = FindMarkers(so, ident.1 = treat[i] , ident.2 = treat[j], only.pos = TRUE, min.pct=0.25, logfc.threshold=0.25)
+      write.table(diffgenes, file=paste0(paste0(CT[ct],"-"), treat[i],"-vs-",treat[j],".tsv",sep=""),sep="\t",col.names=T, row.names = T)
+      top = head(diffgenes, n = 100)
+      features = rownames(top)
+      f.name = paste0(CT[ct],".",treat[i],".",treat[j],".","features")
+      score <- AddModuleScore(score, features = list(features), name = f.name)
+      f = FeaturePlot(score , features = paste0(f.name,"1"), combine=TRUE, order=TRUE) & NoLegend() & NoAxes()
+      print(f)
+      ggsave(paste0(f.name,".png"), plot=f, height = 7 , width = 7)
+      
+      }
+   }
+}
+
+Idents(comb.umap) = comb.umap$cellType
+
+```
+
+
+
+## Distribution of CD8 T cell subtypes
+
+```{r}
+s = subset(score, ident = "CD8")
+
+table(Idents(s),s$cellType)
+
+s@meta.data %>% 
+  	ggplot(aes(x=cellType, y=CD8.DR18.YR.features1, fill=treat)) + 
+  	geom_boxplot() + 
+  	theme_classic() +
+  	theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	ggtitle("CD8 T cells Module Score")
+
+ggsave("CD8T-Module_Score.png", height = 7 , width = 7)
+
+```
+
+
+
+## T-SNE Plots
+
+```{r}
+tsne = RunTSNE(comb.c,dims=1:50)
+
+```
+
+
+```{r}
+
+DimPlot(tsne, reduction = "tsne",label=T)
+DimPlot(tsne, reduction = "tsne", group.by="orig.ident")
+
+```
+
+
+## PCA analysis of Cd8 cluster
+
+```{r}
+
+table(Idents(cd8),cd8$broad.CT)
+
+## Find variable features
+
+cd8.var <- FindVariableFeatures(cd8, selection.method = "vst", nfeatures = 2500)
+
+## Re-scaling
+
+genes <- rownames(cd8.var)
+cd8.sc <- ScaleData(cd8.var, features = genes)
+
+## PCA
+
+cd8.pca <- RunPCA(cd8.sc, features = VariableFeatures(object = cd8.sc))
+
+## PCA Metrics
+
+cd8.pca[["pca"]]
+
+head(Embeddings(cd8.pca, reduction = "pca")[, 1:10])
+head(Loadings(cd8.pca, reduction = "pca")[, 1:10])
+head(Stdev(cd8.pca, reduction = "pca"))
+
+
+print(cd8.pca[["pca"]], dims = 1:10, nfeatures = 10)
+
+VizDimLoadings(cd8.pca, dims = 1:2, reduction = "pca")
+DimPlot(cd8.pca, reduction = "pca")
+DimPlot(cd8.pca, group.by="treat", split.by="treat", reduction = "pca")
+
+## Elbow plot
+
+ElbowPlot(cd8.pca,ndims=50)
+
+## Cluster the cells
+
+cd8.nn <- FindNeighbors(cd8.pca, dims = 1:30)
+cd8.c <- FindClusters(cd8.nn, resolution = 1)
+
+
+## Choose 30 dim for UMAP
+
+cd8.umap <- RunUMAP(cd8.c, dims = 1:30)
+
+## Plot
+
+DimPlot(cd8.umap, reduction = "umap",label=T)
+
+## Highlight sample groups
+
+DimPlot(cd8.umap, reduction = "umap", group.by="orig.ident",ncol=1)
+
+
+#markers <- FindAllMarkers(comb.c, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+#markers %>% group_by(cluster) %>% top_n(n = 5, wt = avg_logFC)
+
+## CD8_1 T_Eff
+VlnPlot(cd8.umap, features = c("Cd3e"))
+VlnPlot(cd8.umap, features = c("Ifng"))
+VlnPlot(cd8.umap, features = c("Il18r1"))
+VlnPlot(cd8.umap, features = c("Il18rap"))
+
+## CD8_2 T_Ex
+VlnPlot(cd8.umap, features = c("Fasl"))
+VlnPlot(cd8.umap,features = c("Tox"))
+VlnPlot(cd8.umap,features = c("Il2rb"))
+
+## CD8_4_TG2-M
+VlnPlot(cd8.umap, features = c("Cdk1"))
+
+```
+
+```{r eval=FALSE}
+markers <- FindAllMarkers(cd8.umap, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+markers %>% group_by(cluster) %>% top_n(n = 5, wt = avg_logFC)
+```
