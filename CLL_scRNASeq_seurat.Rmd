@@ -3,6 +3,8 @@ title: "CLL_scRNASeq_seurat"
 author: "ASG"
 date: "7/9/2021"
 output: github_document
+toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -16,5 +18,17 @@ The sample is primary CLL tumor from patient grown under two conditions: control
 Some info on the 10X data from the two conditions can be found:
 [link] ~/scRNASeq_SR1/data/control/con1.html and here:[link] ~/scRNASeq_SR1/data/treat1/treat1.html. This includes summary and analysis using Cellranger 6.0.1
 
+## loading needed packages
+```{r include=FALSE}
+library(Seurat)
+library(tidyverse)
+library(Matrix)
+library(patchwork)
+```
 
+## reading in data
+```{r}
+data_dir <- "./data"
+ids <- list.files(data_dir)
+```
 
