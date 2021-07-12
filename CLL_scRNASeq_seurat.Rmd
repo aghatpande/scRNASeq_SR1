@@ -33,7 +33,7 @@ The data provided is in the "data" folder in this project. Consists of 2 sub-fol
 # load the cll_control data
 cll_cntrl_data <- Read10X("./data/control/con1-filtered_feature_bc_matrix/")
 # initializing the Seurat object with raw control data
-cll_control <- CreateSeuratObject(counts = cll_cntrl_data, project = "cll", min.cells = 3, min.features = 200)
+cll_control <- CreateSeuratObject(counts = cll_cntrl_data, project = "cll_cntrl", min.cells = 3, min.features = 200)
 cll_control
 ```
 
@@ -41,13 +41,31 @@ cll_control
 # load the cll_treatment data
 cll_treat1_data <- Read10X("./data/treat1/treat1-filtered_feature_bc_matrix/")
 # initializing the Seurat object with raw treatment data (non-normalized)
-cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll", min.cells = 3, min.features = 200)
+cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll_treatment", min.cells = 3, min.features = 200)
 cll_treatment
 ```
-## QC metrics and filtering control data based on QC
+## QC metrics of control data including percent of mitochondrial genes, visualizing the metrics
 ```{r}
+# The [[ operator can add columns to object metadata.
+cll_control[["percent.mt"]] <- PercentageFeatureSet(cll_control, pattern = "^MT-")
 # QC for first 5 cells in control
 head(cll_control@meta.data, 5)
 ```
 
+```{r}
+# Visualize QC metrics of control data as a violin plot
+VlnPlot(cll_control, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), log = TRUE, ncol = 3)
+```
+## QC metrics of treatment data including percent of mitochondrial genes, visualizing the metrics
+```{r}
+# The [[ operator can add columns to object metadata.
+cll_treatment[["percent.mt"]] <- PercentageFeatureSet(cll_treatment, pattern = "^MT-")
+# QC for first 5 cells in control
+head(cll_treatment@meta.data, 5)
+```
+
+```{r}
+# Visualize QC metrics of treatment data as a violin plot
+VlnPlot(cll_treatment, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), log = TRUE, ncol = 3)
+```
 
