@@ -11,7 +11,7 @@ toc: true
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Chronic lymphocytic leukemia single cell RNA-Seq data in two condiitons: control & treatment.
+## Chronic lymphocytic leukemia single cell RNA-Seq data in two conditions: control & treatment.
 
 The sample is primary CLL tumor from patient grown under two conditions: control: includes fibroblasts and treatment: includes fibroblasts and growth factor.
 
@@ -27,8 +27,27 @@ library(patchwork)
 ```
 
 ## reading in data
+The data provided is in the "data" folder in this project. Consists of 2 sub-folders representing the two conditions. 
+
 ```{r}
-data_dir <- "./data"
-ids <- list.files(data_dir)
+# load the cll_control data
+cll_cntrl_data <- Read10X("./data/control/con1-filtered_feature_bc_matrix/")
+# initializing the Seurat object with raw control data
+cll_control <- CreateSeuratObject(counts = cll_cntrl_data, project = "cll", min.cells = 3, min.features = 200)
+cll_control
 ```
+
+```{r}
+# load the cll_treatment data
+cll_treat1_data <- Read10X("./data/treat1/treat1-filtered_feature_bc_matrix/")
+# initializing the Seurat object with raw treatment data (non-normalized)
+cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll", min.cells = 3, min.features = 200)
+cll_treatment
+```
+## QC metrics and filtering control data based on QC
+```{r}
+# QC for first 5 cells in control
+head(cll_control@meta.data, 5)
+```
+
 
