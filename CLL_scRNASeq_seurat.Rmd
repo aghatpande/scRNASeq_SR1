@@ -44,7 +44,10 @@ cll_treat1_data <- Read10X("./data/treat1/treat1-filtered_feature_bc_matrix/")
 cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll_treatment", min.cells = 3, min.features = 200)
 cll_treatment
 ```
-## QC metrics of control data including percent of mitochondrial genes, visualizing the metrics
+## QC metrics of "control" data including percent of mitochondrial genes,filtering data & visualizing the metrics
+
+The data provided is a "filtered_feature_bc_matrix". The "raw_feature_bc_matrix" has not been provided. Presumably, this data was filtered by Cellranger and does not need to be refiltered. 
+
 ```{r}
 # The [[ operator can add columns to object metadata.
 cll_control[["percent.mt"]] <- PercentageFeatureSet(cll_control, pattern = "^MT-")
@@ -56,7 +59,32 @@ head(cll_control@meta.data, 5)
 # Visualize QC metrics of control data as a violin plot
 VlnPlot(cll_control, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), log = TRUE, ncol = 3)
 ```
-## QC metrics of treatment data including percent of mitochondrial genes, visualizing the metrics
+Visually inspecting plots above suggests foll: cutoffs: 
+for RNA features: 200 - 3000, for RNA counts: 500 - 10000, for mt gene percentages: upper cut off at 12% 
+
+```{r}
+# FeatureScatter : scatter plots of the metrics before filtering
+
+plot1 <- FeatureScatter(cll_control, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(cll_control, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+filtering based on cutoffs established from violin plots
+```{r}
+cll_control_filt2x <- subset(cll_control, subset = nFeature_RNA > 200 & nFeature_RNA < 3000 & nCount_RNA < 10000 & percent.mt < 12)
+cll_control_filt2x
+```
+The cll_control & cll_control_filt2x objects differ by 73 cells only (6282 vs 6209).
+
+```{r}
+# FeatureScatter : scatter plots of the metrics after filtering
+
+plot1 <- FeatureScatter(cll_control_filt2x, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(cll_control_filt2x, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+
+## QC metrics of "treatment" data including percent of mitochondrial genes, filtering data & visualizing the metrics
 ```{r}
 # The [[ operator can add columns to object metadata.
 cll_treatment[["percent.mt"]] <- PercentageFeatureSet(cll_treatment, pattern = "^MT-")
@@ -64,8 +92,33 @@ cll_treatment[["percent.mt"]] <- PercentageFeatureSet(cll_treatment, pattern = "
 head(cll_treatment@meta.data, 5)
 ```
 
+
 ```{r}
 # Visualize QC metrics of treatment data as a violin plot
 VlnPlot(cll_treatment, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), log = TRUE, ncol = 3)
+```
+Visually inspecting the treatment data plots above suggests foll; cutoffs: 
+for RNA features: 300 - 5000, for RNA counts: 500 - 30000, for mt gene percentages: upper cutoff at 12% 
+
+```{r}
+# FeatureScatter : scatter plots of the metrics before filtering
+
+plot1 <- FeatureScatter(cll_treatment, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(cll_treatment, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+
+filtering based on cutoffs established from violin plots
+```{r}
+cll_treatment_filt2x <- subset(cll_treatment, subset = nFeature_RNA > 300 & nFeature_RNA < 5000 & nCount_RNA < 30000 & percent.mt < 12)
+```
+
+The cll_treatment & cll_treatment_filt2x objects differ by 116 cells only (4958 vs 4842).
+```{r}
+# FeatureScatter : scatter plots of the metrics after filtering
+
+plot1 <- FeatureScatter(cll_treatment_filt2x, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(cll_treatment_filt2x, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
 ```
 
