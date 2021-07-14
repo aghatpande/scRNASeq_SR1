@@ -121,4 +121,159 @@ plot1 <- FeatureScatter(cll_treatment_filt2x, feature1 = "nCount_RNA", feature2 
 plot2 <- FeatureScatter(cll_treatment_filt2x, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 plot1 + plot2
 ```
+*Instead of doing the refiltering separately on the control an treatment objects, we will merge them and process them together. This assumes, that the two objects are not subject to batch effects*
+
+## Merging both seurat objects, QC visualization and filtering
+```{r}
+# merging both seurat objects
+merged_seurat <- merge(x = cll_control,
+                       y = cll_treatment,
+                       add.cell.id = c("cll_cntrl", "cll_treat"))
+
+```
+
+## Some data munging
+```{r}
+# explore merged data
+View(merged_seurat@meta.data)
+```
+
+there are 3 columns in the current object, we add two additional columns : 
+number of genes detected per UMI: this metric gives us an idea of the complexity of our dataset (more genes detected per UMI, more complex our data)
+mitochondrial ratio: this metric will give us a percentage of cell reads originating from the mitochondrial genes
+```{r}
+# add number of genes per UMI
+merged_seurat$log10GenesPerUMI <- log10(merged_seurat$nFeature_RNA) /
+  log10(merged_seurat$nCount_RNA)
+```
+
+```{r}
+# add the ratio of mitochondrial genes present
+merged_seurat$mitoRatio <- PercentageFeatureSet(object = merged_seurat, pattern = "^MT-")
+merged_seurat$mitoRatio <- merged_seurat$mitoRatio / 100
+```
+
+### additional metadata columns for convenience
+```{r}
+# extracting metadata as a dataframe
+metadata <- merged_seurat@meta.data
+```
+
+adding a new column for cell identifiers
+
+This information is currently located in the row names of our metadata dataframe. We will keep the rownames as is and duplicate it into a new column called cells.
+```{r}
+# add cell IDs to metadata
+metadata$cells <- rownames(metadata)
+```
+
+Each cell ID has a cll_cntrl_ or cll_treat_ prefix as we had specified when we merged the Seurat objects. We can use this prefix to create a new column indicating which condition each cell is classified under. We will call this column sample:
+```{r}
+# create a column called sample
+metadata$sample <- NA
+metadata$sample[which(str_detect(metadata$cells, "^cll_cntrl_"))] <- "ctrl"
+metadata$sample[which(str_detect(metadata$cells, "^cll_treat_"))] <- "treat"
+```
+
+rename some of the existing columns in metadata to be more intuitive:
+```{r}
+# Rename columns
+metadata <- metadata %>% 
+  rename(seq_folder = orig.ident,
+         nUMI = nCount_RNA,
+         nGene = nFeature_RNA)
+```
+
+### saving new metadata into the merged seurat object
+Before we assess our metrics we are going to save all of the work we have done thus far back into our Seurat object. We simply assign the dataframe into the meta.data slot:
+```{r}
+# add metadata back to the merged seurat object
+merged_seurat@meta.data <- metadata
+
+# create a .RData object to load back at any time
+save(merged_seurat, file = "./data/cll_merged_filtered_seurat.RData")
+```
+
+## Assessing QC metrics
+
+### Note from the HBC scRNASeq tutorial:
+
+We will assess various metrics and then decide on which cells are low quality and should be removed from the analysis:
+
+Cell counts
+UMI counts per cell
+Genes detected per cell
+UMIs vs. genes detected
+Mitochondrial counts ratio
+Novelty
+
+What about doublets? In single-cell RNA sequencing experiments, doublets are generated from two cells. They typically arise due to errors in cell sorting or capture, especially in droplet-based protocols involving thousands of cells. Doublets are obviously undesirable when the aim is to characterize populations at the single-cell level. In particular, they can incorrectly suggest the existence of intermediate populations or transitory states that do not actually exist. Thus, it is desirable to remove doublet libraries so that they do not compromise interpretation of the results.
+
+Why aren’t we checking for doublets? Many workflows use maximum thresholds for UMIs or genes, with the idea that a much higher number of reads or genes detected indicate multiple cells. While this rationale seems to be intuitive, it is not accurate. Also, many of the tools used to detect doublets tend to get rid of cells with intermediate or continuous phenotypes, although they may work well on datasets with very discrete cell types. Scrublet is a popular tool for doublet detection, but we haven’t adequately benchmarked it yet. Currently, we recommend not including any thresholds at this point in time. When we have identified markers for each of the clusters, we suggest exploring the markers to determine whether the markers apply to more than one cell type.
+
+### Cell counts
+
+The cell counts are determined by the number of unique cellular barcodes detected. 
+
+In an ideal world, you would expect the number of unique cellular barcodes to correpsond to the number of cells you loaded. However, this is not the case as capture rates of cells are only a proportion of what is loaded. For example, the inDrops cell capture efficiency is higher (70-80%) compared to 10X which is between 50-60%.
+
+NOTE: The capture efficiency could appear much lower if the cell concentration used for library preparation was not accurate. Cell concentration should NOT be determined by FACS machine or Bioanalyzer (these tools are not accurate for concentration determination), instead use a hemocytometer or automated cell counter for calculation of cell concentration.
+The cell numbers can also vary by protocol, producing cell numbers that are much higher than what we loaded. For example, during the inDrops protocol, the cellular barcodes are present in the hydrogels, which are encapsulated in the droplets with a single cell and lysis/reaction mixture. While each hydrogel should have a single cellular barcode associated with it, occasionally a hydrogel can have more than one cellular barcode. Similarly, with the 10X protocol there is a chance of obtaining only a barcoded bead in the emulsion droplet (GEM) and no actual cell. Both of these, in addition to the presence of dying cells can lead to a higher number of cellular barcodes than cells.
+
+```{r}
+# Visualize the number of cells in each sample
+metadata %>% 
+  ggplot() +
+  geom_bar(aes(sample, fill = sample)) +
+  theme_light() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
+  ggtitle("NCells")
+
+```
+### UMI counts (transcripts) per cell
+
+The UMI counts per cell should generally be above 500, that is the low end of what we expect. If UMI counts are between 500-1000 counts, it is usable but the cells probably should have been sequenced more deeply.
+```{r}
+# visualize the number of transcripts (UMIs) per cell
+metadata %>% 
+  ggplot(aes(x = nUMI, color = sample, fill = sample)) +
+  geom_density(alpha = 2/10) +
+  theme_light() + 
+  scale_x_log10() + 
+  ylab("cell density") + 
+  geom_vline(xintercept = 500) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("transcripts per cell")
+```
+Unless a batch effect, clearly the two populations of cells in the two conditions are distinct, perhaps the "treatment" population exists in the control sample as a small fraction; small peak that appears right below the main peak of "treatment".
+
+### Gene counts per cell
+Genes detected per cell
+
+We have similar expectations for gene detection as for UMI detection, although it may be a bit lower than UMIs. For high quality data, the proportional histogram should contain a single large peak that represents cells that were encapsulated. If we see a small shoulder to the left of the major peak (not present in our data), or a bimodal distribution of the cells, that can indicate a couple of things. It might be that there are a set of cells that failed for some reason. It could also be that there are biologically different types of cells (i.e. quiescent cell populations, less complex cells of interest), and/or one type is much smaller than the other (i.e. cells with high counts may be cells that are larger in size). Therefore, this threshold should be assessed with other metrics that we describe in this lesson.
+```{r}
+# visualize number of genes (nGene) per cell with a histogram
+metadata %>% 
+  ggplot(aes(nGene, color = sample, fill = sample)) +
+  geom_density(alpha = 2/10) + 
+  theme_light() + 
+  scale_x_log10() + 
+  geom_vline(xintercept = 300) + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per cell")
+```
+```{r}
+# visualize number of genes as a boxplot
+metadata %>% 
+  ggplot(aes(x = sample, y = log10(nGene), fill = sample)) + 
+  geom_boxplot(alpha = 5/10) + 
+  theme_light() + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per cell")
+  
+```
+Again, we see a distinct second peak in the control condition which is to the *left* of the main peak and superimposed with the "treatment' peak. Perhaps there are secondary peaks in the "treatment" condition also to the *left* of the treatment main peak.
+
+Also, there could be small but distinct peaks to the *right* of both main peaks suggestive of cells that failed or have much fewer genes (fibroblasts?)
+
 
