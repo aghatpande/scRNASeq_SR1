@@ -248,7 +248,6 @@ metadata %>%
 Unless a batch effect, clearly the two populations of cells in the two conditions are distinct, perhaps the "treatment" population exists in the control sample as a small fraction; small peak that appears right below the main peak of "treatment".
 
 ### Gene counts per cell
-Genes detected per cell
 
 We have similar expectations for gene detection as for UMI detection, although it may be a bit lower than UMIs. For high quality data, the proportional histogram should contain a single large peak that represents cells that were encapsulated. If we see a small shoulder to the left of the major peak (not present in our data), or a bimodal distribution of the cells, that can indicate a couple of things. It might be that there are a set of cells that failed for some reason. It could also be that there are biologically different types of cells (i.e. quiescent cell populations, less complex cells of interest), and/or one type is much smaller than the other (i.e. cells with high counts may be cells that are larger in size). Therefore, this threshold should be assessed with other metrics that we describe in this lesson.
 ```{r}
@@ -276,4 +275,192 @@ Again, we see a distinct second peak in the control condition which is to the *l
 
 Also, there could be small but distinct peaks to the *right* of both main peaks suggestive of cells that failed or have much fewer genes (fibroblasts?)
 
+## Genes versus UMIs detected
+
+```{r}
+# scatter plot of UMIs versus genes detected per cell colored by ratio of mitochondrial genes
+metadata %>% 
+  ggplot(aes(x = nUMI, y = nGene, color = mitoRatio)) +
+  geom_jitter() +
+  scale_color_gradient(low = "gray90", high = "black") +
+  stat_smooth(method = lm) +
+  scale_x_log10() +
+  scale_y_log10() +
+  theme_light() + 
+  geom_vline(xintercept = 2000) +
+  geom_hline(yintercept = 400) + 
+  facet_wrap(~sample)
+```
+
+Here, we have plotted the number of genes versus the number of UMIs colored by the fraction of mitochondrial reads. Mitochondrial read fractions are only high in particularly low count cells with few detected genes (darker colored data points). This could be indicative of damaged/dying cells whose cytoplasmic mRNA has leaked out through a broken membrane, and thus, only mRNA located in the mitochondria is still conserved. These cells are filtered out by our count and gene number thresholds. Jointly visualizing the count and gene thresholds shows the joint filtering effect.
+
+Cells that are poor quality are likely to have low genes and UMIs per cell, and correspond to the data points in the bottom left quadrant of the plot. Good cells will generally exhibit both higher number of genes per cell and higher numbers of UMIs.
+
+## Mitochondrial gene counts
+
+This metric can identify whether there is a large amount of mitochondrial contamination from dead or dying cells.We define poor quality samples for mitochondrial counts as cells which surpass the 0.2 mitochondrial ratio mark, unless of course you are expecting this in your sample.
+```{r}
+# visualizing mitochondrial genes per cell 
+metadata %>% 
+  ggplot(aes(mitoRatio, color = sample, fill = sample)) + 
+  geom_density(alpha = 2/10) + 
+  theme_light() + 
+  scale_x_log10() + 
+  geom_vline(xintercept = 0.2)
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("mitochondrial gene count ratio per cell")
+```
+
+## Complexity
+
+We can evaluate each cell in terms of how complex the RNA species are by using a measure called the novelty score. The novelty score is computed by taking the ratio of nGenes over nUMI. If there are many captured transcripts (high nUMI) and a low number of genes detected in a cell, this likely means that you only captured a low number of genes and simply sequenced transcripts from those lower number of genes over and over again. These low complexity (low novelty) cells could represent a specific cell type (i.e. red blood cells which lack a typical transcriptome), or could be due to some other strange artifact or contamination. Generally, we expect the novelty score to be above 0.80 for good quality cells.
+```{r}
+# visualizing genes per UMI to assess complexity
+metadata %>% 
+  ggplot(aes(log10GenesPerUMI, color = sample, fill = sample)) + 
+  geom_density(alpha = 2/10) + 
+  theme_light()+
+  scale_x_log10() + 
+  geom_vline(xintercept = 0.8)
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per UMI")
+```
+
+## Cell filtering
+Based on above analysis, we will use foll; thresholds:
+nUMI > 2000,
+nGene > 400,
+mitoRatio < 0.2,
+log10GeneperUMI > 0.8
+
+```{r}
+# filtering out low quality cells based on selected thresholds
+filtered_seurat <- subset(x = merged_seurat,
+                          subset = (nUMI >= 2000) & 
+                            (nGene >= 400) & 
+                            (log10GenesPerUMI > 0.8) &
+                            (mitoRatio < 0.2))
+```
+
+## Gene-level filtering
+
+Within our data we will have many genes with zero counts. These genes can dramatically reduce the average expression for a cell and so we will remove them from our data. We will start by identifying which genes have a zero count in each cell:
+```{r}
+# Extract counts
+counts <- GetAssayData(object = filtered_seurat, slot = "counts")
+
+# Output a logical matrix specifying for each gene on whether or not there are more than zero counts per cell
+nonzero <- counts > 0
+```
+
+Now, we will perform some filtering by prevalence. If a gene is only expressed in a handful of cells, it is not particularly meaningful as it still brings down the averages for all other cells it is not expressed in. For our data we choose to keep only genes which are expressed in 10 or more cells. By using this filter, genes which have zero counts in all cells will effectively be removed.
+
+```{r}
+# Sums all TRUE values and returns TRUE if more than 10 TRUE values per gene
+keep_genes <- Matrix::rowSums(nonzero) >= 10
+
+# Only keeping those genes expressed in more than 10 cells
+filtered_counts <- counts[keep_genes, ]
+```
+
+Finally, take those filtered counts and create a new Seurat object for downstream analysis.
+
+```{r}
+# Reassign to filtered Seurat object
+filtered_seurat <- CreateSeuratObject(filtered_counts, meta.data = filtered_seurat@meta.data)
+```
+
+## Reassessing QC metrics
+```{r}
+# extracting metadata as a dataframe from the filtered_seurat object
+filtered_metadata <- filtered_seurat@meta.data
+```
+
+
+```{r}
+# Visualize the number of cells in each sample
+filtered_metadata %>% 
+  ggplot() +
+  geom_bar(aes(sample, fill = sample)) +
+  theme_light() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
+  ggtitle("NCells")
+
+```
+```{r}
+# visualize the number of transcripts (UMIs) per cell
+filtered_metadata %>% 
+  ggplot(aes(x = nUMI, color = sample, fill = sample)) +
+  geom_density(alpha = 2/10) +
+  theme_light() + 
+  scale_x_log10() + 
+  ylab("cell density") + 
+  geom_vline(xintercept = 500) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("transcripts per cell")
+```
+```{r}
+# visualize number of genes (nGene) per cell with a histogram
+filtered_metadata %>% 
+  ggplot(aes(nGene, color = sample, fill = sample)) +
+  geom_density(alpha = 2/10) + 
+  theme_light() + 
+  scale_x_log10() + 
+  geom_vline(xintercept = 300) + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per cell")
+```
+```{r}
+# visualize number of genes as a boxplot
+filtered_metadata %>% 
+  ggplot(aes(x = sample, y = log10(nGene), fill = sample)) + 
+  geom_boxplot(alpha = 5/10) + 
+  theme_light() + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per cell")
+```
+```{r}
+# scatter plot of UMIs versus genes detected per cell colored by ratio of mitochondrial genes
+filtered_metadata %>% 
+  ggplot(aes(x = nUMI, y = nGene, color = mitoRatio)) +
+  geom_jitter() +
+  scale_color_gradient(low = "gray90", high = "black") +
+  stat_smooth(method = lm) +
+  scale_x_log10() +
+  scale_y_log10() +
+  theme_light() + 
+  geom_vline(xintercept = 2000) +
+  geom_hline(yintercept = 400) + 
+  facet_wrap(~sample)
+```
+
+```{r}
+# visualizing mitochondrial genes per cell 
+filtered_metadata %>% 
+  ggplot(aes(mitoRatio, color = sample, fill = sample)) + 
+  geom_density(alpha = 2/10) + 
+  theme_light() + 
+  scale_x_log10() + 
+  geom_vline(xintercept = 0.2)
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("mitochondrial gene count ratio per cell")
+```
+
+```{r}
+# visualizing genes per UMI to assess complexity
+filtered_metadata %>% 
+  ggplot(aes(log10GenesPerUMI, color = sample, fill = sample)) + 
+  geom_density(alpha = 2/10) + 
+  theme_light()+
+  scale_x_log10() + 
+  geom_vline(xintercept = 0.8)
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per UMI")
+```
+
+## Saving the filtered cells
+```{r}
+# Create .RData object to load at any time
+save(filtered_seurat, file="./data/seurat_filtered.RData")
+```
 
