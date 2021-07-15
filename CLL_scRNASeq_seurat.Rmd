@@ -3,8 +3,6 @@ title: "CLL_scRNASeq_seurat"
 author: "ASG"
 date: "7/9/2021"
 output: github_document
-toc: true
-    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -191,7 +189,7 @@ Before we assess our metrics we are going to save all of the work we have done t
 merged_seurat@meta.data <- metadata
 
 # create a .RData object to load back at any time
-save(merged_seurat, file = "./data/cll_merged_filtered_seurat.RData")
+# save(merged_seurat, file = "./data/cll_merged_filtered_seurat.RData") # commented out since already saved on macbookair
 ```
 
 ## Assessing QC metrics
@@ -275,7 +273,7 @@ Again, we see a distinct second peak in the control condition which is to the *l
 
 Also, there could be small but distinct peaks to the *right* of both main peaks suggestive of cells that failed or have much fewer genes (fibroblasts?)
 
-## Genes versus UMIs detected
+### Genes versus UMIs detected
 
 ```{r}
 # scatter plot of UMIs versus genes detected per cell colored by ratio of mitochondrial genes
@@ -296,7 +294,7 @@ Here, we have plotted the number of genes versus the number of UMIs colored by t
 
 Cells that are poor quality are likely to have low genes and UMIs per cell, and correspond to the data points in the bottom left quadrant of the plot. Good cells will generally exhibit both higher number of genes per cell and higher numbers of UMIs.
 
-## Mitochondrial gene counts
+### Mitochondrial gene counts
 
 This metric can identify whether there is a large amount of mitochondrial contamination from dead or dying cells.We define poor quality samples for mitochondrial counts as cells which surpass the 0.2 mitochondrial ratio mark, unless of course you are expecting this in your sample.
 ```{r}
@@ -311,7 +309,7 @@ metadata %>%
   ggtitle("mitochondrial gene count ratio per cell")
 ```
 
-## Complexity
+### Complexity
 
 We can evaluate each cell in terms of how complex the RNA species are by using a measure called the novelty score. The novelty score is computed by taking the ratio of nGenes over nUMI. If there are many captured transcripts (high nUMI) and a low number of genes detected in a cell, this likely means that you only captured a low number of genes and simply sequenced transcripts from those lower number of genes over and over again. These low complexity (low novelty) cells could represent a specific cell type (i.e. red blood cells which lack a typical transcriptome), or could be due to some other strange artifact or contamination. Generally, we expect the novelty score to be above 0.80 for good quality cells.
 ```{r}
@@ -461,6 +459,119 @@ filtered_metadata %>%
 ## Saving the filtered cells
 ```{r}
 # Create .RData object to load at any time
-save(filtered_seurat, file="./data/seurat_filtered.RData")
+# save(filtered_seurat, file="./data/seurat_filtered.RData") # commented out since already saved on macbookair
+```
+
+
+
+## Post QC
+### Post QC considerations
+The various considerations that will lead to meaningful clustering results can be read here:
+https://hbctraining.github.io/scRNA-seq_online/lessons/postQC_workflow.html
+
+The goal of clustering is to separate different cell types into unique clusters of cells. To perform clustering, we determine the genes that are most different in their expression between cells. Then, we use these genes to determine which correlated genes sets are responsible for the largest differences in expression between cells.
+
+
+### Normalization and regressing out unwanted variation
+
+current packages loaded
+```{r}
+(.packages())
+```
+#### Rough normalization before exploring cell cycle effects
+```{r}
+# Normalize the counts
+seurat_phase <- NormalizeData(filtered_seurat)
+```
+#### Assigning cell cycle phases and scores
+To assign each cell a score based on its expression of G2/M and S phase markers, we can use the Seurat function CellCycleScoring(). This function calculates cell cycle phase scores based on canonical markers that required as input.
+
+```{r}
+# load cell cycle data; the RData file was downloaded from the seurat github site; the HBC tutorial github data folder does not have any .rda files!
+load("./data/cc.genes.updated.2019.rda")
+
+# scoring cells for cell cycle
+seurat_phase <- CellCycleScoring(seurat_phase,
+                                 s.features = cc.genes.updated.2019$s.genes,
+                                 g2m.features = cc.genes.updated.2019$g2m.genes)
+```
+```{r}
+# view cell cycle scores and phases assigned to cells
+glimpse(seurat_phase@meta.data)
+```
+
+#### Scaling expression data
+```{r}
+# Identify the most variable genes
+seurat_phase <- FindVariableFeatures(seurat_phase,
+                                     selection.method = "vst",
+                                     nfeatures = 2000,
+                                     verbose = FALSE)
+# scale the counts
+seurat_phase <- ScaleData(seurat_phase)
+```
+#### PCA and grouping by cell cycle phase
+```{r}
+# PCA
+seurat_phase <- RunPCA(seurat_phase)
+
+# group by cell cycle phase
+DimPlot(seurat_phase,
+        reduction = "pca",
+        group.by = "Phase",
+        split.by = "Phase")
+```
+Based on above plot, we note cell cycle phase has no significant effect. Based on this plot, we would not regress out the variation due to cell cycle.
+
+#### Effects of mitochondrial expression
+Mitochondrial expression is another factor which can greatly influence clustering. Oftentimes, it is useful to regress out variation due to mitochondrial expression. However, if the differences in mitochondrial gene expression represent a biological phenomenon that may help to distinguish cell clusters, then we advise not regressing this out. We can perform a quick check similar to looking at cell cycle, but we first can turn the mitochondrial ratio variable into a categorical variable based on quartiles.
+```{r}
+# check quartile values
+summary(seurat_phase@meta.data$mitoRatio)
+
+# turn mitoRatio into a factor vector
+seurat_phase@meta.data$mitoFr <- cut(seurat_phase@meta.data$mitoRatio,
+                                     breaks = c(-Inf, 0.05498, 0.06675,0.07880, Inf),
+                                     labels = c("low", "medium", "medium high", "high"))
+
+#plot the PCA by mitoFr
+DimPlot(seurat_phase,
+        group.by = "mitoFr",
+        split.by = "mitoFr")
+```
+As a first pass, the mitochondrial gene expression doesn't seem to be a factor in the clusters
+
+#### sctransform normalization and regressing out any unwanted variation
+
+Since we have two samples in our dataset, we want to keep them as separate objects and transform them as that is what is required for integration. We will first split the cells in seurat_phase object into “Control” and “treated”:
+
+```{r}
+# split seurat object by condition for sctransform
+split_seurat <- SplitObject(seurat_phase,split.by = "sample")
+split_seurat <- split_seurat[c("ctrl", "treat")]
+```
+SCTransform can generate large objects in terms of memory, hence adjust the limit for allowable object sizes within R 
+```{r}
+options(future.globals.maxSize = 4000 * 1024^2)
+```
+
+Iterating sctransform over each object in split_seurat
+```{r}
+ for (i in seq_along(split_seurat)){
+  split_seurat[[i]] = SCTransform(split_seurat[[i]]) # optional vars.to.regress can be set to regress out any unwanted variation e.g. due to cell cycle or mitochondrial gene expression
+}
+```
+
+checking assays stored in objects
+```{r}
+split_seurat$ctrl@assays
+```
+```{r}
+split_seurat$treat@assays
+```
+save the split_seurat object since it took lot of memory and ~ 1 min to generate
+```{r}
+# saving the sctransform output object
+# saveRDS(split_seurat, "./data/split_seurat.rds") # commented out since saved once
 ```
 
