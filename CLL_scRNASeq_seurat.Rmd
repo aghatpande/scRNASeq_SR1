@@ -607,7 +607,7 @@ integ_anchors <- FindIntegrationAnchors(object.list = split_seurat,
 seurat_integrated <- IntegrateData(anchorset = integ_anchors,
                                    normalization.method = "SCT")
 ```
-## Visualizing the integrated data
+## Visualizing the integrated data with PCA
 ```{r}
 # PCA
 seurat_integrated <- RunPCA(object = seurat_integrated)
@@ -619,3 +619,25 @@ PCAPlot(object = seurat_integrated,
         split.by = "sample")
 ```
 
+## Visualizing with UMAP
+```{r}
+# run UMAP
+seurat_integrated <- RunUMAP(seurat_integrated,
+                             dims = 1:40,
+                             reduction = "pca")
+```
+```{r}
+# plot UMAP
+DimPlot(seurat_integrated)
+
+```
+```{r}
+#visualizing side by side with UMAP
+DimPlot(seurat_integrated,
+        split.by = "sample")
+```
+## Saving the integrated seurat object in results
+```{r}
+# save integrated seurat object
+saveRDS(seurat_integrated, "./results/integrated_seurat.rds")
+```
