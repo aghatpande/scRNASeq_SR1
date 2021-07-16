@@ -601,13 +601,13 @@ integ_anchors <- FindIntegrationAnchors(object.list = split_seurat,
                                         normalization.method = "SCT",
                                         anchor.features = integ_features)
 ```
-## Integrate across conditions
+### Integrate across conditions
 ```{r}
 # integrate across conditions
 seurat_integrated <- IntegrateData(anchorset = integ_anchors,
                                    normalization.method = "SCT")
 ```
-## Visualizing the integrated data with PCA
+### Visualizing the integrated data with PCA
 ```{r}
 # PCA
 seurat_integrated <- RunPCA(object = seurat_integrated)
@@ -619,7 +619,7 @@ PCAPlot(object = seurat_integrated,
         split.by = "sample")
 ```
 
-## Visualizing with UMAP
+### Visualizing with UMAP
 ```{r}
 # run UMAP
 seurat_integrated <- RunUMAP(seurat_integrated,
@@ -636,8 +636,73 @@ DimPlot(seurat_integrated)
 DimPlot(seurat_integrated,
         split.by = "sample")
 ```
-## Saving the integrated seurat object in results
+### Saving the integrated seurat object in results
 ```{r}
 # save integrated seurat object
-saveRDS(seurat_integrated, "./results/integrated_seurat.rds")
+ # saveRDS(seurat_integrated, "./results/integrated_seurat.rds") # saved n macbookair
+```
+
+## Clustering
+### Determining number of PCs to use
+```{r}
+# elbow plot
+ElbowPlot(seurat_integrated,
+          ndims = 40)
+```
+We will use 40 PCs to determine clusters
+
+### k-nearest neighbors, clusters at various resolutions
+```{r}
+# K-nearest neighbors graph
+seurat_integrated <- FindNeighbors(object = seurat_integrated,
+                                   dims = 1:40)
+
+#determine clusters at various resolutions
+seurat_integrated <- FindClusters(object = seurat_integrated,
+                                  resolution = c(0.4, 0.6, 0.8, 1.0, 1.4))
+```
+
+### looking at various resolutions
+```{r}
+seurat_integrated@meta.data %>% 
+  View()
+```
+
+Choosing resolution of 1.0
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated) <- "integrated_snn_res.1.0"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Choosing resolution of 0.4
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated) <- "integrated_snn_res.0.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
 ```
