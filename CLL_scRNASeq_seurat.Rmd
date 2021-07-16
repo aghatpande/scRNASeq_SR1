@@ -22,6 +22,8 @@ library(Seurat)
 library(tidyverse)
 library(Matrix)
 library(patchwork)
+library(RCurl)
+library(cowplot)
 ```
 
 ## reading in data
@@ -126,7 +128,7 @@ plot1 + plot2
 # merging both seurat objects
 merged_seurat <- merge(x = cll_control,
                        y = cll_treatment,
-                       add.cell.id = c("cll_cntrl", "cll_treat"))
+                       add.cell.id = c("cntrl", "treat"))
 
 ```
 
@@ -165,12 +167,12 @@ This information is currently located in the row names of our metadata dataframe
 metadata$cells <- rownames(metadata)
 ```
 
-Each cell ID has a cll_cntrl_ or cll_treat_ prefix as we had specified when we merged the Seurat objects. We can use this prefix to create a new column indicating which condition each cell is classified under. We will call this column sample:
+Each cell ID has a cntrl_ or treat_ prefix as we had specified when we merged the Seurat objects. We can use this prefix to create a new column indicating which condition each cell is classified under. We will call this column sample:
 ```{r}
 # create a column called sample
 metadata$sample <- NA
-metadata$sample[which(str_detect(metadata$cells, "^cll_cntrl_"))] <- "ctrl"
-metadata$sample[which(str_detect(metadata$cells, "^cll_treat_"))] <- "treat"
+metadata$sample[which(str_detect(metadata$cells, "^cntrl_"))] <- "ctrl"
+metadata$sample[which(str_detect(metadata$cells, "^treat_"))] <- "treat"
 ```
 
 rename some of the existing columns in metadata to be more intuitive:
@@ -573,5 +575,47 @@ save the split_seurat object since it took lot of memory and ~ 1 min to generate
 ```{r}
 # saving the sctransform output object
 # saveRDS(split_seurat, "./data/split_seurat.rds") # commented out since saved once
+```
+
+## Integration
+
+goal is to integrate across conditions(control and treatment) by aligning similar cell types
+
+### Specifying 3000 most variable genes to be used for integration as identified by sctransform instead of 2000 
+```{r}
+# select most variable features to be used for integration
+integ_features <- SelectIntegrationFeatures(object.list = split_seurat,
+                                            nfeatures = 3000)
+```
+
+### prepare SCTransform object for integration
+```{r}
+# prepare the SCT list object for integration
+split_seurat <- PrepSCTIntegration(object.list = split_seurat,
+                                   anchor.features = integ_features)
+```
+### perform CCA, find best buddies / anchors, filter incorrect anchors
+```{r}
+# find best buddies / anchors
+integ_anchors <- FindIntegrationAnchors(object.list = split_seurat,
+                                        normalization.method = "SCT",
+                                        anchor.features = integ_features)
+```
+## Integrate across conditions
+```{r}
+# integrate across conditions
+seurat_integrated <- IntegrateData(anchorset = integ_anchors,
+                                   normalization.method = "SCT")
+```
+## Visualizing the integrated data
+```{r}
+# PCA
+seurat_integrated <- RunPCA(object = seurat_integrated)
+
+```
+```{r}
+# plot PCA
+PCAPlot(object = seurat_integrated,
+        split.by = "sample")
 ```
 
