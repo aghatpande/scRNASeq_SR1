@@ -129,7 +129,6 @@ plot1 + plot2
 merged_seurat <- merge(x = cll_control,
                        y = cll_treatment,
                        add.cell.id = c("cntrl", "treat"))
-
 ```
 
 ## Some data munging
@@ -645,17 +644,17 @@ DimPlot(seurat_integrated,
 ## Clustering
 ### Determining number of PCs to use
 ```{r}
-# elbow plot
+# elbow / scree plot
 ElbowPlot(seurat_integrated,
-          ndims = 40)
+          ndims = 50)
 ```
-We will use 40 PCs to determine clusters
+We will use 50 PCs to determine clusters
 
 ### k-nearest neighbors, clusters at various resolutions
 ```{r}
 # K-nearest neighbors graph
 seurat_integrated <- FindNeighbors(object = seurat_integrated,
-                                   dims = 1:40)
+                                   dims = 1:50)
 
 #determine clusters at various resolutions
 seurat_integrated <- FindClusters(object = seurat_integrated,
@@ -668,6 +667,29 @@ seurat_integrated@meta.data %>%
   View()
 ```
 
+Choosing resolution of 1.4
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated) <- "integrated_snn_res.1.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
 Choosing resolution of 1.0
 ```{r}
 # assigning identity of clusters
@@ -682,10 +704,20 @@ DimPlot(object = seurat_integrated,
         label = TRUE,
         label.size = 6)
 ```
-Choosing resolution of 0.4
+
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
+Choosing resolution of 0.8
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_integrated) <- "integrated_snn_res.0.4"
+Idents(object = seurat_integrated) <- "integrated_snn_res.0.8"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
@@ -706,3 +738,75 @@ DimPlot(object = seurat_integrated,
         label = TRUE,
         label.size = 6)
 ```
+
+Choosing resolution of 0.6
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated) <- "integrated_snn_res.0.6"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+Choosing resolution of 0.2
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated) <- "integrated_snn_res.0.2"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Choosing resolution of 0.4
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated) <- "integrated_snn_res.0.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Settling on 10 clusters with resolution of 0.4.
