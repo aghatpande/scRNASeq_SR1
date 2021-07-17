@@ -810,3 +810,354 @@ DimPlot(object = seurat_integrated,
         label.size = 6)
 ```
 Settling on 10 clusters with resolution of 0.4.
+
+## Clustering QC 
+### Distribution of cells per cluster in each condition
+```{r}
+# extracting identity and sample information to determine cells per cluster in each condition
+n_cells <- FetchData(seurat_integrated,
+                     vars = c("ident", "orig.ident")) %>% 
+  count(ident, orig.ident) %>% 
+  spread(ident, n)
+
+n_cells
+```
+
+```{r}
+# visualizing by count and condition
+DimPlot(object = seurat_integrated,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE) +
+  NoLegend()
+```
+### Does cell cycle play a role in clustering
+
+```{r}
+# do clusters segregate by cell cycle phase
+DimPlot(object = seurat_integrated,
+        label = TRUE,
+        split.by = "Phase") + NoLegend()
+```
+### Does mitochondrial gene content play a role in clustering?
+```{r}
+# do clusters segregate by mitochondrial gene ratio
+DimPlot(object = seurat_integrated,
+        label = TRUE,
+        split.by = "mitoFr") + NoLegend()
+```
+Plot above shows cluster 0  has most (~ 50% cells of cluster 0) of the 'high' mitochondrial fraction cells, we can regress out this variation, if uninteresting to the experiment
+
+## Redo of post QC 
+### Regressing out the mitochondrial gene ratio as uninteresting variation
+
+To keep the possibility of clustering the cells with mitochondrial gene content regressed out or not regressed out, we will repeat the analysis beginning with creating a split suerat object but named to explicitly indicate that the mitochindrial gene ratio factor has been regressed out.
+
+Since we have two samples in our dataset, we want to keep them as separate objects and transform them as that is what is required for integration. We will first split the cells in seurat_phase object into “Control” and “treated”:
+
+```{r}
+# split seurat object by condition for sctransform
+split_seurat_noMito <- SplitObject(seurat_phase,split.by = "sample")
+split_seurat_noMito <- split_seurat[c("ctrl", "treat")]
+```
+SCTransform can generate large objects in terms of memory, hence adjust the limit for allowable object sizes within R 
+```{r}
+options(future.globals.maxSize = 4000 * 1024^2)
+```
+
+Iterating sctransform over each object in split_seurat_noMito
+```{r}
+ for (i in seq_along(split_seurat_noMito)){
+  split_seurat_noMito[[i]] = SCTransform(split_seurat_noMito[[i]], vars.to.regress = c("mitoRatio")) # regressing out mitochondrial gene ratio as a factor
+}
+```
+
+checking assays stored in objects
+```{r}
+split_seurat_noMito$ctrl@assays
+```
+checking assays stored in objects
+```{r}
+split_seurat_noMito$treat@assays
+```
+redo save the split_seurat object since it took lot of memory and ~ 1 min to generate
+
+```{r}
+# redo saving the sctransform output object
+# saveRDS(split_seurat_noMito, "./data/split_seurat_noMito.rds") # commented out since saved once 
+```
+
+## Redo of Integration after regressing out mitoRatio
+
+goal is to integrate across conditions(control and treatment) by aligning similar cell types
+
+### Specifying 3000 most variable genes to be used for integration as identified by sctransform instead of 2000 
+```{r}
+# select most variable features to be used for integration
+integ_features <- SelectIntegrationFeatures(object.list = split_seurat_noMito,
+                                            nfeatures = 3000)
+```
+
+### prepare SCTransform object for integration
+```{r}
+# prepare the SCT list object for integration
+split_seurat_noMito <- PrepSCTIntegration(object.list = split_seurat_noMito,
+                                   anchor.features = integ_features)
+```
+### perform CCA, find best buddies / anchors, filter incorrect anchors
+```{r}
+# find best buddies / anchors
+integ_anchors <- FindIntegrationAnchors(object.list = split_seurat_noMito,
+                                        normalization.method = "SCT",
+                                        anchor.features = integ_features)
+```
+### Integrate across conditions
+```{r}
+# integrate across conditions
+seurat_integrated_noMito <- IntegrateData(anchorset = integ_anchors,
+                                   normalization.method = "SCT")
+```
+### Visualizing the integrated data with PCA
+```{r}
+# PCA
+seurat_integrated_noMito <- RunPCA(object = seurat_integrated_noMito)
+
+```
+```{r}
+# plot PCA
+PCAPlot(object = seurat_integrated_noMito,
+        split.by = "sample")
+```
+
+### Visualizing with UMAP
+```{r}
+# run UMAP
+seurat_integrated_noMito <- RunUMAP(seurat_integrated_noMito,
+                             dims = 1:40,
+                             reduction = "pca")
+```
+```{r}
+# plot UMAP
+DimPlot(seurat_integrated_noMito)
+
+```
+```{r}
+#visualizing side by side with UMAP
+DimPlot(seurat_integrated_noMito,
+        split.by = "sample")
+```
+### Saving the integrated seurat object in results
+```{r}
+# save integrated seurat object
+saveRDS(seurat_integrated_noMito, "./results/integrated_seurat_noMito.rds") # saved in macbookair
+```
+
+
+## Redo of Clustering foll; Integration redo
+### Determining number of PCs to use
+```{r}
+# elbow / scree plot
+ElbowPlot(seurat_integrated_noMito,
+          ndims = 50)
+```
+We will use 50 PCs to determine clusters
+
+### k-nearest neighbors, clusters at various resolutions
+```{r}
+# K-nearest neighbors graph
+seurat_integrated_noMito <- FindNeighbors(object = seurat_integrated_noMito,
+                                   dims = 1:50)
+
+#determine clusters at various resolutions
+seurat_integrated_noMito <- FindClusters(object = seurat_integrated_noMito,
+                                  resolution = c(0.4, 0.6, 0.8, 1.0, 1.4))
+```
+
+### looking at various resolutions
+```{r}
+seurat_integrated_noMito@meta.data %>% 
+  View()
+```
+
+Choosing resolution of 1.4
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated_noMito) <- "integrated_snn_res.1.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated_noMito,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
+Choosing resolution of 1.0
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated_noMito) <- "integrated_snn_res.1.0"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated_noMito,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
+Choosing resolution of 0.8
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated_noMito) <- "integrated_snn_res.0.8"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated_noMito,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+Choosing resolution of 0.6
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated_noMito) <- "integrated_snn_res.0.6"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated_noMito,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+Choosing resolution of 0.2
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated_noMito) <- "integrated_snn_res.0.2"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated_noMito,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Choosing resolution of 0.4
+```{r}
+# assigning identity of clusters
+Idents(object = seurat_integrated_noMito) <- "integrated_snn_res.0.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = seurat_integrated_noMito,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Settling on 10 clusters with resolution of 0.4.
+
+
+## Redo of QC for Clustering
+### Distribution of cells per cluster in each condition
+```{r}
+# extracting identity and sample information to determine cells per cluster in each condition
+n_cells <- FetchData(seurat_integrated_noMito,
+                     vars = c("ident", "orig.ident")) %>% 
+  count(ident, orig.ident) %>% 
+  spread(ident, n)
+
+n_cells
+```
+
+```{r}
+# visualizing by count and condition
+DimPlot(object = seurat_integrated_noMito,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE) +
+  NoLegend()
+```
+### Does cell cycle play a role in clustering
+
+```{r}
+# do clusters segregate by cell cycle phase
+DimPlot(object = seurat_integrated_noMito,
+        label = TRUE,
+        split.by = "Phase") + NoLegend()
+```
+### Does mitochondrial gene content play a role in clustering?
+```{r}
+# do clusters segregate by mitochondrial gene ratio
+DimPlot(object = seurat_integrated_noMito,
+        label = TRUE,
+        split.by = "mitoFr") + NoLegend()
+```
+Plot above shows even distribution of cells with varying fractions of mitochondrial genes indicating they are not a factor in clustering any more.
+
