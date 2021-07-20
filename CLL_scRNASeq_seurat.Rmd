@@ -248,7 +248,7 @@ Unless a batch effect, clearly the two populations of cells in the two condition
 
 ### Gene counts per cell
 
-We have similar expectations for gene detection as for UMI detection, although it may be a bit lower than UMIs. For high quality data, the proportional histogram should contain a single large peak that represents cells that were encapsulated. If we see a small shoulder to the left of the major peak (not present in our data), or a bimodal distribution of the cells, that can indicate a couple of things. It might be that there are a set of cells that failed for some reason. It could also be that there are biologically different types of cells (i.e. quiescent cell populations, less complex cells of interest), and/or one type is much smaller than the other (i.e. cells with high counts may be cells that are larger in size). Therefore, this threshold should be assessed with other metrics that we describe in this lesson.
+We have similar expectations for gene detection as for UMI detection, although it may be a bit lower than UMIs. For high quality data, the proportional histogram should contain a single large peak that represents cells that were encapsulated. If we see a small shoulder to the left of the major peak (not present in our data), or a bimodal distribution of the cells, that can indicate a couple of things. It might be that there are a set of cells that failed for some reason. It could also be that there are biologically different types of cells (i.e. quiescent cell populations, less complex cells of interest), and/or one type is much smaller than the other (i.e. cells with high counts may be cells that are larger in size). Therefore, this threshold should be assessed with other metrics.
 ```{r}
 # visualize number of genes (nGene) per cell with a histogram
 metadata %>% 
@@ -949,7 +949,7 @@ DimPlot(seurat_integrated_noMito,
 ### Saving the integrated seurat object in results
 ```{r}
 # save integrated seurat object
-saveRDS(seurat_integrated_noMito, "./results/integrated_seurat_noMito.rds") # saved in macbookair
+# saveRDS(seurat_integrated_noMito, "./results/integrated_seurat_noMito.rds") # saved in macbookair
 ```
 
 
@@ -1161,3 +1161,250 @@ DimPlot(object = seurat_integrated_noMito,
 ```
 Plot above shows even distribution of cells with varying fractions of mitochondrial genes indicating they are not a factor in clustering any more.
 
+### Segregation of clusters by other uninteresting sources of variation
+Exploring additional metrics, such as the number of UMIs and genes per cell, S-phase and G2M-phase markers, and mitochondrial gene expression by UMAP. Looking at the individual S and G2M scores can give us additional information to checking the phase as we did previously.
+```{r}
+# Plot metrics present in seurat_integrated_noMito@meta.data
+metrics <- c("nUMI", "nGene", "S.Score", "G2M.Score", "mitoRatio")
+
+FeaturePlot(seurat_integrated_noMito,
+            reduction = "umap",
+            features = metrics,
+            pt.size = 0.4,
+            order = TRUE,
+            min.cutoff = "q10",
+            label = TRUE)
+```
+
+### Exploring PCs that drive different clusters
+The hope is that defined PCs separate the cell types well. TO do this, we extract UMAP coordinate information for the cells along with the corresponding scores for each of the first 16 PCs to view by UMAP
+```{r}
+# defining information of interest in the seurat object
+columns <- c(paste0("PC_", 1:16),
+             "ident",
+             "UMAP_1", "UMAP_2")
+# extracting this information from the seurat object
+pc_data <- FetchData(seurat_integrated_noMito, 
+                     vars = columns)
+```
+
+In the UMAP plots below, cells are colored by their score for each of first 16 PCs
+```{r}
+# adding cluster label to center of cluster on UMAP
+umap_label <- FetchData(seurat_integrated_noMito,
+                        vars = c("ident", "UMAP_1", "UMAP_2")) %>% 
+  group_by(ident) %>% 
+  summarize(x = mean(UMAP_1), y = mean(UMAP_2))
+
+# plotting a UMAP plot of r each of first 16 PCs
+map(paste0("PC_", 1:16), function(pc){
+  ggplot(pc_data,
+         aes(UMAP_1, UMAP_2)) +
+    geom_point(aes_string(color = pc),
+               alpha = 0.7) + 
+    scale_color_gradient(guide = "none",
+                         low = "grey90",
+                         high = "blue") + 
+    geom_text(data = umap_label,
+              aes(label = ident, x, y)) + 
+    ggtitle(pc)
+}) %>% 
+  plot_grid(plotlist = .) 
+```
+
+Examine PCA results
+```{r}
+print(seurat_integrated_noMito[["pca"]], dims = 1:5, nfeatures = 5)
+```
+
+### Visualizing cd19 positive cells
+```{r}
+# select the RNA counts slot to be default assay
+DefaultAssay(seurat_integrated_noMito) <- "RNA"
+
+# Normalize RNA data for visualization
+seurat_integrated_noMito <- NormalizeData(seurat_integrated_noMito, verbose = FALSE)
+```
+
+### B lymphocyte markers CD19 and CD79A
+```{r}
+FeaturePlot(seurat_integrated_noMito,
+            reduction = "umap",
+            features = c("CD19", "CD79A"),
+            order = TRUE,
+            min.cutoff = "q10",
+            label = TRUE)
+```
+
+## Identification of conserved markers in both conditions
+
+Done using FindConservedMarkers 
+This function internally separates out cells by sample group/condition, and then performs differential gene expression testing for a single specified cluster against all other clusters (or a second cluster, if specified). Gene-level p-values are computed for each condition and then combined across groups using meta-analysis methods from the MetaDE R package.
+
+### Setting default assay to use normalized not integrated data
+```{r}
+# setting default assay
+DefaultAssay(seurat_integrated_noMito) <- "RNA"
+```
+
+### Defining threshold for identifying marker
+
+For our analysis we will be fairly lenient and use only the log fold change threshold greater than 0.25. We will also specify to return only the positive markers for each cluster.
+```{r}
+# testing for one cluster
+cluster0_conserved_markers <- FindConservedMarkers(seurat_integrated_noMito,
+                                                   ident.1 = 0,
+                                                   grouping.var = "sample",
+                                                   only.pos = TRUE,
+                                                   logfc.threshold = 0.25)
+```
+```{r}
+cluster0_conserved_markers
+```
+
+### adding gene annotations
+We downloaded the annotations file from the HBCtraining link
+```{r}
+annotations <- read.csv("./data/annotation.csv")
+```
+
+First, we will turn the row names with gene identifiers into its own columns. Then we will merge this annotation file with our results from the FindConservedMarkers():
+```{r}
+cluster0_conserved_markers <- cluster0_conserved_markers %>% 
+  rownames_to_column(var = "gene") %>% 
+  left_join(y = unique(annotations[ , c("gene_name", "description")]),
+            by = c ("gene" = "gene_name"))
+
+View(cluster0_conserved_markers)
+```
+
+### Running on all clusters
+The FindConservedMarkers function runs on one cluster at a time. We can define a function that will allow us to run it on all clusters in our data
+```{r}
+# get_conserved function
+get_conserved <- function(cluster){
+  FindConservedMarkers(seurat_integrated_noMito,
+                       ident.1 = cluster,
+                       grouping.var = "sample",
+                       only.pos = TRUE) %>% 
+    rownames_to_column(var = "gene") %>% 
+    left_join(y = unique(annotations[ , c("gene_name", "description")]),
+              by = c("gene" = "gene_name")) %>% 
+    cbind(cluster_id = cluster, .)
+}
+```
+
+Now that we have this function created we can use it as an argument to the appropriate map function. We want the output of the map family of functions to be a dataframe with each cluster output bound together by rows, we will use the map_dfr() function.
+
+```{r}
+# iterate function across all clusters
+conserved_markers <- map_dfr(0:8, get_conserved)
+```
+
+### Evaluating the marker genes to identify clusters
+```{r}
+# extract top 10 markers per cluster
+top10 <- conserved_markers %>% 
+  mutate(avg_fc = (ctrl_avg_log2FC + treat_avg_log2FC) / 2) %>% 
+  group_by(cluster_id) %>% 
+  top_n(n = 10,
+        wt = avg_fc)
+
+View(top10)
+```
+
+### Plot top 5 cluster0 markers in all clusters
+```{r}
+#cluster0 marker expression across clusters
+FeaturePlot(object = seurat_integrated_noMito,
+            features = c("IGLC2", "ADTRP", "ZFP36L2","CXXC5","VPREB3"),
+            order = TRUE,
+            min.cutoff = "q10",
+            label = TRUE,
+            repel = TRUE)
+```
+
+```{r}
+#fibroblast marker expression across clusters
+FeaturePlot(object = seurat_integrated_noMito,
+            features = c("CXCL8", "PDGFRB", "PDPN"),
+            order = TRUE,
+            min.cutoff = "q10",
+            label = TRUE,
+            repel = TRUE)
+```
+
+### Violin plot for CD19 gene
+```{r}
+# distribution of cd19 marker in clusters
+VlnPlot(seurat_integrated_noMito,
+        features = c("CD19"))
+```
+
+### violin plot for VPREB3 marker
+```{r}
+# distribution of vpreb3 across clusters
+VlnPlot(seurat_integrated_noMito,
+        features = c("VPREB3"))
+```
+
+### violiin plot for IGLC2 marker
+```{r}
+# distribution of IGLC2
+VlnPlot(seurat_integrated_noMito,
+        features = c("IGLC2"))
+```
+
+### violin plot for ACTB (top for cluster 1)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("ACTB"))
+```
+
+### violin plot for NEAT1 (top for cluster 2)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("NEAT1"))
+```
+
+### violin plot for CXCR4 (#1 marker for cluster 6)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("ATF5"))
+```
+
+### violin plot for  (cluster 6)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("CEBPB"))
+```
+
+### violin plot for (top for cluster 6)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("IER5"))
+```
+
+violin plot for (top for cluster 6)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("JUN"))
+```
+
+violin plot for (top for cluster 6)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("TRIB3"))
+```
+
+violin plot for (top for cluster 7)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("MX1"))
+```
+
+violin plot for (top for cluster 6)
+```{r}
+VlnPlot(seurat_integrated_noMito,
+        features = c("EZR"))
+```
