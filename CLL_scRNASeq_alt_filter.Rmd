@@ -595,7 +595,8 @@ seurat_filtered_integrated_noMito <- NormalizeData(seurat_filtered_integrated_no
 ```{r}
 # distribution of cd19 marker in clusters
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("CD19"))
+        features = c("CD19"),
+        split.by = "sample")
 ```
 
 
@@ -603,30 +604,125 @@ VlnPlot(seurat_filtered_integrated_noMito,
 ```{r}
 # distribution of VPREB3 marker in clusters
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("VPREB3"))
+        features = c("VPREB3"),
+        split.by = "sample")
 ```
 
 ```{r}
-# distribution of ATM B-lymphocyte marker in clusters
+# distribution of top marker in cluster0
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("ATM"))
+        features = c("ACTG1"))
+```
+```{r}
+# distribution of top marker in cluster1
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("RPL13"))
 ```
 
 ```{r}
-# distribution of BTLA B-lymphocyte marker in clusters
+# distribution of #3 top marker in cluster2
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("BTLA"))
+        features = c("FCMR"))
 ```
 
 ```{r}
-# distribution of  RPS18 (PC2) marker in clusters
+# distribution of top marker in cluster3
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("RPS18"))
-
+        features = c("IGLC1"))
 ```
+```{r}
+# distribution of top marker in cluster4
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("HSPA5"))
+```
+```{r}
+# distribution of top marker in cluster5
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("ATF5"))
+```
+```{r}
+# distribution of top marker in cluster6
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("MIR210HG"))
+```
+
+```{r}
+# distribution of top marker cluster7
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("FOSB"),
+        split.by = "sample")
+```
+```{r}
+# distribution of top marker cluster8
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("LTB"))
+```
+
+```{r}
+# distribution of top marker cluster9
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("ID3"))
+```
+
+```{r}
+# distribution of top marker cluster10
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("IRF7"))
+```
+```{r}
+# distribution of top marker cluster11
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("SNHG25"))
+```
+
+```{r}
+# distribution of top marker cluster12
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("TOP2A"),
+        split.by = "sample")
+```
+
+*** Clusters 7, 10, 11 and 12 seem unique and 12 is responsive to treatment? TBD***
 
 ```{r}
 # distribution of fibroblast marker in clusters
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("LSP1"))
+        features = c("CD44"))
 ```
+
+## Get conserved markers
+### Running on all clusters
+The FindConservedMarkers function runs on one cluster at a time. We can define a function that will allow us to run it on all clusters in our data
+```{r}
+# get_conserved function
+get_conserved_filtered<- function(cluster){
+  FindConservedMarkers(seurat_filtered_integrated_noMito,
+                       ident.1 = cluster,
+                       grouping.var = "sample",
+                       only.pos = TRUE) %>% 
+    rownames_to_column(var = "gene") %>% 
+    left_join(y = unique(annotations[ , c("gene_name", "description")]),
+              by = c("gene" = "gene_name")) %>% 
+    cbind(cluster_id = cluster, .)
+}
+```
+
+Now that we have this function created we can use it as an argument to the appropriate map function. We want the output of the map family of functions to be a dataframe with each cluster output bound together by rows, we will use the map_dfr() function.
+
+```{r}
+# iterate function across all clusters
+conserved_filtered_markers <- map_dfr(0:12, get_conserved_filtered)
+```
+
+### Evaluating the marker genes to identify clusters
+```{r}
+# extract top 10 markers per cluster
+top10_filtered <- conserved_filtered_markers %>% 
+  mutate(avg_fc = (ctrl_avg_log2FC + treat_avg_log2FC) / 2) %>% 
+  group_by(cluster_id) %>% 
+  top_n(n = 10,
+        wt = avg_fc)
+
+View(top10_filtered)
+```
+
