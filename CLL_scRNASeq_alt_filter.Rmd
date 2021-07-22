@@ -15,44 +15,125 @@ Based on the QC metrics of the data (see CLL_scRNASeq_seurat.Rmd, assessing QC m
 
 In this analysis, we will using different criteria for filtering
 
-### Genes versus UMIs detected
-
-```{r}
-# scatter plot of UMIs versus genes detected per cell colored by ratio of mitochondrial genes
-metadata %>% 
-  ggplot(aes(x = nUMI, y = nGene, color = mitoRatio)) +
-  geom_jitter() +
-  scale_color_gradient(low = "gray90", high = "black") +
-  stat_smooth(method = lm) +
-  scale_x_log10() +
-  scale_y_log10() +
-  theme_light() + 
-  geom_vline(xintercept = 500) +
-  geom_hline(yintercept = 300) + 
-  facet_wrap(~sample)
+## loading needed packages
+```{r include=FALSE}
+library(Seurat)
+library(tidyverse)
+library(Matrix)
+library(patchwork)
+library(RCurl)
+library(cowplot)
 ```
 
-The horizontal and vertical thresholds proposed above (nGenes and nUMIs resply), will allow few cells with high mitochondrial gene ratio in the treatment condition. We will therefore use a mitochondrial gene ratio threshold of 0.5 for the treated cells and reassess this metric
+
+## reading in data
+The data provided is in the "data" folder in this project. Consists of 2 sub-folders representing the two conditions. 
+
+```{r}
+# load the cll_control data
+cll_cntrl_data <- Read10X("./data/control/con1-filtered_feature_bc_matrix/")
+# initializing the Seurat object with raw control data
+cll_control <- CreateSeuratObject(counts = cll_cntrl_data, project = "cll_cntrl", min.cells = 3, min.features = 200)
+cll_control
+```
+
+```{r}
+# load the cll_treatment data
+cll_treat1_data <- Read10X("./data/treat1/treat1-filtered_feature_bc_matrix/")
+# initializing the Seurat object with raw treatment data (non-normalized)
+cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll_treatment", min.cells = 3, min.features = 200)
+cll_treatment
+```
+
+## Merging both seurat objects, QC visualization and filtering
+```{r}
+# merging both seurat objects
+merged_seurat <- merge(x = cll_control,
+                       y = cll_treatment,
+                       add.cell.id = c("cntrl", "treat"))
+```
+
+## Some data munging
+```{r}
+# explore merged data
+View(merged_seurat@meta.data)
+```
+
+there are 3 columns in the current object, we add two additional columns : 
+number of genes detected per UMI: this metric gives us an idea of the complexity of our dataset (more genes detected per UMI, more complex our data)
+mitochondrial ratio: this metric will give us a percentage of cell reads originating from the mitochondrial genes
+```{r}
+# add number of genes per UMI
+merged_seurat$log10GenesPerUMI <- log10(merged_seurat$nFeature_RNA) /
+  log10(merged_seurat$nCount_RNA)
+```
+
+```{r}
+# add the ratio of mitochondrial genes present
+merged_seurat$mitoRatio <- PercentageFeatureSet(object = merged_seurat, pattern = "^MT-")
+merged_seurat$mitoRatio <- merged_seurat$mitoRatio / 100
+```
+
+### additional metadata columns for convenience
+```{r}
+# extracting metadata as a dataframe
+metadata <- merged_seurat@meta.data
+```
+
+adding a new column for cell identifiers
+
+This information is currently located in the row names of our metadata dataframe. We will keep the rownames as is and duplicate it into a new column called cells.
+```{r}
+# add cell IDs to metadata
+metadata$cells <- rownames(metadata)
+```
+
+Each cell ID has a cntrl_ or treat_ prefix as we had specified when we merged the Seurat objects. We can use this prefix to create a new column indicating which condition each cell is classified under. We will call this column sample:
+```{r}
+# create a column called sample
+metadata$sample <- NA
+metadata$sample[which(str_detect(metadata$cells, "^cntrl_"))] <- "ctrl"
+metadata$sample[which(str_detect(metadata$cells, "^treat_"))] <- "treat"
+```
+
+rename some of the existing columns in metadata to be more intuitive:
+```{r}
+# Rename columns
+metadata <- metadata %>% 
+  rename(seq_folder = orig.ident,
+         nUMI = nCount_RNA,
+         nGene = nFeature_RNA)
+```
+
+### saving new metadata into the merged seurat object
+Before we assess our metrics we are going to save all of the work we have done thus far back into our Seurat object. We simply assign the dataframe into the meta.data slot:
+```{r}
+# add metadata back to the merged seurat object
+merged_seurat@meta.data <- metadata
+
+# create a .RData object to load back at any time
+# save(merged_seurat, file = "./data/cll_merged_filtered_seurat.RData") # commented out since already saved on macbookair
+```
+
 
 ## Cell filtering
-Based on above analysis, we will use foll; thresholds:
-nUMI > 500,
+Based on above analysis and results from "CLL_separate_analysis_ctrl_treat.Rmd", we will use foll; thresholds:
+500> nUMI < 32000, # see reasoning in "CLL_separate_analysis_ctrl_treat.Rmd"
 nGene > 300,
-mitoRatio < 0.3,
+mitoRatio < 0.2, # see reasoning in "CLL_separate_analysis_ctrl_treat.Rmd"
 log10GeneperUMI > 0.8
 
 ```{r}
 # filtering out low quality cells based on selected thresholds
 filtered_separate_seurat <- subset(x = merged_seurat,
-                          subset = (nUMI >= 500) & 
+                          subset = (nUMI > 500 &
+                                     nUMI < 32000) & 
                             (nGene >= 300) & 
                             (log10GenesPerUMI > 0.8) &
-                            (mitoRatio < 0.3))
+                            (mitoRatio < 0.2))
 ```
 
 The different filter thresholds create two different filtered seurat objects, we call them "filtered_separate_seurat" and "filtered_seurat" to distinguish them.
-
-The more lenient filtering proposed here resulted in eliminating only 16 cells from the data. The more stringent filtering in the other analysis eliminated 420 cells
 
 ## Gene-level filtering
 
@@ -208,7 +289,7 @@ During normalization, we can also remove confounding sources of variation, for e
 
 We will apply sctransform directly to the filtered_separate_seurat object without normalizing etc. In earlier analysis, we have determined that cell cycle phase does not have a big effect on PCA, hence we will omit that step. 
 
-We will regress out the mitoRatio factor as done in the "redo" sections of the earlier analysis
+We will regress out the mitoRatio factor as done in the "redo" sections of the earlier analysis. This is because, we re-did the entire analysis without regressing out the mitochondrial contribution and found than one cluster amongst 14 (cluster 4 at resolution of 0.8) had only mitochondrial genes in the top 10.
 
 ```{r}
 # split seurat object by condition for sctransform
@@ -221,7 +302,7 @@ SCTransform can generate large objects in terms of memory, hence adjust the limi
 options(future.globals.maxSize = 4000 * 1024^2)
 ```
 
-Iterating sctransform over each object in split_filtered_seurat_noMito
+Iterating sctransform over each object in split_filtered_seurat
 ```{r}
  for (i in seq_along(split_filtered_seurat_noMito)){
   split_filtered_seurat_noMito[[i]] = SCTransform(split_filtered_seurat_noMito[[i]], vars.to.regress = c("mitoRatio")) # regressing out mitochondrial gene ratio as a factor
@@ -237,7 +318,7 @@ split_filtered_seurat_noMito$treat@assays
 ```
 
 
-## Integration after regressing out mitoRatio
+## Integration
 
 goal is to integrate across conditions(control and treatment) by aligning similar cell types
 
@@ -472,12 +553,12 @@ DimPlot(object = seurat_filtered_integrated_noMito,
         label = TRUE,
         label.size = 6)
 ```
-Settling on 13 clusters with resolution of 0.6.
+Settling on 15 clusters with resolution of 0.8.
 
-Choosing resolution of 0.6
+Choosing resolution of 0.8
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.6"
+Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.8"
 ```
 
 plotting a split UMAP plot
@@ -509,27 +590,10 @@ DimPlot(object = seurat_filtered_integrated_noMito,
         label = TRUE) +
   NoLegend()
 ```
-### TBD Does cell cycle play a role in clustering
-
-```{r}
-# do clusters segregate by cell cycle phase
-DimPlot(object = seurat_integrated_noMito,
-        label = TRUE,
-        split.by = "Phase") + NoLegend()
-```
-### Does mitochondrial gene content play a role in clustering?
-```{r}
-# TBD do clusters segregate by mitochondrial gene ratio
-DimPlot(object = seurat_filtered_integrated_noMito,
-        label = TRUE,
-        split.by = "mitoFr") + NoLegend()
-```
-Plot above shows even distribution of cells with varying fractions of mitochondrial genes indicating they are not a factor in clustering any more.
-
 ### Segregation of clusters by other uninteresting sources of variation
 Exploring additional metrics, such as the number of UMIs and genes per cell, S-phase and G2M-phase markers, and mitochondrial gene expression by UMAP. Looking at the individual S and G2M scores can give us additional information to checking the phase as we did previously.
 ```{r}
-# Plot metrics present in seurat_integrated_noMito@meta.data
+# Plot metrics present in seurat_integrated@meta.data
 metrics <- c("nUMI", "nGene", "mitoRatio")
 
 FeaturePlot(seurat_filtered_integrated_noMito,
@@ -561,7 +625,7 @@ umap_label <- FetchData(seurat_filtered_integrated_noMito,
   group_by(ident) %>% 
   summarize(x = mean(UMAP_1), y = mean(UMAP_2))
 
-# plotting a UMAP plot of r each of first 16 PCs
+# plotting a UMAP plot of each of first 16 PCs
 map(paste0("PC_", 1:16), function(pc){
   ggplot(pc_data,
          aes(UMAP_1, UMAP_2)) +
@@ -595,95 +659,34 @@ seurat_filtered_integrated_noMito <- NormalizeData(seurat_filtered_integrated_no
 ```{r}
 # distribution of cd19 marker in clusters
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("CD19"),
-        split.by = "sample")
+        features = c("CD19"))
 ```
 
 
-### Violin plot for VPREB3 gene
+### Violin plot for CD79A gene
 ```{r}
-# distribution of VPREB3 marker in clusters
+# distribution of CD79A B lymphocyte marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/973
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("VPREB3"),
-        split.by = "sample")
+        features = c("CD79A"))
 ```
 
+### Violin plot for HLA-DRA gene
 ```{r}
-# distribution of top marker in cluster0
+# distribution of HLA-DRA B lymphocyte marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/3122
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("ACTG1"))
+        features = c("HLA-DRA"))
 ```
+### Violin plot for MS4A1 gene
 ```{r}
-# distribution of top marker in cluster1
+# distribution of MS4A1 B lymphocyte marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/931
 VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("RPL13"))
-```
-
-```{r}
-# distribution of #3 top marker in cluster2
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("FCMR"))
+        features = c("MS4A1"))
 ```
 
-```{r}
-# distribution of top marker in cluster3
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("IGLC1"))
-```
-```{r}
-# distribution of top marker in cluster4
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("HSPA5"))
-```
-```{r}
-# distribution of top marker in cluster5
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("ATF5"))
-```
-```{r}
-# distribution of top marker in cluster6
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("MIR210HG"))
-```
-
-```{r}
-# distribution of top marker cluster7
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("FOSB"),
-        split.by = "sample")
-```
-```{r}
-# distribution of top marker cluster8
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("LTB"))
-```
-
-```{r}
-# distribution of top marker cluster9
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("ID3"))
-```
-
-```{r}
-# distribution of top marker cluster10
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("IRF7"))
-```
-```{r}
-# distribution of top marker cluster11
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("SNHG25"))
-```
-
-```{r}
-# distribution of top marker cluster12
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("TOP2A"),
-        split.by = "sample")
-```
-
-*** Clusters 7, 10, 11 and 12 seem unique and 12 is responsive to treatment? TBD***
-
+### Violin plot for CD44 gene
 ```{r}
 # distribution of fibroblast marker in clusters
 VlnPlot(seurat_filtered_integrated_noMito,
@@ -691,6 +694,11 @@ VlnPlot(seurat_filtered_integrated_noMito,
 ```
 
 ## Get conserved markers
+```{r}
+# ensure default assay is "RNA" for detecting markers
+DefaultAssay(seurat_filtered_integrated_noMito) <- "RNA"
+```
+
 ### Running on all clusters
 The FindConservedMarkers function runs on one cluster at a time. We can define a function that will allow us to run it on all clusters in our data
 ```{r}
@@ -711,10 +719,16 @@ Now that we have this function created we can use it as an argument to the appro
 
 ```{r}
 # iterate function across all clusters
-conserved_filtered_markers <- map_dfr(0:12, get_conserved_filtered)
+conserved_filtered_markers <- map_dfr(0:14, get_conserved_filtered)
+```
+## Saving conserved markers
+```{r}
+# Saving conserved markers object in Results
+# saveRDS(conserved_filtered_markers, "./results/conserved_filtered_markers.rds") # saved in macbookair
 ```
 
 ### Evaluating the marker genes to identify clusters
+
 ```{r}
 # extract top 10 markers per cluster
 top10_filtered <- conserved_filtered_markers %>% 
@@ -724,5 +738,22 @@ top10_filtered <- conserved_filtered_markers %>%
         wt = avg_fc)
 
 View(top10_filtered)
+```
+
+
+## Visualizing top marker from each cluster as a violin plot
+```{r}
+# top marker from first 7 clusters
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("ACTB", "IGLC1", "NEAT1", "RPL13", "SDF2L1", "MIR210HG", "ATF5"), pt.size = 0.2, ncol = 3 )
+```
+```{r}
+# top marker from last 7 clusters
+VlnPlot(seurat_filtered_integrated_noMito,
+        features = c("FOSB", "LTB", "ID3", "LGALS1", "NR4A1", "MX1", "SNHG25", "PCLAF"), pt.size = 0.2, ncol = 3 )
+```
+
+```{r}
+sessionInfo()
 ```
 

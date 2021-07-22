@@ -1,0 +1,293 @@
+---
+title: "CLL_separate_analysis_ctrl_treat"
+author: "ASG"
+date: "7/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Libraries
+We check what packages are loaded
+```{r}
+# already loaded
+(.packages())
+```
+If needed we load:
+
+```{r}
+# libraries needed
+library(tidyverse)
+library(skimr)
+library(RCurl)
+library(cowplot)
+library(Matrix)
+library(patchwork)
+library(Seurat)
+library(sctransform)
+```
+
+## Reasoning
+
+This is analysis of ctrl and treatment data done separately without integration. This is because of the large differences in QC metrics seen between "ctrl" and "treat" seen in earlier analysis (CLL_scRNASeq_seurat.Rmd & Cll_scRNASeq_alt_filter.Rmd).
+
+## separating "ctrl" and "treat" data after cell & gene level filtering
+
+The merged seurat object with both conditions after cell and gene level filtering is called "filtered_separate_seurat". We will split this object into two seurat objects
+
+
+
+```{r}
+# separating the two conditions into two separate seurat objects
+split_seurat <- SplitObject(filtered_separate_seurat, split.by = "sample")
+filtered_ctrl_seurat <- split_seurat$ctrl
+filtered_treat_seurat <- split_seurat$treat
+```
+
+We check the information available in the metadata of each object
+```{r}
+# what metadata is available?
+skim(filtered_ctrl_seurat@meta.data)
+skim(filtered_treat_seurat@meta.data)
+```
+
+We see that the largest fraction of mitochondrial genes in both datasets is 0.294 in the "treat" dataset. Following the principle of least manipulation of data we will, at least initially, skip regressing out the mitochondrial gene contribution to clustering.
+
+## Running SCTransform as demonstrated in the SCTransform by Hafmeister and Satija here:
+https://satijalab.org/seurat/articles/sctransform_vignette.html
+
+The authors note: 
+  Apply sctransform normalization
+
+  Note that this single command replaces NormalizeData(), ScaleData(), and     FindVariableFeatures().
+  Transformed data will be available in the SCT assay, which is set as the default after running sctransform
+  During normalization, we can also remove confounding sources of variation, for example, mitochondrial mapping percentage.
+
+We will apply sctransform but skip regressing out the mitoRatio data (may be needed as doing without it generated a cluster dominated by mitochondrial genes in "CLL_scRNASeq_alt_filter.Rmd")
+
+```{r}
+# run sctransform on the "ctrl" data object
+filtered_ctrl_seurat <- SCTransform(filtered_ctrl_seurat, verbose = FALSE)
+```
+
+```{r}
+# check the output
+filtered_ctrl_seurat
+```
+```{r}
+# run sctransform on the "treat" data object
+filtered_treat_seurat <- SCTransform(filtered_treat_seurat, verbose = FALSE)
+```
+
+```{r}
+# check the output
+filtered_treat_seurat
+```
+
+## Perform dimensionality reduction by PCA and UMAP embedding
+```{r}
+# ctrl data PCA, UMAP, Neighbors & Clusters
+filtered_ctrl_seurat <- RunPCA(filtered_ctrl_seurat,verbose = FALSE)
+filtered_ctrl_seurat <- RunUMAP(filtered_ctrl_seurat, dims = 1:30, verbose = FALSE)
+filtered_ctrl_seurat <- FindNeighbors(filtered_ctrl_seurat, dims = 1:30, verbose = FALSE)
+filtered_ctrl_seurat <- FindClusters(filtered_ctrl_seurat, verbose = FALSE)
+```
+
+```{r}
+# treat data PCA, UMAP, Neighbors & Clusters
+filtered_treat_seurat <- RunPCA(filtered_treat_seurat,verbose = FALSE)
+filtered_treat_seurat <- RunUMAP(filtered_treat_seurat, dims = 1:30, verbose = FALSE)
+filtered_treat_seurat <- FindNeighbors(filtered_treat_seurat, dims = 1:30, verbose = FALSE)
+filtered_treat_seurat <- FindClusters(filtered_treat_seurat, verbose = FALSE)
+```
+
+Plotting the clusters
+```{r}
+# plotting clusters
+p1 <- DimPlot(filtered_ctrl_seurat, label = TRUE) + NoLegend()
+p2 <- DimPlot(filtered_treat_seurat, label = TRUE) + NoLegend()
+p1 + p2
+```
+
+This is an unexpected result, viz., the sctransform , dimensionality reduction and cluster detection methods seems to have failed in the "treat" data.
+
+We note that the nCountRNA / nUMI distribution has a 100th percentile of ~ 63000 but a 75th percentile of ~ 8500 with a mean of ~4300. Is it possible that a few doublets are causing the analysis to fail in the "treat" data? 
+We also note that the 100th percentile mitoRatio is ~0.3 but the 75th percentile is only ~0.08. Again could this be a reason for the failure?
+
+We will use slightly more stringent filtering for the "treat" dataset and repeat the above analysis. 
+The filtering criteria will apply to both datasets but are not expected to change the "ctrl" data.
+
+## Redo Cell filtering
+Based on above analysis, we will use foll; thresholds:
+500 < nUMI > 32000, instead of no upper limit
+nGene > 300,
+mitoRatio < 0.2, instead of 0.3
+log10GeneperUMI > 0.8
+
+```{r}
+# filtering out low quality cells based on selected thresholds
+filtered_separate_seurat <- subset(x = merged_seurat,
+                          subset = (nUMI > 500 &
+                                     nUMI < 32000) & 
+                            (nGene >= 300) & 
+                            (log10GenesPerUMI > 0.8) &
+                            (mitoRatio < 0.2))
+```
+
+
+
+
+## Redo Gene-level filtering
+
+Within our data we will have many genes with zero counts. These genes can dramatically reduce the average expression for a cell and so we will remove them from our data. We will start by identifying which genes have a zero count in each cell:
+```{r}
+# Extract counts
+counts <- GetAssayData(object = filtered_separate_seurat, slot = "counts")
+
+# Output a logical matrix specifying for each gene on whether or not there are more than zero counts per cell
+nonzero <- counts > 0
+```
+
+Now, we will perform some filtering by prevalence. If a gene is only expressed in a handful of cells, it is not particularly meaningful as it still brings down the averages for all other cells it is not expressed in. For our data we choose to keep only genes which are expressed in 10 or more cells. By using this filter, genes which have zero counts in all cells will effectively be removed.
+
+```{r}
+# Sums all TRUE values and returns TRUE if more than 10 TRUE values per gene
+keep_genes <- Matrix::rowSums(nonzero) >= 10
+
+# Only keeping those genes expressed in more than 10 cells
+filtered_counts <- counts[keep_genes, ]
+```
+
+Finally, take those filtered counts and create a new Seurat object for downstream analysis.
+
+```{r}
+# Reassign to filtered Seurat object
+filtered_separate_seurat <- CreateSeuratObject(filtered_counts, meta.data = filtered_separate_seurat@meta.data)
+```
+
+
+
+
+## separating "ctrl" and "treat" data after redoing cell & gene level filtering
+
+The merged seurat object with both conditions after cell and gene level filtering is called "filtered_separate_seurat". We will split this object into two seurat objects
+
+
+
+```{r}
+# separating the two conditions into two separate seurat objects
+split_seurat <- SplitObject(filtered_separate_seurat, split.by = "sample")
+filtered_ctrl_seurat <- split_seurat$ctrl
+filtered_treat_seurat <- split_seurat$treat
+```
+
+We check the information available in the metadata of each object
+```{r}
+# what metadata is available?
+skim(filtered_ctrl_seurat@meta.data)
+skim(filtered_treat_seurat@meta.data)
+```
+
+We note that  2 cells were eliminated from "ctrl" and ~ 20 cells removed from the "treat" data
+
+
+
+## Re -Run SCTransform:
+
+We will apply sctransform but skip regressing out the mitoRatio data
+
+```{r}
+# run sctransform on the "ctrl" data object
+filtered_ctrl_seurat <- SCTransform(filtered_ctrl_seurat, verbose = FALSE)
+```
+
+```{r}
+# check the output
+filtered_ctrl_seurat
+```
+```{r}
+# run sctransform on the "treat" data object
+filtered_treat_seurat <- SCTransform(filtered_treat_seurat, verbose = FALSE)
+```
+
+```{r}
+# check the output
+filtered_treat_seurat
+```
+
+
+## Redo dimensionality reduction by PCA and UMAP embedding
+```{r}
+# ctrl data PCA, UMAP, Neighbors & Clusters
+filtered_ctrl_seurat <- RunPCA(filtered_ctrl_seurat,verbose = FALSE)
+filtered_ctrl_seurat <- RunUMAP(filtered_ctrl_seurat, dims = 1:30, verbose = FALSE)
+filtered_ctrl_seurat <- FindNeighbors(filtered_ctrl_seurat, dims = 1:30, verbose = FALSE)
+filtered_ctrl_seurat <- FindClusters(filtered_ctrl_seurat, verbose = FALSE)
+```
+
+```{r}
+# treat data PCA, UMAP, Neighbors & Clusters
+filtered_treat_seurat <- RunPCA(filtered_treat_seurat,verbose = FALSE)
+filtered_treat_seurat <- RunUMAP(filtered_treat_seurat, dims = 1:30, verbose = FALSE)
+filtered_treat_seurat <- FindNeighbors(filtered_treat_seurat, dims = 1:30, verbose = FALSE)
+filtered_treat_seurat <- FindClusters(filtered_treat_seurat, verbose = FALSE)
+```
+
+Plotting the clusters
+```{r}
+# plotting clusters
+p1 <- DimPlot(filtered_ctrl_seurat, label = TRUE) + NoLegend()
+p2 <- DimPlot(filtered_treat_seurat, label = TRUE) + NoLegend()
+p1 + p2
+```
+
+This is a better result!
+
+## Visualizing canonical markers on the clusters
+
+```{r}
+# visualize B lymphocyte marker on "ctrl" clusters
+FeaturePlot(filtered_ctrl_seurat,
+            features = c("CD19"))
+```
+```{r}
+# violin plot for CD19 across ctrl clusters
+VlnPlot(filtered_ctrl_seurat,
+            features = c("CD19"))
+```
+```{r}
+# violin plot for CD44 across ctrl clusters
+VlnPlot(filtered_ctrl_seurat,
+            features = c("CD44"))
+```
+
+```{r}
+# visualize fibroblast marker on "ctrl" clusters
+FeaturePlot(filtered_ctrl_seurat,
+            features = c("CD44"))
+```
+
+
+```{r}
+# visualize canonical B lymphocyte marker on "treat" clusters
+FeaturePlot(filtered_treat_seurat,
+            features = c("CD19"))
+```
+```{r}
+# violin plot for CD19 across "treat" clusters
+VlnPlot(filtered_treat_seurat,
+            features = c("CD19"))
+```
+```{r}
+# violin plot for CD44 across "treat" clusters
+VlnPlot(filtered_treat_seurat,
+            features = c("CD44"))
+```
+
+```{r}
+# visualize fibroblast marker on "treat" clusters
+FeaturePlot(filtered_treat_seurat,
+            features = c("CD44"))
+```
