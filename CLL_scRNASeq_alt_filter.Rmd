@@ -125,7 +125,7 @@ log10GeneperUMI > 0.8
 
 ```{r}
 # filtering out low quality cells based on selected thresholds
-filtered_separate_seurat <- subset(x = merged_seurat,
+filtered_seurat <- subset(x = merged_seurat,
                           subset = (nUMI > 500 &
                                      nUMI < 32000) & 
                             (nGene >= 300) & 
@@ -133,14 +133,12 @@ filtered_separate_seurat <- subset(x = merged_seurat,
                             (mitoRatio < 0.2))
 ```
 
-The different filter thresholds create two different filtered seurat objects, we call them "filtered_separate_seurat" and "filtered_seurat" to distinguish them.
-
 ## Gene-level filtering
 
 Within our data we will have many genes with zero counts. These genes can dramatically reduce the average expression for a cell and so we will remove them from our data. We will start by identifying which genes have a zero count in each cell:
 ```{r}
 # Extract counts
-counts <- GetAssayData(object = filtered_separate_seurat, slot = "counts")
+counts <- GetAssayData(object = filtered_seurat, slot = "counts")
 
 # Output a logical matrix specifying for each gene on whether or not there are more than zero counts per cell
 nonzero <- counts > 0
@@ -160,36 +158,36 @@ Finally, take those filtered counts and create a new Seurat object for downstrea
 
 ```{r}
 # Reassign to filtered Seurat object
-filtered_separate_seurat <- CreateSeuratObject(filtered_counts, meta.data = filtered_separate_seurat@meta.data)
+filtered_seurat <- CreateSeuratObject(filtered_counts, meta.data = filtered_seurat@meta.data)
 ```
 
 
 ## Reassessing QC metrics
 ```{r}
 # extracting metadata as a dataframe from the filtered_seurat object
-separate_filtered_metadata <- filtered_separate_seurat@meta.data
+filtered_metadata <- filtered_seurat@meta.data
 ```
 
 
 ```{r}
 # Visualize the number of cells in each sample
-separate_filtered_metadata %>% 
+  filtered_metadata %>% 
   ggplot() +
   geom_bar(aes(sample, fill = sample)) +
   theme_light() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
-  ggtitle("NCells_separate")
+  ggtitle("NCells_filtered")
 
 ```
 After filtering, the number of ctrl and treated cells is
 ```{r}
-nrow(separate_filtered_metadata %>% filter(sample == "ctrl"))
-nrow(separate_filtered_metadata %>% filter(sample == "treat"))
+nrow(filtered_metadata %>% filter(sample == "ctrl"))
+nrow(filtered_metadata %>% filter(sample == "treat"))
 ```
 
 ```{r}
 # visualize the number of transcripts (UMIs) per cell
-separate_filtered_metadata %>% 
+filtered_metadata %>% 
   ggplot(aes(x = nUMI, color = sample, fill = sample)) +
   geom_density(alpha = 2/10) +
   theme_light() + 
@@ -197,31 +195,31 @@ separate_filtered_metadata %>%
   ylab("cell density") + 
   geom_vline(xintercept = 500) +
   theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
-  ggtitle("transcripts per cell / separate data")
+  ggtitle("transcripts per cell after filtering")
 ```
 ```{r}
 # visualize number of genes (nGene) per cell with a histogram
-separate_filtered_metadata %>% 
+filtered_metadata %>% 
   ggplot(aes(nGene, color = sample, fill = sample)) +
   geom_density(alpha = 2/10) + 
   theme_light() + 
   scale_x_log10() + 
   geom_vline(xintercept = 300) + 
   theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
-  ggtitle("genes per cell / separate data")
+  ggtitle("genes per cell after filtering")
 ```
 ```{r}
 # visualize number of genes as a boxplot
-separate_filtered_metadata %>% 
+filtered_metadata %>% 
   ggplot(aes(x = sample, y = log10(nGene), fill = sample)) + 
   geom_boxplot(alpha = 5/10) + 
   theme_light() + 
   theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
-  ggtitle("genes per cell")
+  ggtitle("genes per cell after filtering")
 ```
 ```{r}
 # scatter plot of UMIs versus genes detected per cell colored by ratio of mitochondrial genes
-separate_filtered_metadata %>% 
+filtered_metadata %>% 
   ggplot(aes(x = nUMI, y = nGene, color = mitoRatio)) +
   geom_jitter() +
   scale_color_gradient(low = "gray90", high = "black") +
@@ -229,35 +227,52 @@ separate_filtered_metadata %>%
   scale_x_log10() +
   scale_y_log10() +
   theme_light() + 
-  geom_vline(xintercept = 2000) +
-  geom_hline(yintercept = 400) + 
   facet_wrap(~sample)
 ```
-The horizontal and vertical lines show us the number of cells we lose if we use the mor stringent filtering criteria proposed in the original analysis
 
 ```{r}
 # visualizing mitochondrial genes per cell 
-separate_filtered_metadata %>% 
+filtered_metadata %>% 
   ggplot(aes(mitoRatio, color = sample, fill = sample)) + 
   geom_density(alpha = 2/10) + 
   theme_light() + 
   scale_x_log10() + 
   geom_vline(xintercept = 0.2)
   theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
-  ggtitle("mitochondrial gene count ratio per cell / separate data")
+  ggtitle("mitochondrial gene count ratio per cell after filtering")
 ```
 
 ```{r}
 # visualizing genes per UMI to assess complexity
-separate_filtered_metadata %>% 
+filtered_metadata %>% 
   ggplot(aes(log10GenesPerUMI, color = sample, fill = sample)) + 
   geom_density(alpha = 2/10) + 
   theme_light()+
   scale_x_log10() + 
   geom_vline(xintercept = 0.8)
   theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
-  ggtitle("genes per UMI / separate data")
+  ggtitle("genes per UMI after filtering")
 ```
+
+## Assigning cell cycle phases
+#### Assigning cell cycle phases and scores
+To assign each cell a score based on its expression of G2/M and S phase markers, we can use the Seurat function CellCycleScoring(). This function calculates cell cycle phase scores based on canonical markers that required as input.
+
+```{r}
+# load cell cycle data; the RData file was downloaded from the seurat github site; the HBC tutorial github data folder does not have any .rda files!
+load("./data/cc.genes.updated.2019.rda")
+
+# scoring cells for cell cycle
+filtered_phased_seurat <- CellCycleScoring(filtered_seurat,
+                                 s.features = cc.genes.updated.2019$s.genes,
+                                 g2m.features = cc.genes.updated.2019$g2m.genes)
+```
+
+```{r}
+# view cell cycle scores and phases assigned to cells
+glimpse(filtered_phased_seurat@meta.data)
+```
+
 
 ## Using sctransform
 
@@ -285,16 +300,20 @@ Note that this single command replaces NormalizeData(), ScaleData(), and FindVar
 Transformed data will be available in the SCT assay, which is set as the default after running sctransform
 During normalization, we can also remove confounding sources of variation, for example, mitochondrial mapping percentage
 
-### applying sctransform directly to filtered_separate_seurat object
+### applying sctransform directly to filtered_phased_seurat object
 
-We will apply sctransform directly to the filtered_separate_seurat object without normalizing etc. In earlier analysis, we have determined that cell cycle phase does not have a big effect on PCA, hence we will omit that step. 
+We will apply sctransform directly to the filtered_phased_seurat object without normalizing etc.
 
-We will regress out the mitoRatio factor as done in the "redo" sections of the earlier analysis. This is because, we re-did the entire analysis without regressing out the mitochondrial contribution and found than one cluster amongst 14 (cluster 4 at resolution of 0.8) had only mitochondrial genes in the top 10.
+During first attempt to assign identities to clusters, we noticed some clusters are only distinguished by ribosomal protein and cell cycle markers. Hence we need to regress out cell cycle effects on the data. We start at assigning cell cycle phases to cells after the QC metrics section and then regressing out the cell cycle during the sctransform procedure. 
+
+We will then redo the downstream analysis after the sctransform procedure.
+
+We will also regress out the mitoRatio factor as done in the "redo" sections of the earlier analysis. This is because, we re-did the entire analysis without regressing out the mitochondrial contribution and found than one cluster amongst 14 (cluster 4 at resolution of 0.8) had only mitochondrial genes in the top 10.
 
 ```{r}
 # split seurat object by condition for sctransform
-split_filtered_seurat_noMito <- SplitObject(filtered_separate_seurat,split.by = "sample")
-split_filtered_seurat_noMito <- split_filtered_seurat_noMito[c("ctrl", "treat")]
+filtered_phased_seurat_noMito <- SplitObject(filtered_phased_seurat,split.by = "sample")
+filtered_phased_seurat_noMito <- filtered_phased_seurat_noMito[c("ctrl", "treat")]
 ```
 
 SCTransform can generate large objects in terms of memory, hence adjust the limit for allowable object sizes within R 
@@ -304,17 +323,17 @@ options(future.globals.maxSize = 4000 * 1024^2)
 
 Iterating sctransform over each object in split_filtered_seurat
 ```{r}
- for (i in seq_along(split_filtered_seurat_noMito)){
-  split_filtered_seurat_noMito[[i]] = SCTransform(split_filtered_seurat_noMito[[i]], vars.to.regress = c("mitoRatio")) # regressing out mitochondrial gene ratio as a factor
+ for (i in seq_along(filtered_phased_seurat_noMito)){
+  filtered_phased_seurat_noMito[[i]] = SCTransform(filtered_phased_seurat_noMito[[i]], vars.to.regress = c("mitoRatio", "S.Score", "G2M.Score")) # regressing out mitochondrial gene ratio and cell cycle scores as factors
 }
 ```
 
 checking assays stored in objects
 ```{r}
-split_filtered_seurat_noMito$ctrl@assays
+filtered_phased_seurat_noMito$ctrl@assays
 ```
 ```{r}
-split_filtered_seurat_noMito$treat@assays
+filtered_phased_seurat_noMito$treat@assays
 ```
 
 
@@ -325,71 +344,71 @@ goal is to integrate across conditions(control and treatment) by aligning simila
 ### Specifying 3000 most variable genes to be used for integration as identified by sctransform instead of 2000 
 ```{r}
 # select most variable features to be used for integration
-integ_features <- SelectIntegrationFeatures(object.list = split_filtered_seurat_noMito,
+integ_features <- SelectIntegrationFeatures(object.list = filtered_phased_seurat_noMito,
                                             nfeatures = 3000)
 ```
 
 ### prepare SCTransform object for integration
 ```{r}
 # prepare the SCT list object for integration
-split_filtered_seurat_noMito <- PrepSCTIntegration(object.list = split_filtered_seurat_noMito,
+filtered_phased_seurat_noMito <- PrepSCTIntegration(object.list = filtered_phased_seurat_noMito,
                                    anchor.features = integ_features)
 ```
 
 ### perform CCA, find best buddies / anchors, filter incorrect anchors
 ```{r}
 # find best buddies / anchors
-integ_anchors <- FindIntegrationAnchors(object.list = split_filtered_seurat_noMito,
+integ_anchors <- FindIntegrationAnchors(object.list = filtered_phased_seurat_noMito,
                                         normalization.method = "SCT",
                                         anchor.features = integ_features)
 ```
 ### Integrate across conditions
 ```{r}
 # integrate across conditions
-seurat_filtered_integrated_noMito <- IntegrateData(anchorset = integ_anchors,
+integrated_filtered_phased_noMito_seurat <- IntegrateData(anchorset = integ_anchors,
                                    normalization.method = "SCT")
 ```
 ### Visualizing the integrated data with PCA
 ```{r}
 # PCA
-seurat_filtered_integrated_noMito <- RunPCA(object = seurat_filtered_integrated_noMito)
+integrated_filtered_phased_noMito_seurat <- RunPCA(object = integrated_filtered_phased_noMito_seurat)
 
 ```
 ```{r}
 # plot PCA
-PCAPlot(object = seurat_filtered_integrated_noMito,
+PCAPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample")
 ```
 
 ### Visualizing with UMAP
 ```{r}
 # run UMAP
-seurat_filtered_integrated_noMito <- RunUMAP(seurat_filtered_integrated_noMito,
+integrated_filtered_phased_noMito_seurat <- RunUMAP(integrated_filtered_phased_noMito_seurat,
                              dims = 1:40,
                              reduction = "pca")
 ```
 
 ```{r}
 # plot UMAP
-DimPlot(seurat_filtered_integrated_noMito)
+DimPlot(integrated_filtered_phased_noMito_seurat)
 
 ```
 ```{r}
 #visualizing side by side with UMAP
-DimPlot(seurat_filtered_integrated_noMito,
+DimPlot(integrated_filtered_phased_noMito_seurat,
         split.by = "sample")
 ```
 ### Saving the integrated seurat object in results
 ```{r}
 # save integrated seurat object
-# saveRDS(seurat_filtered_integrated_noMito, "./results/integrated_filtered_seurat_noMito.rds") # saved in macbookair
+# saveRDS(integrated_filtered_phased_noMito_seurat, "./results/integrated_filtered_phased_noMito_seurat.rds") # saved in macbookair
 ```
 
 ## Clustering
 ### Determining number of PCs to use
 ```{r}
 # elbow / scree plot
-ElbowPlot(seurat_filtered_integrated_noMito,
+ElbowPlot(integrated_filtered_phased_noMito_seurat,
           ndims = 50)
 ```
 We will use 50 PCs to determine clusters
@@ -397,30 +416,30 @@ We will use 50 PCs to determine clusters
 ### k-nearest neighbors, clusters at various resolutions
 ```{r}
 # K-nearest neighbors graph
-seurat_filtered_integrated_noMito <- FindNeighbors(object = seurat_filtered_integrated_noMito,
+integrated_filtered_phased_noMito_seurat <- FindNeighbors(object = integrated_filtered_phased_noMito_seurat,
                                    dims = 1:50)
 
 #determine clusters at various resolutions
-seurat_filtered_integrated_noMito <- FindClusters(object = seurat_filtered_integrated_noMito,
-                                  resolution = c(0.4, 0.6, 0.8, 1.0, 1.4))
+integrated_filtered_phased_noMito_seurat <- FindClusters(object = integrated_filtered_phased_noMito_seurat,
+                                  resolution = c(0.4, 0.5,0.6, 0.8, 1.0, 1.4))
 ```
 
 ### looking at various resolutions
 ```{r}
-seurat_filtered_integrated_noMito@meta.data %>% 
+integrated_filtered_phased_noMito_seurat@meta.data %>% 
   View()
 ```
 
 Choosing resolution of 1.4
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.1.4"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.1.4"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
 ```{r}
 # Plot the UMAP
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         reduction = "umap",
         label = TRUE,
         label.size = 6)
@@ -428,7 +447,7 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
@@ -437,13 +456,13 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 Choosing resolution of 1.0
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.1.0"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.1.0"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
 ```{r}
 # Plot the UMAP
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         reduction = "umap",
         label = TRUE,
         label.size = 6)
@@ -452,7 +471,7 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
@@ -461,13 +480,13 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 Choosing resolution of 0.8
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.8"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.0.8"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
 ```{r}
 # Plot the UMAP
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         reduction = "umap",
         label = TRUE,
         label.size = 6)
@@ -476,7 +495,7 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
@@ -486,13 +505,13 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 Choosing resolution of 0.6
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.6"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.0.6"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
 ```{r}
 # Plot the UMAP
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         reduction = "umap",
         label = TRUE,
         label.size = 6)
@@ -500,23 +519,23 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
         label.size = 6)
 ```
 
-Choosing resolution of 0.2
+Choosing resolution of 0.5
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.2"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.0.5"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
 ```{r}
 # Plot the UMAP
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         reduction = "umap",
         label = TRUE,
         label.size = 6)
@@ -524,7 +543,7 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
@@ -533,13 +552,13 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 Choosing resolution of 0.4
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.4"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.0.4"
 ```
 
 We have calculated UMAP earlier, hence we only visualize the clusters
 ```{r}
 # Plot the UMAP
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         reduction = "umap",
         label = TRUE,
         label.size = 6)
@@ -547,34 +566,34 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
         label.size = 6)
 ```
-Settling on 15 clusters with resolution of 0.8.
+Settling on 11 clusters with resolution of 0.5.
 
-Choosing resolution of 0.8
 ```{r}
 # assigning identity of clusters
-Idents(object = seurat_filtered_integrated_noMito) <- "integrated_snn_res.0.8"
+Idents(object = integrated_filtered_phased_noMito_seurat) <- "integrated_snn_res.0.5"
 ```
 
 plotting a split UMAP plot
 ```{r}
 # plot UMAP by condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE,
         label.size = 6)
 ```
+
 ## QC for Clustering
 ### Distribution of cells per cluster in each condition
 ```{r}
 # extracting identity and sample information to determine cells per cluster in each condition
-n_cells <- FetchData(seurat_filtered_integrated_noMito,
+n_cells <- FetchData(integrated_filtered_phased_noMito_seurat,
                      vars = c("ident", "orig.ident")) %>% 
   count(ident, orig.ident) %>% 
   spread(ident, n)
@@ -584,7 +603,7 @@ n_cells
 
 ```{r}
 # visualizing by count and condition
-DimPlot(object = seurat_filtered_integrated_noMito,
+DimPlot(object = integrated_filtered_phased_noMito_seurat,
         split.by = "sample",
         reduction = "umap",
         label = TRUE) +
@@ -594,9 +613,9 @@ DimPlot(object = seurat_filtered_integrated_noMito,
 Exploring additional metrics, such as the number of UMIs and genes per cell, S-phase and G2M-phase markers, and mitochondrial gene expression by UMAP. Looking at the individual S and G2M scores can give us additional information to checking the phase as we did previously.
 ```{r}
 # Plot metrics present in seurat_integrated@meta.data
-metrics <- c("nUMI", "nGene", "mitoRatio")
+metrics <- c("nUMI", "nGene","S.Score", "G2M.Score", "mitoRatio")
 
-FeaturePlot(seurat_filtered_integrated_noMito,
+FeaturePlot(integrated_filtered_phased_noMito_seurat,
             reduction = "umap",
             features = metrics,
             pt.size = 0.4,
@@ -604,23 +623,25 @@ FeaturePlot(seurat_filtered_integrated_noMito,
             min.cutoff = "q10",
             label = TRUE)
 ```
+Some indication that cluster 3 may be clustering on basis of nUMIs and nGenes. Will need more looking into?
+
 
 ### Exploring PCs that drive different clusters
-The hope is that defined PCs separate the cell types well. TO do this, we extract UMAP coordinate information for the cells along with the corresponding scores for each of the first 16 PCs to view by UMAP
+The hope is that defined PCs separate the cell types well. To do this, we extract UMAP coordinate information for the cells along with the corresponding scores for each of the first 16 PCs to view by UMAP
 ```{r}
 # defining information of interest in the seurat object
 columns <- c(paste0("PC_", 1:16),
              "ident",
              "UMAP_1", "UMAP_2")
 # extracting this information from the seurat object
-pc_data <- FetchData(seurat_filtered_integrated_noMito, 
+pc_data <- FetchData(integrated_filtered_phased_noMito_seurat, 
                      vars = columns)
 ```
 
 In the UMAP plots below, cells are colored by their score for each of first 16 PCs
 ```{r}
 # adding cluster label to center of cluster on UMAP
-umap_label <- FetchData(seurat_filtered_integrated_noMito,
+umap_label <- FetchData(integrated_filtered_phased_noMito_seurat,
                         vars = c("ident", "UMAP_1", "UMAP_2")) %>% 
   group_by(ident) %>% 
   summarize(x = mean(UMAP_1), y = mean(UMAP_2))
@@ -643,117 +664,409 @@ map(paste0("PC_", 1:16), function(pc){
 
 Examine PCA results
 ```{r}
-print(seurat_filtered_integrated_noMito[["pca"]], dims = 1:5, nfeatures = 5)
+print(integrated_filtered_phased_noMito_seurat[["pca"]], dims = 1:5, nfeatures = 5)
 ```
 
-### Visualizing cd19 positive cells
+## Visualizing known cell-type markers
+
 ```{r}
 # select the RNA counts slot to be default assay
-DefaultAssay(seurat_filtered_integrated_noMito) <- "RNA"
+DefaultAssay(integrated_filtered_phased_noMito_seurat) <- "RNA"
 
 # Normalize RNA data for visualization
-seurat_filtered_integrated_noMito <- NormalizeData(seurat_filtered_integrated_noMito, verbose = FALSE)
+integrated_filtered_phased_noMito_seurat <- NormalizeData(integrated_filtered_phased_noMito_seurat, verbose = FALSE)
 ```
 
-### Violin plot for CD19 gene
+### Plotting B cell markers
 ```{r}
-# distribution of cd19 marker in clusters
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("CD19"))
+# distribution of B cell marker in clusters
+FeaturePlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CD79A","MS4A1", "CD19"),
+        order = TRUE,
+        min.cutoff = 'q10',
+        label = TRUE)
 ```
-
+We know 3 is affected by nUMI and nGene effects, clusters 4, 6 , 8, 9, perhaps 10 may be biologically different than B cells
 
 ### Violin plot for CD79A gene
 ```{r}
 # distribution of CD79A B lymphocyte marker in clusters
 # info: https://www.ncbi.nlm.nih.gov/gene/973
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("CD79A"))
-```
-
-### Violin plot for HLA-DRA gene
-```{r}
-# distribution of HLA-DRA B lymphocyte marker in clusters
-# info: https://www.ncbi.nlm.nih.gov/gene/3122
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("HLA-DRA"))
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CD79A"),
+        split.by = "sample")
 ```
 ### Violin plot for MS4A1 gene
 ```{r}
-# distribution of MS4A1 B lymphocyte marker in clusters
+# distribution of MS4A1 B lymphocyte surface marker in clusters
 # info: https://www.ncbi.nlm.nih.gov/gene/931
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("MS4A1"))
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("MS4A1"),
+        split.by = "sample")
+```
+
+### Violin plot for CD19 gene
+```{r}
+# distribution of CD19 B lymphocyte surface marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/930
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CD19"),
+        split.by = "sample")
+```
+
+### Plotting T cell markers
+
+Note: CD3D, CD8A and IL7R markers not found in data
+
+```{r}
+# distribution of CCR7 cell marker (activation of B & T lymphocytes) in clusters
+FeaturePlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CCR7"),
+        order = TRUE,
+        min.cutoff = 'q10',
+        label = TRUE)
+```
+### Violin plot for CCR7 gene
+```{r}
+# distribution of CCR7 marker (activation of B & T lymphocytes) in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/1236
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CCR7"))
 ```
 
 ### Violin plot for CD44 gene
 ```{r}
-# distribution of fibroblast marker in clusters
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("CD44"))
+# distribution of CD44 marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/960
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CD44"),
+        split.by = "sample")
 ```
 
-## Get conserved markers
+## Identity of clusters 0,1,2,3
+Based on several gene transcripts expressed, as seen above, these 4 clusters are likely B-lymphocytes or pre-B lymphocytes
+
+## Finding markers differentially expressed between B cells and other clusters
+
+### DE between Cluster3 cells (ribosomal proteins) from 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 3
+cluster3cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 3,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster3cells <- cluster3cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster3cells <- cluster3cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster3cells <-  cluster3cells %>% 
+  arrange(p_val_adj)
+
+View(cluster3cells)
+```
+No genes showing large difference in percent occurence, mutiple ribosomal protein genes identified. Suggesting nUMI, nGenes need to be better normalized or regressed out.
+
+### DE between cluster4 (Hsp/MIR155HG cells) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 4
+cluster4cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 4,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster4cells <- cluster4cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster4cells <- cluster4cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster4cells <-  cluster4cells %>% 
+  arrange(p_val_adj)
+
+View(cluster4cells)
+```
+
+Notable over expression of multiple HSPs, few other blood cell markers (e.g.BID gene known to be overexpressed in PBMCs and monocytes). Could be a biologically significant difference.
+
+### DE between Cluster5 cells (MIF / MIR210HG cells) from 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 5
+cluster5cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 5,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster5cells <- cluster5cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster5cells <- cluster5cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster5cells <-  cluster5cells %>% 
+  arrange(p_val_adj)
+
+View(cluster5cells)
+
+```
+MIF / MIR210HG expressing cells
+
+
+### DE between cluster6 (ribosomal proteins) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 6
+cluster6cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 6,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster6cells <- cluster6cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster6cells <- cluster6cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster6cells <-  cluster6cells %>% 
+  arrange(p_val_adj)
+
+View(cluster6cells)
+```
+
+
+
+
+
+### DE between Cluster7 cells (ribosomal proteins) from 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 7
+cluster7cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 3,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster7cells <- cluster7cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster7cells <- cluster7cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster37cells <-  cluster7cells %>% 
+  arrange(p_val_adj)
+
+View(cluster7cells)
+```
+No genes showing large difference in percent occurence, mutiple ribosomal protein genes identified. Suggesting nUMI, nGenes need to be better normalized or regressed out.
+
+
+### DE between cluster8 (FOSB+Kruppel like factor+CD44 cells) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 8
+cluster8cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 8,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster8cells <- cluster8cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster8cells <- cluster8cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster8cells <-  cluster8cells %>% 
+  arrange(p_val_adj)
+
+View(cluster8cells)
+```
+
+
+
+
+
+
+
+### DE between cluster9 (multiple interferon induced proteins) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 9
+cluster9cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 9,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster9cells <- cluster9cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster9cells <- cluster9cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster9cells <-  cluster9cells %>% 
+  arrange(p_val_adj)
+
+View(cluster9cells)
+```
+Cluster 9 has several interferon induced gene transcripts (IFIT1,3, & many more) showing fold changes.
+### DE between cluster10 (ribosomal proteins) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 10
+cluster10cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 10,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster10cells <- cluster10cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster10cells <- cluster10cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster10cells <-  cluster10cells %>% 
+  arrange(p_val_adj)
+
+View(cluster10cells)
+```
+Cluster 10 has mostly ribosomal proteins showing fold changes
+
+
+## Cluster identities
+```{r}
+# assigning cluster identities
+integrated_ID_seurat <- integrated_filtered_phased_noMito_seurat
+integrated_ID_seurat <- RenameIdents(object = integrated_ID_seurat, 
+                               "0" = "Bcell_CD19+_0",
+                               "1" = "Bcell_CD19+_1",
+                               "2" = "Bcell_CD19+_2",
+                               "3" = "Ribo_protein_1",
+                               "4" = "Hsp+MIR155HG",
+                               "5" = "MIF_MIR210HG",
+                               "6" = "Ribo_protein_2",
+                               "7" = "Ribo_protein_3",
+                               "8" = "FOSB_Kruppel_like",
+                               "9" = "multi_IF_induced",
+                               "10" = "Ribo_protein_4"
+                               )
+
+# Plot the UMAP
+DimPlot(object = integrated_ID_seurat, 
+        reduction = "umap", 
+        label = TRUE)
+```
+## Save final R object
+```{r}
+# Save final R object
+write_rds(integrated_ID_seurat,
+          path = "results/seurat_labelled_final_output.rds")
+
+# Create and save a text file with sessionInfo
+sink("sessionInfo_scrnaseq_07232021.txt")
+sessionInfo()
+sink()
+```
+
+
+## Differential analysis in B cells between conditions
+
+### Subsetting out clusters 0,1,2
+```{r}
+# subsetting only CD19+ cells
+BCells_CD19_seurat <- subset(integrated_ID_seurat,
+                             idents = c("Bcell_CD19+_0", "Bcell_CD19+_1", "Bcell_CD19+_2"))
+
+# revisualize 
+DimPlot(BCells_CD19_seurat,
+        reduction = "umap",
+        label = TRUE,
+        split.by = "sample")
+
+```
+
+
+## Get all markers
 ```{r}
 # ensure default assay is "RNA" for detecting markers
-DefaultAssay(seurat_filtered_integrated_noMito) <- "RNA"
+DefaultAssay(integrated_filtered_phased_noMito_seurat) <- "RNA"
 ```
 
-### Running on all clusters
-The FindConservedMarkers function runs on one cluster at a time. We can define a function that will allow us to run it on all clusters in our data
 ```{r}
-# get_conserved function
-get_conserved_filtered<- function(cluster){
-  FindConservedMarkers(seurat_filtered_integrated_noMito,
-                       ident.1 = cluster,
-                       grouping.var = "sample",
-                       only.pos = TRUE) %>% 
-    rownames_to_column(var = "gene") %>% 
-    left_join(y = unique(annotations[ , c("gene_name", "description")]),
-              by = c("gene" = "gene_name")) %>% 
-    cbind(cluster_id = cluster, .)
-}
-```
+# get_all_markers function
+all_markers <- FindAllMarkers(object = integrated_filtered_phased_noMito_seurat)
 
-Now that we have this function created we can use it as an argument to the appropriate map function. We want the output of the map family of functions to be a dataframe with each cluster output bound together by rows, we will use the map_dfr() function.
-
-```{r}
-# iterate function across all clusters
-conserved_filtered_markers <- map_dfr(0:14, get_conserved_filtered)
-```
-## Saving conserved markers
-```{r}
-# Saving conserved markers object in Results
-# saveRDS(conserved_filtered_markers, "./results/conserved_filtered_markers.rds") # saved in macbookair
+all_markers <-  all_markers %>% 
+  left_join(y = unique(annotations[ , c("gene_name", "description")]),
+              by = c("gene" = "gene_name"))
 ```
 
 ### Evaluating the marker genes to identify clusters
 
 ```{r}
 # extract top 10 markers per cluster
-top10_filtered <- conserved_filtered_markers %>% 
-  mutate(avg_fc = (ctrl_avg_log2FC + treat_avg_log2FC) / 2) %>% 
-  group_by(cluster_id) %>% 
+top10 <- all_markers %>% 
+  group_by(cluster) %>% 
   top_n(n = 10,
-        wt = avg_fc)
+        wt = avg_log2FC)
 
-View(top10_filtered)
+View(top10)
 ```
 
+## Alternate analysis keeping conditions separate after filtering
+## Without Integration per sctransform pipeline from Satijalab
+As laid out here
+https://satijalab.org/seurat/articles/sctransform_vignette.html
 
-## Visualizing top marker from each cluster as a violin plot
+### Splitting the merged conditions into 2 separate seurat objects
 ```{r}
-# top marker from first 7 clusters
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("ACTB", "IGLC1", "NEAT1", "RPL13", "SDF2L1", "MIR210HG", "ATF5"), pt.size = 0.2, ncol = 3 )
-```
-```{r}
-# top marker from last 7 clusters
-VlnPlot(seurat_filtered_integrated_noMito,
-        features = c("FOSB", "LTB", "ID3", "LGALS1", "NR4A1", "MX1", "SNHG25", "PCLAF"), pt.size = 0.2, ncol = 3 )
+filtered_ctrl_seurat <- split_filtered_seurat_noMito$ctrl
+filtered_treat_seurat <- split_filtered_seurat_noMito$treat
 ```
 
+### run PCA and UMAP on ctrl
 ```{r}
-sessionInfo()
+ctrl <- RunPCA(filtered_ctrl_seurat,
+               verbose = FALSE)
+ctrl <- RunUMAP(ctrl,
+                dims = 1:40,
+                verbose = FALSE)
+ctrl <- FindNeighbors(ctrl,
+                      dims = 1:40,
+                      verbose = FALSE)
+ctrl <- FindClusters(ctrl,
+                     verbose = FALSE)
+DimPlot(ctrl, label = TRUE) + NoLegend()
+```
+### Violin plots of top 10 variable features in ctrl noted in sctransform output
+```{r}
+VlnPlot(ctrl,
+        features = c("IGLC1", "HSPA5", "NMB", "MT-CO1", "ID3", "IL4I1", "IGFBP7", "IFIT3", "SNHG25","MT-CO3"), pt.size = 0.2, ncol = 4)
 ```
 
+
+### Run PCA and UMAP on treat
+```{r}
+treat <- RunPCA(filtered_treat_seurat,
+               verbose = FALSE)
+treat <- RunUMAP(treat,
+                dims = 1:40,
+                verbose = FALSE)
+treat <- FindNeighbors(treat,
+                      dims = 1:40,
+                      verbose = FALSE)
+treat <- FindClusters(treat,
+                     verbose = FALSE)
+DimPlot(treat, label = TRUE) + NoLegend()
+
+```
+
+Violin plots of top 10 variable features in treat noted in sctransform output
+```{r}
+VlnPlot(treat,
+        features = c("STMN1", "UBE2C", "LGALS1", "ACTB", "MKI67", "GZMB", "TYMS", "MT2A", "TOP2A",
+"MT-CO1" ), pt.size = 0.2, ncol = 4)
+```
