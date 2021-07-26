@@ -1,0 +1,973 @@
+---
+title: "CLL_scRNASeq_ver4"
+author: "ASG"
+date: "7/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Changes from "CLL_scRNASeq_alt_filter.Rmd" start from the "Assigning cell cycle phases" section. After more plotting with ridge plots, dot plots etc, the clustering is still not clear cut. Hence this re-analysis attempt (7/26/21).
+We will not regress out cell cycle and mitochondrial gene contributions since the plots after cell cycle phasing and mitochodrial gene fractions dont show large differences.
+
+Note: CLL_scRNASeq_seurat.Rmd (ver.1) -> CLL_scRNASeq_ver2.Rmd (only demo) -> CLL_scRNASeq_alt_filter.Rmd (ver 3.0) -> CLL_scRNASeq_ver4.Rmd is the time course of analysis
+
+## control and treatment cells alternative filtering
+
+Based on the QC metrics of the data (see CLL_scRNASeq_seurat.Rmd, assessing QC metrics section), seems obvious that the two conditions have distinct cell populations based on cell count, transcripts per cell, genes per cell, genes versus UMI counts and complexity. All these metrics are distinct for the two conditions and filtering out cells as proposed in that analysis will filter out close to half the population of cells in the control condition.
+
+In this analysis, we will using different criteria for filtering
+
+## loading needed packages
+```{r include=FALSE}
+library(Seurat)
+library(tidyverse)
+library(Matrix)
+library(patchwork)
+library(RCurl)
+library(cowplot)
+```
+
+
+## reading in data
+The data provided is in the "data" folder in this project. Consists of 2 sub-folders representing the two conditions. 
+
+```{r}
+# load the cll_control data
+cll_cntrl_data <- Read10X("./data/control/con1-filtered_feature_bc_matrix/")
+# initializing the Seurat object with raw control data
+cll_control <- CreateSeuratObject(counts = cll_cntrl_data, project = "cll_cntrl", min.cells = 3, min.features = 200)
+cll_control
+```
+
+```{r}
+# load the cll_treatment data
+cll_treat1_data <- Read10X("./data/treat1/treat1-filtered_feature_bc_matrix/")
+# initializing the Seurat object with raw treatment data (non-normalized)
+cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll_treatment", min.cells = 3, min.features = 200)
+cll_treatment
+```
+
+## Merging both seurat objects, QC visualization and filtering
+```{r}
+# merging both seurat objects
+merged_seurat <- merge(x = cll_control,
+                       y = cll_treatment,
+                       add.cell.id = c("cntrl", "treat"))
+```
+
+## Some data munging
+```{r}
+# explore merged data
+View(merged_seurat@meta.data)
+```
+
+there are 3 columns in the current object, we add two additional columns : 
+number of genes detected per UMI: this metric gives us an idea of the complexity of our dataset (more genes detected per UMI, more complex our data)
+mitochondrial ratio: this metric will give us a percentage of cell reads originating from the mitochondrial genes
+```{r}
+# add number of genes per UMI
+merged_seurat$log10GenesPerUMI <- log10(merged_seurat$nFeature_RNA) /
+  log10(merged_seurat$nCount_RNA)
+```
+
+```{r}
+# add the ratio of mitochondrial genes present
+merged_seurat$mitoRatio <- PercentageFeatureSet(object = merged_seurat, pattern = "^MT-")
+merged_seurat$mitoRatio <- merged_seurat$mitoRatio / 100
+```
+
+### additional metadata columns for convenience
+```{r}
+# extracting metadata as a dataframe
+metadata <- merged_seurat@meta.data
+```
+
+adding a new column for cell identifiers
+
+This information is currently located in the row names of our metadata dataframe. We will keep the rownames as is and duplicate it into a new column called cells.
+```{r}
+# add cell IDs to metadata
+metadata$cells <- rownames(metadata)
+```
+
+Each cell ID has a cntrl_ or treat_ prefix as we had specified when we merged the Seurat objects. We can use this prefix to create a new column indicating which condition each cell is classified under. We will call this column sample:
+```{r}
+# create a column called sample
+metadata$sample <- NA
+metadata$sample[which(str_detect(metadata$cells, "^cntrl_"))] <- "ctrl"
+metadata$sample[which(str_detect(metadata$cells, "^treat_"))] <- "treat"
+```
+
+rename some of the existing columns in metadata to be more intuitive:
+```{r}
+# Rename columns
+metadata <- metadata %>% 
+  rename(seq_folder = orig.ident,
+         nUMI = nCount_RNA,
+         nGene = nFeature_RNA)
+```
+
+### saving new metadata into the merged seurat object
+Before we assess our metrics we are going to save all of the work we have done thus far back into our Seurat object. We simply assign the dataframe into the meta.data slot:
+```{r}
+# add metadata back to the merged seurat object
+merged_seurat@meta.data <- metadata
+
+# create a .RData object to load back at any time
+# save(merged_seurat, file = "./data/cll_merged_seurat.RData") # commented out since already saved on macbookair
+```
+
+
+## Cell filtering
+Based on above analysis and results from "CLL_separate_analysis_ctrl_treat.Rmd", we will use foll; thresholds:
+500> nUMI < 32000, # see reasoning in "CLL_separate_analysis_ctrl_treat.Rmd"
+nGene > 300,
+mitoRatio < 0.2, # see reasoning in "CLL_separate_analysis_ctrl_treat.Rmd"
+log10GeneperUMI > 0.8
+
+```{r}
+# filtering out low quality cells based on selected thresholds
+filtered_seurat <- subset(x = merged_seurat,
+                          subset = (nUMI > 500 &
+                                     nUMI < 32000) & 
+                            (nGene >= 300) & 
+                            (log10GenesPerUMI > 0.8) &
+                            (mitoRatio < 0.2))
+```
+
+## Gene-level filtering
+
+Within our data we will have many genes with zero counts. These genes can dramatically reduce the average expression for a cell and so we will remove them from our data. We will start by identifying which genes have a zero count in each cell:
+```{r}
+# Extract counts
+counts <- GetAssayData(object = filtered_seurat, slot = "counts")
+
+# Output a logical matrix specifying for each gene on whether or not there are more than zero counts per cell
+nonzero <- counts > 0
+```
+
+Now, we will perform some filtering by prevalence. If a gene is only expressed in a handful of cells, it is not particularly meaningful as it still brings down the averages for all other cells it is not expressed in. For our data we choose to keep only genes which are expressed in 10 or more cells. By using this filter, genes which have zero counts in all cells will effectively be removed.
+
+```{r}
+# Sums all TRUE values and returns TRUE if more than 10 TRUE values per gene
+keep_genes <- Matrix::rowSums(nonzero) >= 10
+
+# Only keeping those genes expressed in more than 10 cells
+filtered_counts <- counts[keep_genes, ]
+```
+
+Finally, take those filtered counts and create a new Seurat object for downstream analysis.
+
+```{r}
+# Reassign to filtered Seurat object
+filtered_seurat <- CreateSeuratObject(filtered_counts, meta.data = filtered_seurat@meta.data)
+
+# Saving this merged, cell & gene filtered seurat object
+write_rds(filtered_seurat, file = "./data/cll_merged_filtered_seurat.rds")
+```
+
+
+## Reassessing QC metrics
+```{r}
+# extracting metadata as a dataframe from the filtered_seurat object
+filtered_metadata <- filtered_seurat@meta.data
+```
+
+
+```{r}
+# Visualize the number of cells in each sample
+  filtered_metadata %>% 
+  ggplot() +
+  geom_bar(aes(sample, fill = sample)) +
+  theme_light() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
+  ggtitle("NCells_filtered")
+
+```
+After filtering, the number of ctrl and treated cells is
+```{r}
+nrow(filtered_metadata %>% filter(sample == "ctrl"))
+nrow(filtered_metadata %>% filter(sample == "treat"))
+```
+
+```{r}
+# visualize the number of transcripts (UMIs) per cell
+filtered_metadata %>% 
+  ggplot(aes(x = nUMI, color = sample, fill = sample)) +
+  geom_density(alpha = 2/10) +
+  theme_light() + 
+  scale_x_log10() + 
+  ylab("cell density") + 
+  geom_vline(xintercept = 500) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("transcripts per cell after filtering")
+```
+```{r}
+# visualize number of genes (nGene) per cell with a histogram
+filtered_metadata %>% 
+  ggplot(aes(nGene, color = sample, fill = sample)) +
+  geom_density(alpha = 2/10) + 
+  theme_light() + 
+  scale_x_log10() + 
+  geom_vline(xintercept = 300) + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per cell after filtering")
+```
+```{r}
+# visualize number of genes as a boxplot
+filtered_metadata %>% 
+  ggplot(aes(x = sample, y = log10(nGene), fill = sample)) + 
+  geom_boxplot(alpha = 5/10) + 
+  theme_light() + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per cell after filtering")
+```
+```{r}
+# scatter plot of UMIs versus genes detected per cell colored by ratio of mitochondrial genes
+filtered_metadata %>% 
+  ggplot(aes(x = nUMI, y = nGene, color = mitoRatio)) +
+  geom_jitter() +
+  scale_color_gradient(low = "gray90", high = "black") +
+  stat_smooth(method = lm) +
+  scale_x_log10() +
+  scale_y_log10() +
+  theme_light() + 
+  facet_wrap(~sample)
+```
+
+```{r}
+# visualizing mitochondrial genes per cell 
+filtered_metadata %>% 
+  ggplot(aes(mitoRatio, color = sample, fill = sample)) + 
+  geom_density(alpha = 2/10) + 
+  theme_light() + 
+  scale_x_log10() + 
+  geom_vline(xintercept = 0.2)
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("mitochondrial gene count ratio per cell after filtering")
+```
+
+```{r}
+# visualizing genes per UMI to assess complexity
+filtered_metadata %>% 
+  ggplot(aes(log10GenesPerUMI, color = sample, fill = sample)) + 
+  geom_density(alpha = 2/10) + 
+  theme_light()+
+  scale_x_log10() + 
+  geom_vline(xintercept = 0.8)
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) + 
+  ggtitle("genes per UMI after filtering")
+```
+
+## Assigning cell cycle phases
+#### Assigning cell cycle phases and scores
+
+We are not regressing out cell cycle scores in this version based on plots visualizing the cell cycle contributions as described in the HBC tutorial
+
+
+## Using sctransform
+
+### From the vignette on sctransform from Hafemeister & Satija
+Using sctransform in Seurat
+Christoph Hafemeister & Rahul Satija
+
+Compiled: 2021-06-14
+
+Source: vignettes/sctransform_vignette.Rmd
+Biological heterogeneity in single-cell RNA-seq data is often confounded by technical factors including sequencing depth. The number of molecules detected in each cell can vary significantly between cells, even within the same celltype. Interpretation of scRNA-seq data requires effective pre-processing and normalization to remove this technical variability. In Hafemeister and Satija, 2019 we introduce a modeling framework for the normalization and variance stabilization of molecular count data from scRNA-seq experiment. This procedure omits the need for heuristic steps including pseudocount addition or log-transformation and improves common downstream analytical tasks such as variable gene selection, dimensional reduction, and differential expression.
+
+### Additional note regarding omitting NormalizeData, ScaleData and FindVariableFeatures functions
+Apply sctransform normalization
+
+Note that this single command replaces NormalizeData(), ScaleData(), and FindVariableFeatures().
+Transformed data will be available in the SCT assay, which is set as the default after running sctransform
+During normalization, we can also remove confounding sources of variation, for example, mitochondrial mapping percentage
+
+### applying sctransform directly to filtered_seurat object
+
+We will apply sctransform directly to the filtered_seurat object without prior normalizing etc.
+
+```{r}
+# split seurat object by condition for sctransform
+filtered_seurat <- SplitObject(filtered_seurat,split.by = "sample")
+sctransformed_seurat <- filtered_seurat[c("ctrl", "treat")]
+```
+
+SCTransform can generate large objects in terms of memory, hence adjust the limit for allowable object sizes within R 
+```{r}
+options(future.globals.maxSize = 4000 * 1024^2)
+```
+
+Iterating sctransform over each object in split_filtered_seurat
+```{r}
+ for (i in seq_along(sctransformed_seurat)){
+  sctransformed_seurat[[i]] = SCTransform(sctransformed_seurat[[i]])
+}
+```
+
+checking assays stored in objects
+```{r}
+sctransformed_seurat$ctrl@assays
+```
+```{r}
+sctransformed_seurat$treat@assays
+```
+
+
+## Integration
+
+goal is to integrate across conditions(control and treatment) by aligning similar cell types
+
+### Specifying 3000 most variable genes to be used for integration as identified by sctransform instead of 2000 
+```{r}
+# select most variable features to be used for integration
+integ_features <- SelectIntegrationFeatures(object.list = sctransformed_seurat,
+                                            nfeatures = 3000)
+```
+
+### prepare SCTransform object for integration
+```{r}
+# prepare the SCT list object for integration
+sctransformed_seurat <- PrepSCTIntegration(object.list = sctransformed_seurat,
+                                   anchor.features = integ_features)
+```
+
+### perform CCA, find best buddies / anchors, filter incorrect anchors
+```{r}
+# find best buddies / anchors
+integ_anchors <- FindIntegrationAnchors(object.list = sctransformed_seurat,
+                                        normalization.method = "SCT",
+                                        anchor.features = integ_features)
+```
+### Integrate across conditions
+```{r}
+# integrate across conditions
+integrated_seurat <- IntegrateData(anchorset = integ_anchors,
+                                   normalization.method = "SCT")
+```
+### Visualizing the integrated data with PCA
+```{r}
+# PCA
+integrated_seurat <- RunPCA(object = integrated_seurat)
+
+```
+```{r}
+# plot PCA
+PCAPlot(object = integrated_seurat,
+        split.by = "sample")
+```
+
+### Visualizing with UMAP
+```{r}
+# run UMAP
+integrated_seurat <- RunUMAP(integrated_seurat,
+                             dims = 1:40,
+                             reduction = "pca")
+```
+
+```{r}
+# plot UMAP
+DimPlot(integrated_seurat)
+
+```
+
+```{r}
+#visualizing side by side with UMAP
+DimPlot(integrated_seurat,
+        split.by = "sample")
+```
+### Saving the integrated seurat object in results
+```{r}
+# save integrated seurat object
+# saveRDS(integrated_seurat, "./results/integrated_seurat.rds") # saved in macbookair
+```
+
+## Clustering
+### Determining number of PCs to use
+```{r}
+# elbow / scree plot
+ElbowPlot(integrated_seurat,
+          ndims = 50)
+```
+We will use 50 PCs to determine clusters
+
+### k-nearest neighbors, clusters at various resolutions
+```{r}
+# K-nearest neighbors graph
+K_nearest_neighbors_seurat <- FindNeighbors(object = integrated_seurat,
+                                   dims = 1:50)
+
+#determine clusters at various resolutions
+K_nearest_neighbors_seurat <- FindClusters(object = K_nearest_neighbors_seurat,
+                                           resolution = c(0.4, 0.5,0.6, 0.8, 1.0,1.2,1.4))
+```
+
+### looking at various resolutions
+```{r}
+K_nearest_neighbors_seurat@meta.data %>% 
+  View()
+```
+
+Choosing resolution of 1.4
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.1.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
+Choosing resolution of 1.2
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.1.2"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
+
+Choosing resolution of 1.0
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.1.0"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 5)
+```
+Choosing resolution of 0.8
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.0.8"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+Choosing resolution of 0.6
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.0.6"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+
+Choosing resolution of 0.5
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.0.5"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Choosing resolution of 0.4
+```{r}
+# assigning identity of clusters
+Idents(object = K_nearest_neighbors_seurat) <- "integrated_snn_res.0.4"
+```
+
+We have calculated UMAP earlier, hence we only visualize the clusters
+```{r}
+# Plot the UMAP
+DimPlot(object = K_nearest_neighbors_seurat,
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+plotting a split UMAP plot
+```{r}
+# plot UMAP by condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE,
+        label.size = 6)
+```
+Settling on 18 clusters with resolution of 1.2.
+
+## QC for Clustering
+### Distribution of cells per cluster in each condition
+```{r}
+# extracting identity and sample information to determine cells per cluster in each condition
+n_cells <- FetchData(K_nearest_neighbors_seurat,
+                     vars = c("ident", "orig.ident")) %>% 
+  count(ident, orig.ident) %>% 
+  spread(ident, n)
+
+n_cells
+```
+
+```{r}
+# visualizing by count and condition
+DimPlot(object = K_nearest_neighbors_seurat,
+        split.by = "sample",
+        reduction = "umap",
+        label = TRUE) +
+  NoLegend()
+```
+### Segregation of clusters by other uninteresting sources of variation
+Exploring additional metrics, such as the number of UMIs and genes per cell, S-phase and G2M-phase markers, and mitochondrial gene expression by UMAP. Looking at the individual S and G2M scores can give us additional information to checking the phase as we did previously.
+```{r}
+# Plot metrics present in seurat_integrated@meta.data
+metrics <- c("nUMI", "nGene","S.Score", "G2M.Score", "mitoRatio")
+
+FeaturePlot(K_nearest_neighbors_seurat,
+            reduction = "umap",
+            features = metrics,
+            pt.size = 0.4,
+            order = TRUE,
+            min.cutoff = "q10",
+            label = TRUE)
+```
+
+### Exploring PCs that drive different clusters
+The hope is that defined PCs separate the cell types well. To do this, we extract UMAP coordinate information for the cells along with the corresponding scores for each of the first 16 PCs to view by UMAP
+```{r}
+# defining information of interest in the seurat object
+columns <- c(paste0("PC_", 1:16),
+             "ident",
+             "UMAP_1", "UMAP_2")
+# extracting this information from the seurat object
+pc_data <- FetchData(K_nearest_neighbors_seurat, 
+                     vars = columns)
+```
+
+In the UMAP plots below, cells are colored by their score for each of first 16 PCs
+```{r}
+# adding cluster label to center of cluster on UMAP
+umap_label <- FetchData(K_nearest_neighbors_seurat,
+                        vars = c("ident", "UMAP_1", "UMAP_2")) %>% 
+  group_by(ident) %>% 
+  summarize(x = mean(UMAP_1), y = mean(UMAP_2))
+
+# plotting a UMAP plot of each of first 16 PCs
+map(paste0("PC_", 1:16), function(pc){
+  ggplot(pc_data,
+         aes(UMAP_1, UMAP_2)) +
+    geom_point(aes_string(color = pc),
+               alpha = 0.7) + 
+    scale_color_gradient(guide = "none",
+                         low = "grey90",
+                         high = "blue") + 
+    geom_text(data = umap_label,
+              aes(label = ident, x, y)) + 
+    ggtitle(pc)
+}) %>% 
+  plot_grid(plotlist = .) 
+```
+
+Examine PCA results
+```{r}
+print(K_nearest_neighbors_seurat[["pca"]], dims = 1:5, nfeatures = 5)
+```
+
+## Visualizing known cell-type markers
+
+```{r}
+# select the RNA counts slot to be default assay
+DefaultAssay(K_nearest_neighbors_seurat) <- "RNA"
+
+# Normalize RNA data for visualization
+K_nearest_neighbors_seurat <- NormalizeData(K_nearest_neighbors_seurat, verbose = FALSE)
+```
+
+### Plotting B cell markers
+```{r}
+# distribution of B cell marker in clusters
+FeaturePlot(K_nearest_neighbors_seurat,
+        features = c("CD79A","MS4A1", "CD19"),
+        order = TRUE,
+        min.cutoff = 'q10',
+        label = TRUE)
+```
+```{r}
+# distribution of B cell marker in clusters
+RidgePlot(K_nearest_neighbors_seurat,
+        features = c("CD79A","MS4A1", "CD19", "CXCR4"),
+        ncol=2)
+```
+```{r}
+# distribution of B cell marker in clusters
+DotPlot(K_nearest_neighbors_seurat,
+        features = c("CD79A","MS4A1", "CD19", "CD3D")) +
+          RotatedAxis()
+```
+
+### Violin plot for CD79A gene
+```{r}
+# distribution of CD79A B lymphocyte marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/973
+VlnPlot(K_nearest_neighbors_seurat,
+        features = c("CD79A"),
+        split.by = "sample")
+```
+### Violin plot for MS4A1 gene
+```{r}
+# distribution of MS4A1 B lymphocyte surface marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/931
+VlnPlot(K_nearest_neighbors_seurat,
+        features = c("MS4A1"),
+        split.by = "sample")
+```
+
+### Violin plot for CD19 gene
+```{r}
+# distribution of CD19 B lymphocyte surface marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/930
+VlnPlot(K_nearest_neighbors_seurat,
+        features = c("CD19"),
+        split.by = "sample")
+```
+
+### Plotting T cell markers
+
+Note: CD3D, CD8A and IL7R markers not found in data
+
+```{r}
+# distribution of CCR7 cell marker (activation of B & T lymphocytes) in clusters
+FeaturePlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CCR7"),
+        order = TRUE,
+        min.cutoff = 'q10',
+        label = TRUE)
+```
+### Violin plot for CCR7 gene
+```{r}
+# distribution of CCR7 marker (activation of B & T lymphocytes) in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/1236
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CCR7"))
+```
+
+### Violin plot for CD44 gene
+```{r}
+# distribution of CD44 marker in clusters
+# info: https://www.ncbi.nlm.nih.gov/gene/960
+VlnPlot(integrated_filtered_phased_noMito_seurat,
+        features = c("CD44"),
+        split.by = "sample")
+```
+
+## Identity of clusters 0,1,2,3
+Based on several gene transcripts expressed, as seen above, these 4 clusters are likely B-lymphocytes or pre-B lymphocytes
+
+## Finding markers differentially expressed between B cells and other clusters
+
+### DE between Cluster3 cells (ribosomal proteins) from 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 3
+cluster3cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 3,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster3cells <- cluster3cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster3cells <- cluster3cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster3cells <-  cluster3cells %>% 
+  arrange(p_val_adj)
+
+View(cluster3cells)
+```
+No genes showing large difference in percent occurence, mutiple ribosomal protein genes identified. Suggesting nUMI, nGenes need to be better normalized or regressed out.
+
+### DE between cluster4 (Hsp/MIR155HG cells) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 4
+cluster4cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 4,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster4cells <- cluster4cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster4cells <- cluster4cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster4cells <-  cluster4cells %>% 
+  arrange(p_val_adj)
+
+View(cluster4cells)
+```
+
+Notable over expression of multiple HSPs, few other blood cell markers (e.g.BID gene known to be overexpressed in PBMCs and monocytes). Could be a biologically significant difference.
+
+### DE between Cluster5 cells (MIF / MIR210HG cells) from 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 5
+cluster5cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 5,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster5cells <- cluster5cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster5cells <- cluster5cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster5cells <-  cluster5cells %>% 
+  arrange(p_val_adj)
+
+View(cluster5cells)
+
+```
+MIF / MIR210HG expressing cells
+
+
+### DE between cluster6 (ribosomal proteins) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 6
+cluster6cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 6,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster6cells <- cluster6cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster6cells <- cluster6cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster6cells <-  cluster6cells %>% 
+  arrange(p_val_adj)
+
+View(cluster6cells)
+```
+
+
+
+
+
+### DE between Cluster7 cells (ribosomal proteins) from 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 7
+cluster7cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 3,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster7cells <- cluster7cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster7cells <- cluster7cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster37cells <-  cluster7cells %>% 
+  arrange(p_val_adj)
+
+View(cluster7cells)
+```
+No genes showing large difference in percent occurence, mutiple ribosomal protein genes identified. Suggesting nUMI, nGenes need to be better normalized or regressed out.
+
+
+### DE between cluster8 (FOSB+Kruppel like factor+CD44 cells) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 8
+cluster8cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 8,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster8cells <- cluster8cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster8cells <- cluster8cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster8cells <-  cluster8cells %>% 
+  arrange(p_val_adj)
+
+View(cluster8cells)
+```
+
+
+
+
+
+
+
+### DE between cluster9 (multiple interferon induced proteins) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 9
+cluster9cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 9,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster9cells <- cluster9cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster9cells <- cluster9cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster9cells <-  cluster9cells %>% 
+  arrange(p_val_adj)
+
+View(cluster9cells)
+```
+Cluster 9 has several interferon induced gene transcripts (IFIT1,3, & many more) showing fold changes.
+### DE between cluster10 (ribosomal proteins) and 0,1,2
+```{r}
+# DE between 0,1,2 and cluster 10
+cluster10cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
+                             ident.1 = 10,
+                             ident.2 = c(0,1,2))
+# add gene symbols to table
+cluster10cells <- cluster10cells %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+cluster10cells <- cluster10cells[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by padj value
+cluster10cells <-  cluster10cells %>% 
+  arrange(p_val_adj)
+
+View(cluster10cells)
+```
+Cluster 10 has mostly ribosomal proteins showing fold changes
+
+
+## Cluster identities
+```{r}
+# assigning cluster identities
+integrated_ID_seurat <- integrated_filtered_phased_noMito_seurat
+integrated_ID_seurat <- RenameIdents(object = integrated_ID_seurat, 
+                               "0" = "Bcell_CD19+_0",
+                               "1" = "Bcell_CD19+_1",
+                               "2" = "Bcell_CD19+_2",
+                               "3" = "Ribo_protein_1",
+                               "4" = "Hsp+MIR155HG",
+                               "5" = "MIF_MIR210HG",
+                               "6" = "Ribo_protein_2",
+                               "7" = "Ribo_protein_3",
+                               "8" = "FOSB_Kruppel_like",
+                               "9" = "multi_IF_induced",
+                               "10" = "Ribo_protein_4"
+                               )
+
+# Plot the UMAP
+DimPlot(object = integrated_ID_seurat, 
+        reduction = "umap", 
+        label = TRUE)
+```
+## Save final R object
+```{r}
+# Save final R object
+write_rds(integrated_ID_seurat,
+          path = "results/seurat_labelled_final_output.rds")
+
+# Create and save a text file with sessionInfo
+sink("sessionInfo_scrnaseq_07232021.txt")
+sessionInfo()
+sink()
+```
+
+
