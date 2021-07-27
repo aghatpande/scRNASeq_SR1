@@ -44,6 +44,12 @@ cll_treat1_data <- Read10X("./data/treat1/treat1-filtered_feature_bc_matrix/")
 cll_treatment <- CreateSeuratObject(counts = cll_treat1_data, project = "cll_treatment", min.cells = 3, min.features = 200)
 cll_treatment
 ```
+### adding gene annotations
+This is required for later annotating identified markers
+We downloaded the annotations file from the HBCtraining link
+```{r}
+annotations <- read.csv("./data/annotation.csv")
+```
 
 ## Merging both seurat objects, QC visualization and filtering
 ```{r}
@@ -677,152 +683,24 @@ DefaultAssay(integrated_filtered_phased_noMito_seurat) <- "RNA"
 integrated_filtered_phased_noMito_seurat <- NormalizeData(integrated_filtered_phased_noMito_seurat, verbose = FALSE)
 ```
 
-### Plotting B cell markers
+### Plotting known immune cell markers
 ```{r}
-# distribution of B cell marker in clusters
-FeaturePlot(integrated_filtered_phased_noMito_seurat,
-        features = c("CD79A","MS4A1", "CD19"),
-        order = TRUE,
-        min.cutoff = 'q10',
-        label = TRUE)
+# DotPlot using most variable features and other known markers
+DotPlot(integrated_filtered_phased_noMito_seurat,features = c("CD79A","MS4A1", "CD19","CD74","CD44", "ID3", "ACTB","CCR7","MIR155HG","MIR210HG","FOSB","IFIT3", "SNHG25"))
 ```
-We know 3 is affected by nUMI and nGene effects, clusters 4, 6 , 8, 9, perhaps 10 may be biologically different than B cells
-
-### Violin plot for CD79A gene
-```{r}
-# distribution of CD79A B lymphocyte marker in clusters
-# info: https://www.ncbi.nlm.nih.gov/gene/973
-VlnPlot(integrated_filtered_phased_noMito_seurat,
-        features = c("CD79A"),
-        split.by = "sample")
-```
-### Violin plot for MS4A1 gene
-```{r}
-# distribution of MS4A1 B lymphocyte surface marker in clusters
-# info: https://www.ncbi.nlm.nih.gov/gene/931
-VlnPlot(integrated_filtered_phased_noMito_seurat,
-        features = c("MS4A1"),
-        split.by = "sample")
-```
-
-### Violin plot for CD19 gene
-```{r}
-# distribution of CD19 B lymphocyte surface marker in clusters
-# info: https://www.ncbi.nlm.nih.gov/gene/930
-VlnPlot(integrated_filtered_phased_noMito_seurat,
-        features = c("CD19"),
-        split.by = "sample")
-```
-
-### Plotting T cell markers
-
-Note: CD3D, CD8A and IL7R markers not found in data
-
-```{r}
-# distribution of CCR7 cell marker (activation of B & T lymphocytes) in clusters
-FeaturePlot(integrated_filtered_phased_noMito_seurat,
-        features = c("CCR7"),
-        order = TRUE,
-        min.cutoff = 'q10',
-        label = TRUE)
-```
-### Violin plot for CCR7 gene
-```{r}
-# distribution of CCR7 marker (activation of B & T lymphocytes) in clusters
-# info: https://www.ncbi.nlm.nih.gov/gene/1236
-VlnPlot(integrated_filtered_phased_noMito_seurat,
-        features = c("CCR7"))
-```
-
-### Violin plot for CD44 gene
-```{r}
-# distribution of CD44 marker in clusters
-# info: https://www.ncbi.nlm.nih.gov/gene/960
-VlnPlot(integrated_filtered_phased_noMito_seurat,
-        features = c("CD44"),
-        split.by = "sample")
-```
-
-## Identity of clusters 0,1,2,3
-Based on several gene transcripts expressed, as seen above, these 4 clusters are likely B-lymphocytes or pre-B lymphocytes
+Major T cell (CD3D, CD4, CD8A and IL7R) markers were not found in the data
+## Identity of clusters
+Based on several gene transcripts expressed, as seen above, all clusters are likely B-lymphocytes or pre-B lymphocytes. Further classification of clusters requires specialized knowledge. 
+Based on low expression of most markers plotted above cluster 6 may show biological significance.
 
 ## Finding markers differentially expressed between B cells and other clusters
 
-### DE between Cluster3 cells (ribosomal proteins) from 0,1,2
+### DE between cluster6 (ribosomal proteins) and 0,1,2,3
 ```{r}
-# DE between 0,1,2 and cluster 3
-cluster3cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
-                             ident.1 = 3,
-                             ident.2 = c(0,1,2))
-# add gene symbols to table
-cluster3cells <- cluster3cells %>%
-  rownames_to_column(var = "gene") %>%
-  left_join(y = unique(annotations[, c("gene_name", "description")]),
-             by = c("gene" = "gene_name"))
-# reorder columns
-cluster3cells <- cluster3cells[ ,c(1, 3:5, 2, 6:7)]
-
-# sort by padj value
-cluster3cells <-  cluster3cells %>% 
-  arrange(p_val_adj)
-
-View(cluster3cells)
-```
-No genes showing large difference in percent occurence, mutiple ribosomal protein genes identified. Suggesting nUMI, nGenes need to be better normalized or regressed out.
-
-### DE between cluster4 (Hsp/MIR155HG cells) and 0,1,2
-```{r}
-# DE between 0,1,2 and cluster 4
-cluster4cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
-                             ident.1 = 4,
-                             ident.2 = c(0,1,2))
-# add gene symbols to table
-cluster4cells <- cluster4cells %>%
-  rownames_to_column(var = "gene") %>%
-  left_join(y = unique(annotations[, c("gene_name", "description")]),
-             by = c("gene" = "gene_name"))
-# reorder columns
-cluster4cells <- cluster4cells[ ,c(1, 3:5, 2, 6:7)]
-
-# sort by padj value
-cluster4cells <-  cluster4cells %>% 
-  arrange(p_val_adj)
-
-View(cluster4cells)
-```
-
-Notable over expression of multiple HSPs, few other blood cell markers (e.g.BID gene known to be overexpressed in PBMCs and monocytes). Could be a biologically significant difference.
-
-### DE between Cluster5 cells (MIF / MIR210HG cells) from 0,1,2
-```{r}
-# DE between 0,1,2 and cluster 5
-cluster5cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
-                             ident.1 = 5,
-                             ident.2 = c(0,1,2))
-# add gene symbols to table
-cluster5cells <- cluster5cells %>%
-  rownames_to_column(var = "gene") %>%
-  left_join(y = unique(annotations[, c("gene_name", "description")]),
-             by = c("gene" = "gene_name"))
-# reorder columns
-cluster5cells <- cluster5cells[ ,c(1, 3:5, 2, 6:7)]
-
-# sort by padj value
-cluster5cells <-  cluster5cells %>% 
-  arrange(p_val_adj)
-
-View(cluster5cells)
-
-```
-MIF / MIR210HG expressing cells
-
-
-### DE between cluster6 (ribosomal proteins) and 0,1,2
-```{r}
-# DE between 0,1,2 and cluster 6
+# DE between 0,1,2, 3 and cluster 6
 cluster6cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
                              ident.1 = 6,
-                             ident.2 = c(0,1,2))
+                             ident.2 = c(0,1,2,3))
 # add gene symbols to table
 cluster6cells <- cluster6cells %>%
   rownames_to_column(var = "gene") %>%
@@ -838,87 +716,16 @@ cluster6cells <-  cluster6cells %>%
 View(cluster6cells)
 ```
 
+Of the top 50 genes differentially expressed in cluster 6 all except MALAT1 (#10), RACK1 (#41) and HLA-DRA (#47) are ribosomal proteins indicating cluster 6 cells differ only by metabolic status.
 
 
 
-
-### DE between Cluster7 cells (ribosomal proteins) from 0,1,2
-```{r}
-# DE between 0,1,2 and cluster 7
-cluster7cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
-                             ident.1 = 3,
-                             ident.2 = c(0,1,2))
-# add gene symbols to table
-cluster7cells <- cluster7cells %>%
-  rownames_to_column(var = "gene") %>%
-  left_join(y = unique(annotations[, c("gene_name", "description")]),
-             by = c("gene" = "gene_name"))
-# reorder columns
-cluster7cells <- cluster7cells[ ,c(1, 3:5, 2, 6:7)]
-
-# sort by padj value
-cluster37cells <-  cluster7cells %>% 
-  arrange(p_val_adj)
-
-View(cluster7cells)
-```
-No genes showing large difference in percent occurence, mutiple ribosomal protein genes identified. Suggesting nUMI, nGenes need to be better normalized or regressed out.
-
-
-### DE between cluster8 (FOSB+Kruppel like factor+CD44 cells) and 0,1,2
-```{r}
-# DE between 0,1,2 and cluster 8
-cluster8cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
-                             ident.1 = 8,
-                             ident.2 = c(0,1,2))
-# add gene symbols to table
-cluster8cells <- cluster8cells %>%
-  rownames_to_column(var = "gene") %>%
-  left_join(y = unique(annotations[, c("gene_name", "description")]),
-             by = c("gene" = "gene_name"))
-# reorder columns
-cluster8cells <- cluster8cells[ ,c(1, 3:5, 2, 6:7)]
-
-# sort by padj value
-cluster8cells <-  cluster8cells %>% 
-  arrange(p_val_adj)
-
-View(cluster8cells)
-```
-
-
-
-
-
-
-
-### DE between cluster9 (multiple interferon induced proteins) and 0,1,2
-```{r}
-# DE between 0,1,2 and cluster 9
-cluster9cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
-                             ident.1 = 9,
-                             ident.2 = c(0,1,2))
-# add gene symbols to table
-cluster9cells <- cluster9cells %>%
-  rownames_to_column(var = "gene") %>%
-  left_join(y = unique(annotations[, c("gene_name", "description")]),
-             by = c("gene" = "gene_name"))
-# reorder columns
-cluster9cells <- cluster9cells[ ,c(1, 3:5, 2, 6:7)]
-
-# sort by padj value
-cluster9cells <-  cluster9cells %>% 
-  arrange(p_val_adj)
-
-View(cluster9cells)
-```
-Cluster 9 has several interferon induced gene transcripts (IFIT1,3, & many more) showing fold changes.
 ### DE between cluster10 (ribosomal proteins) and 0,1,2
 ```{r}
 # DE between 0,1,2 and cluster 10
 cluster10cells <- FindMarkers(integrated_filtered_phased_noMito_seurat,
                              ident.1 = 10,
-                             ident.2 = c(0,1,2))
+                             ident.2 = c(0,1,2,3))
 # add gene symbols to table
 cluster10cells <- cluster10cells %>%
   rownames_to_column(var = "gene") %>%
@@ -933,7 +740,7 @@ cluster10cells <-  cluster10cells %>%
 
 View(cluster10cells)
 ```
-Cluster 10 has mostly ribosomal proteins showing fold changes
+Cluster 10 has mostly ribosomal proteins showing fold changes, with # 1 gene being SNHG25 which is of uncertain significance.
 
 
 ## Cluster identities
@@ -944,14 +751,14 @@ integrated_ID_seurat <- RenameIdents(object = integrated_ID_seurat,
                                "0" = "Bcell_CD19+_0",
                                "1" = "Bcell_CD19+_1",
                                "2" = "Bcell_CD19+_2",
-                               "3" = "Ribo_protein_1",
-                               "4" = "Hsp+MIR155HG",
-                               "5" = "MIF_MIR210HG",
-                               "6" = "Ribo_protein_2",
-                               "7" = "Ribo_protein_3",
-                               "8" = "FOSB_Kruppel_like",
+                               "3" = "Bcell_CD19+_3",
+                               "4" = "Bcell_CD19+_MIR155HG",
+                               "5" = "Bcell_CD19+_MIR210HG",
+                               "6" = "CD19_low_CCR7_high",
+                               "7" = "Bcell_CD19+_7",
+                               "8" = "CD44_high_FOSB",
                                "9" = "multi_IF_induced",
-                               "10" = "Ribo_protein_4"
+                               "10" = "SNHG25+"
                                )
 
 # Plot the UMAP
@@ -966,28 +773,10 @@ write_rds(integrated_ID_seurat,
           path = "results/seurat_labelled_final_output.rds")
 
 # Create and save a text file with sessionInfo
-sink("sessionInfo_scrnaseq_07232021.txt")
+sink("sessionInfo_scrnaseq_07272021.txt")
 sessionInfo()
 sink()
 ```
-
-
-## Differential analysis in B cells between conditions
-
-### Subsetting out clusters 0,1,2
-```{r}
-# subsetting only CD19+ cells
-BCells_CD19_seurat <- subset(integrated_ID_seurat,
-                             idents = c("Bcell_CD19+_0", "Bcell_CD19+_1", "Bcell_CD19+_2"))
-
-# revisualize 
-DimPlot(BCells_CD19_seurat,
-        reduction = "umap",
-        label = TRUE,
-        split.by = "sample")
-
-```
-
 
 ## Get all markers
 ```{r}
@@ -1016,7 +805,6 @@ top10 <- all_markers %>%
 View(top10)
 ```
 
-## Alternate analysis keeping conditions separate after filtering
 ## Without Integration per sctransform pipeline from Satijalab
 As laid out here
 https://satijalab.org/seurat/articles/sctransform_vignette.html
