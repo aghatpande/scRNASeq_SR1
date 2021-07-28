@@ -1,0 +1,104 @@
+---
+title: "DE_between_CLL_ctrl_CLL_treat"
+author: "ASG"
+date: "7/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Best practice for differential expression within a cluster / clusters in an scRNAseq dataset, subject to different experimental conditions, requires at least two biological replicates (samples). 
+
+The DE is then done between samples (pseudobulk) to infer changes in gene expression as a result of the experimental conditions.
+
+Since cells from a single sample (patient) are not independent of each other, any DE between conditions will reflect changes for that individual only and cannot be extrapolated to the population.
+
+We have only one sample treated in two different conditions in this dataset.
+
+## Libraries
+```{r}
+library(ggplot2)
+library(Seurat)
+library(magrittr)
+library(tidyverse)
+library(patchwork)
+```
+
+## Loading data
+```{r}
+# Read in data
+integrated_ID_seurat <-  readRDS("./results/seurat_labelled_final_output.rds")
+```
+
+## Subsetting out clusters individually
+Each cluster can be split into control and treated cells and then analyzed for differential gene expression
+
+## gene annotations for convenience
+```{r}
+#adding annotations
+annotations <- read.csv("./data/annotation.csv")
+```
+
+## Find DE between ctrl and treated for all clusters
+```{r}
+# ensuring default assay is "RNA"
+DefaultAssay(integrated_ID_seurat) <- "RNA"
+
+# extracting IDs from integrated seurat object 
+
+clusterIDs <- levels(integrated_ID_seurat)
+
+# finding markers
+i=0;j=0;
+conditions = c("ctrl", "treat")
+
+ for (ID in seq_along(clusterIDs)){
+   curr_cluster = subset(integrated_ID_seurat, 
+                         ident = clusterIDs[ID])
+   Idents(curr_cluster) = curr_cluster$sample
+   for (i in 1:(length(conditions)-1)){
+     for (j in (i+1):length(conditions)){
+       DE_markers = FindMarkers(curr_cluster, 
+                                      ident.1 = conditions[i] , 
+                                      ident.2 = conditions [j], 
+                                      only.pos = TRUE,
+                                      logfc.threshold=0.25)
+    }
+  }
+}
+
+# add gene symbols to table
+DE_markers <- DE_markers %>%
+  rownames_to_column(var = "gene") %>%
+  left_join(y = unique(annotations[, c("gene_name", "description")]),
+             by = c("gene" = "gene_name"))
+# reorder columns
+DE_markers <- DE_markers[ ,c(1, 3:5, 2, 6:7)]
+
+# sort by difference in percent cells in each condition expressing gene
+DE_markers <-  DE_markers %>% 
+  select(1,3,4,7) %>% 
+  mutate(pct_treated_cells_minus_pct_ctrl = pct.2-pct.1) %>% 
+  arrange(desc(pct_treated_cells_minus_pct_ctrl))
+
+View(DE_markers)
+```
+## plotting DE markers
+```{r}
+library(ggrepel)
+# plotting top 50 DE markers
+DE_top50 <- DE_markers[1:50, ] 
+
+DE_top50%>% 
+  arrange(desc(pct_treated_cells_minus_pct_ctrl)) %>% 
+  mutate(gene = fct_reorder(gene, pct_treated_cells_minus_pct_ctrl)) %>% 
+  ggplot(aes(gene, pct_treated_cells_minus_pct_ctrl, color = gene, fill = gene)) +
+  geom_col() +
+  coord_flip() + 
+  theme_light() + 
+    theme(legend.position = "") +
+  ggtitle("top 50 genes differentially expressed in treated versus control")
+```
+
