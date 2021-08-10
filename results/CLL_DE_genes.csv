@@ -1,0 +1,1686 @@
+﻿"gene","pct.1","pct.2","description","pct_treated_cells_minus_pct_ctrl"
+"SRSF9",0.186,0.815,"serine and arginine rich splicing factor 9 [Source:HGNC Symbol;Acc:HGNC:10791]",0.629
+"EIF4A2",0.353,0.963,"eukaryotic translation initiation factor 4A2 [Source:HGNC Symbol;Acc:HGNC:3284]",0.61
+"YPEL3",0.333,0.926,"yippee like 3 [Source:HGNC Symbol;Acc:HGNC:18327]",0.593
+"NDUFA4",0.304,0.889,"NDUFA4 mitochondrial complex associated [Source:HGNC Symbol;Acc:HGNC:7687]",0.585
+"LSM8",0.127,0.704,"LSM8 homolog, U6 small nuclear RNA associated [Source:HGNC Symbol;Acc:HGNC:20471]",0.577
+"ALOX5",0.167,0.741,"arachidonate 5-lipoxygenase [Source:HGNC Symbol;Acc:HGNC:435]",0.574
+"SYF2",0.147,0.704,"SYF2 pre-mRNA splicing factor [Source:HGNC Symbol;Acc:HGNC:19824]",0.5569999999999999
+"FUS",0.225,0.778,"FUS RNA binding protein [Source:HGNC Symbol;Acc:HGNC:4010]",0.553
+"SMAP2",0.265,0.815,"small ArfGAP2 [Source:HGNC Symbol;Acc:HGNC:25082]",0.5499999999999999
+"NOP53",0.382,0.926,"NOP53 ribosome biogenesis factor [Source:HGNC Symbol;Acc:HGNC:4333]",0.544
+"TMA7",0.382,0.926,"translation machinery associated 7 homolog [Source:HGNC Symbol;Acc:HGNC:26932]",0.544
+"ATP6V1G1",0.235,0.778,"ATPase H+ transporting V1 subunit G1 [Source:HGNC Symbol;Acc:HGNC:864]",0.543
+"MPHOSPH8",0.167,0.704,"M-phase phosphoprotein 8 [Source:HGNC Symbol;Acc:HGNC:29810]",0.5369999999999999
+"EIF2S3",0.206,0.741,"eukaryotic translation initiation factor 2 subunit gamma [Source:HGNC Symbol;Acc:HGNC:3267]",0.535
+"PNISR",0.392,0.926,"PNN interacting serine and arginine rich protein [Source:HGNC Symbol;Acc:HGNC:21222]",0.534
+"TRABD",0.284,0.815,"TraB domain containing [Source:HGNC Symbol;Acc:HGNC:28805]",0.5309999999999999
+"ATP5PO",0.137,0.667,"ATP synthase peripheral stalk subunit OSCP [Source:HGNC Symbol;Acc:HGNC:850]",0.53
+"PSME1",0.176,0.704,"proteasome activator subunit 1 [Source:HGNC Symbol;Acc:HGNC:9568]",0.528
+"SRP9",0.176,0.704,"signal recognition particle 9 [Source:HGNC Symbol;Acc:HGNC:11304]",0.528
+"LINC00926",0.363,0.889,"long intergenic non-protein coding RNA 926 [Source:HGNC Symbol;Acc:HGNC:27514]",0.526
+"SARAF",0.363,0.889,"store-operated calcium entry associated regulatory factor [Source:HGNC Symbol;Acc:HGNC:28789]",0.526
+"IL10RA",0.216,0.741,"interleukin 10 receptor subunit alpha [Source:HGNC Symbol;Acc:HGNC:5964]",0.525
+"TSC22D3",0.402,0.926,"TSC22 domain family member 3 [Source:HGNC Symbol;Acc:HGNC:3051]",0.524
+"PTGES3",0.255,0.778,"prostaglandin E synthase 3 [Source:HGNC Symbol;Acc:HGNC:16049]",0.523
+"NEDD8",0.147,0.667,"NEDD8 ubiquitin like modifier [Source:HGNC Symbol;Acc:HGNC:7732]",0.52
+"SNHG5",0.147,0.667,"small nucleolar RNA host gene 5 [Source:HGNC Symbol;Acc:HGNC:21026]",0.52
+"PTPN7",0.186,0.704,"protein tyrosine phosphatase non-receptor type 7 [Source:HGNC Symbol;Acc:HGNC:9659]",0.518
+"PRDM2",0.225,0.741,"PR/SET domain 2 [Source:HGNC Symbol;Acc:HGNC:9347]",0.516
+"SRSF5",0.412,0.926,"serine and arginine rich splicing factor 5 [Source:HGNC Symbol;Acc:HGNC:10787]",0.514
+"TMEM59",0.157,0.667,"transmembrane protein 59 [Source:HGNC Symbol;Acc:HGNC:1239]",0.51
+"HNRNPA1",0.382,0.889,"heterogeneous nuclear ribonucleoprotein A1 [Source:HGNC Symbol;Acc:HGNC:5031]",0.507
+"RPS17",0.314,0.815,"ribosomal protein S17 [Source:HGNC Symbol;Acc:HGNC:10397]",0.5009999999999999
+"DAD1",0.167,0.667,"defender against cell death 1 [Source:HGNC Symbol;Acc:HGNC:2664]",0.5
+"SKP1",0.206,0.704,"S-phase kinase associated protein 1 [Source:HGNC Symbol;Acc:HGNC:10899]",0.498
+"PABPC1",0.392,0.889,"poly(A) binding protein cytoplasmic 1 [Source:HGNC Symbol;Acc:HGNC:8554]",0.497
+"ST13",0.137,0.63,"ST13 Hsp70 interacting protein [Source:HGNC Symbol;Acc:HGNC:11343]",0.493
+"CD55",0.137,0.63,"CD55 molecule (Cromer blood group) [Source:HGNC Symbol;Acc:HGNC:2665]",0.493
+"SRSF7",0.324,0.815,"serine and arginine rich splicing factor 7 [Source:HGNC Symbol;Acc:HGNC:10789]",0.49099999999999994
+"STK4",0.216,0.704,"serine/threonine kinase 4 [Source:HGNC Symbol;Acc:HGNC:11408]",0.488
+"IGLC2",0.441,0.926,"immunoglobulin lambda constant 2 [Source:HGNC Symbol;Acc:HGNC:5856]",0.48500000000000004
+"ATP6V0B",0.108,0.593,"ATPase H+ transporting V0 subunit b [Source:HGNC Symbol;Acc:HGNC:861]",0.485
+"TUT4",0.108,0.593,"terminal uridylyl transferase 4 [Source:HGNC Symbol;Acc:HGNC:28981]",0.485
+"SEPTIN2",0.147,0.63,"septin 2 [Source:HGNC Symbol;Acc:HGNC:7729]",0.483
+"DGUOK",0.147,0.63,"deoxyguanosine kinase [Source:HGNC Symbol;Acc:HGNC:2858]",0.483
+"UBE2D2",0.186,0.667,"ubiquitin conjugating enzyme E2 D2 [Source:HGNC Symbol;Acc:HGNC:12475]",0.48100000000000004
+"ANKRD12",0.225,0.704,"ankyrin repeat domain 12 [Source:HGNC Symbol;Acc:HGNC:29135]",0.479
+"SLC25A3",0.225,0.704,"solute carrier family 25 member 3 [Source:HGNC Symbol;Acc:HGNC:10989]",0.479
+"HERPUD1",0.412,0.889,"homocysteine inducible ER protein with ubiquitin like domain 1 [Source:HGNC Symbol;Acc:HGNC:13744]",0.47700000000000004
+"ICAM3",0.157,0.63,"intercellular adhesion molecule 3 [Source:HGNC Symbol;Acc:HGNC:5346]",0.473
+"CHURC1",0.157,0.63,"churchill domain containing 1 [Source:HGNC Symbol;Acc:HGNC:20099]",0.473
+"NDUFAB1",0.049,0.519,"NADH:ubiquinone oxidoreductase subunit AB1 [Source:HGNC Symbol;Acc:HGNC:7694]",0.47000000000000003
+"SRRM2",0.382,0.852,"serine/arginine repetitive matrix 2 [Source:HGNC Symbol;Acc:HGNC:16639]",0.47
+"ZFP36L1",0.235,0.704,"ZFP36 ring finger protein like 1 [Source:HGNC Symbol;Acc:HGNC:1107]",0.469
+"CNBP",0.235,0.704,"CCHC-type zinc finger nucleic acid binding protein [Source:HGNC Symbol;Acc:HGNC:13164]",0.469
+"PSIP1",0.127,0.593,"PC4 and SFRS1 interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:9527]",0.46599999999999997
+"PNN",0.275,0.741,"pinin, desmosome associated protein [Source:HGNC Symbol;Acc:HGNC:9162]",0.46599999999999997
+"CALM2",0.314,0.778,"calmodulin 2 [Source:HGNC Symbol;Acc:HGNC:1445]",0.464
+"NCOA3",0.167,0.63,"nuclear receptor coactivator 3 [Source:HGNC Symbol;Acc:HGNC:7670]",0.46299999999999997
+"RPL22L1",0.167,0.63,"ribosomal protein L22 like 1 [Source:HGNC Symbol;Acc:HGNC:27610]",0.46299999999999997
+"RBM3",0.167,0.63,"RNA binding motif protein 3 [Source:HGNC Symbol;Acc:HGNC:9900]",0.46299999999999997
+"VPS28",0.167,0.63,"VPS28 subunit of ESCRT-I [Source:HGNC Symbol;Acc:HGNC:18178]",0.46299999999999997
+"ARID5B",0.206,0.667,"AT-rich interaction domain 5B [Source:HGNC Symbol;Acc:HGNC:17362]",0.4610000000000001
+"SRSF11",0.206,0.667,"serine and arginine rich splicing factor 11 [Source:HGNC Symbol;Acc:HGNC:10782]",0.4610000000000001
+"PNRC1",0.245,0.704,"proline rich nuclear receptor coactivator 1 [Source:HGNC Symbol;Acc:HGNC:17278]",0.45899999999999996
+"NCF1",0.245,0.704,"neutrophil cytosolic factor 1 [Source:HGNC Symbol;Acc:HGNC:7660]",0.45899999999999996
+"SELENOF",0.137,0.593,"selenoprotein F [Source:HGNC Symbol;Acc:HGNC:17705]",0.45599999999999996
+"NCL",0.176,0.63,"nucleolin [Source:HGNC Symbol;Acc:HGNC:7667]",0.454
+"FCRL5",0.176,0.63,"Fc receptor like 5 [Source:HGNC Symbol;Acc:HGNC:18508]",0.454
+"LINC01578",0.176,0.63,"long intergenic non-protein coding RNA 1578 [Source:HGNC Symbol;Acc:HGNC:48626]",0.454
+"PDCD6",0.176,0.63,"programmed cell death 6 [Source:HGNC Symbol;Acc:HGNC:8765]",0.454
+"FCMR",0.324,0.778,"Fc fragment of IgM receptor [Source:HGNC Symbol;Acc:HGNC:14315]",0.454
+"SEPTIN9",0.255,0.704,"septin 9 [Source:HGNC Symbol;Acc:HGNC:7323]",0.44899999999999995
+"LIMD2",0.48,0.926,"LIM domain containing 2 [Source:HGNC Symbol;Acc:HGNC:28142]",0.44600000000000006
+"ARID4B",0.147,0.593,"AT-rich interaction domain 4B [Source:HGNC Symbol;Acc:HGNC:15550]",0.44599999999999995
+"EIF4A1",0.186,0.63,"eukaryotic translation initiation factor 4A1 [Source:HGNC Symbol;Acc:HGNC:3282]",0.444
+"SYNGR2",0.186,0.63,"synaptogyrin 2 [Source:HGNC Symbol;Acc:HGNC:11499]",0.444
+"SFT2D1",0.118,0.556,"SFT2 domain containing 1 [Source:HGNC Symbol;Acc:HGNC:21102]",0.43800000000000006
+"SRSF3",0.304,0.741,"serine and arginine rich splicing factor 3 [Source:HGNC Symbol;Acc:HGNC:10785]",0.437
+"MSN",0.157,0.593,"moesin [Source:HGNC Symbol;Acc:HGNC:7373]",0.43599999999999994
+"CALR",0.157,0.593,"calreticulin [Source:HGNC Symbol;Acc:HGNC:1455]",0.43599999999999994
+"JMJD1C",0.157,0.593,"jumonji domain containing 1C [Source:HGNC Symbol;Acc:HGNC:12313]",0.43599999999999994
+"PRKCB",0.343,0.778,"protein kinase C beta [Source:HGNC Symbol;Acc:HGNC:9395]",0.435
+"FAM107B",0.196,0.63,"family with sequence similarity 107 member B [Source:HGNC Symbol;Acc:HGNC:23726]",0.434
+"TANK",0.088,0.519,"TRAF family member associated NFKB activator [Source:HGNC Symbol;Acc:HGNC:11562]",0.43100000000000005
+"AGPAT5",0.127,0.556,"1-acylglycerol-3-phosphate O-acyltransferase 5 [Source:HGNC Symbol;Acc:HGNC:20886]",0.42900000000000005
+"ISCU",0.167,0.593,"iron-sulfur cluster assembly enzyme [Source:HGNC Symbol;Acc:HGNC:29882]",0.42599999999999993
+"UBE2D3",0.167,0.593,"ubiquitin conjugating enzyme E2 D3 [Source:HGNC Symbol;Acc:HGNC:12476]",0.42599999999999993
+"ATM",0.167,0.593,"ATM serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:795]",0.42599999999999993
+"UBXN1",0.206,0.63,"UBX domain protein 1 [Source:HGNC Symbol;Acc:HGNC:18402]",0.42400000000000004
+"RPL4",0.578,1,"ribosomal protein L4 [Source:HGNC Symbol;Acc:HGNC:10353]",0.42200000000000004
+"RIPOR2",0.284,0.704,"RHO family interacting cell polarization regulator 2 [Source:HGNC Symbol;Acc:HGNC:13872]",0.42
+"ELF1",0.137,0.556,"E74 like ETS transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:3316]",0.41900000000000004
+"CCDC88A",0.137,0.556,"coiled-coil domain containing 88A [Source:HGNC Symbol;Acc:HGNC:25523]",0.41900000000000004
+"ARHGAP45",0.137,0.556,"Rho GTPase activating protein 45 [Source:HGNC Symbol;Acc:HGNC:17102]",0.41900000000000004
+"ARF6",0.176,0.593,"ADP ribosylation factor 6 [Source:HGNC Symbol;Acc:HGNC:659]",0.417
+"HNRNPH3",0.176,0.593,"heterogeneous nuclear ribonucleoprotein H3 [Source:HGNC Symbol;Acc:HGNC:5043]",0.417
+"HNRNPC",0.216,0.63,"heterogeneous nuclear ribonucleoprotein C (C1/C2) [Source:HGNC Symbol;Acc:HGNC:5035]",0.41400000000000003
+"HNRNPK",0.216,0.63,"heterogeneous nuclear ribonucleoprotein K [Source:HGNC Symbol;Acc:HGNC:5044]",0.41400000000000003
+"CD69",0.255,0.667,"CD69 molecule [Source:HGNC Symbol;Acc:HGNC:1694]",0.41200000000000003
+"HNRNPU",0.255,0.667,"heterogeneous nuclear ribonucleoprotein U [Source:HGNC Symbol;Acc:HGNC:5048]",0.41200000000000003
+"LMBRD1",0.108,0.519,"LMBR1 domain containing 1 [Source:HGNC Symbol;Acc:HGNC:23038]",0.41100000000000003
+"CDC42SE2",0.147,0.556,"CDC42 small effector 2 [Source:HGNC Symbol;Acc:HGNC:18547]",0.40900000000000003
+"CD47",0.147,0.556,"CD47 molecule [Source:HGNC Symbol;Acc:HGNC:1682]",0.40900000000000003
+"FCRL3",0.147,0.556,"Fc receptor like 3 [Source:HGNC Symbol;Acc:HGNC:18506]",0.40900000000000003
+"HNRNPF",0.186,0.593,"heterogeneous nuclear ribonucleoprotein F [Source:HGNC Symbol;Acc:HGNC:5039]",0.407
+"VMP1",0.186,0.593,"vacuole membrane protein 1 [Source:HGNC Symbol;Acc:HGNC:29559]",0.407
+"HMGN3",0.186,0.593,"high mobility group nucleosomal binding domain 3 [Source:HGNC Symbol;Acc:HGNC:12312]",0.407
+"STK17A",0.225,0.63,"serine/threonine kinase 17a [Source:HGNC Symbol;Acc:HGNC:11395]",0.405
+"HMGN1",0.225,0.63,"high mobility group nucleosome binding domain 1 [Source:HGNC Symbol;Acc:HGNC:4984]",0.405
+"NSA2",0.118,0.519,"NSA2 ribosome biogenesis factor [Source:HGNC Symbol;Acc:HGNC:30728]",0.401
+"CLNK",0.118,0.519,"cytokine dependent hematopoietic cell linker [Source:HGNC Symbol;Acc:HGNC:17438]",0.401
+"NSD3",0.118,0.519,"nuclear receptor binding SET domain protein 3 [Source:HGNC Symbol;Acc:HGNC:12767]",0.401
+"TBL1XR1",0.118,0.519,"transducin beta like 1 X-linked receptor 1 [Source:HGNC Symbol;Acc:HGNC:29529]",0.401
+"IL2RG",0.118,0.519,"interleukin 2 receptor subunit gamma [Source:HGNC Symbol;Acc:HGNC:6010]",0.401
+"CIRBP",0.451,0.852,"cold inducible RNA binding protein [Source:HGNC Symbol;Acc:HGNC:1982]",0.40099999999999997
+"HSP90B1",0.157,0.556,"heat shock protein 90 beta family member 1 [Source:HGNC Symbol;Acc:HGNC:12028]",0.399
+"HNRNPA3",0.343,0.741,"heterogeneous nuclear ribonucleoprotein A3 [Source:HGNC Symbol;Acc:HGNC:24941]",0.39799999999999996
+"TRAC",0.196,0.593,"T cell receptor alpha constant [Source:HGNC Symbol;Acc:HGNC:12029]",0.39699999999999996
+"RPS27L",0.235,0.63,"ribosomal protein S27 like [Source:HGNC Symbol;Acc:HGNC:18476]",0.395
+"DOCK8",0.088,0.481,"dedicator of cytokinesis 8 [Source:HGNC Symbol;Acc:HGNC:19191]",0.393
+"USP8",0.088,0.481,"ubiquitin specific peptidase 8 [Source:HGNC Symbol;Acc:HGNC:12631]",0.393
+"GNAS",0.422,0.815,"GNAS complex locus [Source:HGNC Symbol;Acc:HGNC:4392]",0.39299999999999996
+"SH3BGRL",0.127,0.519,"SH3 domain binding glutamate rich protein like [Source:HGNC Symbol;Acc:HGNC:10823]",0.392
+"TLK1",0.127,0.519,"tousled like kinase 1 [Source:HGNC Symbol;Acc:HGNC:11841]",0.392
+"CELF2",0.127,0.519,"CUGBP Elav-like family member 2 [Source:HGNC Symbol;Acc:HGNC:2550]",0.392
+"PTPN6",0.127,0.519,"protein tyrosine phosphatase non-receptor type 6 [Source:HGNC Symbol;Acc:HGNC:9658]",0.392
+"ZNF207",0.127,0.519,"zinc finger protein 207 [Source:HGNC Symbol;Acc:HGNC:12998]",0.392
+"POMP",0.127,0.519,"proteasome maturation protein [Source:HGNC Symbol;Acc:HGNC:20330]",0.392
+"HNRNPD",0.167,0.556,"heterogeneous nuclear ribonucleoprotein D [Source:HGNC Symbol;Acc:HGNC:5036]",0.389
+"NME3",0.167,0.556,"NME/NM23 nucleoside diphosphate kinase 3 [Source:HGNC Symbol;Acc:HGNC:7851]",0.389
+"TUBA1B",0.206,0.593,"tubulin alpha 1b [Source:HGNC Symbol;Acc:HGNC:18809]",0.387
+"DDX3X",0.206,0.593,"DEAD-box helicase 3 X-linked [Source:HGNC Symbol;Acc:HGNC:2745]",0.387
+"PIM3",0.206,0.593,"Pim-3 proto-oncogene, serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:19310]",0.387
+"MDM4",0.245,0.63,"MDM4 regulator of p53 [Source:HGNC Symbol;Acc:HGNC:6974]",0.385
+"CD79A",0.578,0.963,"CD79a molecule [Source:HGNC Symbol;Acc:HGNC:1698]",0.385
+"UBC",0.578,0.963,"ubiquitin C [Source:HGNC Symbol;Acc:HGNC:12468]",0.385
+"CPNE1",0.098,0.481,"copine 1 [Source:HGNC Symbol;Acc:HGNC:2314]",0.383
+"APH1A",0.098,0.481,"aph-1 homolog A, gamma-secretase subunit [Source:HGNC Symbol;Acc:HGNC:29509]",0.383
+"HP1BP3",0.098,0.481,"heterochromatin protein 1 binding protein 3 [Source:HGNC Symbol;Acc:HGNC:24973]",0.383
+"TTC3",0.137,0.519,"tetratricopeptide repeat domain 3 [Source:HGNC Symbol;Acc:HGNC:12393]",0.382
+"EIF5A",0.137,0.519,"eukaryotic translation initiation factor 5A [Source:HGNC Symbol;Acc:HGNC:3300]",0.382
+"WDR83OS",0.137,0.519,"WD repeat domain 83 opposite strand [Source:HGNC Symbol;Acc:HGNC:30203]",0.382
+"STX16",0.137,0.519,"syntaxin 16 [Source:HGNC Symbol;Acc:HGNC:11431]",0.382
+"CXXC5",0.255,0.63,"CXXC finger protein 5 [Source:HGNC Symbol;Acc:HGNC:26943]",0.375
+"OAZ1",0.588,0.963,"ornithine decarboxylase antizyme 1 [Source:HGNC Symbol;Acc:HGNC:8095]",0.375
+"ATP5MPL",0.108,0.481,"ATP synthase membrane subunit 6.8PL [Source:HGNC Symbol;Acc:HGNC:1188]",0.373
+"PFKL",0.108,0.481,"phosphofructokinase, liver type [Source:HGNC Symbol;Acc:HGNC:8876]",0.373
+"BLOC1S1",0.108,0.481,"biogenesis of lysosomal organelles complex 1 subunit 1 [Source:HGNC Symbol;Acc:HGNC:4200]",0.373
+"EPC1",0.147,0.519,"enhancer of polycomb homolog 1 [Source:HGNC Symbol;Acc:HGNC:19876]",0.372
+"TRA2B",0.147,0.519,"transformer 2 beta homolog [Source:HGNC Symbol;Acc:HGNC:10781]",0.372
+"BCLAF1",0.186,0.556,"BCL2 associated transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:16863]",0.37000000000000005
+"DPP7",0.186,0.556,"dipeptidyl peptidase 7 [Source:HGNC Symbol;Acc:HGNC:14892]",0.37000000000000005
+"TBC1D10C",0.186,0.556,"TBC1 domain family member 10C [Source:HGNC Symbol;Acc:HGNC:24702]",0.37000000000000005
+"RHOA",0.225,0.593,"ras homolog family member A [Source:HGNC Symbol;Acc:HGNC:667]",0.368
+"FTX",0.078,0.444,"FTX transcript, XIST regulator [Source:HGNC Symbol;Acc:HGNC:37190]",0.366
+"TIMP1",0.078,0.444,"TIMP metallopeptidase inhibitor 1 [Source:HGNC Symbol;Acc:HGNC:11820]",0.366
+"FBXL15",0.078,0.444,"F-box and leucine rich repeat protein 15 [Source:HGNC Symbol;Acc:HGNC:28155]",0.366
+"HLA-DMB",0.265,0.63,"major histocompatibility complex, class II, DM beta [Source:HGNC Symbol;Acc:HGNC:4935]",0.365
+"NDUFA5",0.118,0.481,"NADH:ubiquinone oxidoreductase subunit A5 [Source:HGNC Symbol;Acc:HGNC:7688]",0.363
+"MRPL20",0.118,0.481,"mitochondrial ribosomal protein L20 [Source:HGNC Symbol;Acc:HGNC:14478]",0.363
+"STRBP",0.118,0.481,"spermatid perinuclear RNA binding protein [Source:HGNC Symbol;Acc:HGNC:16462]",0.363
+"SWAP70",0.118,0.481,"switching B cell complex subunit SWAP70 [Source:HGNC Symbol;Acc:HGNC:17070]",0.363
+"MARCH1",0.118,0.481,"membrane associated ring-CH-type finger 1 [Source:HGNC Symbol;Acc:HGNC:26077]",0.363
+"PDCD4",0.157,0.519,"programmed cell death 4 [Source:HGNC Symbol;Acc:HGNC:8763]",0.362
+"RAP1B",0.157,0.519,"RAP1B, member of RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:9857]",0.362
+"GGA2",0.196,0.556,"golgi associated, gamma adaptin ear containing, ARF binding protein 2 [Source:HGNC Symbol;Acc:HGNC:16064]",0.36000000000000004
+"SESN3",0.235,0.593,"sestrin 3 [Source:HGNC Symbol;Acc:HGNC:23060]",0.358
+"MCUB",0.088,0.444,"mitochondrial calcium uniporter dominant negative beta subunit [Source:HGNC Symbol;Acc:HGNC:26076]",0.356
+"DYNC1H1",0.088,0.444,"dynein cytoplasmic 1 heavy chain 1 [Source:HGNC Symbol;Acc:HGNC:2961]",0.356
+"STUB1",0.088,0.444,"STIP1 homology and U-box containing protein 1 [Source:HGNC Symbol;Acc:HGNC:11427]",0.356
+"JPX",0.127,0.481,"JPX transcript, XIST activator [Source:HGNC Symbol;Acc:HGNC:37191]",0.354
+"IGFLR1",0.127,0.481,"IGF like family receptor 1 [Source:HGNC Symbol;Acc:HGNC:23620]",0.354
+"LY6E",0.127,0.481,"lymphocyte antigen 6 family member E [Source:HGNC Symbol;Acc:HGNC:6727]",0.354
+"RSRC2",0.127,0.481,"arginine and serine rich coiled-coil 2 [Source:HGNC Symbol;Acc:HGNC:30559]",0.354
+"C1QBP",0.127,0.481,"complement C1q binding protein [Source:HGNC Symbol;Acc:HGNC:1243]",0.354
+"RBM38",0.167,0.519,"RNA binding motif protein 38 [Source:HGNC Symbol;Acc:HGNC:15818]",0.352
+"VAMP2",0.167,0.519,"vesicle associated membrane protein 2 [Source:HGNC Symbol;Acc:HGNC:12643]",0.352
+"RUBCNL",0.167,0.519,"rubicon like autophagy enhancer [Source:HGNC Symbol;Acc:HGNC:20420]",0.352
+"FCRL2",0.167,0.519,"Fc receptor like 2 [Source:HGNC Symbol;Acc:HGNC:14875]",0.352
+"DDX17",0.539,0.889,"DEAD-box helicase 17 [Source:HGNC Symbol;Acc:HGNC:2740]",0.35
+"EEF1B2",0.539,0.889,"eukaryotic translation elongation factor 1 beta 2 [Source:HGNC Symbol;Acc:HGNC:3208]",0.35
+"SNHG6",0.284,0.63,"small nucleolar RNA host gene 6 [Source:HGNC Symbol;Acc:HGNC:32965]",0.34600000000000003
+"TUFM",0.098,0.444,"Tu translation elongation factor, mitochondrial [Source:HGNC Symbol;Acc:HGNC:12420]",0.346
+"FDPS",0.098,0.444,"farnesyl diphosphate synthase [Source:HGNC Symbol;Acc:HGNC:3631]",0.346
+"BZW1",0.098,0.444,"basic leucine zipper and W2 domains 1 [Source:HGNC Symbol;Acc:HGNC:18380]",0.346
+"TAF10",0.098,0.444,"TATA-box binding protein associated factor 10 [Source:HGNC Symbol;Acc:HGNC:11543]",0.346
+"EBLN3P",0.137,0.481,"endogenous Bornavirus like nucleoprotein 3, pseudogene [Source:HGNC Symbol;Acc:HGNC:50682]",0.344
+"KTN1",0.176,0.519,"kinectin 1 [Source:HGNC Symbol;Acc:HGNC:6467]",0.343
+"ORAI2",0.176,0.519,"ORAI calcium release-activated calcium modulator 2 [Source:HGNC Symbol;Acc:HGNC:21667]",0.343
+"ADTRP",0.176,0.519,"androgen dependent TFPI regulating protein [Source:HGNC Symbol;Acc:HGNC:21214]",0.343
+"H3F3A",0.657,1,"H3 histone family member 3A [Source:HGNC Symbol;Acc:HGNC:4764]",0.34299999999999997
+"LUC7L3",0.363,0.704,"LUC7 like 3 pre-mRNA splicing factor [Source:HGNC Symbol;Acc:HGNC:24309]",0.34099999999999997
+"REX1BD",0.216,0.556,"required for excision 1-B domain containing [Source:HGNC Symbol;Acc:HGNC:26098]",0.3400000000000001
+"ARPC4",0.069,0.407,"actin related protein 2/3 complex subunit 4 [Source:HGNC Symbol;Acc:HGNC:707]",0.33799999999999997
+"BUB3",0.069,0.407,"BUB3 mitotic checkpoint protein [Source:HGNC Symbol;Acc:HGNC:1151]",0.33799999999999997
+"CDK14",0.069,0.407,"cyclin dependent kinase 14 [Source:HGNC Symbol;Acc:HGNC:8883]",0.33799999999999997
+"SUPT5H",0.069,0.407,"SPT5 homolog, DSIF elongation factor subunit [Source:HGNC Symbol;Acc:HGNC:11469]",0.33799999999999997
+"COX7B",0.069,0.407,"cytochrome c oxidase subunit 7B [Source:HGNC Symbol;Acc:HGNC:2291]",0.33799999999999997
+"TMEM134",0.108,0.444,"transmembrane protein 134 [Source:HGNC Symbol;Acc:HGNC:26142]",0.336
+"BLK",0.108,0.444,"BLK proto-oncogene, Src family tyrosine kinase [Source:HGNC Symbol;Acc:HGNC:1057]",0.336
+"SSU72",0.108,0.444,"SSU72 homolog, RNA polymerase II CTD phosphatase [Source:HGNC Symbol;Acc:HGNC:25016]",0.336
+"CMPK1",0.108,0.444,"cytidine/uridine monophosphate kinase 1 [Source:HGNC Symbol;Acc:HGNC:18170]",0.336
+"PSMD13",0.108,0.444,"proteasome 26S subunit, non-ATPase 13 [Source:HGNC Symbol;Acc:HGNC:9558]",0.336
+"CLEC2D",0.294,0.63,"C-type lectin domain family 2 member D [Source:HGNC Symbol;Acc:HGNC:14351]",0.336
+"EIF4G2",0.147,0.481,"eukaryotic translation initiation factor 4 gamma 2 [Source:HGNC Symbol;Acc:HGNC:3297]",0.33399999999999996
+"DUT",0.147,0.481,"deoxyuridine triphosphatase [Source:HGNC Symbol;Acc:HGNC:3078]",0.33399999999999996
+"RBBP6",0.147,0.481,"RB binding protein 6, ubiquitin ligase [Source:HGNC Symbol;Acc:HGNC:9889]",0.33399999999999996
+"ZNF107",0.147,0.481,"zinc finger protein 107 [Source:HGNC Symbol;Acc:HGNC:12887]",0.33399999999999996
+"UQCRQ",0.147,0.481,"ubiquinol-cytochrome c reductase complex III subunit VII [Source:HGNC Symbol;Acc:HGNC:29594]",0.33399999999999996
+"AFF3",0.147,0.481,"AF4/FMR2 family member 3 [Source:HGNC Symbol;Acc:HGNC:6473]",0.33399999999999996
+"PFDN5",0.667,1,"prefoldin subunit 5 [Source:HGNC Symbol;Acc:HGNC:8869]",0.33299999999999996
+"GLOD4",0.039,0.37,"glyoxalase domain containing 4 [Source:HGNC Symbol;Acc:HGNC:14111]",0.331
+"CNOT6L",0.078,0.407,"CCR4-NOT transcription complex subunit 6 like [Source:HGNC Symbol;Acc:HGNC:18042]",0.32899999999999996
+"BCL3",0.078,0.407,"BCL3 transcription coactivator [Source:HGNC Symbol;Acc:HGNC:998]",0.32899999999999996
+"CXCR4",0.598,0.926,"C-X-C motif chemokine receptor 4 [Source:HGNC Symbol;Acc:HGNC:2561]",0.32800000000000007
+"RGS2",0.265,0.593,"regulator of G protein signaling 2 [Source:HGNC Symbol;Acc:HGNC:9998]",0.32799999999999996
+"TBCB",0.118,0.444,"tubulin folding cofactor B [Source:HGNC Symbol;Acc:HGNC:1989]",0.326
+"GNB1",0.118,0.444,"G protein subunit beta 1 [Source:HGNC Symbol;Acc:HGNC:4396]",0.326
+"NEMF",0.118,0.444,"nuclear export mediator factor [Source:HGNC Symbol;Acc:HGNC:10663]",0.326
+"PMAIP1",0.343,0.667,"phorbol-12-myristate-13-acetate-induced protein 1 [Source:HGNC Symbol;Acc:HGNC:9108]",0.324
+"DDX39B",0.157,0.481,"DExD-box helicase 39B [Source:HGNC Symbol;Acc:HGNC:13917]",0.32399999999999995
+"TMEM123",0.157,0.481,"transmembrane protein 123 [Source:HGNC Symbol;Acc:HGNC:30138]",0.32399999999999995
+"ATP5ME",0.196,0.519,"ATP synthase membrane subunit e [Source:HGNC Symbol;Acc:HGNC:846]",0.323
+"CAPZA1",0.196,0.519,"capping actin protein of muscle Z-line subunit alpha 1 [Source:HGNC Symbol;Acc:HGNC:1488]",0.323
+"HMGB1",0.382,0.704,"high mobility group box 1 [Source:HGNC Symbol;Acc:HGNC:4983]",0.32199999999999995
+"SPEN",0.088,0.407,"spen family transcriptional repressor [Source:HGNC Symbol;Acc:HGNC:17575]",0.31899999999999995
+"TIAL1",0.088,0.407,"TIA1 cytotoxic granule associated RNA binding protein like 1 [Source:HGNC Symbol;Acc:HGNC:11804]",0.31899999999999995
+"UPF3A",0.088,0.407,"UPF3A regulator of nonsense mediated mRNA decay [Source:HGNC Symbol;Acc:HGNC:20332]",0.31899999999999995
+"ITSN2",0.088,0.407,"intersectin 2 [Source:HGNC Symbol;Acc:HGNC:6184]",0.31899999999999995
+"DARS",0.088,0.407,"aspartyl-tRNA synthetase [Source:HGNC Symbol;Acc:HGNC:2678]",0.31899999999999995
+"ZC3H15",0.088,0.407,"zinc finger CCCH-type containing 15 [Source:HGNC Symbol;Acc:HGNC:29528]",0.31899999999999995
+"GTF3C6",0.088,0.407,"general transcription factor IIIC subunit 6 [Source:HGNC Symbol;Acc:HGNC:20872]",0.31899999999999995
+"PIM2",0.127,0.444,"Pim-2 proto-oncogene, serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:8987]",0.317
+"RNPS1",0.127,0.444,"RNA binding protein with serine rich domain 1 [Source:HGNC Symbol;Acc:HGNC:10080]",0.317
+"SEC62",0.127,0.444,"SEC62 homolog, preprotein translocation factor [Source:HGNC Symbol;Acc:HGNC:11846]",0.317
+"ADAR",0.127,0.444,"adenosine deaminase RNA specific [Source:HGNC Symbol;Acc:HGNC:225]",0.317
+"ARGLU1",0.353,0.667,"arginine and glutamate rich 1 [Source:HGNC Symbol;Acc:HGNC:25482]",0.31400000000000006
+"CHD2",0.167,0.481,"chromodomain helicase DNA binding protein 2 [Source:HGNC Symbol;Acc:HGNC:1917]",0.31399999999999995
+"HNRNPA2B1",0.539,0.852,"heterogeneous nuclear ribonucleoprotein A2/B1 [Source:HGNC Symbol;Acc:HGNC:5033]",0.31299999999999994
+"WDR1",0.059,0.37,"WD repeat domain 1 [Source:HGNC Symbol;Acc:HGNC:12754]",0.311
+"SRI",0.059,0.37,"sorcin [Source:HGNC Symbol;Acc:HGNC:11292]",0.311
+"ANKRD11",0.284,0.593,"ankyrin repeat domain 11 [Source:HGNC Symbol;Acc:HGNC:21316]",0.309
+"TBC1D9",0.098,0.407,"TBC1 domain family member 9 [Source:HGNC Symbol;Acc:HGNC:21710]",0.30899999999999994
+"TRA2A",0.098,0.407,"transformer 2 alpha homolog [Source:HGNC Symbol;Acc:HGNC:16645]",0.30899999999999994
+"TARDBP",0.098,0.407,"TAR DNA binding protein [Source:HGNC Symbol;Acc:HGNC:11571]",0.30899999999999994
+"RBM33",0.098,0.407,"RNA binding motif protein 33 [Source:HGNC Symbol;Acc:HGNC:27223]",0.30899999999999994
+"POLR2K",0.098,0.407,"RNA polymerase II subunit K [Source:HGNC Symbol;Acc:HGNC:9198]",0.30899999999999994
+"TNFRSF14",0.137,0.444,"TNF receptor superfamily member 14 [Source:HGNC Symbol;Acc:HGNC:11912]",0.307
+"SNHG14",0.137,0.444,"small nucleolar RNA host gene 14 [Source:HGNC Symbol;Acc:HGNC:37462]",0.307
+"IL16",0.176,0.481,"interleukin 16 [Source:HGNC Symbol;Acc:HGNC:5980]",0.305
+"SRSF2",0.255,0.556,"serine and arginine rich splicing factor 2 [Source:HGNC Symbol;Acc:HGNC:10783]",0.30100000000000005
+"TMCO1",0.069,0.37,"transmembrane and coiled-coil domains 1 [Source:HGNC Symbol;Acc:HGNC:18188]",0.301
+"WDR33",0.069,0.37,"WD repeat domain 33 [Source:HGNC Symbol;Acc:HGNC:25651]",0.301
+"REST",0.069,0.37,"RE1 silencing transcription factor [Source:HGNC Symbol;Acc:HGNC:9966]",0.301
+"GRHPR",0.069,0.37,"glyoxylate and hydroxypyruvate reductase [Source:HGNC Symbol;Acc:HGNC:4570]",0.301
+"MRPS7",0.069,0.37,"mitochondrial ribosomal protein S7 [Source:HGNC Symbol;Acc:HGNC:14499]",0.301
+"MIF4GD",0.069,0.37,"MIF4G domain containing [Source:HGNC Symbol;Acc:HGNC:24030]",0.301
+"ZNF217",0.069,0.37,"zinc finger protein 217 [Source:HGNC Symbol;Acc:HGNC:13009]",0.301
+"PJA2",0.108,0.407,"praja ring finger ubiquitin ligase 2 [Source:HGNC Symbol;Acc:HGNC:17481]",0.299
+"POU2AF1",0.108,0.407,"POU class 2 homeobox associating factor 1 [Source:HGNC Symbol;Acc:HGNC:9211]",0.299
+"SYVN1",0.108,0.407,"synoviolin 1 [Source:HGNC Symbol;Acc:HGNC:20738]",0.299
+"IRF9",0.108,0.407,"interferon regulatory factor 9 [Source:HGNC Symbol;Acc:HGNC:6131]",0.299
+"SRSF10",0.147,0.444,"serine and arginine rich splicing factor 10 [Source:HGNC Symbol;Acc:HGNC:16713]",0.29700000000000004
+"PALM2-AKAP2",0.147,0.444,"PALM2-AKAP2 fusion [Source:HGNC Symbol;Acc:HGNC:33529]",0.29700000000000004
+"SNHG8",0.147,0.444,"small nucleolar RNA host gene 8 [Source:HGNC Symbol;Acc:HGNC:33098]",0.29700000000000004
+"ZNF580",0.147,0.444,"zinc finger protein 580 [Source:HGNC Symbol;Acc:HGNC:29473]",0.29700000000000004
+"ADAM28",0.333,0.63,"ADAM metallopeptidase domain 28 [Source:HGNC Symbol;Acc:HGNC:206]",0.297
+"NDUFB9",0.078,0.37,"NADH:ubiquinone oxidoreductase subunit B9 [Source:HGNC Symbol;Acc:HGNC:7704]",0.292
+"ROMO1",0.078,0.37,"reactive oxygen species modulator 1 [Source:HGNC Symbol;Acc:HGNC:16185]",0.292
+"UBE2G1",0.078,0.37,"ubiquitin conjugating enzyme E2 G1 [Source:HGNC Symbol;Acc:HGNC:12482]",0.292
+"BCAS2",0.078,0.37,"BCAS2 pre-mRNA processing factor [Source:HGNC Symbol;Acc:HGNC:975]",0.292
+"RAD50",0.078,0.37,"RAD50 double strand break repair protein [Source:HGNC Symbol;Acc:HGNC:9816]",0.292
+"DNAJB6",0.078,0.37,"DnaJ heat shock protein family (Hsp40) member B6 [Source:HGNC Symbol;Acc:HGNC:14888]",0.292
+"FAM120A",0.078,0.37,"family with sequence similarity 120A [Source:HGNC Symbol;Acc:HGNC:13247]",0.292
+"TMPO",0.078,0.37,"thymopoietin [Source:HGNC Symbol;Acc:HGNC:11875]",0.292
+"WASHC4",0.078,0.37,"WASH complex subunit 4 [Source:HGNC Symbol;Acc:HGNC:29174]",0.292
+"CNDP2",0.118,0.407,"carnosine dipeptidase 2 [Source:HGNC Symbol;Acc:HGNC:24437]",0.289
+"GLS",0.118,0.407,"glutaminase [Source:HGNC Symbol;Acc:HGNC:4331]",0.289
+"CSNK2B",0.118,0.407,"casein kinase 2 beta [Source:HGNC Symbol;Acc:HGNC:2460]",0.289
+"FAAP20",0.118,0.407,"FA core complex associated protein 20 [Source:HGNC Symbol;Acc:HGNC:26428]",0.289
+"NAGK",0.118,0.407,"N-acetylglucosamine kinase [Source:HGNC Symbol;Acc:HGNC:17174]",0.289
+"KCNN4",0.304,0.593,"potassium calcium-activated channel subfamily N member 4 [Source:HGNC Symbol;Acc:HGNC:6293]",0.289
+"GNG5",0.157,0.444,"G protein subunit gamma 5 [Source:HGNC Symbol;Acc:HGNC:4408]",0.28700000000000003
+"COMMD2",0.049,0.333,"COMM domain containing 2 [Source:HGNC Symbol;Acc:HGNC:24993]",0.28400000000000003
+"DCTN5",0.049,0.333,"dynactin subunit 5 [Source:HGNC Symbol;Acc:HGNC:24594]",0.28400000000000003
+"CD83",0.235,0.519,"CD83 molecule [Source:HGNC Symbol;Acc:HGNC:1703]",0.28400000000000003
+"CNOT7",0.088,0.37,"CCR4-NOT transcription complex subunit 7 [Source:HGNC Symbol;Acc:HGNC:14101]",0.28200000000000003
+"DCK",0.088,0.37,"deoxycytidine kinase [Source:HGNC Symbol;Acc:HGNC:2704]",0.28200000000000003
+"RIC3",0.088,0.37,"RIC3 acetylcholine receptor chaperone [Source:HGNC Symbol;Acc:HGNC:30338]",0.28200000000000003
+"SMIM14",0.088,0.37,"small integral membrane protein 14 [Source:HGNC Symbol;Acc:HGNC:27321]",0.28200000000000003
+"PDCD5",0.088,0.37,"programmed cell death 5 [Source:HGNC Symbol;Acc:HGNC:8764]",0.28200000000000003
+"IGHA2",0.275,0.556,"immunoglobulin heavy constant alpha 2 (A2m marker) [Source:HGNC Symbol;Acc:HGNC:5479]",0.281
+"ETS1",0.127,0.407,"ETS proto-oncogene 1, transcription factor [Source:HGNC Symbol;Acc:HGNC:3488]",0.27999999999999997
+"PPCS",0.059,0.333,"phosphopantothenoylcysteine synthetase [Source:HGNC Symbol;Acc:HGNC:25686]",0.274
+"AKR1A1",0.059,0.333,"aldo-keto reductase family 1 member A1 [Source:HGNC Symbol;Acc:HGNC:380]",0.274
+"ILF2",0.059,0.333,"interleukin enhancer binding factor 2 [Source:HGNC Symbol;Acc:HGNC:6037]",0.274
+"MPC2",0.059,0.333,"mitochondrial pyruvate carrier 2 [Source:HGNC Symbol;Acc:HGNC:24515]",0.274
+"SFT2D2",0.059,0.333,"SFT2 domain containing 2 [Source:HGNC Symbol;Acc:HGNC:25140]",0.274
+"PAIP1",0.059,0.333,"poly(A) binding protein interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:16945]",0.274
+"GRK6",0.059,0.333,"G protein-coupled receptor kinase 6 [Source:HGNC Symbol;Acc:HGNC:4545]",0.274
+"XPA",0.059,0.333,"XPA, DNA damage recognition and repair factor [Source:HGNC Symbol;Acc:HGNC:12814]",0.274
+"COA4",0.059,0.333,"cytochrome c oxidase assembly factor 4 homolog [Source:HGNC Symbol;Acc:HGNC:24604]",0.274
+"CBX5",0.059,0.333,"chromobox 5 [Source:HGNC Symbol;Acc:HGNC:1555]",0.274
+"SMCHD1",0.284,0.556,"structural maintenance of chromosomes flexible hinge domain containing 1 [Source:HGNC Symbol;Acc:HGNC:29090]",0.2720000000000001
+"UBTF",0.098,0.37,"upstream binding transcription factor [Source:HGNC Symbol;Acc:HGNC:12511]",0.272
+"MSI2",0.098,0.37,"musashi RNA binding protein 2 [Source:HGNC Symbol;Acc:HGNC:18585]",0.272
+"RAB11B",0.098,0.37,"RAB11B, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:9761]",0.272
+"NUDC",0.098,0.37,"nuclear distribution C, dynein complex regulator [Source:HGNC Symbol;Acc:HGNC:8045]",0.272
+"NDUFS2",0.098,0.37,"NADH:ubiquinone oxidoreductase core subunit S2 [Source:HGNC Symbol;Acc:HGNC:7708]",0.272
+"FXR1",0.098,0.37,"FMR1 autosomal homolog 1 [Source:HGNC Symbol;Acc:HGNC:4023]",0.272
+"EAPP",0.098,0.37,"E2F associated phosphoprotein [Source:HGNC Symbol;Acc:HGNC:19312]",0.272
+"U2SURP",0.137,0.407,"U2 snRNP associated SURP domain containing [Source:HGNC Symbol;Acc:HGNC:30855]",0.26999999999999996
+"C11orf58",0.137,0.407,"chromosome 11 open reading frame 58 [Source:HGNC Symbol;Acc:HGNC:16990]",0.26999999999999996
+"HNRNPR",0.176,0.444,"heterogeneous nuclear ribonucleoprotein R [Source:HGNC Symbol;Acc:HGNC:5047]",0.268
+"CBX3",0.176,0.444,"chromobox 3 [Source:HGNC Symbol;Acc:HGNC:1553]",0.268
+"GPX4",0.176,0.444,"glutathione peroxidase 4 [Source:HGNC Symbol;Acc:HGNC:4556]",0.268
+"SF3B1",0.216,0.481,"splicing factor 3b subunit 1 [Source:HGNC Symbol;Acc:HGNC:10768]",0.265
+"HERC4",0.069,0.333,"HECT and RLD domain containing E3 ubiquitin protein ligase 4 [Source:HGNC Symbol;Acc:HGNC:24521]",0.264
+"UBE2J2",0.069,0.333,"ubiquitin conjugating enzyme E2 J2 [Source:HGNC Symbol;Acc:HGNC:19268]",0.264
+"MRPS15",0.069,0.333,"mitochondrial ribosomal protein S15 [Source:HGNC Symbol;Acc:HGNC:14504]",0.264
+"GTF2B",0.069,0.333,"general transcription factor IIB [Source:HGNC Symbol;Acc:HGNC:4648]",0.264
+"DUSP2",0.069,0.333,"dual specificity phosphatase 2 [Source:HGNC Symbol;Acc:HGNC:3068]",0.264
+"NFE2L2",0.069,0.333,"nuclear factor, erythroid 2 like 2 [Source:HGNC Symbol;Acc:HGNC:7782]",0.264
+"DHX36",0.069,0.333,"DEAH-box helicase 36 [Source:HGNC Symbol;Acc:HGNC:14410]",0.264
+"GNL1",0.069,0.333,"G protein nucleolar 1 (putative) [Source:HGNC Symbol;Acc:HGNC:4413]",0.264
+"BCL7B",0.069,0.333,"BAF chromatin remodeling complex subunit BCL7B [Source:HGNC Symbol;Acc:HGNC:1005]",0.264
+"ZNF395",0.069,0.333,"zinc finger protein 395 [Source:HGNC Symbol;Acc:HGNC:18737]",0.264
+"PHF11",0.069,0.333,"PHD finger protein 11 [Source:HGNC Symbol;Acc:HGNC:17024]",0.264
+"PHKB",0.069,0.333,"phosphorylase kinase regulatory subunit beta [Source:HGNC Symbol;Acc:HGNC:8927]",0.264
+"CENPX",0.069,0.333,"centromere protein X [Source:HGNC Symbol;Acc:HGNC:11422]",0.264
+"PTBP1",0.069,0.333,"polypyrimidine tract binding protein 1 [Source:HGNC Symbol;Acc:HGNC:9583]",0.264
+"SHKBP1",0.069,0.333,"SH3KBP1 binding protein 1 [Source:HGNC Symbol;Acc:HGNC:19214]",0.264
+"ACAP2",0.108,0.37,"ArfGAP with coiled-coil, ankyrin repeat and PH domains 2 [Source:HGNC Symbol;Acc:HGNC:16469]",0.262
+"ZC3H12D",0.108,0.37,"zinc finger CCCH-type containing 12D [Source:HGNC Symbol;Acc:HGNC:21175]",0.262
+"DANCR",0.108,0.37,"differentiation antagonizing non-protein coding RNA [Source:HGNC Symbol;Acc:HGNC:28964]",0.262
+"TCP1",0.108,0.37,"t-complex 1 [Source:HGNC Symbol;Acc:HGNC:11655]",0.262
+"GRK3",0.108,0.37,"G protein-coupled receptor kinase 3 [Source:HGNC Symbol;Acc:HGNC:290]",0.262
+"RBMX",0.147,0.407,"RNA binding motif protein X-linked [Source:HGNC Symbol;Acc:HGNC:9910]",0.26
+"RBM25",0.186,0.444,"RNA binding motif protein 25 [Source:HGNC Symbol;Acc:HGNC:23244]",0.258
+"RCSD1",0.186,0.444,"RCSD domain containing 1 [Source:HGNC Symbol;Acc:HGNC:28310]",0.258
+"STIM2",0.186,0.444,"stromal interaction molecule 2 [Source:HGNC Symbol;Acc:HGNC:19205]",0.258
+"TXNIP",0.373,0.63,"thioredoxin interacting protein [Source:HGNC Symbol;Acc:HGNC:16952]",0.257
+"EVL",0.225,0.481,"Enah/Vasp-like [Source:HGNC Symbol;Acc:HGNC:20234]",0.256
+"PLEKHA3",0.078,0.333,"pleckstrin homology domain containing A3 [Source:HGNC Symbol;Acc:HGNC:14338]",0.255
+"CCT7",0.078,0.333,"chaperonin containing TCP1 subunit 7 [Source:HGNC Symbol;Acc:HGNC:1622]",0.255
+"GSPT1",0.078,0.333,"G1 to S phase transition 1 [Source:HGNC Symbol;Acc:HGNC:4621]",0.255
+"PPIE",0.078,0.333,"peptidylprolyl isomerase E [Source:HGNC Symbol;Acc:HGNC:9258]",0.255
+"CXCR5",0.078,0.333,"C-X-C motif chemokine receptor 5 [Source:HGNC Symbol;Acc:HGNC:1060]",0.255
+"SBNO1",0.078,0.333,"strawberry notch homolog 1 [Source:HGNC Symbol;Acc:HGNC:22973]",0.255
+"FLOT2",0.078,0.333,"flotillin 2 [Source:HGNC Symbol;Acc:HGNC:3758]",0.255
+"RAB5C",0.078,0.333,"RAB5C, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:9785]",0.255
+"SLC25A19",0.078,0.333,"solute carrier family 25 member 19 [Source:HGNC Symbol;Acc:HGNC:14409]",0.255
+"ZNF24",0.078,0.333,"zinc finger protein 24 [Source:HGNC Symbol;Acc:HGNC:13032]",0.255
+"ZFP36L2",0.265,0.519,"ZFP36 ring finger protein like 2 [Source:HGNC Symbol;Acc:HGNC:1108]",0.254
+"CCT3",0.118,0.37,"chaperonin containing TCP1 subunit 3 [Source:HGNC Symbol;Acc:HGNC:1616]",0.252
+"ZRANB2",0.118,0.37,"zinc finger RANBP2-type containing 2 [Source:HGNC Symbol;Acc:HGNC:13058]",0.252
+"TRIM38",0.118,0.37,"tripartite motif containing 38 [Source:HGNC Symbol;Acc:HGNC:10059]",0.252
+"GNPTAB",0.118,0.37,"N-acetylglucosamine-1-phosphate transferase subunits alpha and beta [Source:HGNC Symbol;Acc:HGNC:29670]",0.252
+"SRRM1",0.157,0.407,"serine and arginine repetitive matrix 1 [Source:HGNC Symbol;Acc:HGNC:16638]",0.24999999999999997
+"TNFRSF13C",0.529,0.778,"TNF receptor superfamily member 13C [Source:HGNC Symbol;Acc:HGNC:17755]",0.249
+"ORMDL1",0.196,0.444,"ORMDL sphingolipid biosynthesis regulator 1 [Source:HGNC Symbol;Acc:HGNC:16036]",0.248
+"KRT10",0.196,0.444,"keratin 10 [Source:HGNC Symbol;Acc:HGNC:6413]",0.248
+"ELP6",0.049,0.296,"elongator acetyltransferase complex subunit 6 [Source:HGNC Symbol;Acc:HGNC:25976]",0.247
+"NAAA",0.049,0.296,"N-acylethanolamine acid amidase [Source:HGNC Symbol;Acc:HGNC:736]",0.247
+"MRPS18B",0.049,0.296,"mitochondrial ribosomal protein S18B [Source:HGNC Symbol;Acc:HGNC:14516]",0.247
+"AKR1B1",0.049,0.296,"aldo-keto reductase family 1 member B [Source:HGNC Symbol;Acc:HGNC:381]",0.247
+"RPS6KB2",0.049,0.296,"ribosomal protein S6 kinase B2 [Source:HGNC Symbol;Acc:HGNC:10437]",0.247
+"BICD1",0.049,0.296,"BICD cargo adaptor 1 [Source:HGNC Symbol;Acc:HGNC:1049]",0.247
+"HECTD1",0.049,0.296,"HECT domain E3 ubiquitin protein ligase 1 [Source:HGNC Symbol;Acc:HGNC:20157]",0.247
+"FGR",0.088,0.333,"FGR proto-oncogene, Src family tyrosine kinase [Source:HGNC Symbol;Acc:HGNC:3697]",0.24500000000000002
+"SAT2",0.088,0.333,"spermidine/spermine N1-acetyltransferase family member 2 [Source:HGNC Symbol;Acc:HGNC:23160]",0.24500000000000002
+"NOP58",0.088,0.333,"NOP58 ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:29926]",0.24500000000000002
+"PYURF",0.088,0.333,"PIGY upstream reading frame [Source:HGNC Symbol;Acc:HGNC:44317]",0.24500000000000002
+"ARFGAP2",0.088,0.333,"ADP ribosylation factor GTPase activating protein 2 [Source:HGNC Symbol;Acc:HGNC:13504]",0.24500000000000002
+"TSR2",0.088,0.333,"TSR2 ribosome maturation factor [Source:HGNC Symbol;Acc:HGNC:25455]",0.24500000000000002
+"IRF1",0.088,0.333,"interferon regulatory factor 1 [Source:HGNC Symbol;Acc:HGNC:6116]",0.24500000000000002
+"LRRK2",0.088,0.333,"leucine rich repeat kinase 2 [Source:HGNC Symbol;Acc:HGNC:18618]",0.24500000000000002
+"ARPP19",0.088,0.333,"cAMP regulated phosphoprotein 19 [Source:HGNC Symbol;Acc:HGNC:16967]",0.24500000000000002
+"NKTR",0.127,0.37,"natural killer cell triggering receptor [Source:HGNC Symbol;Acc:HGNC:7833]",0.243
+"MAF1",0.127,0.37,"MAF1 homolog, negative regulator of RNA polymerase III [Source:HGNC Symbol;Acc:HGNC:24966]",0.243
+"PLEKHA2",0.127,0.37,"pleckstrin homology domain containing A2 [Source:HGNC Symbol;Acc:HGNC:14336]",0.243
+"NSMCE3",0.127,0.37,"NSE3 homolog, SMC5-SMC6 complex component [Source:HGNC Symbol;Acc:HGNC:7677]",0.243
+"FCGRT",0.127,0.37,"Fc fragment of IgG receptor and transporter [Source:HGNC Symbol;Acc:HGNC:3621]",0.243
+"IKZF3",0.167,0.407,"IKAROS family zinc finger 3 [Source:HGNC Symbol;Acc:HGNC:13178]",0.23999999999999996
+"SBDS",0.167,0.407,"SBDS ribosome maturation factor [Source:HGNC Symbol;Acc:HGNC:19440]",0.23999999999999996
+"TMC6",0.167,0.407,"transmembrane channel like 6 [Source:HGNC Symbol;Acc:HGNC:18021]",0.23999999999999996
+"BAX",0.167,0.407,"BCL2 associated X, apoptosis regulator [Source:HGNC Symbol;Acc:HGNC:959]",0.23999999999999996
+"CDC37",0.206,0.444,"cell division cycle 37 [Source:HGNC Symbol;Acc:HGNC:1735]",0.23800000000000002
+"TENT2",0.059,0.296,"terminal nucleotidyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:26776]",0.237
+"PELI1",0.059,0.296,"pellino E3 ubiquitin protein ligase 1 [Source:HGNC Symbol;Acc:HGNC:8827]",0.237
+"CHCHD5",0.059,0.296,"coiled-coil-helix-coiled-coil-helix domain containing 5 [Source:HGNC Symbol;Acc:HGNC:17840]",0.237
+"PDCD6IP",0.059,0.296,"programmed cell death 6 interacting protein [Source:HGNC Symbol;Acc:HGNC:8766]",0.237
+"LPP",0.059,0.296,"LIM domain containing preferred translocation partner in lipoma [Source:HGNC Symbol;Acc:HGNC:6679]",0.237
+"SLBP",0.059,0.296,"stem-loop binding protein [Source:HGNC Symbol;Acc:HGNC:10904]",0.237
+"ZNF736",0.059,0.296,"zinc finger protein 736 [Source:HGNC Symbol;Acc:HGNC:32467]",0.237
+"LPXN",0.059,0.296,"leupaxin [Source:HGNC Symbol;Acc:HGNC:14061]",0.237
+"SARNP",0.059,0.296,"SAP domain containing ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:24432]",0.237
+"DNAJA2",0.059,0.296,"DnaJ heat shock protein family (Hsp40) member A2 [Source:HGNC Symbol;Acc:HGNC:14884]",0.237
+"IST1",0.059,0.296,"IST1 factor associated with ESCRT-III [Source:HGNC Symbol;Acc:HGNC:28977]",0.237
+"PSMD11",0.059,0.296,"proteasome 26S subunit, non-ATPase 11 [Source:HGNC Symbol;Acc:HGNC:9556]",0.237
+"BSG",0.059,0.296,"basigin (Ok blood group) [Source:HGNC Symbol;Acc:HGNC:1116]",0.237
+"ZNF581",0.059,0.296,"zinc finger protein 581 [Source:HGNC Symbol;Acc:HGNC:25017]",0.237
+"SASH3",0.059,0.296,"SAM and SH3 domain containing 3 [Source:HGNC Symbol;Acc:HGNC:15975]",0.237
+"RBM5",0.098,0.333,"RNA binding motif protein 5 [Source:HGNC Symbol;Acc:HGNC:9902]",0.23500000000000001
+"LTA4H",0.098,0.333,"leukotriene A4 hydrolase [Source:HGNC Symbol;Acc:HGNC:6710]",0.23500000000000001
+"PRPF8",0.098,0.333,"pre-mRNA processing factor 8 [Source:HGNC Symbol;Acc:HGNC:17340]",0.23500000000000001
+"SSR1",0.098,0.333,"signal sequence receptor subunit 1 [Source:HGNC Symbol;Acc:HGNC:11323]",0.23500000000000001
+"MAPK1",0.098,0.333,"mitogen-activated protein kinase 1 [Source:HGNC Symbol;Acc:HGNC:6871]",0.23500000000000001
+"TMF1",0.098,0.333,"TATA element modulatory factor 1 [Source:HGNC Symbol;Acc:HGNC:11870]",0.23500000000000001
+"SKIL",0.098,0.333,"SKI like proto-oncogene [Source:HGNC Symbol;Acc:HGNC:10897]",0.23500000000000001
+"IGHG2",0.098,0.333,"immunoglobulin heavy constant gamma 2 (G2m marker) [Source:HGNC Symbol;Acc:HGNC:5526]",0.23500000000000001
+"PARVG",0.098,0.333,"parvin gamma [Source:HGNC Symbol;Acc:HGNC:14654]",0.23500000000000001
+"OFD1",0.098,0.333,"OFD1 centriole and centriolar satellite protein [Source:HGNC Symbol;Acc:HGNC:2567]",0.23500000000000001
+"AUP1",0.137,0.37,"AUP1 lipid droplet regulating VLDL assembly factor [Source:HGNC Symbol;Acc:HGNC:891]",0.23299999999999998
+"EHMT1",0.137,0.37,"euchromatic histone lysine methyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:24650]",0.23299999999999998
+"RBM4",0.137,0.37,"RNA binding motif protein 4 [Source:HGNC Symbol;Acc:HGNC:9901]",0.23299999999999998
+"SLTM",0.137,0.37,"SAFB like transcription modulator [Source:HGNC Symbol;Acc:HGNC:20709]",0.23299999999999998
+"C19orf25",0.029,0.259,"chromosome 19 open reading frame 25 [Source:HGNC Symbol;Acc:HGNC:26711]",0.23
+"IGHG3",0.363,0.593,"immunoglobulin heavy constant gamma 3 (G3m marker) [Source:HGNC Symbol;Acc:HGNC:5527]",0.22999999999999998
+"NCBP2",0.069,0.296,"nuclear cap binding protein subunit 2 [Source:HGNC Symbol;Acc:HGNC:7659]",0.22699999999999998
+"MARCH6",0.069,0.296,"membrane associated ring-CH-type finger 6 [Source:HGNC Symbol;Acc:HGNC:30550]",0.22699999999999998
+"GSDMD",0.069,0.296,"gasdermin D [Source:HGNC Symbol;Acc:HGNC:25697]",0.22699999999999998
+"DR1",0.069,0.296,"down-regulator of transcription 1 [Source:HGNC Symbol;Acc:HGNC:3017]",0.22699999999999998
+"RO60",0.069,0.296,"Ro60, Y RNA binding protein [Source:HGNC Symbol;Acc:HGNC:11313]",0.22699999999999998
+"DNAJC10",0.069,0.296,"DnaJ heat shock protein family (Hsp40) member C10 [Source:HGNC Symbol;Acc:HGNC:24637]",0.22699999999999998
+"MOB4",0.069,0.296,"MOB family member 4, phocein [Source:HGNC Symbol;Acc:HGNC:17261]",0.22699999999999998
+"BMPR2",0.069,0.296,"bone morphogenetic protein receptor type 2 [Source:HGNC Symbol;Acc:HGNC:1078]",0.22699999999999998
+"TMEM165",0.069,0.296,"transmembrane protein 165 [Source:HGNC Symbol;Acc:HGNC:30760]",0.22699999999999998
+"C5orf24",0.069,0.296,"chromosome 5 open reading frame 24 [Source:HGNC Symbol;Acc:HGNC:26746]",0.22699999999999998
+"PMPCB",0.069,0.296,"peptidase, mitochondrial processing beta subunit [Source:HGNC Symbol;Acc:HGNC:9119]",0.22699999999999998
+"KRR1",0.069,0.296,"KRR1 small subunit processome component homolog [Source:HGNC Symbol;Acc:HGNC:5176]",0.22699999999999998
+"ORAI1",0.069,0.296,"ORAI calcium release-activated calcium modulator 1 [Source:HGNC Symbol;Acc:HGNC:25896]",0.22699999999999998
+"PPP2R5E",0.069,0.296,"protein phosphatase 2 regulatory subunit B'epsilon [Source:HGNC Symbol;Acc:HGNC:9313]",0.22699999999999998
+"EMC7",0.069,0.296,"ER membrane protein complex subunit 7 [Source:HGNC Symbol;Acc:HGNC:24301]",0.22699999999999998
+"SRSF1",0.069,0.296,"serine and arginine rich splicing factor 1 [Source:HGNC Symbol;Acc:HGNC:10780]",0.22699999999999998
+"MYO9B",0.069,0.296,"myosin IXB [Source:HGNC Symbol;Acc:HGNC:7609]",0.22699999999999998
+"UBE2G2",0.069,0.296,"ubiquitin conjugating enzyme E2 G2 [Source:HGNC Symbol;Acc:HGNC:12483]",0.22699999999999998
+"CSNK1E",0.069,0.296,"casein kinase 1 epsilon [Source:HGNC Symbol;Acc:HGNC:2453]",0.22699999999999998
+"NDUFA6",0.069,0.296,"NADH:ubiquinone oxidoreductase subunit A6 [Source:HGNC Symbol;Acc:HGNC:7690]",0.22699999999999998
+"GRIPAP1",0.069,0.296,"GRIP1 associated protein 1 [Source:HGNC Symbol;Acc:HGNC:18706]",0.22699999999999998
+"STAG2",0.069,0.296,"stromal antigen 2 [Source:HGNC Symbol;Acc:HGNC:11355]",0.22699999999999998
+"NR1H2",0.108,0.333,"nuclear receptor subfamily 1 group H member 2 [Source:HGNC Symbol;Acc:HGNC:7965]",0.22500000000000003
+"TTC19",0.108,0.333,"tetratricopeptide repeat domain 19 [Source:HGNC Symbol;Acc:HGNC:26006]",0.22500000000000003
+"WIPF1",0.108,0.333,"WAS/WASL interacting protein family member 1 [Source:HGNC Symbol;Acc:HGNC:12736]",0.22500000000000003
+"PTPN12",0.108,0.333,"protein tyrosine phosphatase non-receptor type 12 [Source:HGNC Symbol;Acc:HGNC:9645]",0.22500000000000003
+"RBM17",0.108,0.333,"RNA binding motif protein 17 [Source:HGNC Symbol;Acc:HGNC:16944]",0.22500000000000003
+"VPS29",0.108,0.333,"VPS29 retromer complex component [Source:HGNC Symbol;Acc:HGNC:14340]",0.22500000000000003
+"ELMSAN1",0.108,0.333,"ELM2 and Myb/SANT domain containing 1 [Source:HGNC Symbol;Acc:HGNC:19853]",0.22500000000000003
+"PAFAH1B1",0.108,0.333,"platelet activating factor acetylhydrolase 1b regulatory subunit 1 [Source:HGNC Symbol;Acc:HGNC:8574]",0.22500000000000003
+"TRIM28",0.108,0.333,"tripartite motif containing 28 [Source:HGNC Symbol;Acc:HGNC:16384]",0.22500000000000003
+"OSBPL10",0.147,0.37,"oxysterol binding protein like 10 [Source:HGNC Symbol;Acc:HGNC:16395]",0.223
+"TRAF3IP3",0.147,0.37,"TRAF3 interacting protein 3 [Source:HGNC Symbol;Acc:HGNC:30766]",0.223
+"SFPQ",0.186,0.407,"splicing factor proline and glutamine rich [Source:HGNC Symbol;Acc:HGNC:10774]",0.22099999999999997
+"MRPS25",0.039,0.259,"mitochondrial ribosomal protein S25 [Source:HGNC Symbol;Acc:HGNC:14511]",0.22
+"ATOX1",0.039,0.259,"antioxidant 1 copper chaperone [Source:HGNC Symbol;Acc:HGNC:798]",0.22
+"ECHDC1",0.039,0.259,"ethylmalonyl-CoA decarboxylase 1 [Source:HGNC Symbol;Acc:HGNC:21489]",0.22
+"TRIM4",0.039,0.259,"tripartite motif containing 4 [Source:HGNC Symbol;Acc:HGNC:16275]",0.22
+"SRPRA",0.039,0.259,"SRP receptor subunit alpha [Source:HGNC Symbol;Acc:HGNC:11307]",0.22
+"KDM6B",0.039,0.259,"lysine demethylase 6B [Source:HGNC Symbol;Acc:HGNC:29012]",0.22
+"DKC1",0.039,0.259,"dyskerin pseudouridine synthase 1 [Source:HGNC Symbol;Acc:HGNC:2890]",0.22
+"BTG2",0.225,0.444,"BTG anti-proliferation factor 2 [Source:HGNC Symbol;Acc:HGNC:1131]",0.219
+"PRKDC",0.078,0.296,"protein kinase, DNA-activated, catalytic subunit [Source:HGNC Symbol;Acc:HGNC:9413]",0.21799999999999997
+"ANKRD17",0.078,0.296,"ankyrin repeat domain 17 [Source:HGNC Symbol;Acc:HGNC:23575]",0.21799999999999997
+"ST3GAL5",0.078,0.296,"ST3 beta-galactoside alpha-2,3-sialyltransferase 5 [Source:HGNC Symbol;Acc:HGNC:10872]",0.21799999999999997
+"SP3",0.078,0.296,"Sp3 transcription factor [Source:HGNC Symbol;Acc:HGNC:11208]",0.21799999999999997
+"TPD52",0.078,0.296,"tumor protein D52 [Source:HGNC Symbol;Acc:HGNC:12005]",0.21799999999999997
+"ZMYM2",0.078,0.296,"zinc finger MYM-type containing 2 [Source:HGNC Symbol;Acc:HGNC:12989]",0.21799999999999997
+"CREBBP",0.078,0.296,"CREB binding protein [Source:HGNC Symbol;Acc:HGNC:2348]",0.21799999999999997
+"CREB1",0.078,0.296,"cAMP responsive element binding protein 1 [Source:HGNC Symbol;Acc:HGNC:2345]",0.21799999999999997
+"DUSP22",0.078,0.296,"dual specificity phosphatase 22 [Source:HGNC Symbol;Acc:HGNC:16077]",0.21799999999999997
+"CCT6A",0.078,0.296,"chaperonin containing TCP1 subunit 6A [Source:HGNC Symbol;Acc:HGNC:1620]",0.21799999999999997
+"EIF4H",0.078,0.296,"eukaryotic translation initiation factor 4H [Source:HGNC Symbol;Acc:HGNC:12741]",0.21799999999999997
+"FAM3C",0.078,0.296,"family with sequence similarity 3 member C [Source:HGNC Symbol;Acc:HGNC:18664]",0.21799999999999997
+"METAP2",0.078,0.296,"methionyl aminopeptidase 2 [Source:HGNC Symbol;Acc:HGNC:16672]",0.21799999999999997
+"PPP4R3A",0.078,0.296,"protein phosphatase 4 regulatory subunit 3A [Source:HGNC Symbol;Acc:HGNC:20219]",0.21799999999999997
+"SIRT7",0.078,0.296,"sirtuin 7 [Source:HGNC Symbol;Acc:HGNC:14935]",0.21799999999999997
+"NDUFS7",0.118,0.333,"NADH:ubiquinone oxidoreductase core subunit S7 [Source:HGNC Symbol;Acc:HGNC:7714]",0.21500000000000002
+"NHLRC3",0.118,0.333,"NHL repeat containing 3 [Source:HGNC Symbol;Acc:HGNC:33751]",0.21500000000000002
+"PSMC5",0.118,0.333,"proteasome 26S subunit, ATPase 5 [Source:HGNC Symbol;Acc:HGNC:9552]",0.21500000000000002
+"TRIM22",0.118,0.333,"tripartite motif containing 22 [Source:HGNC Symbol;Acc:HGNC:16379]",0.21500000000000002
+"WDR6",0.118,0.333,"WD repeat domain 6 [Source:HGNC Symbol;Acc:HGNC:12758]",0.21500000000000002
+"MCM5",0.118,0.333,"minichromosome maintenance complex component 5 [Source:HGNC Symbol;Acc:HGNC:6948]",0.21500000000000002
+"CEPT1",0.118,0.333,"choline/ethanolamine phosphotransferase 1 [Source:HGNC Symbol;Acc:HGNC:24289]",0.21500000000000002
+"ATF6B",0.118,0.333,"activating transcription factor 6 beta [Source:HGNC Symbol;Acc:HGNC:2349]",0.21500000000000002
+"C16orf74",0.157,0.37,"chromosome 16 open reading frame 74 [Source:HGNC Symbol;Acc:HGNC:23362]",0.213
+"LASP1",0.049,0.259,"LIM and SH3 protein 1 [Source:HGNC Symbol;Acc:HGNC:6513]",0.21000000000000002
+"STX4",0.049,0.259,"syntaxin 4 [Source:HGNC Symbol;Acc:HGNC:11439]",0.21000000000000002
+"ELOVL1",0.049,0.259,"ELOVL fatty acid elongase 1 [Source:HGNC Symbol;Acc:HGNC:14418]",0.21000000000000002
+"ZNF326",0.049,0.259,"zinc finger protein 326 [Source:HGNC Symbol;Acc:HGNC:14104]",0.21000000000000002
+"ZEB2",0.049,0.259,"zinc finger E-box binding homeobox 2 [Source:HGNC Symbol;Acc:HGNC:14881]",0.21000000000000002
+"RETREG2",0.049,0.259,"reticulophagy regulator family member 2 [Source:HGNC Symbol;Acc:HGNC:28450]",0.21000000000000002
+"UBE2E1",0.049,0.259,"ubiquitin conjugating enzyme E2 E1 [Source:HGNC Symbol;Acc:HGNC:12477]",0.21000000000000002
+"SLC25A4",0.049,0.259,"solute carrier family 25 member 4 [Source:HGNC Symbol;Acc:HGNC:10990]",0.21000000000000002
+"CLPTM1L",0.049,0.259,"CLPTM1 like [Source:HGNC Symbol;Acc:HGNC:24308]",0.21000000000000002
+"SGCE",0.049,0.259,"sarcoglycan epsilon [Source:HGNC Symbol;Acc:HGNC:10808]",0.21000000000000002
+"ARPC1A",0.049,0.259,"actin related protein 2/3 complex subunit 1A [Source:HGNC Symbol;Acc:HGNC:703]",0.21000000000000002
+"PLEKHF2",0.049,0.259,"pleckstrin homology and FYVE domain containing 2 [Source:HGNC Symbol;Acc:HGNC:20757]",0.21000000000000002
+"SH3GLB2",0.049,0.259,"SH3 domain containing GRB2 like, endophilin B2 [Source:HGNC Symbol;Acc:HGNC:10834]",0.21000000000000002
+"COPB1",0.049,0.259,"coatomer protein complex subunit beta 1 [Source:HGNC Symbol;Acc:HGNC:2231]",0.21000000000000002
+"VPS11",0.049,0.259,"VPS11 core subunit of CORVET and HOPS complexes [Source:HGNC Symbol;Acc:HGNC:14583]",0.21000000000000002
+"GLIPR1",0.049,0.259,"GLI pathogenesis related 1 [Source:HGNC Symbol;Acc:HGNC:17001]",0.21000000000000002
+"IREB2",0.049,0.259,"iron responsive element binding protein 2 [Source:HGNC Symbol;Acc:HGNC:6115]",0.21000000000000002
+"METTL9",0.049,0.259,"methyltransferase like 9 [Source:HGNC Symbol;Acc:HGNC:24586]",0.21000000000000002
+"USP22",0.049,0.259,"ubiquitin specific peptidase 22 [Source:HGNC Symbol;Acc:HGNC:12621]",0.21000000000000002
+"PTOV1",0.049,0.259,"PTOV1 extended AT-hook containing adaptor protein [Source:HGNC Symbol;Acc:HGNC:9632]",0.21000000000000002
+"BCAP31",0.049,0.259,"B cell receptor associated protein 31 [Source:HGNC Symbol;Acc:HGNC:16695]",0.21000000000000002
+"NDUFS6",0.088,0.296,"NADH:ubiquinone oxidoreductase subunit S6 [Source:HGNC Symbol;Acc:HGNC:7713]",0.208
+"GNG7",0.088,0.296,"G protein subunit gamma 7 [Source:HGNC Symbol;Acc:HGNC:4410]",0.208
+"SEPTIN1",0.088,0.296,"septin 1 [Source:HGNC Symbol;Acc:HGNC:2879]",0.208
+"ACADVL",0.088,0.296,"acyl-CoA dehydrogenase very long chain [Source:HGNC Symbol;Acc:HGNC:92]",0.208
+"EPB41",0.088,0.296,"erythrocyte membrane protein band 4.1 [Source:HGNC Symbol;Acc:HGNC:3377]",0.208
+"CDKN2D",0.088,0.296,"cyclin dependent kinase inhibitor 2D [Source:HGNC Symbol;Acc:HGNC:1790]",0.208
+"NRDC",0.088,0.296,"nardilysin convertase [Source:HGNC Symbol;Acc:HGNC:7995]",0.208
+"MCOLN2",0.088,0.296,"mucolipin 2 [Source:HGNC Symbol;Acc:HGNC:13357]",0.208
+"UFL1",0.088,0.296,"UFM1 specific ligase 1 [Source:HGNC Symbol;Acc:HGNC:23039]",0.208
+"TRIM44",0.088,0.296,"tripartite motif containing 44 [Source:HGNC Symbol;Acc:HGNC:19016]",0.208
+"NDUFV1",0.088,0.296,"NADH:ubiquinone oxidoreductase core subunit V1 [Source:HGNC Symbol;Acc:HGNC:7716]",0.208
+"TAOK3",0.088,0.296,"TAO kinase 3 [Source:HGNC Symbol;Acc:HGNC:18133]",0.208
+"THOC2",0.088,0.296,"THO complex 2 [Source:HGNC Symbol;Acc:HGNC:19073]",0.208
+"WTAP",0.127,0.333,"WT1 associated protein [Source:HGNC Symbol;Acc:HGNC:16846]",0.20600000000000002
+"PAPOLA",0.127,0.333,"poly(A) polymerase alpha [Source:HGNC Symbol;Acc:HGNC:14981]",0.20600000000000002
+"RPS29",0.794,1,"ribosomal protein S29 [Source:HGNC Symbol;Acc:HGNC:10419]",0.20599999999999996
+"PPP2R5C",0.167,0.37,"protein phosphatase 2 regulatory subunit B'gamma [Source:HGNC Symbol;Acc:HGNC:9311]",0.20299999999999999
+"GSAP",0.167,0.37,"gamma-secretase activating protein [Source:HGNC Symbol;Acc:HGNC:28042]",0.20299999999999999
+"PRPF4B",0.167,0.37,"pre-mRNA processing factor 4B [Source:HGNC Symbol;Acc:HGNC:17346]",0.20299999999999999
+"CNOT2",0.059,0.259,"CCR4-NOT transcription complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:7878]",0.2
+"TTF1",0.059,0.259,"transcription termination factor 1 [Source:HGNC Symbol;Acc:HGNC:12397]",0.2
+"HHEX",0.059,0.259,"hematopoietically expressed homeobox [Source:HGNC Symbol;Acc:HGNC:4901]",0.2
+"MAPRE2",0.059,0.259,"microtubule associated protein RP/EB family member 2 [Source:HGNC Symbol;Acc:HGNC:6891]",0.2
+"SIAH2",0.059,0.259,"siah E3 ubiquitin protein ligase 2 [Source:HGNC Symbol;Acc:HGNC:10858]",0.2
+"REPIN1",0.059,0.259,"replication initiator 1 [Source:HGNC Symbol;Acc:HGNC:17922]",0.2
+"PEX16",0.059,0.259,"peroxisomal biogenesis factor 16 [Source:HGNC Symbol;Acc:HGNC:8857]",0.2
+"PIK3CD",0.059,0.259,"phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit delta [Source:HGNC Symbol;Acc:HGNC:8977]",0.2
+"S100PBP",0.059,0.259,"S100P binding protein [Source:HGNC Symbol;Acc:HGNC:25768]",0.2
+"PSMD4",0.059,0.259,"proteasome 26S subunit, non-ATPase 4 [Source:HGNC Symbol;Acc:HGNC:9561]",0.2
+"MEF2D",0.059,0.259,"myocyte enhancer factor 2D [Source:HGNC Symbol;Acc:HGNC:6997]",0.2
+"MFF",0.059,0.259,"mitochondrial fission factor [Source:HGNC Symbol;Acc:HGNC:24858]",0.2
+"ARF4",0.059,0.259,"ADP ribosylation factor 4 [Source:HGNC Symbol;Acc:HGNC:655]",0.2
+"PHF1",0.059,0.259,"PHD finger protein 1 [Source:HGNC Symbol;Acc:HGNC:8919]",0.2
+"PLEC",0.059,0.259,"plectin [Source:HGNC Symbol;Acc:HGNC:9069]",0.2
+"CELF1",0.059,0.259,"CUGBP Elav-like family member 1 [Source:HGNC Symbol;Acc:HGNC:2549]",0.2
+"PPP1R14B",0.059,0.259,"protein phosphatase 1 regulatory inhibitor subunit 14B [Source:HGNC Symbol;Acc:HGNC:9057]",0.2
+"ECI1",0.059,0.259,"enoyl-CoA delta isomerase 1 [Source:HGNC Symbol;Acc:HGNC:2703]",0.2
+"MIEN1",0.059,0.259,"migration and invasion enhancer 1 [Source:HGNC Symbol;Acc:HGNC:28230]",0.2
+"NFIC",0.059,0.259,"nuclear factor I C [Source:HGNC Symbol;Acc:HGNC:7786]",0.2
+"PIN1",0.059,0.259,"peptidylprolyl cis/trans isomerase, NIMA-interacting 1 [Source:HGNC Symbol;Acc:HGNC:8988]",0.2
+"PTPRA",0.059,0.259,"protein tyrosine phosphatase receptor type A [Source:HGNC Symbol;Acc:HGNC:9664]",0.2
+"MICAL3",0.059,0.259,"microtubule associated monooxygenase, calponin and LIM domain containing 3 [Source:HGNC Symbol;Acc:HGNC:24694]",0.2
+"WAS",0.059,0.259,"WASP actin nucleation promoting factor [Source:HGNC Symbol;Acc:HGNC:12731]",0.2
+"IDH3G",0.059,0.259,"isocitrate dehydrogenase (NAD(+)) 3 gamma [Source:HGNC Symbol;Acc:HGNC:5386]",0.2
+"EIF1B",0.245,0.444,"eukaryotic translation initiation factor 1B [Source:HGNC Symbol;Acc:HGNC:30792]",0.199
+"CPEB4",0.098,0.296,"cytoplasmic polyadenylation element binding protein 4 [Source:HGNC Symbol;Acc:HGNC:21747]",0.19799999999999998
+"NDUFS8",0.098,0.296,"NADH:ubiquinone oxidoreductase core subunit S8 [Source:HGNC Symbol;Acc:HGNC:7715]",0.19799999999999998
+"FGFR1OP2",0.098,0.296,"FGFR1 oncogene partner 2 [Source:HGNC Symbol;Acc:HGNC:23098]",0.19799999999999998
+"KIF5B",0.098,0.296,"kinesin family member 5B [Source:HGNC Symbol;Acc:HGNC:6324]",0.19799999999999998
+"HADHA",0.098,0.296,"hydroxyacyl-CoA dehydrogenase trifunctional multienzyme complex subunit alpha [Source:HGNC Symbol;Acc:HGNC:4801]",0.19799999999999998
+"AMFR",0.098,0.296,"autocrine motility factor receptor [Source:HGNC Symbol;Acc:HGNC:463]",0.19799999999999998
+"ILF3",0.098,0.296,"interleukin enhancer binding factor 3 [Source:HGNC Symbol;Acc:HGNC:6038]",0.19799999999999998
+"BABAM1",0.098,0.296,"BRISC and BRCA1 A complex member 1 [Source:HGNC Symbol;Acc:HGNC:25008]",0.19799999999999998
+"TAZ",0.098,0.296,"tafazzin [Source:HGNC Symbol;Acc:HGNC:11577]",0.19799999999999998
+"H3F3B",0.765,0.963,"H3 histone family member 3B [Source:HGNC Symbol;Acc:HGNC:4765]",0.19799999999999995
+"CIITA",0.137,0.333,"class II major histocompatibility complex transactivator [Source:HGNC Symbol;Acc:HGNC:7067]",0.196
+"CNPY3",0.137,0.333,"canopy FGF signaling regulator 3 [Source:HGNC Symbol;Acc:HGNC:11968]",0.196
+"GSTK1",0.137,0.333,"glutathione S-transferase kappa 1 [Source:HGNC Symbol;Acc:HGNC:16906]",0.196
+"MAP3K1",0.137,0.333,"mitogen-activated protein kinase kinase kinase 1 [Source:HGNC Symbol;Acc:HGNC:6848]",0.196
+"STX7",0.176,0.37,"syntaxin 7 [Source:HGNC Symbol;Acc:HGNC:11442]",0.194
+"DHX30",0.029,0.222,"DExH-box helicase 30 [Source:HGNC Symbol;Acc:HGNC:16716]",0.193
+"RNF10",0.029,0.222,"ring finger protein 10 [Source:HGNC Symbol;Acc:HGNC:10055]",0.193
+"SIN3A",0.029,0.222,"SIN3 transcription regulator family member A [Source:HGNC Symbol;Acc:HGNC:19353]",0.193
+"SH3GL1",0.029,0.222,"SH3 domain containing GRB2 like 1, endophilin A2 [Source:HGNC Symbol;Acc:HGNC:10830]",0.193
+"BRD2",0.216,0.407,"bromodomain containing 2 [Source:HGNC Symbol;Acc:HGNC:1103]",0.19099999999999998
+"POLR2B",0.069,0.259,"RNA polymerase II subunit B [Source:HGNC Symbol;Acc:HGNC:9188]",0.19
+"WBP1",0.069,0.259,"WW domain binding protein 1 [Source:HGNC Symbol;Acc:HGNC:12737]",0.19
+"PRKRIP1",0.069,0.259,"PRKR interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:21894]",0.19
+"ARHGAP9",0.069,0.259,"Rho GTPase activating protein 9 [Source:HGNC Symbol;Acc:HGNC:14130]",0.19
+"KMT2B",0.069,0.259,"lysine methyltransferase 2B [Source:HGNC Symbol;Acc:HGNC:15840]",0.19
+"HPCAL1",0.069,0.259,"hippocalcin like 1 [Source:HGNC Symbol;Acc:HGNC:5145]",0.19
+"STARD7",0.069,0.259,"StAR related lipid transfer domain containing 7 [Source:HGNC Symbol;Acc:HGNC:18063]",0.19
+"LY75",0.069,0.259,"lymphocyte antigen 75 [Source:HGNC Symbol;Acc:HGNC:6729]",0.19
+"PDE7A",0.069,0.259,"phosphodiesterase 7A [Source:HGNC Symbol;Acc:HGNC:8791]",0.19
+"LLPH",0.069,0.259,"LLP homolog, long-term synaptic facilitation factor [Source:HGNC Symbol;Acc:HGNC:28229]",0.19
+"ANAPC5",0.069,0.259,"anaphase promoting complex subunit 5 [Source:HGNC Symbol;Acc:HGNC:15713]",0.19
+"MZT1",0.069,0.259,"mitotic spindle organizing protein 1 [Source:HGNC Symbol;Acc:HGNC:33830]",0.19
+"RBM23",0.069,0.259,"RNA binding motif protein 23 [Source:HGNC Symbol;Acc:HGNC:20155]",0.19
+"STXBP2",0.069,0.259,"syntaxin binding protein 2 [Source:HGNC Symbol;Acc:HGNC:11445]",0.19
+"AKT2",0.069,0.259,"AKT serine/threonine kinase 2 [Source:HGNC Symbol;Acc:HGNC:392]",0.19
+"RBBP7",0.069,0.259,"RB binding protein 7, chromatin remodeling factor [Source:HGNC Symbol;Acc:HGNC:9890]",0.19
+"HUWE1",0.069,0.259,"HECT, UBA and WWE domain containing E3 ubiquitin protein ligase 1 [Source:HGNC Symbol;Acc:HGNC:30892]",0.19
+"PUM1",0.108,0.296,"pumilio RNA binding family member 1 [Source:HGNC Symbol;Acc:HGNC:14957]",0.188
+"RBM26",0.108,0.296,"RNA binding motif protein 26 [Source:HGNC Symbol;Acc:HGNC:20327]",0.188
+"SGSM3",0.108,0.296,"small G protein signaling modulator 3 [Source:HGNC Symbol;Acc:HGNC:25228]",0.188
+"SNAP23",0.108,0.296,"synaptosome associated protein 23 [Source:HGNC Symbol;Acc:HGNC:11131]",0.188
+"RABEP2",0.108,0.296,"rabaptin, RAB GTPase binding effector protein 2 [Source:HGNC Symbol;Acc:HGNC:24817]",0.188
+"LSR",0.108,0.296,"lipolysis stimulated lipoprotein receptor [Source:HGNC Symbol;Acc:HGNC:29572]",0.188
+"MT-ND2",0.814,1,"mitochondrially encoded NADH:ubiquinone oxidoreductase core subunit 2 [Source:HGNC Symbol;Acc:HGNC:7456]",0.18600000000000005
+"PSMA3-AS1",0.147,0.333,"PSMA3 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:26445]",0.18600000000000003
+"STAT6",0.147,0.333,"signal transducer and activator of transcription 6 [Source:HGNC Symbol;Acc:HGNC:11368]",0.18600000000000003
+"HNRNPDL",0.52,0.704,"heterogeneous nuclear ribonucleoprotein D like [Source:HGNC Symbol;Acc:HGNC:5037]",0.18399999999999994
+"JOSD2",0.039,0.222,"Josephin domain containing 2 [Source:HGNC Symbol;Acc:HGNC:28853]",0.183
+"AIDA",0.039,0.222,"axin interactor, dorsalization associated [Source:HGNC Symbol;Acc:HGNC:25761]",0.183
+"NCOA1",0.039,0.222,"nuclear receptor coactivator 1 [Source:HGNC Symbol;Acc:HGNC:7668]",0.183
+"CYB561D2",0.039,0.222,"cytochrome b561 family member D2 [Source:HGNC Symbol;Acc:HGNC:30253]",0.183
+"CYB561D2",0.039,0.222,"cytochrome b561 family member D2 [Source:NCBI gene;Acc:11068]",0.183
+"TFG",0.039,0.222,"trafficking from ER to golgi regulator [Source:HGNC Symbol;Acc:HGNC:11758]",0.183
+"NPHP3",0.039,0.222,"nephrocystin 3 [Source:HGNC Symbol;Acc:HGNC:7907]",0.183
+"ARFGEF1",0.039,0.222,"ADP ribosylation factor guanine nucleotide exchange factor 1 [Source:HGNC Symbol;Acc:HGNC:15772]",0.183
+"UBQLN1",0.039,0.222,"ubiquilin 1 [Source:HGNC Symbol;Acc:HGNC:12508]",0.183
+"TTC17",0.039,0.222,"tetratricopeptide repeat domain 17 [Source:HGNC Symbol;Acc:HGNC:25596]",0.183
+"CCDC84",0.039,0.222,"coiled-coil domain containing 84 [Source:HGNC Symbol;Acc:HGNC:30460]",0.183
+"MRPL42",0.039,0.222,"mitochondrial ribosomal protein L42 [Source:HGNC Symbol;Acc:HGNC:14493]",0.183
+"MON1B",0.039,0.222,"MON1 homolog B, secretory trafficking associated [Source:HGNC Symbol;Acc:HGNC:25020]",0.183
+"MRGBP",0.039,0.222,"MRG domain binding protein [Source:HGNC Symbol;Acc:HGNC:15866]",0.183
+"LTN1",0.039,0.222,"listerin E3 ubiquitin protein ligase 1 [Source:HGNC Symbol;Acc:HGNC:13082]",0.183
+"ACADM",0.078,0.259,"acyl-CoA dehydrogenase medium chain [Source:HGNC Symbol;Acc:HGNC:89]",0.181
+"FAM204A",0.078,0.259,"family with sequence similarity 204 member A [Source:HGNC Symbol;Acc:HGNC:25794]",0.181
+"ARHGAP44",0.078,0.259,"Rho GTPase activating protein 44 [Source:HGNC Symbol;Acc:HGNC:29096]",0.181
+"MOB3A",0.078,0.259,"MOB kinase activator 3A [Source:HGNC Symbol;Acc:HGNC:29802]",0.181
+"MARCH7",0.078,0.259,"membrane associated ring-CH-type finger 7 [Source:HGNC Symbol;Acc:HGNC:17393]",0.181
+"SP140L",0.078,0.259,"SP140 nuclear body protein like [Source:HGNC Symbol;Acc:HGNC:25105]",0.181
+"BAG6",0.078,0.259,"BCL2 associated athanogene 6 [Source:HGNC Symbol;Acc:HGNC:13919]",0.181
+"NFATC2IP",0.078,0.259,"nuclear factor of activated T cells 2 interacting protein [Source:HGNC Symbol;Acc:HGNC:25906]",0.181
+"PQBP1",0.078,0.259,"polyglutamine binding protein 1 [Source:HGNC Symbol;Acc:HGNC:9330]",0.181
+"AKIRIN1",0.078,0.259,"akirin 1 [Source:HGNC Symbol;Acc:HGNC:25744]",0.181
+"MAP3K2",0.078,0.259,"mitogen-activated protein kinase kinase kinase 2 [Source:HGNC Symbol;Acc:HGNC:6854]",0.181
+"EEF1E1",0.078,0.259,"eukaryotic translation elongation factor 1 epsilon 1 [Source:HGNC Symbol;Acc:HGNC:3212]",0.181
+"SERINC1",0.078,0.259,"serine incorporator 1 [Source:HGNC Symbol;Acc:HGNC:13464]",0.181
+"ASAH1",0.078,0.259,"N-acylsphingosine amidohydrolase 1 [Source:HGNC Symbol;Acc:HGNC:735]",0.181
+"ATXN2L",0.078,0.259,"ataxin 2 like [Source:HGNC Symbol;Acc:HGNC:31326]",0.181
+"MLLT6",0.078,0.259,"MLLT6, PHD finger containing [Source:HGNC Symbol;Acc:HGNC:7138]",0.181
+"DBP",0.078,0.259,"D-box binding PAR bZIP transcription factor [Source:HGNC Symbol;Acc:HGNC:2697]",0.181
+"MAGOH",0.118,0.296,"mago homolog, exon junction complex subunit [Source:HGNC Symbol;Acc:HGNC:6815]",0.178
+"BIRC2",0.118,0.296,"baculoviral IAP repeat containing 2 [Source:HGNC Symbol;Acc:HGNC:590]",0.178
+"NDUFB1",0.118,0.296,"NADH:ubiquinone oxidoreductase subunit B1 [Source:HGNC Symbol;Acc:HGNC:7695]",0.178
+"TRBC2",0.304,0.481,"T cell receptor beta constant 2 [Source:HGNC Symbol;Acc:HGNC:12157]",0.177
+"ARHGEF1",0.157,0.333,"Rho guanine nucleotide exchange factor 1 [Source:HGNC Symbol;Acc:HGNC:681]",0.17600000000000002
+"GNG10",0.049,0.222,"G protein subunit gamma 10 [Source:HGNC Symbol;Acc:HGNC:4402]",0.173
+"PAGR1",0.049,0.222,"PAXIP1 associated glutamate rich protein 1 [Source:HGNC Symbol;Acc:HGNC:28707]",0.173
+"EMC10",0.049,0.222,"ER membrane protein complex subunit 10 [Source:HGNC Symbol;Acc:HGNC:27609]",0.173
+"PVT1",0.049,0.222,"Pvt1 oncogene [Source:HGNC Symbol;Acc:HGNC:9709]",0.173
+"PEF1",0.049,0.222,"penta-EF-hand domain containing 1 [Source:HGNC Symbol;Acc:HGNC:30009]",0.173
+"AGO3",0.049,0.222,"argonaute RISC catalytic component 3 [Source:HGNC Symbol;Acc:HGNC:18421]",0.173
+"ATP2B4",0.049,0.222,"ATPase plasma membrane Ca2+ transporting 4 [Source:HGNC Symbol;Acc:HGNC:817]",0.173
+"PRKRA",0.049,0.222,"protein activator of interferon induced protein kinase EIF2AK2 [Source:HGNC Symbol;Acc:HGNC:9438]",0.173
+"COMMD8",0.049,0.222,"COMM domain containing 8 [Source:HGNC Symbol;Acc:HGNC:26036]",0.173
+"PPP3CA",0.049,0.222,"protein phosphatase 3 catalytic subunit alpha [Source:HGNC Symbol;Acc:HGNC:9314]",0.173
+"EXOC3",0.049,0.222,"exocyst complex component 3 [Source:HGNC Symbol;Acc:HGNC:30378]",0.173
+"PRKAA1",0.049,0.222,"protein kinase AMP-activated catalytic subunit alpha 1 [Source:HGNC Symbol;Acc:HGNC:9376]",0.173
+"CCNH",0.049,0.222,"cyclin H [Source:HGNC Symbol;Acc:HGNC:1594]",0.173
+"ASL",0.049,0.222,"argininosuccinate lyase [Source:HGNC Symbol;Acc:HGNC:746]",0.173
+"SAMD9",0.049,0.222,"sterile alpha motif domain containing 9 [Source:HGNC Symbol;Acc:HGNC:1348]",0.173
+"DECR1",0.049,0.222,"2,4-dienoyl-CoA reductase 1 [Source:HGNC Symbol;Acc:HGNC:2753]",0.173
+"ZFP91",0.049,0.222,"ZFP91 zinc finger protein [Source:HGNC Symbol;Acc:HGNC:14983]",0.173
+"LTBP3",0.049,0.222,"latent transforming growth factor beta binding protein 3 [Source:HGNC Symbol;Acc:HGNC:6716]",0.173
+"SNRNP35",0.049,0.222,"small nuclear ribonucleoprotein U11/U12 subunit 35 [Source:HGNC Symbol;Acc:HGNC:30852]",0.173
+"KAT8",0.049,0.222,"lysine acetyltransferase 8 [Source:HGNC Symbol;Acc:HGNC:17933]",0.173
+"TMEM170A",0.049,0.222,"transmembrane protein 170A [Source:HGNC Symbol;Acc:HGNC:29577]",0.173
+"NCBP3",0.049,0.222,"nuclear cap binding subunit 3 [Source:HGNC Symbol;Acc:HGNC:24612]",0.173
+"MRPL27",0.049,0.222,"mitochondrial ribosomal protein L27 [Source:HGNC Symbol;Acc:HGNC:14483]",0.173
+"SHFL",0.049,0.222,"shiftless antiviral inhibitor of ribosomal frameshifting [Source:HGNC Symbol;Acc:HGNC:25649]",0.173
+"DNM2",0.049,0.222,"dynamin 2 [Source:HGNC Symbol;Acc:HGNC:2974]",0.173
+"JAK3",0.049,0.222,"Janus kinase 3 [Source:HGNC Symbol;Acc:HGNC:6193]",0.173
+"ZNF585A",0.049,0.222,"zinc finger protein 585A [Source:HGNC Symbol;Acc:HGNC:26305]",0.173
+"TAF1",0.049,0.222,"TATA-box binding protein associated factor 1 [Source:HGNC Symbol;Acc:HGNC:11535]",0.173
+"AIMP1",0.088,0.259,"aminoacyl tRNA synthetase complex interacting multifunctional protein 1 [Source:HGNC Symbol;Acc:HGNC:10648]",0.171
+"POLR2C",0.088,0.259,"RNA polymerase II subunit C [Source:HGNC Symbol;Acc:HGNC:9189]",0.171
+"ANKRD13D",0.088,0.259,"ankyrin repeat domain 13D [Source:HGNC Symbol;Acc:HGNC:27880]",0.171
+"PSMC1",0.088,0.259,"proteasome 26S subunit, ATPase 1 [Source:HGNC Symbol;Acc:HGNC:9547]",0.171
+"NLRC5",0.088,0.259,"NLR family CARD domain containing 5 [Source:HGNC Symbol;Acc:HGNC:29933]",0.171
+"PRPF38B",0.088,0.259,"pre-mRNA processing factor 38B [Source:HGNC Symbol;Acc:HGNC:25512]",0.171
+"FYTTD1",0.088,0.259,"forty-two-three domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25407]",0.171
+"PSMB8-AS1",0.088,0.259,"PSMB8 antisense RNA 1 (head to head) [Source:HGNC Symbol;Acc:HGNC:39758]",0.171
+"PSMB8-AS1",0.088,0.259,"PSMB8 antisense RNA 1 (head to head) [Source:NCBI gene;Acc:100507463]",0.171
+"PHTF2",0.088,0.259,"putative homeodomain transcription factor 2 [Source:HGNC Symbol;Acc:HGNC:13411]",0.171
+"ZC3HAV1",0.088,0.259,"zinc finger CCCH-type containing, antiviral 1 [Source:HGNC Symbol;Acc:HGNC:23721]",0.171
+"FAM53B",0.088,0.259,"family with sequence similarity 53 member B [Source:HGNC Symbol;Acc:HGNC:28968]",0.171
+"TMEM41B",0.088,0.259,"transmembrane protein 41B [Source:HGNC Symbol;Acc:HGNC:28948]",0.171
+"PSMC6",0.088,0.259,"proteasome 26S subunit, ATPase 6 [Source:HGNC Symbol;Acc:HGNC:9553]",0.171
+"LSM14A",0.088,0.259,"LSM14A mRNA processing body assembly factor [Source:HGNC Symbol;Acc:HGNC:24489]",0.171
+"RANBP1",0.127,0.296,"RAN binding protein 1 [Source:HGNC Symbol;Acc:HGNC:9847]",0.16899999999999998
+"NUMA1",0.127,0.296,"nuclear mitotic apparatus protein 1 [Source:HGNC Symbol;Acc:HGNC:8059]",0.16899999999999998
+"SNRPA1",0.127,0.296,"small nuclear ribonucleoprotein polypeptide A' [Source:HGNC Symbol;Acc:HGNC:11152]",0.16899999999999998
+"RNF126",0.127,0.296,"ring finger protein 126 [Source:HGNC Symbol;Acc:HGNC:21151]",0.16899999999999998
+"HNRNPH1",0.461,0.63,"heterogeneous nuclear ribonucleoprotein H1 [Source:HGNC Symbol;Acc:HGNC:5041]",0.16899999999999998
+"OGA",0.275,0.444,"O-GlcNAcase [Source:HGNC Symbol;Acc:HGNC:7056]",0.16899999999999998
+"RPS13",0.833,1,"ribosomal protein S13 [Source:HGNC Symbol;Acc:HGNC:10386]",0.16700000000000004
+"HMGN2",0.314,0.481,"high mobility group nucleosomal binding domain 2 [Source:HGNC Symbol;Acc:HGNC:4986]",0.16699999999999998
+"FAM50A",0.167,0.333,"family with sequence similarity 50 member A [Source:HGNC Symbol;Acc:HGNC:18786]",0.166
+"TMEM259",0.206,0.37,"transmembrane protein 259 [Source:HGNC Symbol;Acc:HGNC:17039]",0.164
+"MARCKSL1",0.059,0.222,"MARCKS like 1 [Source:HGNC Symbol;Acc:HGNC:7142]",0.163
+"RBM22",0.059,0.222,"RNA binding motif protein 22 [Source:HGNC Symbol;Acc:HGNC:25503]",0.163
+"PIAS1",0.059,0.222,"protein inhibitor of activated STAT 1 [Source:HGNC Symbol;Acc:HGNC:2752]",0.163
+"ABHD15",0.059,0.222,"abhydrolase domain containing 15 [Source:HGNC Symbol;Acc:HGNC:26971]",0.163
+"ZNF160",0.059,0.222,"zinc finger protein 160 [Source:HGNC Symbol;Acc:HGNC:12948]",0.163
+"PIGP",0.059,0.222,"phosphatidylinositol glycan anchor biosynthesis class P [Source:HGNC Symbol;Acc:HGNC:3046]",0.163
+"INPP5F",0.059,0.222,"inositol polyphosphate-5-phosphatase F [Source:HGNC Symbol;Acc:HGNC:17054]",0.163
+"SNHG3",0.059,0.222,"small nucleolar RNA host gene 3 [Source:HGNC Symbol;Acc:HGNC:10118]",0.163
+"RCOR3",0.059,0.222,"REST corepressor 3 [Source:HGNC Symbol;Acc:HGNC:25594]",0.163
+"TATDN3",0.059,0.222,"TatD DNase domain containing 3 [Source:HGNC Symbol;Acc:HGNC:27010]",0.163
+"DNAJB2",0.059,0.222,"DnaJ heat shock protein family (Hsp40) member B2 [Source:HGNC Symbol;Acc:HGNC:5228]",0.163
+"CRBN",0.059,0.222,"cereblon [Source:HGNC Symbol;Acc:HGNC:30185]",0.163
+"HDAC3",0.059,0.222,"histone deacetylase 3 [Source:HGNC Symbol;Acc:HGNC:4854]",0.163
+"ERGIC1",0.059,0.222,"endoplasmic reticulum-golgi intermediate compartment 1 [Source:HGNC Symbol;Acc:HGNC:29205]",0.163
+"ZNF12",0.059,0.222,"zinc finger protein 12 [Source:HGNC Symbol;Acc:HGNC:12902]",0.163
+"MKLN1",0.059,0.222,"muskelin 1 [Source:HGNC Symbol;Acc:HGNC:7109]",0.163
+"LYPLA1",0.059,0.222,"lysophospholipase 1 [Source:HGNC Symbol;Acc:HGNC:6737]",0.163
+"MED30",0.059,0.222,"mediator complex subunit 30 [Source:HGNC Symbol;Acc:HGNC:23032]",0.163
+"TATDN1",0.059,0.222,"TatD DNase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:24220]",0.163
+"DCLRE1C",0.059,0.222,"DNA cross-link repair 1C [Source:HGNC Symbol;Acc:HGNC:17642]",0.163
+"B3GAT3",0.059,0.222,"beta-1,3-glucuronyltransferase 3 [Source:HGNC Symbol;Acc:HGNC:923]",0.163
+"SRP54",0.059,0.222,"signal recognition particle 54 [Source:HGNC Symbol;Acc:HGNC:11301]",0.163
+"NIN",0.059,0.222,"ninein [Source:HGNC Symbol;Acc:HGNC:14906]",0.163
+"GABPB1-IT1",0.059,0.222,"GABPB1 intronic transcript [Source:HGNC Symbol;Acc:HGNC:25469]",0.163
+"MCTP2",0.059,0.222,"multiple C2 and transmembrane domain containing 2 [Source:HGNC Symbol;Acc:HGNC:25636]",0.163
+"GGNBP2",0.059,0.222,"gametogenetin binding protein 2 [Source:HGNC Symbol;Acc:HGNC:19357]",0.163
+"PPP1R9B",0.059,0.222,"protein phosphatase 1 regulatory subunit 9B [Source:HGNC Symbol;Acc:HGNC:9298]",0.163
+"SEH1L",0.059,0.222,"SEH1 like nucleoporin [Source:HGNC Symbol;Acc:HGNC:30379]",0.163
+"ADGRE5",0.059,0.222,"adhesion G protein-coupled receptor E5 [Source:HGNC Symbol;Acc:HGNC:1711]",0.163
+"IDH3B",0.059,0.222,"isocitrate dehydrogenase (NAD(+)) 3 beta [Source:HGNC Symbol;Acc:HGNC:5385]",0.163
+"CTNNBL1",0.059,0.222,"catenin beta like 1 [Source:HGNC Symbol;Acc:HGNC:15879]",0.163
+"YDJC",0.059,0.222,"YdjC chitooligosaccharide deacetylase homolog [Source:HGNC Symbol;Acc:HGNC:27158]",0.163
+"FBXO7",0.059,0.222,"F-box protein 7 [Source:HGNC Symbol;Acc:HGNC:13586]",0.163
+"CBX6",0.059,0.222,"chromobox 6 [Source:HGNC Symbol;Acc:HGNC:1556]",0.163
+"BRWD3",0.059,0.222,"bromodomain and WD repeat domain containing 3 [Source:HGNC Symbol;Acc:HGNC:17342]",0.163
+"DHX9",0.098,0.259,"DExH-box helicase 9 [Source:HGNC Symbol;Acc:HGNC:2750]",0.161
+"RWDD3",0.098,0.259,"RWD domain containing 3 [Source:HGNC Symbol;Acc:HGNC:21393]",0.161
+"ACP1",0.098,0.259,"acid phosphatase 1 [Source:HGNC Symbol;Acc:HGNC:122]",0.161
+"PPM1M",0.098,0.259,"protein phosphatase, Mg2+/Mn2+ dependent 1M [Source:HGNC Symbol;Acc:HGNC:26506]",0.161
+"SPCS3",0.098,0.259,"signal peptidase complex subunit 3 [Source:HGNC Symbol;Acc:HGNC:26212]",0.161
+"MRPL41",0.098,0.259,"mitochondrial ribosomal protein L41 [Source:HGNC Symbol;Acc:HGNC:14492]",0.161
+"DICER1",0.098,0.259,"dicer 1, ribonuclease III [Source:HGNC Symbol;Acc:HGNC:17098]",0.161
+"ADPGK",0.098,0.259,"ADP dependent glucokinase [Source:HGNC Symbol;Acc:HGNC:25250]",0.161
+"CLK3",0.098,0.259,"CDC like kinase 3 [Source:HGNC Symbol;Acc:HGNC:2071]",0.161
+"TSPYL2",0.098,0.259,"TSPY like 2 [Source:HGNC Symbol;Acc:HGNC:24358]",0.161
+"SPOCK2",0.137,0.296,"SPARC (osteonectin), cwcv and kazal like domains proteoglycan 2 [Source:HGNC Symbol;Acc:HGNC:13564]",0.15899999999999997
+"NOSIP",0.137,0.296,"nitric oxide synthase interacting protein [Source:HGNC Symbol;Acc:HGNC:17946]",0.15899999999999997
+"HLA-F",0.137,0.296,"major histocompatibility complex, class I, F [Source:HGNC Symbol;Acc:HGNC:4963]",0.15899999999999997
+"TMED4",0.137,0.296,"transmembrane p24 trafficking protein 4 [Source:HGNC Symbol;Acc:HGNC:22301]",0.15899999999999997
+"TCIRG1",0.137,0.296,"T cell immune regulator 1, ATPase H+ transporting V0 subunit a3 [Source:HGNC Symbol;Acc:HGNC:11647]",0.15899999999999997
+"IGHA1",0.804,0.963,"immunoglobulin heavy constant alpha 1 [Source:HGNC Symbol;Acc:HGNC:5478]",0.15899999999999992
+"AHCTF1",0.029,0.185,"AT-hook containing transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:24618]",0.156
+"GTF3C2",0.029,0.185,"general transcription factor IIIC subunit 2 [Source:HGNC Symbol;Acc:HGNC:4665]",0.156
+"TUSC2",0.029,0.185,"tumor suppressor 2, mitochondrial calcium regulator [Source:HGNC Symbol;Acc:HGNC:17034]",0.156
+"NISCH",0.029,0.185,"nischarin [Source:HGNC Symbol;Acc:HGNC:18006]",0.156
+"PPP2CB",0.029,0.185,"protein phosphatase 2 catalytic subunit beta [Source:HGNC Symbol;Acc:HGNC:9300]",0.156
+"HAUS6",0.029,0.185,"HAUS augmin like complex subunit 6 [Source:HGNC Symbol;Acc:HGNC:25948]",0.156
+"EEF1AKMT2",0.029,0.185,"EEF1A lysine methyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:33787]",0.156
+"TMEM263",0.029,0.185,"transmembrane protein 263 [Source:HGNC Symbol;Acc:HGNC:28281]",0.156
+"INO80C",0.029,0.185,"INO80 complex subunit C [Source:HGNC Symbol;Acc:HGNC:26994]",0.156
+"PRKD2",0.029,0.185,"protein kinase D2 [Source:HGNC Symbol;Acc:HGNC:17293]",0.156
+"TBC1D17",0.029,0.185,"TBC1 domain family member 17 [Source:HGNC Symbol;Acc:HGNC:25699]",0.156
+"COL9A3",0.549,0.704,"collagen type IX alpha 3 chain [Source:HGNC Symbol;Acc:HGNC:2219]",0.15499999999999992
+"DNAJB14",0.069,0.222,"DnaJ heat shock protein family (Hsp40) member B14 [Source:HGNC Symbol;Acc:HGNC:25881]",0.153
+"NAP1L4",0.069,0.222,"nucleosome assembly protein 1 like 4 [Source:HGNC Symbol;Acc:HGNC:7640]",0.153
+"KRAS",0.069,0.222,"KRAS proto-oncogene, GTPase [Source:HGNC Symbol;Acc:HGNC:6407]",0.153
+"SELENOO",0.069,0.222,"selenoprotein O [Source:HGNC Symbol;Acc:HGNC:30395]",0.153
+"SMC1A",0.069,0.222,"structural maintenance of chromosomes 1A [Source:HGNC Symbol;Acc:HGNC:11111]",0.153
+"MRPS18C",0.069,0.222,"mitochondrial ribosomal protein S18C [Source:HGNC Symbol;Acc:HGNC:16633]",0.153
+"AVL9",0.069,0.222,"AVL9 cell migration associated [Source:HGNC Symbol;Acc:HGNC:28994]",0.153
+"OTUB1",0.069,0.222,"OTU deubiquitinase, ubiquitin aldehyde binding 1 [Source:HGNC Symbol;Acc:HGNC:23077]",0.153
+"FIBP",0.069,0.222,"FGF1 intracellular binding protein [Source:HGNC Symbol;Acc:HGNC:3705]",0.153
+"APP",0.069,0.222,"amyloid beta precursor protein [Source:HGNC Symbol;Acc:HGNC:620]",0.153
+"SLC44A2",0.069,0.222,"solute carrier family 44 member 2 [Source:HGNC Symbol;Acc:HGNC:17292]",0.153
+"MTHFR",0.069,0.222,"methylenetetrahydrofolate reductase [Source:HGNC Symbol;Acc:HGNC:7436]",0.153
+"CRIPT",0.069,0.222,"CXXC repeat containing interactor of PDZ3 domain [Source:HGNC Symbol;Acc:HGNC:14312]",0.153
+"MAT2A",0.069,0.222,"methionine adenosyltransferase 2A [Source:HGNC Symbol;Acc:HGNC:6904]",0.153
+"IMP4",0.069,0.222,"IMP U3 small nucleolar ribonucleoprotein 4 [Source:HGNC Symbol;Acc:HGNC:30856]",0.153
+"SDHA",0.069,0.222,"succinate dehydrogenase complex flavoprotein subunit A [Source:HGNC Symbol;Acc:HGNC:10680]",0.153
+"LSM2",0.069,0.222,"LSM2 homolog, U6 small nuclear RNA and mRNA degradation associated [Source:HGNC Symbol;Acc:HGNC:13940]",0.153
+"HLA-DOA",0.069,0.222,"major histocompatibility complex, class II, DO alpha [Source:HGNC Symbol;Acc:HGNC:4936]",0.153
+"ZMIZ2",0.069,0.222,"zinc finger MIZ-type containing 2 [Source:HGNC Symbol;Acc:HGNC:22229]",0.153
+"PPP1R35",0.069,0.222,"protein phosphatase 1 regulatory subunit 35 [Source:HGNC Symbol;Acc:HGNC:28320]",0.153
+"CHCHD7",0.069,0.222,"coiled-coil-helix-coiled-coil-helix domain containing 7 [Source:HGNC Symbol;Acc:HGNC:28314]",0.153
+"STOML2",0.069,0.222,"stomatin like 2 [Source:HGNC Symbol;Acc:HGNC:14559]",0.153
+"RAB30",0.069,0.222,"RAB30, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:9770]",0.153
+"RECQL",0.069,0.222,"RecQ like helicase [Source:HGNC Symbol;Acc:HGNC:9948]",0.153
+"PPM1A",0.069,0.222,"protein phosphatase, Mg2+/Mn2+ dependent 1A [Source:HGNC Symbol;Acc:HGNC:9275]",0.153
+"CIAO2A",0.069,0.222,"cytosolic iron-sulfur assembly component 2A [Source:HGNC Symbol;Acc:HGNC:26235]",0.153
+"ANTKMT",0.069,0.222,"adenine nucleotide translocase lysine methyltransferase [Source:HGNC Symbol;Acc:HGNC:14152]",0.153
+"RABEP1",0.069,0.222,"rabaptin, RAB GTPase binding effector protein 1 [Source:HGNC Symbol;Acc:HGNC:17677]",0.153
+"YPEL2",0.069,0.222,"yippee like 2 [Source:HGNC Symbol;Acc:HGNC:18326]",0.153
+"ZNF430",0.069,0.222,"zinc finger protein 430 [Source:HGNC Symbol;Acc:HGNC:20808]",0.153
+"ZSCAN18",0.069,0.222,"zinc finger and SCAN domain containing 18 [Source:HGNC Symbol;Acc:HGNC:21037]",0.153
+"LIME1",0.069,0.222,"Lck interacting transmembrane adaptor 1 [Source:HGNC Symbol;Acc:HGNC:26016]",0.153
+"MSL3",0.069,0.222,"MSL complex subunit 3 [Source:HGNC Symbol;Acc:HGNC:7370]",0.153
+"ARHGAP4",0.069,0.222,"Rho GTPase activating protein 4 [Source:HGNC Symbol;Acc:HGNC:674]",0.153
+"PLCG2",0.255,0.407,"phospholipase C gamma 2 [Source:HGNC Symbol;Acc:HGNC:9066]",0.15199999999999997
+"C6orf62",0.108,0.259,"chromosome 6 open reading frame 62 [Source:HGNC Symbol;Acc:HGNC:20998]",0.15100000000000002
+"DNAJC19",0.108,0.259,"DnaJ heat shock protein family (Hsp40) member C19 [Source:HGNC Symbol;Acc:HGNC:30528]",0.15100000000000002
+"ZNF274",0.108,0.259,"zinc finger protein 274 [Source:HGNC Symbol;Acc:HGNC:13068]",0.15100000000000002
+"GPS2",0.147,0.296,"G protein pathway suppressor 2 [Source:HGNC Symbol;Acc:HGNC:4550]",0.149
+"AC008105.3",0.147,0.296,"novel transcript, antisense to FMNL1",0.149
+"ANKRD10",0.147,0.296,"ankyrin repeat domain 10 [Source:HGNC Symbol;Acc:HGNC:20265]",0.149
+"CCNY",0.039,0.185,"cyclin Y [Source:HGNC Symbol;Acc:HGNC:23354]",0.146
+"SKI",0.039,0.185,"SKI proto-oncogene [Source:HGNC Symbol;Acc:HGNC:10896]",0.146
+"PPT1",0.039,0.185,"palmitoyl-protein thioesterase 1 [Source:HGNC Symbol;Acc:HGNC:9325]",0.146
+"UBAP2L",0.039,0.185,"ubiquitin associated protein 2 like [Source:HGNC Symbol;Acc:HGNC:29877]",0.146
+"KIDINS220",0.039,0.185,"kinase D interacting substrate 220 [Source:HGNC Symbol;Acc:HGNC:29508]",0.146
+"LRPPRC",0.039,0.185,"leucine rich pentatricopeptide repeat containing [Source:HGNC Symbol;Acc:HGNC:15714]",0.146
+"VRK2",0.039,0.185,"VRK serine/threonine kinase 2 [Source:HGNC Symbol;Acc:HGNC:12719]",0.146
+"CCDC191",0.039,0.185,"coiled-coil domain containing 191 [Source:HGNC Symbol;Acc:HGNC:29272]",0.146
+"SLC33A1",0.039,0.185,"solute carrier family 33 member 1 [Source:HGNC Symbol;Acc:HGNC:95]",0.146
+"HELQ",0.039,0.185,"helicase, POLQ like [Source:HGNC Symbol;Acc:HGNC:18536]",0.146
+"DCP2",0.039,0.185,"decapping mRNA 2 [Source:HGNC Symbol;Acc:HGNC:24452]",0.146
+"YTHDC2",0.039,0.185,"YTH domain containing 2 [Source:HGNC Symbol;Acc:HGNC:24721]",0.146
+"RING1",0.039,0.185,"ring finger protein 1 [Source:HGNC Symbol;Acc:HGNC:10018]",0.146
+"TRAM2",0.039,0.185,"translocation associated membrane protein 2 [Source:HGNC Symbol;Acc:HGNC:16855]",0.146
+"TSPYL1",0.039,0.185,"TSPY like 1 [Source:HGNC Symbol;Acc:HGNC:12382]",0.146
+"PSMG3",0.039,0.185,"proteasome assembly chaperone 3 [Source:HGNC Symbol;Acc:HGNC:22420]",0.146
+"AC016831.5",0.039,0.185,"novel transcript",0.146
+"DCTN6",0.039,0.185,"dynactin subunit 6 [Source:HGNC Symbol;Acc:HGNC:16964]",0.146
+"RNF139",0.039,0.185,"ring finger protein 139 [Source:HGNC Symbol;Acc:HGNC:17023]",0.146
+"COQ4",0.039,0.185,"coenzyme Q4 [Source:HGNC Symbol;Acc:HGNC:19693]",0.146
+"ZSWIM8",0.039,0.185,"zinc finger SWIM-type containing 8 [Source:HGNC Symbol;Acc:HGNC:23528]",0.146
+"ZDHHC6",0.039,0.185,"zinc finger DHHC-type containing 6 [Source:HGNC Symbol;Acc:HGNC:19160]",0.146
+"PTPRE",0.039,0.185,"protein tyrosine phosphatase receptor type E [Source:HGNC Symbol;Acc:HGNC:9669]",0.146
+"ANO9",0.039,0.185,"anoctamin 9 [Source:HGNC Symbol;Acc:HGNC:20679]",0.146
+"CTNND1",0.039,0.185,"catenin delta 1 [Source:HGNC Symbol;Acc:HGNC:2515]",0.146
+"ATL3",0.039,0.185,"atlastin GTPase 3 [Source:HGNC Symbol;Acc:HGNC:24526]",0.146
+"MAP3K11",0.039,0.185,"mitogen-activated protein kinase kinase kinase 11 [Source:HGNC Symbol;Acc:HGNC:6850]",0.146
+"PPTC7",0.039,0.185,"PTC7 protein phosphatase homolog [Source:HGNC Symbol;Acc:HGNC:30695]",0.146
+"INTS6",0.039,0.185,"integrator complex subunit 6 [Source:HGNC Symbol;Acc:HGNC:14879]",0.146
+"PLCB2",0.039,0.185,"phospholipase C beta 2 [Source:HGNC Symbol;Acc:HGNC:9055]",0.146
+"CLPX",0.039,0.185,"caseinolytic mitochondrial matrix peptidase chaperone subunit [Source:HGNC Symbol;Acc:HGNC:2088]",0.146
+"UBE2Q2",0.039,0.185,"ubiquitin conjugating enzyme E2 Q2 [Source:HGNC Symbol;Acc:HGNC:19248]",0.146
+"AMDHD2",0.039,0.185,"amidohydrolase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:24262]",0.146
+"TAOK1",0.039,0.185,"TAO kinase 1 [Source:HGNC Symbol;Acc:HGNC:29259]",0.146
+"ZNF626",0.039,0.185,"zinc finger protein 626 [Source:HGNC Symbol;Acc:HGNC:30461]",0.146
+"ZNF91",0.039,0.185,"zinc finger protein 91 [Source:HGNC Symbol;Acc:HGNC:13166]",0.146
+"TMEM50B",0.039,0.185,"transmembrane protein 50B [Source:HGNC Symbol;Acc:HGNC:1280]",0.146
+"CRELD2",0.039,0.185,"cysteine rich with EGF like domains 2 [Source:HGNC Symbol;Acc:HGNC:28150]",0.146
+"NDUFS3",0.078,0.222,"NADH:ubiquinone oxidoreductase core subunit S3 [Source:HGNC Symbol;Acc:HGNC:7710]",0.14400000000000002
+"STMN1",0.078,0.222,"stathmin 1 [Source:HGNC Symbol;Acc:HGNC:6510]",0.14400000000000002
+"PHC3",0.078,0.222,"polyhomeotic homolog 3 [Source:HGNC Symbol;Acc:HGNC:15682]",0.14400000000000002
+"HSD17B11",0.078,0.222,"hydroxysteroid 17-beta dehydrogenase 11 [Source:HGNC Symbol;Acc:HGNC:22960]",0.14400000000000002
+"AC025164.1",0.078,0.222,"novel transcript, antisense to BTG1",0.14400000000000002
+"ZFC3H1",0.078,0.222,"zinc finger C3H1-type containing [Source:HGNC Symbol;Acc:HGNC:28328]",0.14400000000000002
+"CHTOP",0.078,0.222,"chromatin target of PRMT1 [Source:HGNC Symbol;Acc:HGNC:24511]",0.14400000000000002
+"PDS5A",0.078,0.222,"PDS5 cohesin associated factor A [Source:HGNC Symbol;Acc:HGNC:29088]",0.14400000000000002
+"MGAT4B",0.078,0.222,"alpha-1,3-mannosyl-glycoprotein 4-beta-N-acetylglucosaminyltransferase B [Source:HGNC Symbol;Acc:HGNC:7048]",0.14400000000000002
+"SNHG32",0.078,0.222,"small nucleolar RNA host gene 32 [Source:HGNC Symbol;Acc:HGNC:19078]",0.14400000000000002
+"WIPI2",0.078,0.222,"WD repeat domain, phosphoinositide interacting 2 [Source:HGNC Symbol;Acc:HGNC:32225]",0.14400000000000002
+"GATAD1",0.078,0.222,"GATA zinc finger domain containing 1 [Source:HGNC Symbol;Acc:HGNC:29941]",0.14400000000000002
+"UHRF2",0.078,0.222,"ubiquitin like with PHD and ring finger domains 2 [Source:HGNC Symbol;Acc:HGNC:12557]",0.14400000000000002
+"FGD3",0.078,0.222,"FYVE, RhoGEF and PH domain containing 3 [Source:HGNC Symbol;Acc:HGNC:16027]",0.14400000000000002
+"KAT6B",0.078,0.222,"lysine acetyltransferase 6B [Source:HGNC Symbol;Acc:HGNC:17582]",0.14400000000000002
+"PCGF5",0.078,0.222,"polycomb group ring finger 5 [Source:HGNC Symbol;Acc:HGNC:28264]",0.14400000000000002
+"PUS7L",0.078,0.222,"pseudouridine synthase 7 like [Source:HGNC Symbol;Acc:HGNC:25276]",0.14400000000000002
+"ELP2",0.078,0.222,"elongator acetyltransferase complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:18248]",0.14400000000000002
+"NORAD",0.078,0.222,"non-coding RNA activated by DNA damage [Source:HGNC Symbol;Acc:HGNC:44311]",0.14400000000000002
+"NCF4",0.078,0.222,"neutrophil cytosolic factor 4 [Source:HGNC Symbol;Acc:HGNC:7662]",0.14400000000000002
+"MIR29B2CHG",0.265,0.407,"MIR29B2 and MIR29C host gene [Source:HGNC Symbol;Acc:HGNC:32018]",0.14199999999999996
+"MITD1",0.118,0.259,"microtubule interacting and trafficking domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25207]",0.14100000000000001
+"HMGN4",0.118,0.259,"high mobility group nucleosomal binding domain 4 [Source:HGNC Symbol;Acc:HGNC:4989]",0.14100000000000001
+"CCS",0.118,0.259,"copper chaperone for superoxide dismutase [Source:HGNC Symbol;Acc:HGNC:1613]",0.14100000000000001
+"UBXN11",0.118,0.259,"UBX domain protein 11 [Source:HGNC Symbol;Acc:HGNC:30600]",0.14100000000000001
+"SLC3A2",0.118,0.259,"solute carrier family 3 member 2 [Source:HGNC Symbol;Acc:HGNC:11026]",0.14100000000000001
+"CDK5RAP3",0.118,0.259,"CDK5 regulatory subunit associated protein 3 [Source:HGNC Symbol;Acc:HGNC:18673]",0.14100000000000001
+"ST6GAL1",0.196,0.333,"ST6 beta-galactoside alpha-2,6-sialyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:10860]",0.137
+"TMEM161B-AS1",0.049,0.185,"TMEM161B antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:43839]",0.136
+"GMFB",0.049,0.185,"glia maturation factor beta [Source:HGNC Symbol;Acc:HGNC:4373]",0.136
+"MAP2K7",0.049,0.185,"mitogen-activated protein kinase kinase 7 [Source:HGNC Symbol;Acc:HGNC:6847]",0.136
+"MIB2",0.049,0.185,"mindbomb E3 ubiquitin protein ligase 2 [Source:HGNC Symbol;Acc:HGNC:30577]",0.136
+"CAMTA1",0.049,0.185,"calmodulin binding transcription activator 1 [Source:HGNC Symbol;Acc:HGNC:18806]",0.136
+"TXNDC12",0.049,0.185,"thioredoxin domain containing 12 [Source:HGNC Symbol;Acc:HGNC:24626]",0.136
+"RPRD2",0.049,0.185,"regulation of nuclear pre-mRNA domain containing 2 [Source:HGNC Symbol;Acc:HGNC:29039]",0.136
+"SCNM1",0.049,0.185,"sodium channel modifier 1 [Source:HGNC Symbol;Acc:HGNC:23136]",0.136
+"ZC3H8",0.049,0.185,"zinc finger CCCH-type containing 8 [Source:HGNC Symbol;Acc:HGNC:30941]",0.136
+"ING5",0.049,0.185,"inhibitor of growth family member 5 [Source:HGNC Symbol;Acc:HGNC:19421]",0.136
+"MYD88",0.049,0.185,"MYD88 innate immune signal transduction adaptor [Source:HGNC Symbol;Acc:HGNC:7562]",0.136
+"IQCB1",0.049,0.185,"IQ motif containing B1 [Source:HGNC Symbol;Acc:HGNC:28949]",0.136
+"TNK2",0.049,0.185,"tyrosine kinase non receptor 2 [Source:HGNC Symbol;Acc:HGNC:19297]",0.136
+"GAK",0.049,0.185,"cyclin G associated kinase [Source:HGNC Symbol;Acc:HGNC:4113]",0.136
+"TENT4A",0.049,0.185,"terminal nucleotidyltransferase 4A [Source:HGNC Symbol;Acc:HGNC:16705]",0.136
+"RNF130",0.049,0.185,"ring finger protein 130 [Source:HGNC Symbol;Acc:HGNC:18280]",0.136
+"TXNDC5",0.049,0.185,"thioredoxin domain containing 5 [Source:HGNC Symbol;Acc:HGNC:21073]",0.136
+"CCNC",0.049,0.185,"cyclin C [Source:HGNC Symbol;Acc:HGNC:1581]",0.136
+"EIF3B",0.049,0.185,"eukaryotic translation initiation factor 3 subunit B [Source:HGNC Symbol;Acc:HGNC:3280]",0.136
+"STAG3",0.049,0.185,"stromal antigen 3 [Source:HGNC Symbol;Acc:HGNC:11356]",0.136
+"FASTK",0.049,0.185,"Fas activated serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:24676]",0.136
+"RMDN1",0.049,0.185,"regulator of microtubule dynamics 1 [Source:HGNC Symbol;Acc:HGNC:24285]",0.136
+"RRM2B",0.049,0.185,"ribonucleotide reductase regulatory TP53 inducible subunit M2B [Source:HGNC Symbol;Acc:HGNC:17296]",0.136
+"KDM4C",0.049,0.185,"lysine demethylase 4C [Source:HGNC Symbol;Acc:HGNC:17071]",0.136
+"KLF9",0.049,0.185,"Kruppel like factor 9 [Source:HGNC Symbol;Acc:HGNC:1123]",0.136
+"FBH1",0.049,0.185,"F-box DNA helicase 1 [Source:HGNC Symbol;Acc:HGNC:13620]",0.136
+"IRF7",0.049,0.185,"interferon regulatory factor 7 [Source:HGNC Symbol;Acc:HGNC:6122]",0.136
+"MADD",0.049,0.185,"MAP kinase activating death domain [Source:HGNC Symbol;Acc:HGNC:6766]",0.136
+"SLC7A7",0.049,0.185,"solute carrier family 7 member 7 [Source:HGNC Symbol;Acc:HGNC:11065]",0.136
+"KLC1",0.049,0.185,"kinesin light chain 1 [Source:HGNC Symbol;Acc:HGNC:6387]",0.136
+"MFAP1",0.049,0.185,"microfibril associated protein 1 [Source:HGNC Symbol;Acc:HGNC:7032]",0.136
+"BFAR",0.049,0.185,"bifunctional apoptosis regulator [Source:HGNC Symbol;Acc:HGNC:17613]",0.136
+"SEPHS2",0.049,0.185,"selenophosphate synthetase 2 [Source:HGNC Symbol;Acc:HGNC:19686]",0.136
+"DYNC1LI2",0.049,0.185,"dynein cytoplasmic 1 light intermediate chain 2 [Source:HGNC Symbol;Acc:HGNC:2966]",0.136
+"NFATC3",0.049,0.185,"nuclear factor of activated T cells 3 [Source:HGNC Symbol;Acc:HGNC:7777]",0.136
+"CCDC57",0.049,0.185,"coiled-coil domain containing 57 [Source:HGNC Symbol;Acc:HGNC:27564]",0.136
+"SLC39A3",0.049,0.185,"solute carrier family 39 member 3 [Source:HGNC Symbol;Acc:HGNC:17128]",0.136
+"LINC00662",0.049,0.185,"long intergenic non-protein coding RNA 662 [Source:HGNC Symbol;Acc:HGNC:27122]",0.136
+"POP4",0.049,0.185,"POP4 homolog, ribonuclease P/MRP subunit [Source:HGNC Symbol;Acc:HGNC:30081]",0.136
+"ZNF146",0.049,0.185,"zinc finger protein 146 [Source:HGNC Symbol;Acc:HGNC:12931]",0.136
+"CLASRP",0.049,0.185,"CLK4 associating serine/arginine rich protein [Source:HGNC Symbol;Acc:HGNC:17731]",0.136
+"PIH1D1",0.049,0.185,"PIH1 domain containing 1 [Source:HGNC Symbol;Acc:HGNC:26075]",0.136
+"PRELID3B",0.049,0.185,"PRELI domain containing 3B [Source:HGNC Symbol;Acc:HGNC:15892]",0.136
+"HMGXB4",0.049,0.185,"HMG-box containing 4 [Source:HGNC Symbol;Acc:HGNC:5003]",0.136
+"ABCB7",0.049,0.185,"ATP binding cassette subfamily B member 7 [Source:HGNC Symbol;Acc:HGNC:48]",0.136
+"PHF6",0.049,0.185,"PHD finger protein 6 [Source:HGNC Symbol;Acc:HGNC:18145]",0.136
+"WDR11",0.088,0.222,"WD repeat domain 11 [Source:HGNC Symbol;Acc:HGNC:13831]",0.134
+"SLC25A36",0.088,0.222,"solute carrier family 25 member 36 [Source:HGNC Symbol;Acc:HGNC:25554]",0.134
+"TMEM230",0.088,0.222,"transmembrane protein 230 [Source:HGNC Symbol;Acc:HGNC:15876]",0.134
+"ZFX",0.088,0.222,"zinc finger protein X-linked [Source:HGNC Symbol;Acc:HGNC:12869]",0.134
+"TPRKB",0.088,0.222,"TP53RK binding protein [Source:HGNC Symbol;Acc:HGNC:24259]",0.134
+"CYC1",0.088,0.222,"cytochrome c1 [Source:HGNC Symbol;Acc:HGNC:2579]",0.134
+"SIK3",0.088,0.222,"SIK family kinase 3 [Source:HGNC Symbol;Acc:HGNC:29165]",0.134
+"ACTR6",0.088,0.222,"actin related protein 6 [Source:HGNC Symbol;Acc:HGNC:24025]",0.134
+"SPAG7",0.088,0.222,"sperm associated antigen 7 [Source:HGNC Symbol;Acc:HGNC:11216]",0.134
+"GNA13",0.088,0.222,"G protein subunit alpha 13 [Source:HGNC Symbol;Acc:HGNC:4381]",0.134
+"PSMG2",0.088,0.222,"proteasome assembly chaperone 2 [Source:HGNC Symbol;Acc:HGNC:24929]",0.134
+"TECR",0.088,0.222,"trans-2,3-enoyl-CoA reductase [Source:HGNC Symbol;Acc:HGNC:4551]",0.134
+"THAP7",0.088,0.222,"THAP domain containing 7 [Source:HGNC Symbol;Acc:HGNC:23190]",0.134
+"SUN2",0.088,0.222,"Sad1 and UNC84 domain containing 2 [Source:HGNC Symbol;Acc:HGNC:14210]",0.134
+"MTCH1",0.127,0.259,"mitochondrial carrier 1 [Source:HGNC Symbol;Acc:HGNC:17586]",0.132
+"QSOX2",0.127,0.259,"quiescin sulfhydryl oxidase 2 [Source:HGNC Symbol;Acc:HGNC:30249]",0.132
+"PLEKHJ1",0.167,0.296,"pleckstrin homology domain containing J1 [Source:HGNC Symbol;Acc:HGNC:18211]",0.12899999999999998
+"TIMM23",0.02,0.148,"translocase of inner mitochondrial membrane 23 [Source:HGNC Symbol;Acc:HGNC:17312]",0.128
+"DLEU1",0.02,0.148,"deleted in lymphocytic leukemia 1 [Source:HGNC Symbol;Acc:HGNC:13747]",0.128
+"TP53I13",0.206,0.333,"tumor protein p53 inducible protein 13 [Source:HGNC Symbol;Acc:HGNC:25102]",0.12700000000000003
+"CWC27",0.059,0.185,"CWC27 spliceosome associated cyclophilin [Source:HGNC Symbol;Acc:HGNC:10664]",0.126
+"PUM2",0.059,0.185,"pumilio RNA binding family member 2 [Source:HGNC Symbol;Acc:HGNC:14958]",0.126
+"ARRDC3",0.059,0.185,"arrestin domain containing 3 [Source:HGNC Symbol;Acc:HGNC:29263]",0.126
+"FBXO3",0.059,0.185,"F-box protein 3 [Source:HGNC Symbol;Acc:HGNC:13582]",0.126
+"EIF2B1",0.059,0.185,"eukaryotic translation initiation factor 2B subunit alpha [Source:HGNC Symbol;Acc:HGNC:3257]",0.126
+"RRN3",0.059,0.185,"RRN3 homolog, RNA polymerase I transcription factor [Source:HGNC Symbol;Acc:HGNC:30346]",0.126
+"HEXD",0.059,0.185,"hexosaminidase D [Source:HGNC Symbol;Acc:HGNC:26307]",0.126
+"IGLV2-14",0.059,0.185,"immunoglobulin lambda variable 2-14 [Source:HGNC Symbol;Acc:HGNC:5888]",0.126
+"PKN2",0.059,0.185,"protein kinase N2 [Source:HGNC Symbol;Acc:HGNC:9406]",0.126
+"RSBN1",0.059,0.185,"round spermatid basic protein 1 [Source:HGNC Symbol;Acc:HGNC:25642]",0.126
+"NCSTN",0.059,0.185,"nicastrin [Source:HGNC Symbol;Acc:HGNC:17091]",0.126
+"COA5",0.059,0.185,"cytochrome c oxidase assembly factor 5 [Source:HGNC Symbol;Acc:HGNC:33848]",0.126
+"METTL5",0.059,0.185,"methyltransferase like 5 [Source:HGNC Symbol;Acc:HGNC:25006]",0.126
+"EIF4E2",0.059,0.185,"eukaryotic translation initiation factor 4E family member 2 [Source:HGNC Symbol;Acc:HGNC:3293]",0.126
+"MAP4",0.059,0.185,"microtubule associated protein 4 [Source:HGNC Symbol;Acc:HGNC:6862]",0.126
+"UQCRC1",0.059,0.185,"ubiquinol-cytochrome c reductase core protein 1 [Source:HGNC Symbol;Acc:HGNC:12585]",0.126
+"PARP15",0.059,0.185,"poly(ADP-ribose) polymerase family member 15 [Source:HGNC Symbol;Acc:HGNC:26876]",0.126
+"MRPL3",0.059,0.185,"mitochondrial ribosomal protein L3 [Source:HGNC Symbol;Acc:HGNC:10379]",0.126
+"FIP1L1",0.059,0.185,"factor interacting with PAPOLA and CPSF1 [Source:HGNC Symbol;Acc:HGNC:19124]",0.126
+"UBE2J1",0.059,0.185,"ubiquitin conjugating enzyme E2 J1 [Source:HGNC Symbol;Acc:HGNC:17598]",0.126
+"SEC63",0.059,0.185,"SEC63 homolog, protein translocation regulator [Source:HGNC Symbol;Acc:HGNC:21082]",0.126
+"HDDC2",0.059,0.185,"HD domain containing 2 [Source:HGNC Symbol;Acc:HGNC:21078]",0.126
+"SUN1",0.059,0.185,"Sad1 and UNC84 domain containing 1 [Source:HGNC Symbol;Acc:HGNC:18587]",0.126
+"GPAT4",0.059,0.185,"glycerol-3-phosphate acyltransferase 4 [Source:HGNC Symbol;Acc:HGNC:20880]",0.126
+"RNF19A",0.059,0.185,"ring finger protein 19A, RBR E3 ubiquitin protein ligase [Source:HGNC Symbol;Acc:HGNC:13432]",0.126
+"FAM91A1",0.059,0.185,"family with sequence similarity 91 member A1 [Source:HGNC Symbol;Acc:HGNC:26306]",0.126
+"OSTF1",0.059,0.185,"osteoclast stimulating factor 1 [Source:HGNC Symbol;Acc:HGNC:8510]",0.126
+"RAD23B",0.059,0.185,"RAD23 homolog B, nucleotide excision repair protein [Source:HGNC Symbol;Acc:HGNC:9813]",0.126
+"USP6NL",0.059,0.185,"USP6 N-terminal like [Source:HGNC Symbol;Acc:HGNC:16858]",0.126
+"PTEN",0.059,0.185,"phosphatase and tensin homolog [Source:HGNC Symbol;Acc:HGNC:9588]",0.126
+"NSMCE4A",0.059,0.185,"NSE4 homolog A, SMC5-SMC6 complex component [Source:HGNC Symbol;Acc:HGNC:25935]",0.126
+"HTATIP2",0.059,0.185,"HIV-1 Tat interactive protein 2 [Source:HGNC Symbol;Acc:HGNC:16637]",0.126
+"MAP4K2",0.059,0.185,"mitogen-activated protein kinase kinase kinase kinase 2 [Source:HGNC Symbol;Acc:HGNC:6864]",0.126
+"VPS36",0.059,0.185,"vacuolar protein sorting 36 homolog [Source:HGNC Symbol;Acc:HGNC:20312]",0.126
+"FKBP3",0.059,0.185,"FKBP prolyl isomerase 3 [Source:HGNC Symbol;Acc:HGNC:3719]",0.126
+"ZBTB25",0.059,0.185,"zinc finger and BTB domain containing 25 [Source:HGNC Symbol;Acc:HGNC:13112]",0.126
+"COPS2",0.059,0.185,"COP9 signalosome subunit 2 [Source:HGNC Symbol;Acc:HGNC:30747]",0.126
+"FAM192A",0.059,0.185,"family with sequence similarity 192 member A [Source:HGNC Symbol;Acc:HGNC:29856]",0.126
+"PSMD12",0.059,0.185,"proteasome 26S subunit, non-ATPase 12 [Source:HGNC Symbol;Acc:HGNC:9557]",0.126
+"TEAD2",0.059,0.185,"TEA domain transcription factor 2 [Source:HGNC Symbol;Acc:HGNC:11715]",0.126
+"AP1B1",0.059,0.185,"adaptor related protein complex 1 subunit beta 1 [Source:HGNC Symbol;Acc:HGNC:554]",0.126
+"NUP50",0.059,0.185,"nucleoporin 50 [Source:HGNC Symbol;Acc:HGNC:8065]",0.126
+"ATP6AP2",0.059,0.185,"ATPase H+ transporting accessory protein 2 [Source:HGNC Symbol;Acc:HGNC:18305]",0.126
+"CYTH1",0.245,0.37,"cytohesin 1 [Source:HGNC Symbol;Acc:HGNC:9501]",0.125
+"CANX",0.098,0.222,"calnexin [Source:HGNC Symbol;Acc:HGNC:1473]",0.124
+"PTK2B",0.098,0.222,"protein tyrosine kinase 2 beta [Source:HGNC Symbol;Acc:HGNC:9612]",0.124
+"TRAM1",0.098,0.222,"translocation associated membrane protein 1 [Source:HGNC Symbol;Acc:HGNC:20568]",0.124
+"MRPL38",0.098,0.222,"mitochondrial ribosomal protein L38 [Source:HGNC Symbol;Acc:HGNC:14033]",0.124
+"XPO1",0.098,0.222,"exportin 1 [Source:HGNC Symbol;Acc:HGNC:12825]",0.124
+"RPP21",0.098,0.222,"ribonuclease P/MRP subunit p21 [Source:HGNC Symbol;Acc:HGNC:21300]",0.124
+"SECISBP2",0.098,0.222,"SECIS binding protein 2 [Source:HGNC Symbol;Acc:HGNC:30972]",0.124
+"SUPT20H",0.098,0.222,"SPT20 homolog, SAGA complex component [Source:HGNC Symbol;Acc:HGNC:20596]",0.124
+"KLHL36",0.098,0.222,"kelch like family member 36 [Source:HGNC Symbol;Acc:HGNC:17844]",0.124
+"ZNF101",0.098,0.222,"zinc finger protein 101 [Source:HGNC Symbol;Acc:HGNC:12881]",0.124
+"CBX7",0.098,0.222,"chromobox 7 [Source:HGNC Symbol;Acc:HGNC:1557]",0.124
+"TTC14",0.137,0.259,"tetratricopeptide repeat domain 14 [Source:HGNC Symbol;Acc:HGNC:24697]",0.122
+"TASOR",0.137,0.259,"transcription activation suppressor [Source:HGNC Symbol;Acc:HGNC:30314]",0.122
+"UNC93B1",0.137,0.259,"unc-93 homolog B1, TLR signaling regulator [Source:HGNC Symbol;Acc:HGNC:13481]",0.122
+"SYTL1",0.176,0.296,"synaptotagmin like 1 [Source:HGNC Symbol;Acc:HGNC:15584]",0.12
+"WRAP73",0.029,0.148,"WD repeat containing, antisense to TP73 [Source:HGNC Symbol;Acc:HGNC:12759]",0.119
+"RCC2",0.029,0.148,"regulator of chromosome condensation 2 [Source:HGNC Symbol;Acc:HGNC:30297]",0.119
+"TMED5",0.029,0.148,"transmembrane p24 trafficking protein 5 [Source:HGNC Symbol;Acc:HGNC:24251]",0.119
+"SCAMP3",0.029,0.148,"secretory carrier membrane protein 3 [Source:HGNC Symbol;Acc:HGNC:10565]",0.119
+"ELK4",0.029,0.148,"ETS transcription factor ELK4 [Source:HGNC Symbol;Acc:HGNC:3326]",0.119
+"OPN3",0.029,0.148,"opsin 3 [Source:HGNC Symbol;Acc:HGNC:14007]",0.119
+"SLC4A1AP",0.029,0.148,"solute carrier family 4 member 1 adaptor protein [Source:HGNC Symbol;Acc:HGNC:13813]",0.119
+"RAB5A",0.029,0.148,"RAB5A, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:9783]",0.119
+"GNL3",0.029,0.148,"G protein nucleolar 3 [Source:HGNC Symbol;Acc:HGNC:29931]",0.119
+"ARHGEF3",0.029,0.148,"Rho guanine nucleotide exchange factor 3 [Source:HGNC Symbol;Acc:HGNC:683]",0.119
+"SNX4",0.029,0.148,"sorting nexin 4 [Source:HGNC Symbol;Acc:HGNC:11175]",0.119
+"ZNF131",0.029,0.148,"zinc finger protein 131 [Source:HGNC Symbol;Acc:HGNC:12915]",0.119
+"DEF6",0.029,0.148,"DEF6 guanine nucleotide exchange factor [Source:HGNC Symbol;Acc:HGNC:2760]",0.119
+"TBPL1",0.029,0.148,"TATA-box binding protein like 1 [Source:HGNC Symbol;Acc:HGNC:11589]",0.119
+"SLC12A9",0.029,0.148,"solute carrier family 12 member 9 [Source:HGNC Symbol;Acc:HGNC:17435]",0.119
+"TMEM68",0.029,0.148,"transmembrane protein 68 [Source:HGNC Symbol;Acc:HGNC:26510]",0.119
+"TSTA3",0.029,0.148,"tissue specific transplantation antigen P35B [Source:HGNC Symbol;Acc:HGNC:12390]",0.119
+"ENTR1",0.029,0.148,"endosome associated trafficking regulator 1 [Source:HGNC Symbol;Acc:HGNC:10667]",0.119
+"PIP4K2A",0.029,0.148,"phosphatidylinositol-5-phosphate 4-kinase type 2 alpha [Source:HGNC Symbol;Acc:HGNC:8997]",0.119
+"ACBD5",0.029,0.148,"acyl-CoA binding domain containing 5 [Source:HGNC Symbol;Acc:HGNC:23338]",0.119
+"TNKS2",0.029,0.148,"tankyrase 2 [Source:HGNC Symbol;Acc:HGNC:15677]",0.119
+"BTAF1",0.029,0.148,"B-TFIID TATA-box binding protein associated factor 1 [Source:HGNC Symbol;Acc:HGNC:17307]",0.119
+"TMEM106C",0.029,0.148,"transmembrane protein 106C [Source:HGNC Symbol;Acc:HGNC:28775]",0.119
+"ATP2A2",0.029,0.148,"ATPase sarcoplasmic/endoplasmic reticulum Ca2+ transporting 2 [Source:HGNC Symbol;Acc:HGNC:812]",0.119
+"BRI3BP",0.029,0.148,"BRI3 binding protein [Source:HGNC Symbol;Acc:HGNC:14251]",0.119
+"TFDP1",0.029,0.148,"transcription factor Dp-1 [Source:HGNC Symbol;Acc:HGNC:11749]",0.119
+"PATL2",0.029,0.148,"PAT1 homolog 2 [Source:HGNC Symbol;Acc:HGNC:33630]",0.119
+"CSNK2A2",0.029,0.148,"casein kinase 2 alpha 2 [Source:HGNC Symbol;Acc:HGNC:2459]",0.119
+"DHX38",0.029,0.148,"DEAH-box helicase 38 [Source:HGNC Symbol;Acc:HGNC:17211]",0.119
+"GATAD2A",0.029,0.148,"GATA zinc finger domain containing 2A [Source:HGNC Symbol;Acc:HGNC:29989]",0.119
+"ZNF528-AS1",0.029,0.148,"ZNF528 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:51305]",0.119
+"ZNFX1",0.029,0.148,"zinc finger NFX1-type containing 1 [Source:HGNC Symbol;Acc:HGNC:29271]",0.119
+"PCMTD2",0.029,0.148,"protein-L-isoaspartate (D-aspartate) O-methyltransferase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:15882]",0.119
+"CABIN1",0.029,0.148,"calcineurin binding protein 1 [Source:HGNC Symbol;Acc:HGNC:24187]",0.119
+"NIPSNAP1",0.029,0.148,"nipsnap homolog 1 [Source:HGNC Symbol;Acc:HGNC:7827]",0.119
+"RPL21",0.882,1,"ribosomal protein L21 [Source:HGNC Symbol;Acc:HGNC:10313]",0.118
+"DGKD",0.069,0.185,"diacylglycerol kinase delta [Source:HGNC Symbol;Acc:HGNC:2851]",0.11599999999999999
+"NOP56",0.069,0.185,"NOP56 ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:15911]",0.11599999999999999
+"SLC9A7",0.069,0.185,"solute carrier family 9 member A7 [Source:HGNC Symbol;Acc:HGNC:17123]",0.11599999999999999
+"IPO7",0.069,0.185,"importin 7 [Source:HGNC Symbol;Acc:HGNC:9852]",0.11599999999999999
+"WDR91",0.069,0.185,"WD repeat domain 91 [Source:HGNC Symbol;Acc:HGNC:24997]",0.11599999999999999
+"DENND11",0.069,0.185,"DENN domain containing 11 [Source:HGNC Symbol;Acc:HGNC:29472]",0.11599999999999999
+"FAM102A",0.069,0.185,"family with sequence similarity 102 member A [Source:HGNC Symbol;Acc:HGNC:31419]",0.11599999999999999
+"ABLIM1",0.069,0.185,"actin binding LIM protein 1 [Source:HGNC Symbol;Acc:HGNC:78]",0.11599999999999999
+"HAGHL",0.069,0.185,"hydroxyacylglutathione hydrolase like [Source:HGNC Symbol;Acc:HGNC:14177]",0.11599999999999999
+"ITPKB",0.069,0.185,"inositol-trisphosphate 3-kinase B [Source:HGNC Symbol;Acc:HGNC:6179]",0.11599999999999999
+"FADS3",0.069,0.185,"fatty acid desaturase 3 [Source:HGNC Symbol;Acc:HGNC:3576]",0.11599999999999999
+"NUDT3",0.069,0.185,"nudix hydrolase 3 [Source:HGNC Symbol;Acc:HGNC:8050]",0.11599999999999999
+"CDKN1B",0.069,0.185,"cyclin dependent kinase inhibitor 1B [Source:HGNC Symbol;Acc:HGNC:1785]",0.11599999999999999
+"ANKRD13A",0.069,0.185,"ankyrin repeat domain 13A [Source:HGNC Symbol;Acc:HGNC:21268]",0.11599999999999999
+"MT2A",0.069,0.185,"metallothionein 2A [Source:HGNC Symbol;Acc:HGNC:7406]",0.11599999999999999
+"HNRNPL",0.069,0.185,"heterogeneous nuclear ribonucleoprotein L [Source:HGNC Symbol;Acc:HGNC:5045]",0.11599999999999999
+"CHPT1",0.108,0.222,"choline phosphotransferase 1 [Source:HGNC Symbol;Acc:HGNC:17852]",0.114
+"THUMPD3-AS1",0.108,0.222,"THUMPD3 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:44478]",0.114
+"NIPSNAP2",0.108,0.222,"nipsnap homolog 2 [Source:HGNC Symbol;Acc:HGNC:4179]",0.114
+"ABI1",0.108,0.222,"abl interactor 1 [Source:HGNC Symbol;Acc:HGNC:11320]",0.114
+"SGPP1",0.108,0.222,"sphingosine-1-phosphate phosphatase 1 [Source:HGNC Symbol;Acc:HGNC:17720]",0.114
+"TCF3",0.108,0.222,"transcription factor 3 [Source:HGNC Symbol;Acc:HGNC:11633]",0.114
+"CSNK1G2",0.108,0.222,"casein kinase 1 gamma 2 [Source:HGNC Symbol;Acc:HGNC:2455]",0.114
+"SLC38A2",0.147,0.259,"solute carrier family 38 member 2 [Source:HGNC Symbol;Acc:HGNC:13448]",0.11200000000000002
+"HNRNPM",0.186,0.296,"heterogeneous nuclear ribonucleoprotein M [Source:HGNC Symbol;Acc:HGNC:5046]",0.10999999999999999
+"LARP1",0.039,0.148,"La ribonucleoprotein domain family member 1 [Source:HGNC Symbol;Acc:HGNC:29531]",0.10899999999999999
+"C1orf174",0.039,0.148,"chromosome 1 open reading frame 174 [Source:HGNC Symbol;Acc:HGNC:27915]",0.10899999999999999
+"VAMP3",0.039,0.148,"vesicle associated membrane protein 3 [Source:HGNC Symbol;Acc:HGNC:12644]",0.10899999999999999
+"ECHDC2",0.039,0.148,"enoyl-CoA hydratase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:23408]",0.10899999999999999
+"SLC35A3",0.039,0.148,"solute carrier family 35 member A3 [Source:HGNC Symbol;Acc:HGNC:11023]",0.10899999999999999
+"MAN1A2",0.039,0.148,"mannosidase alpha class 1A member 2 [Source:HGNC Symbol;Acc:HGNC:6822]",0.10899999999999999
+"GATAD2B",0.039,0.148,"GATA zinc finger domain containing 2B [Source:HGNC Symbol;Acc:HGNC:30778]",0.10899999999999999
+"DPM3",0.039,0.148,"dolichyl-phosphate mannosyltransferase subunit 3, regulatory [Source:HGNC Symbol;Acc:HGNC:3007]",0.10899999999999999
+"EIF2AK2",0.039,0.148,"eukaryotic translation initiation factor 2 alpha kinase 2 [Source:HGNC Symbol;Acc:HGNC:9437]",0.10899999999999999
+"MCFD2",0.039,0.148,"multiple coagulation factor deficiency 2 [Source:HGNC Symbol;Acc:HGNC:18451]",0.10899999999999999
+"SPATS2L",0.039,0.148,"spermatogenesis associated serine rich 2 like [Source:HGNC Symbol;Acc:HGNC:24574]",0.10899999999999999
+"AAMP",0.039,0.148,"angio associated migratory cell protein [Source:HGNC Symbol;Acc:HGNC:18]",0.10899999999999999
+"SIDT1",0.039,0.148,"SID1 transmembrane family member 1 [Source:HGNC Symbol;Acc:HGNC:25967]",0.10899999999999999
+"AP3B1",0.039,0.148,"adaptor related protein complex 3 subunit beta 1 [Source:HGNC Symbol;Acc:HGNC:566]",0.10899999999999999
+"SRA1",0.039,0.148,"steroid receptor RNA activator 1 [Source:HGNC Symbol;Acc:HGNC:11281]",0.10899999999999999
+"HARS",0.039,0.148,"histidyl-tRNA synthetase [Source:HGNC Symbol;Acc:HGNC:4816]",0.10899999999999999
+"HLA-DRB5",0.039,0.148,"major histocompatibility complex, class II, DR beta 5 [Source:HGNC Symbol;Acc:HGNC:4953]",0.10899999999999999
+"TAF8",0.039,0.148,"TATA-box binding protein associated factor 8 [Source:HGNC Symbol;Acc:HGNC:17300]",0.10899999999999999
+"CEP85L",0.039,0.148,"centrosomal protein 85 like [Source:HGNC Symbol;Acc:HGNC:21638]",0.10899999999999999
+"UMAD1",0.039,0.148,"UBAP1-MVB12-associated (UMA) domain containing 1 [Source:HGNC Symbol;Acc:HGNC:48955]",0.10899999999999999
+"GLI4",0.039,0.148,"GLI family zinc finger 4 [Source:HGNC Symbol;Acc:HGNC:4320]",0.10899999999999999
+"SPIN1",0.039,0.148,"spindlin 1 [Source:HGNC Symbol;Acc:HGNC:11243]",0.10899999999999999
+"HDHD3",0.039,0.148,"haloacid dehalogenase like hydrolase domain containing 3 [Source:HGNC Symbol;Acc:HGNC:28171]",0.10899999999999999
+"SH2D3C",0.039,0.148,"SH2 domain containing 3C [Source:HGNC Symbol;Acc:HGNC:16884]",0.10899999999999999
+"SPOUT1",0.039,0.148,"SPOUT domain containing methyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:26933]",0.10899999999999999
+"PMPCA",0.039,0.148,"peptidase, mitochondrial processing alpha subunit [Source:HGNC Symbol;Acc:HGNC:18667]",0.10899999999999999
+"NOTCH1",0.039,0.148,"notch receptor 1 [Source:HGNC Symbol;Acc:HGNC:7881]",0.10899999999999999
+"WASHC2C",0.039,0.148,"WASH complex subunit 2C [Source:HGNC Symbol;Acc:HGNC:23414]",0.10899999999999999
+"FBXW4",0.039,0.148,"F-box and WD repeat domain containing 4 [Source:HGNC Symbol;Acc:HGNC:10847]",0.10899999999999999
+"AP003774.2",0.039,0.148,"novel transcript",0.10899999999999999
+"ATG16L2",0.039,0.148,"autophagy related 16 like 2 [Source:HGNC Symbol;Acc:HGNC:25464]",0.10899999999999999
+"PCF11",0.039,0.148,"PCF11 cleavage and polyadenylation factor subunit [Source:HGNC Symbol;Acc:HGNC:30097]",0.10899999999999999
+"MED21",0.039,0.148,"mediator complex subunit 21 [Source:HGNC Symbol;Acc:HGNC:11473]",0.10899999999999999
+"COQ10A",0.039,0.148,"coenzyme Q10A [Source:HGNC Symbol;Acc:HGNC:26515]",0.10899999999999999
+"NUDT4",0.039,0.148,"nudix hydrolase 4 [Source:HGNC Symbol;Acc:HGNC:8051]",0.10899999999999999
+"SPPL3",0.039,0.148,"signal peptide peptidase like 3 [Source:HGNC Symbol;Acc:HGNC:30424]",0.10899999999999999
+"FBXL3",0.039,0.148,"F-box and leucine rich repeat protein 3 [Source:HGNC Symbol;Acc:HGNC:13599]",0.10899999999999999
+"CDC16",0.039,0.148,"cell division cycle 16 [Source:HGNC Symbol;Acc:HGNC:1720]",0.10899999999999999
+"NGDN",0.039,0.148,"neuroguidin [Source:HGNC Symbol;Acc:HGNC:20271]",0.10899999999999999
+"SEC23A",0.039,0.148,"Sec23 homolog A, coat complex II component [Source:HGNC Symbol;Acc:HGNC:10701]",0.10899999999999999
+"JKAMP",0.039,0.148,"JNK1/MAPK8 associated membrane protein [Source:HGNC Symbol;Acc:HGNC:20184]",0.10899999999999999
+"EIF2S1",0.039,0.148,"eukaryotic translation initiation factor 2 subunit alpha [Source:HGNC Symbol;Acc:HGNC:3265]",0.10899999999999999
+"SUSD6",0.039,0.148,"sushi domain containing 6 [Source:HGNC Symbol;Acc:HGNC:19956]",0.10899999999999999
+"ATXN3",0.039,0.148,"ataxin 3 [Source:HGNC Symbol;Acc:HGNC:7106]",0.10899999999999999
+"GLRX5",0.039,0.148,"glutaredoxin 5 [Source:HGNC Symbol;Acc:HGNC:20134]",0.10899999999999999
+"ARID3B",0.039,0.148,"AT-rich interaction domain 3B [Source:HGNC Symbol;Acc:HGNC:14350]",0.10899999999999999
+"HMG20A",0.039,0.148,"high mobility group 20A [Source:HGNC Symbol;Acc:HGNC:5001]",0.10899999999999999
+"E2F4",0.039,0.148,"E2F transcription factor 4 [Source:HGNC Symbol;Acc:HGNC:3118]",0.10899999999999999
+"ZNF821",0.039,0.148,"zinc finger protein 821 [Source:HGNC Symbol;Acc:HGNC:28043]",0.10899999999999999
+"MVD",0.039,0.148,"mevalonate diphosphate decarboxylase [Source:HGNC Symbol;Acc:HGNC:7529]",0.10899999999999999
+"ELP5",0.039,0.148,"elongator acetyltransferase complex subunit 5 [Source:HGNC Symbol;Acc:HGNC:30617]",0.10899999999999999
+"AATF",0.039,0.148,"apoptosis antagonizing transcription factor [Source:HGNC Symbol;Acc:HGNC:19235]",0.10899999999999999
+"SNF8",0.039,0.148,"SNF8 subunit of ESCRT-II [Source:HGNC Symbol;Acc:HGNC:17028]",0.10899999999999999
+"RHBDF2",0.039,0.148,"rhomboid 5 homolog 2 [Source:HGNC Symbol;Acc:HGNC:20788]",0.10899999999999999
+"MPPE1",0.039,0.148,"metallophosphoesterase 1 [Source:HGNC Symbol;Acc:HGNC:15988]",0.10899999999999999
+"KIAA1328",0.039,0.148,"KIAA1328 [Source:HGNC Symbol;Acc:HGNC:29248]",0.10899999999999999
+"DAZAP1",0.039,0.148,"DAZ associated protein 1 [Source:HGNC Symbol;Acc:HGNC:2683]",0.10899999999999999
+"DPP9",0.039,0.148,"dipeptidyl peptidase 9 [Source:HGNC Symbol;Acc:HGNC:18648]",0.10899999999999999
+"KRI1",0.039,0.148,"KRI1 homolog [Source:HGNC Symbol;Acc:HGNC:25769]",0.10899999999999999
+"ILVBL",0.039,0.148,"ilvB acetolactate synthase like [Source:HGNC Symbol;Acc:HGNC:6041]",0.10899999999999999
+"DDX49",0.039,0.148,"DEAD-box helicase 49 [Source:HGNC Symbol;Acc:HGNC:18684]",0.10899999999999999
+"ALDH16A1",0.039,0.148,"aldehyde dehydrogenase 16 family member A1 [Source:HGNC Symbol;Acc:HGNC:28114]",0.10899999999999999
+"ERVK3-1",0.039,0.148,"endogenous retrovirus group K3 member 1 [Source:HGNC Symbol;Acc:HGNC:30466]",0.10899999999999999
+"MZF1",0.039,0.148,"myeloid zinc finger 1 [Source:HGNC Symbol;Acc:HGNC:13108]",0.10899999999999999
+"CEP250",0.039,0.148,"centrosomal protein 250 [Source:HGNC Symbol;Acc:HGNC:1859]",0.10899999999999999
+"PHF5A",0.039,0.148,"PHD finger protein 5A [Source:HGNC Symbol;Acc:HGNC:18000]",0.10899999999999999
+"PRKX",0.039,0.148,"protein kinase X-linked [Source:HGNC Symbol;Acc:HGNC:9441]",0.10899999999999999
+"ARMCX3",0.039,0.148,"armadillo repeat containing X-linked 3 [Source:HGNC Symbol;Acc:HGNC:24065]",0.10899999999999999
+"ATXN1",0.078,0.185,"ataxin 1 [Source:HGNC Symbol;Acc:HGNC:10548]",0.107
+"PHF20L1",0.078,0.185,"PHD finger protein 20 like 1 [Source:HGNC Symbol;Acc:HGNC:24280]",0.107
+"COPS5",0.078,0.185,"COP9 signalosome subunit 5 [Source:HGNC Symbol;Acc:HGNC:2240]",0.107
+"CNOT1",0.078,0.185,"CCR4-NOT transcription complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:7877]",0.107
+"LYL1",0.078,0.185,"LYL1 basic helix-loop-helix family member [Source:HGNC Symbol;Acc:HGNC:6734]",0.107
+"LRCH3",0.078,0.185,"leucine rich repeats and calponin homology domain containing 3 [Source:HGNC Symbol;Acc:HGNC:28637]",0.107
+"BRIX1",0.078,0.185,"biogenesis of ribosomes BRX1 [Source:HGNC Symbol;Acc:HGNC:24170]",0.107
+"GIGYF1",0.078,0.185,"GRB10 interacting GYF protein 1 [Source:HGNC Symbol;Acc:HGNC:9126]",0.107
+"RAB18",0.078,0.185,"RAB18, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:14244]",0.107
+"PNPLA2",0.078,0.185,"patatin like phospholipase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:30802]",0.107
+"WDR74",0.078,0.185,"WD repeat domain 74 [Source:HGNC Symbol;Acc:HGNC:25529]",0.107
+"DDX54",0.078,0.185,"DEAD-box helicase 54 [Source:HGNC Symbol;Acc:HGNC:20084]",0.107
+"DERL2",0.078,0.185,"derlin 2 [Source:HGNC Symbol;Acc:HGNC:17943]",0.107
+"EXOC7",0.078,0.185,"exocyst complex component 7 [Source:HGNC Symbol;Acc:HGNC:23214]",0.107
+"SMAD2",0.078,0.185,"SMAD family member 2 [Source:HGNC Symbol;Acc:HGNC:6768]",0.107
+"CTNNB1",0.118,0.222,"catenin beta 1 [Source:HGNC Symbol;Acc:HGNC:2514]",0.10400000000000001
+"IRF3",0.118,0.222,"interferon regulatory factor 3 [Source:HGNC Symbol;Acc:HGNC:6118]",0.10400000000000001
+"IRF8",0.304,0.407,"interferon regulatory factor 8 [Source:HGNC Symbol;Acc:HGNC:5358]",0.10299999999999998
+"KXD1",0.049,0.148,"KxDL motif containing 1 [Source:HGNC Symbol;Acc:HGNC:28420]",0.09899999999999999
+"PEG10",0.049,0.148,"paternally expressed 10 [Source:HGNC Symbol;Acc:HGNC:14005]",0.09899999999999999
+"LRCH4",0.049,0.148,"leucine rich repeats and calponin homology domain containing 4 [Source:HGNC Symbol;Acc:HGNC:6691]",0.09899999999999999
+"BLOC1S6",0.049,0.148,"biogenesis of lysosomal organelles complex 1 subunit 6 [Source:HGNC Symbol;Acc:HGNC:8549]",0.09899999999999999
+"ATF7IP2",0.049,0.148,"activating transcription factor 7 interacting protein 2 [Source:HGNC Symbol;Acc:HGNC:20397]",0.09899999999999999
+"TIPRL",0.049,0.148,"TOR signaling pathway regulator [Source:HGNC Symbol;Acc:HGNC:30231]",0.09899999999999999
+"PRKCE",0.049,0.148,"protein kinase C epsilon [Source:HGNC Symbol;Acc:HGNC:9401]",0.09899999999999999
+"CLASP1",0.049,0.148,"cytoplasmic linker associated protein 1 [Source:HGNC Symbol;Acc:HGNC:17088]",0.09899999999999999
+"SESTD1",0.049,0.148,"SEC14 and spectrin domain containing 1 [Source:HGNC Symbol;Acc:HGNC:18379]",0.09899999999999999
+"INO80D",0.049,0.148,"INO80 complex subunit D [Source:HGNC Symbol;Acc:HGNC:25997]",0.09899999999999999
+"CLDND1",0.049,0.148,"claudin domain containing 1 [Source:HGNC Symbol;Acc:HGNC:1322]",0.09899999999999999
+"HTT",0.049,0.148,"huntingtin [Source:HGNC Symbol;Acc:HGNC:4851]",0.09899999999999999
+"ZFYVE16",0.049,0.148,"zinc finger FYVE-type containing 16 [Source:HGNC Symbol;Acc:HGNC:20756]",0.09899999999999999
+"RNF44",0.049,0.148,"ring finger protein 44 [Source:HGNC Symbol;Acc:HGNC:19180]",0.09899999999999999
+"GCLC",0.049,0.148,"glutamate-cysteine ligase catalytic subunit [Source:HGNC Symbol;Acc:HGNC:4311]",0.09899999999999999
+"REV3L",0.049,0.148,"REV3 like, DNA directed polymerase zeta catalytic subunit [Source:HGNC Symbol;Acc:HGNC:9968]",0.09899999999999999
+"PSMC2",0.049,0.148,"proteasome 26S subunit, ATPase 2 [Source:HGNC Symbol;Acc:HGNC:9548]",0.09899999999999999
+"ZYX",0.049,0.148,"zyxin [Source:HGNC Symbol;Acc:HGNC:13200]",0.09899999999999999
+"PRAG1",0.049,0.148,"PEAK1 related, kinase-activating pseudokinase 1 [Source:HGNC Symbol;Acc:HGNC:25438]",0.09899999999999999
+"TERF1",0.049,0.148,"telomeric repeat binding factor 1 [Source:HGNC Symbol;Acc:HGNC:11728]",0.09899999999999999
+"RIC1",0.049,0.148,"RIC1 homolog, RAB6A GEF complex partner 1 [Source:HGNC Symbol;Acc:HGNC:17686]",0.09899999999999999
+"CCDC107",0.049,0.148,"coiled-coil domain containing 107 [Source:HGNC Symbol;Acc:HGNC:28465]",0.09899999999999999
+"CDK5RAP2",0.049,0.148,"CDK5 regulatory subunit associated protein 2 [Source:HGNC Symbol;Acc:HGNC:18672]",0.09899999999999999
+"RABL6",0.049,0.148,"RAB, member RAS oncogene family like 6 [Source:HGNC Symbol;Acc:HGNC:24703]",0.09899999999999999
+"PRPF18",0.049,0.148,"pre-mRNA processing factor 18 [Source:HGNC Symbol;Acc:HGNC:17351]",0.09899999999999999
+"SMNDC1",0.049,0.148,"survival motor neuron domain containing 1 [Source:HGNC Symbol;Acc:HGNC:16900]",0.09899999999999999
+"RAB11FIP2",0.049,0.148,"RAB11 family interacting protein 2 [Source:HGNC Symbol;Acc:HGNC:29152]",0.09899999999999999
+"TNNI2",0.049,0.148,"troponin I2, fast skeletal type [Source:HGNC Symbol;Acc:HGNC:11946]",0.09899999999999999
+"CARS",0.049,0.148,"cysteinyl-tRNA synthetase [Source:HGNC Symbol;Acc:HGNC:1493]",0.09899999999999999
+"LARGE2",0.049,0.148,"LARGE xylosyl- and glucuronyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:16522]",0.09899999999999999
+"PATL1",0.049,0.148,"PAT1 homolog 1, processing body mRNA decay factor [Source:HGNC Symbol;Acc:HGNC:26721]",0.09899999999999999
+"FAM76B",0.049,0.148,"family with sequence similarity 76 member B [Source:HGNC Symbol;Acc:HGNC:28492]",0.09899999999999999
+"ITFG2",0.049,0.148,"integrin alpha FG-GAP repeat containing 2 [Source:HGNC Symbol;Acc:HGNC:30879]",0.09899999999999999
+"PYM1",0.049,0.148,"PYM homolog 1, exon junction complex associated factor [Source:HGNC Symbol;Acc:HGNC:30258]",0.09899999999999999
+"TBK1",0.049,0.148,"TANK binding kinase 1 [Source:HGNC Symbol;Acc:HGNC:11584]",0.09899999999999999
+"ZDHHC20",0.049,0.148,"zinc finger DHHC-type containing 20 [Source:HGNC Symbol;Acc:HGNC:20749]",0.09899999999999999
+"RIN3",0.049,0.148,"Ras and Rab interactor 3 [Source:HGNC Symbol;Acc:HGNC:18751]",0.09899999999999999
+"BTBD7",0.049,0.148,"BTB domain containing 7 [Source:HGNC Symbol;Acc:HGNC:18269]",0.09899999999999999
+"NIPA2",0.049,0.148,"NIPA magnesium transporter 2 [Source:HGNC Symbol;Acc:HGNC:17044]",0.09899999999999999
+"MAP2K1",0.049,0.148,"mitogen-activated protein kinase kinase 1 [Source:HGNC Symbol;Acc:HGNC:6840]",0.09899999999999999
+"RANGRF",0.049,0.148,"RAN guanine nucleotide release factor [Source:HGNC Symbol;Acc:HGNC:17679]",0.09899999999999999
+"ATP6V0A1",0.049,0.148,"ATPase H+ transporting V0 subunit a1 [Source:HGNC Symbol;Acc:HGNC:865]",0.09899999999999999
+"MAP3K14",0.049,0.148,"mitogen-activated protein kinase kinase kinase 14 [Source:HGNC Symbol;Acc:HGNC:6853]",0.09899999999999999
+"DCXR",0.049,0.148,"dicarbonyl and L-xylulose reductase [Source:HGNC Symbol;Acc:HGNC:18985]",0.09899999999999999
+"LINC00667",0.049,0.148,"long intergenic non-protein coding RNA 667 [Source:HGNC Symbol;Acc:HGNC:27906]",0.09899999999999999
+"NARS",0.049,0.148,"asparaginyl-tRNA synthetase [Source:HGNC Symbol;Acc:HGNC:7643]",0.09899999999999999
+"CIC",0.049,0.148,"capicua transcriptional repressor [Source:HGNC Symbol;Acc:HGNC:14214]",0.09899999999999999
+"BCAT2",0.049,0.148,"branched chain amino acid transaminase 2 [Source:HGNC Symbol;Acc:HGNC:977]",0.09899999999999999
+"PSMF1",0.049,0.148,"proteasome inhibitor subunit 1 [Source:HGNC Symbol;Acc:HGNC:9571]",0.09899999999999999
+"DDX27",0.049,0.148,"DEAD-box helicase 27 [Source:HGNC Symbol;Acc:HGNC:15837]",0.09899999999999999
+"PRR14L",0.049,0.148,"proline rich 14 like [Source:HGNC Symbol;Acc:HGNC:28738]",0.09899999999999999
+"SAMM50",0.049,0.148,"SAMM50 sorting and assembly machinery component [Source:HGNC Symbol;Acc:HGNC:24276]",0.09899999999999999
+"TRAPPC2",0.049,0.148,"trafficking protein particle complex 2 [Source:HGNC Symbol;Acc:HGNC:23068]",0.09899999999999999
+"KLF8",0.049,0.148,"Kruppel like factor 8 [Source:HGNC Symbol;Acc:HGNC:6351]",0.09899999999999999
+"TCEAL4",0.049,0.148,"transcription elongation factor A like 4 [Source:HGNC Symbol;Acc:HGNC:26121]",0.09899999999999999
+"RNF113A",0.049,0.148,"ring finger protein 113A [Source:HGNC Symbol;Acc:HGNC:12974]",0.09899999999999999
+"FAM3A",0.049,0.148,"family with sequence similarity 3 member A [Source:HGNC Symbol;Acc:HGNC:13749]",0.09899999999999999
+"RSRP1",0.235,0.333,"arginine and serine rich protein 1 [Source:HGNC Symbol;Acc:HGNC:25234]",0.09800000000000003
+"GON4L",0.088,0.185,"gon-4 like [Source:HGNC Symbol;Acc:HGNC:25973]",0.097
+"TLE4",0.088,0.185,"TLE family member 4, transcriptional corepressor [Source:HGNC Symbol;Acc:HGNC:11840]",0.097
+"LRP10",0.088,0.185,"LDL receptor related protein 10 [Source:HGNC Symbol;Acc:HGNC:14553]",0.097
+"CREBRF",0.088,0.185,"CREB3 regulatory factor [Source:HGNC Symbol;Acc:HGNC:24050]",0.097
+"PSPC1",0.088,0.185,"paraspeckle component 1 [Source:HGNC Symbol;Acc:HGNC:20320]",0.097
+"DERL3",0.088,0.185,"derlin 3 [Source:HGNC Symbol;Acc:HGNC:14236]",0.097
+"CCDC91",0.088,0.185,"coiled-coil domain containing 91 [Source:HGNC Symbol;Acc:HGNC:24855]",0.097
+"METTL8",0.088,0.185,"methyltransferase like 8 [Source:HGNC Symbol;Acc:HGNC:25856]",0.097
+"ABTB1",0.088,0.185,"ankyrin repeat and BTB domain containing 1 [Source:HGNC Symbol;Acc:HGNC:18275]",0.097
+"SYNCRIP",0.088,0.185,"synaptotagmin binding cytoplasmic RNA interacting protein [Source:HGNC Symbol;Acc:HGNC:16918]",0.097
+"SHARPIN",0.088,0.185,"SHANK associated RH domain interactor [Source:HGNC Symbol;Acc:HGNC:25321]",0.097
+"PSMA4",0.088,0.185,"proteasome subunit alpha 4 [Source:HGNC Symbol;Acc:HGNC:9533]",0.097
+"TMC8",0.088,0.185,"transmembrane channel like 8 [Source:HGNC Symbol;Acc:HGNC:20474]",0.097
+"PPP4R3B",0.127,0.222,"protein phosphatase 4 regulatory subunit 3B [Source:HGNC Symbol;Acc:HGNC:29267]",0.095
+"GABPB1-AS1",0.127,0.222,"GABPB1 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:44157]",0.095
+"SPSB3",0.127,0.222,"splA/ryanodine receptor domain and SOCS box containing 3 [Source:HGNC Symbol;Acc:HGNC:30629]",0.095
+"RHOT2",0.127,0.222,"ras homolog family member T2 [Source:HGNC Symbol;Acc:HGNC:21169]",0.095
+"COP1",0.02,0.111,"COP1 E3 ubiquitin ligase [Source:HGNC Symbol;Acc:HGNC:17440]",0.091
+"COPS8",0.02,0.111,"COP9 signalosome subunit 8 [Source:HGNC Symbol;Acc:HGNC:24335]",0.091
+"CAPN10",0.02,0.111,"calpain 10 [Source:HGNC Symbol;Acc:HGNC:1477]",0.091
+"GAR1",0.02,0.111,"GAR1 ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:14264]",0.091
+"ATP6V0E2",0.02,0.111,"ATPase H+ transporting V0 subunit e2 [Source:HGNC Symbol;Acc:HGNC:21723]",0.091
+"R3HCC1",0.02,0.111,"R3H domain and coiled-coil containing 1 [Source:HGNC Symbol;Acc:HGNC:27329]",0.091
+"MRPS28",0.02,0.111,"mitochondrial ribosomal protein S28 [Source:HGNC Symbol;Acc:HGNC:14513]",0.091
+"SMARCD1",0.02,0.111,"SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily d, member 1 [Source:HGNC Symbol;Acc:HGNC:11106]",0.091
+"NUP37",0.02,0.111,"nucleoporin 37 [Source:HGNC Symbol;Acc:HGNC:29929]",0.091
+"KCTD10",0.02,0.111,"potassium channel tetramerization domain containing 10 [Source:HGNC Symbol;Acc:HGNC:23236]",0.091
+"WDR61",0.02,0.111,"WD repeat domain 61 [Source:HGNC Symbol;Acc:HGNC:30300]",0.091
+"GPT2",0.02,0.111,"glutamic--pyruvic transaminase 2 [Source:HGNC Symbol;Acc:HGNC:18062]",0.091
+"IFI35",0.02,0.111,"interferon induced protein 35 [Source:HGNC Symbol;Acc:HGNC:5399]",0.091
+"MYO1F",0.02,0.111,"myosin IF [Source:HGNC Symbol;Acc:HGNC:7600]",0.091
+"SF3A1",0.02,0.111,"splicing factor 3a subunit 1 [Source:HGNC Symbol;Acc:HGNC:10765]",0.091
+"PET100",0.206,0.296,"PET100 cytochrome c oxidase chaperone [Source:HGNC Symbol;Acc:HGNC:40038]",0.09
+"PACS1",0.059,0.148,"phosphofurin acidic cluster sorting protein 1 [Source:HGNC Symbol;Acc:HGNC:30032]",0.089
+"PHACTR1",0.059,0.148,"phosphatase and actin regulator 1 [Source:HGNC Symbol;Acc:HGNC:20990]",0.089
+"PILRB",0.059,0.148,"paired immunoglobin like type 2 receptor beta [Source:HGNC Symbol;Acc:HGNC:18297]",0.089
+"PRPF31",0.059,0.148,"pre-mRNA processing factor 31 [Source:HGNC Symbol;Acc:HGNC:15446]",0.089
+"KDM5C",0.059,0.148,"lysine demethylase 5C [Source:HGNC Symbol;Acc:HGNC:11114]",0.089
+"FBXO44",0.059,0.148,"F-box protein 44 [Source:HGNC Symbol;Acc:HGNC:24847]",0.089
+"ACBD3",0.059,0.148,"acyl-CoA binding domain containing 3 [Source:HGNC Symbol;Acc:HGNC:15453]",0.089
+"GPBP1L1",0.059,0.148,"GC-rich promoter binding protein 1 like 1 [Source:HGNC Symbol;Acc:HGNC:28843]",0.089
+"TBCC",0.059,0.148,"tubulin folding cofactor C [Source:HGNC Symbol;Acc:HGNC:11580]",0.089
+"SNHG16",0.059,0.148,"small nucleolar RNA host gene 16 [Source:HGNC Symbol;Acc:HGNC:44352]",0.089
+"KCNAB2",0.059,0.148,"potassium voltage-gated channel subfamily A regulatory beta subunit 2 [Source:HGNC Symbol;Acc:HGNC:6229]",0.089
+"MIIP",0.059,0.148,"migration and invasion inhibitory protein [Source:HGNC Symbol;Acc:HGNC:25715]",0.089
+"TMEM222",0.059,0.148,"transmembrane protein 222 [Source:HGNC Symbol;Acc:HGNC:25363]",0.089
+"LCK",0.059,0.148,"LCK proto-oncogene, Src family tyrosine kinase [Source:HGNC Symbol;Acc:HGNC:6524]",0.089
+"EFCAB14",0.059,0.148,"EF-hand calcium binding domain 14 [Source:HGNC Symbol;Acc:HGNC:29051]",0.089
+"RFX5",0.059,0.148,"regulatory factor X5 [Source:HGNC Symbol;Acc:HGNC:9986]",0.089
+"DAP3",0.059,0.148,"death associated protein 3 [Source:HGNC Symbol;Acc:HGNC:2673]",0.089
+"KHDC4",0.059,0.148,"KH domain containing 4, pre-mRNA splicing factor [Source:HGNC Symbol;Acc:HGNC:29145]",0.089
+"MPHOSPH10",0.059,0.148,"M-phase phosphoprotein 10 [Source:HGNC Symbol;Acc:HGNC:7213]",0.089
+"CTDSP1",0.059,0.148,"CTD small phosphatase 1 [Source:HGNC Symbol;Acc:HGNC:21614]",0.089
+"NDUFA10",0.059,0.148,"NADH:ubiquinone oxidoreductase subunit A10 [Source:HGNC Symbol;Acc:HGNC:7684]",0.089
+"SLC6A6",0.059,0.148,"solute carrier family 6 member 6 [Source:HGNC Symbol;Acc:HGNC:11052]",0.089
+"TOP2B",0.059,0.148,"DNA topoisomerase II beta [Source:HGNC Symbol;Acc:HGNC:11990]",0.089
+"RASSF1",0.059,0.148,"Ras association domain family member 1 [Source:HGNC Symbol;Acc:HGNC:9882]",0.089
+"ATG3",0.059,0.148,"autophagy related 3 [Source:HGNC Symbol;Acc:HGNC:20962]",0.089
+"MRNIP",0.059,0.148,"MRN complex interacting protein [Source:HGNC Symbol;Acc:HGNC:30817]",0.089
+"SHPRH",0.059,0.148,"SNF2 histone linker PHD RING helicase [Source:HGNC Symbol;Acc:HGNC:19336]",0.089
+"RHEB",0.059,0.148,"Ras homolog, mTORC1 binding [Source:HGNC Symbol;Acc:HGNC:10011]",0.089
+"IKBKB",0.059,0.148,"inhibitor of nuclear factor kappa B kinase subunit beta [Source:HGNC Symbol;Acc:HGNC:5960]",0.089
+"ATP6V1H",0.059,0.148,"ATPase H+ transporting V1 subunit H [Source:HGNC Symbol;Acc:HGNC:18303]",0.089
+"WASHC1",0.059,0.148,"WASH complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:24361]",0.089
+"SAMD8",0.059,0.148,"sterile alpha motif domain containing 8 [Source:HGNC Symbol;Acc:HGNC:26320]",0.089
+"MTG1",0.059,0.148,"mitochondrial ribosome associated GTPase 1 [Source:HGNC Symbol;Acc:HGNC:32159]",0.089
+"NUP160",0.059,0.148,"nucleoporin 160 [Source:HGNC Symbol;Acc:HGNC:18017]",0.089
+"FRMD8",0.059,0.148,"FERM domain containing 8 [Source:HGNC Symbol;Acc:HGNC:25462]",0.089
+"THAP12",0.059,0.148,"THAP domain containing 12 [Source:HGNC Symbol;Acc:HGNC:9440]",0.089
+"ZPR1",0.059,0.148,"ZPR1 zinc finger [Source:HGNC Symbol;Acc:HGNC:13051]",0.089
+"ANAPC7",0.059,0.148,"anaphase promoting complex subunit 7 [Source:HGNC Symbol;Acc:HGNC:17380]",0.089
+"ANKLE2",0.059,0.148,"ankyrin repeat and LEM domain containing 2 [Source:HGNC Symbol;Acc:HGNC:29101]",0.089
+"PCID2",0.059,0.148,"PCI domain containing 2 [Source:HGNC Symbol;Acc:HGNC:25653]",0.089
+"PPP1R3E",0.059,0.148,"protein phosphatase 1 regulatory subunit 3E [Source:HGNC Symbol;Acc:HGNC:14943]",0.089
+"DDX42",0.059,0.148,"DEAD-box helicase 42 [Source:HGNC Symbol;Acc:HGNC:18676]",0.089
+"GMIP",0.059,0.148,"GEM interacting protein [Source:HGNC Symbol;Acc:HGNC:24852]",0.089
+"SNRPA",0.059,0.148,"small nuclear ribonucleoprotein polypeptide A [Source:HGNC Symbol;Acc:HGNC:11151]",0.089
+"FAM217B",0.059,0.148,"family with sequence similarity 217 member B [Source:HGNC Symbol;Acc:HGNC:16170]",0.089
+"TCFL5",0.059,0.148,"transcription factor like 5 [Source:HGNC Symbol;Acc:HGNC:11646]",0.089
+"USP11",0.059,0.148,"ubiquitin specific peptidase 11 [Source:HGNC Symbol;Acc:HGNC:12609]",0.089
+"G6PD",0.059,0.148,"glucose-6-phosphate dehydrogenase [Source:HGNC Symbol;Acc:HGNC:4057]",0.089
+"SETX",0.098,0.185,"senataxin [Source:HGNC Symbol;Acc:HGNC:445]",0.087
+"KDM4B",0.098,0.185,"lysine demethylase 4B [Source:HGNC Symbol;Acc:HGNC:29136]",0.087
+"MORC3",0.098,0.185,"MORC family CW-type zinc finger 3 [Source:HGNC Symbol;Acc:HGNC:23572]",0.087
+"SRP19",0.098,0.185,"signal recognition particle 19 [Source:HGNC Symbol;Acc:HGNC:11300]",0.087
+"ZNF37A",0.098,0.185,"zinc finger protein 37A [Source:HGNC Symbol;Acc:HGNC:13102]",0.087
+"ZBTB44",0.098,0.185,"zinc finger and BTB domain containing 44 [Source:HGNC Symbol;Acc:HGNC:25001]",0.087
+"HSH2D",0.137,0.222,"hematopoietic SH2 domain containing [Source:HGNC Symbol;Acc:HGNC:24920]",0.08499999999999999
+"UPK3BL1",0.176,0.259,"uroplakin 3B like 1 [Source:HGNC Symbol;Acc:HGNC:37278]",0.08300000000000002
+"SNHG1",0.176,0.259,"small nucleolar RNA host gene 1 [Source:HGNC Symbol;Acc:HGNC:32688]",0.08300000000000002
+"ZBTB48",0.029,0.111,"zinc finger and BTB domain containing 48 [Source:HGNC Symbol;Acc:HGNC:4930]",0.082
+"BX284668.5",0.029,0.111,"novel transcript",0.082
+"LRRC41",0.029,0.111,"leucine rich repeat containing 41 [Source:HGNC Symbol;Acc:HGNC:16917]",0.082
+"SHISAL2A",0.029,0.111,"shisa like 2A [Source:HGNC Symbol;Acc:HGNC:28757]",0.082
+"MYSM1",0.029,0.111,"Myb like, SWIRM and MPN domains 1 [Source:HGNC Symbol;Acc:HGNC:29401]",0.082
+"TMEM9",0.029,0.111,"transmembrane protein 9 [Source:HGNC Symbol;Acc:HGNC:18823]",0.082
+"CSRP1",0.029,0.111,"cysteine and glycine rich protein 1 [Source:HGNC Symbol;Acc:HGNC:2469]",0.082
+"WDR43",0.029,0.111,"WD repeat domain 43 [Source:HGNC Symbol;Acc:HGNC:28945]",0.082
+"HEATR5B",0.029,0.111,"HEAT repeat containing 5B [Source:HGNC Symbol;Acc:HGNC:29273]",0.082
+"SOS1",0.029,0.111,"SOS Ras/Rac guanine nucleotide exchange factor 1 [Source:HGNC Symbol;Acc:HGNC:11187]",0.082
+"TTL",0.029,0.111,"tubulin tyrosine ligase [Source:HGNC Symbol;Acc:HGNC:21586]",0.082
+"SLC20A1",0.029,0.111,"solute carrier family 20 member 1 [Source:HGNC Symbol;Acc:HGNC:10946]",0.082
+"ARL6IP6",0.029,0.111,"ADP ribosylation factor like GTPase 6 interacting protein 6 [Source:HGNC Symbol;Acc:HGNC:24048]",0.082
+"COQ10B",0.029,0.111,"coenzyme Q10B [Source:HGNC Symbol;Acc:HGNC:25819]",0.082
+"GMPPA",0.029,0.111,"GDP-mannose pyrophosphorylase A [Source:HGNC Symbol;Acc:HGNC:22923]",0.082
+"SEC13",0.029,0.111,"SEC13 homolog, nuclear pore and COPII coat complex component [Source:HGNC Symbol;Acc:HGNC:10697]",0.082
+"SACM1L",0.029,0.111,"SAC1 like phosphatidylinositide phosphatase [Source:HGNC Symbol;Acc:HGNC:17059]",0.082
+"HEMK1",0.029,0.111,"HemK methyltransferase family member 1 [Source:HGNC Symbol;Acc:HGNC:24923]",0.082
+"CEP97",0.029,0.111,"centrosomal protein 97 [Source:HGNC Symbol;Acc:HGNC:26244]",0.082
+"SLC41A3",0.029,0.111,"solute carrier family 41 member 3 [Source:HGNC Symbol;Acc:HGNC:31046]",0.082
+"MAP3K13",0.029,0.111,"mitogen-activated protein kinase kinase kinase 13 [Source:HGNC Symbol;Acc:HGNC:6852]",0.082
+"BCL6",0.029,0.111,"BCL6 transcription repressor [Source:HGNC Symbol;Acc:HGNC:1001]",0.082
+"UBA6-AS1",0.029,0.111,"UBA6 antisense RNA 1 (head to head) [Source:HGNC Symbol;Acc:HGNC:49083]",0.082
+"SCOC",0.029,0.111,"short coiled-coil protein [Source:HGNC Symbol;Acc:HGNC:20335]",0.082
+"ZNF827",0.029,0.111,"zinc finger protein 827 [Source:HGNC Symbol;Acc:HGNC:27193]",0.082
+"PPIP5K2",0.029,0.111,"diphosphoinositol pentakisphosphate kinase 2 [Source:HGNC Symbol;Acc:HGNC:29035]",0.082
+"PGGT1B",0.029,0.111,"protein geranylgeranyltransferase type I subunit beta [Source:HGNC Symbol;Acc:HGNC:8895]",0.082
+"CDKN2AIPNL",0.029,0.111,"CDKN2A interacting protein N-terminal like [Source:HGNC Symbol;Acc:HGNC:30545]",0.082
+"BLOC1S5",0.029,0.111,"biogenesis of lysosomal organelles complex 1 subunit 5 [Source:HGNC Symbol;Acc:HGNC:18561]",0.082
+"RXRB",0.029,0.111,"retinoid X receptor beta [Source:HGNC Symbol;Acc:HGNC:10478]",0.082
+"RRP36",0.029,0.111,"ribosomal RNA processing 36 [Source:HGNC Symbol;Acc:HGNC:21374]",0.082
+"SLC35A1",0.029,0.111,"solute carrier family 35 member A1 [Source:HGNC Symbol;Acc:HGNC:11021]",0.082
+"PM20D2",0.029,0.111,"peptidase M20 domain containing 2 [Source:HGNC Symbol;Acc:HGNC:21408]",0.082
+"AK9",0.029,0.111,"adenylate kinase 9 [Source:HGNC Symbol;Acc:HGNC:33814]",0.082
+"C7orf26",0.029,0.111,"chromosome 7 open reading frame 26 [Source:HGNC Symbol;Acc:HGNC:21702]",0.082
+"GGCT",0.029,0.111,"gamma-glutamylcyclotransferase [Source:HGNC Symbol;Acc:HGNC:21705]",0.082
+"KCTD7",0.029,0.111,"potassium channel tetramerization domain containing 7 [Source:HGNC Symbol;Acc:HGNC:21957]",0.082
+"SRPK2",0.029,0.111,"SRSF protein kinase 2 [Source:HGNC Symbol;Acc:HGNC:11306]",0.082
+"NOM1",0.029,0.111,"nucleolar protein with MIF4G domain 1 [Source:HGNC Symbol;Acc:HGNC:13244]",0.082
+"NCOA2",0.029,0.111,"nuclear receptor coactivator 2 [Source:HGNC Symbol;Acc:HGNC:7669]",0.082
+"WDR34",0.029,0.111,"WD repeat domain 34 [Source:HGNC Symbol;Acc:HGNC:28296]",0.082
+"PPFIBP2",0.029,0.111,"PPFIA binding protein 2 [Source:HGNC Symbol;Acc:HGNC:9250]",0.082
+"SART1",0.029,0.111,"spliceosome associated factor 1, recruiter of U4/U6.U5 tri-snRNP [Source:HGNC Symbol;Acc:HGNC:10538]",0.082
+"EED",0.029,0.111,"embryonic ectoderm development [Source:HGNC Symbol;Acc:HGNC:3188]",0.082
+"ERGIC2",0.029,0.111,"ERGIC and golgi 2 [Source:HGNC Symbol;Acc:HGNC:30208]",0.082
+"ATG101",0.029,0.111,"autophagy related 101 [Source:HGNC Symbol;Acc:HGNC:25679]",0.082
+"TBC1D15",0.029,0.111,"TBC1 domain family member 15 [Source:HGNC Symbol;Acc:HGNC:25694]",0.082
+"HECTD4",0.029,0.111,"HECT domain E3 ubiquitin protein ligase 4 [Source:HGNC Symbol;Acc:HGNC:26611]",0.082
+"USPL1",0.029,0.111,"ubiquitin specific peptidase like 1 [Source:HGNC Symbol;Acc:HGNC:20294]",0.082
+"ARHGEF7",0.029,0.111,"Rho guanine nucleotide exchange factor 7 [Source:HGNC Symbol;Acc:HGNC:15607]",0.082
+"NIPA1",0.029,0.111,"NIPA magnesium transporter 1 [Source:HGNC Symbol;Acc:HGNC:17043]",0.082
+"CASC4",0.029,0.111,"cancer susceptibility 4 [Source:HGNC Symbol;Acc:HGNC:24892]",0.082
+"MAN2A2",0.029,0.111,"mannosidase alpha class 2A member 2 [Source:HGNC Symbol;Acc:HGNC:6825]",0.082
+"LRRK1",0.029,0.111,"leucine rich repeat kinase 1 [Source:HGNC Symbol;Acc:HGNC:18608]",0.082
+"HAGH",0.029,0.111,"hydroxyacylglutathione hydrolase [Source:HGNC Symbol;Acc:HGNC:4805]",0.082
+"CDIP1",0.029,0.111,"cell death inducing p53 target 1 [Source:HGNC Symbol;Acc:HGNC:13234]",0.082
+"DDX19A",0.029,0.111,"DEAD-box helicase 19A [Source:HGNC Symbol;Acc:HGNC:25628]",0.082
+"MIS12",0.029,0.111,"MIS12 kinetochore complex component [Source:HGNC Symbol;Acc:HGNC:24967]",0.082
+"CDC27",0.029,0.111,"cell division cycle 27 [Source:HGNC Symbol;Acc:HGNC:1728]",0.082
+"UNC13D",0.029,0.111,"unc-13 homolog D [Source:HGNC Symbol;Acc:HGNC:23147]",0.082
+"USP36",0.029,0.111,"ubiquitin specific peptidase 36 [Source:HGNC Symbol;Acc:HGNC:20062]",0.082
+"CEP131",0.029,0.111,"centrosomal protein 131 [Source:HGNC Symbol;Acc:HGNC:29511]",0.082
+"LPIN2",0.029,0.111,"lipin 2 [Source:HGNC Symbol;Acc:HGNC:14450]",0.082
+"MAST3",0.029,0.111,"microtubule associated serine/threonine kinase 3 [Source:HGNC Symbol;Acc:HGNC:19036]",0.082
+"MAP4K1",0.029,0.111,"mitogen-activated protein kinase kinase kinase kinase 1 [Source:HGNC Symbol;Acc:HGNC:6863]",0.082
+"SIRT2",0.029,0.111,"sirtuin 2 [Source:HGNC Symbol;Acc:HGNC:10886]",0.082
+"ZCCHC3",0.029,0.111,"zinc finger CCHC-type containing 3 [Source:HGNC Symbol;Acc:HGNC:16230]",0.082
+"SLC23A2",0.029,0.111,"solute carrier family 23 member 2 [Source:HGNC Symbol;Acc:HGNC:10973]",0.082
+"AAR2",0.029,0.111,"AAR2 splicing factor [Source:HGNC Symbol;Acc:HGNC:15886]",0.082
+"DSN1",0.029,0.111,"DSN1 component of MIS12 kinetochore complex [Source:HGNC Symbol;Acc:HGNC:16165]",0.082
+"ZGPAT",0.029,0.111,"zinc finger CCCH-type and G-patch domain containing [Source:HGNC Symbol;Acc:HGNC:15948]",0.082
+"ZBTB21",0.029,0.111,"zinc finger and BTB domain containing 21 [Source:HGNC Symbol;Acc:HGNC:13083]",0.082
+"UFD1",0.029,0.111,"ubiquitin recognition factor in ER associated degradation 1 [Source:HGNC Symbol;Acc:HGNC:12520]",0.082
+"JADE3",0.029,0.111,"jade family PHD finger 3 [Source:HGNC Symbol;Acc:HGNC:22982]",0.082
+"ELK1",0.029,0.111,"ETS transcription factor ELK1 [Source:HGNC Symbol;Acc:HGNC:3321]",0.082
+"MIER1",0.069,0.148,"MIER1 transcriptional regulator [Source:HGNC Symbol;Acc:HGNC:29657]",0.07899999999999999
+"CYB5R4",0.069,0.148,"cytochrome b5 reductase 4 [Source:HGNC Symbol;Acc:HGNC:20147]",0.07899999999999999
+"MICAL1",0.069,0.148,"microtubule associated monooxygenase, calponin and LIM domain containing 1 [Source:HGNC Symbol;Acc:HGNC:20619]",0.07899999999999999
+"PAN3",0.069,0.148,"poly(A) specific ribonuclease subunit PAN3 [Source:HGNC Symbol;Acc:HGNC:29991]",0.07899999999999999
+"NPEPL1",0.069,0.148,"aminopeptidase like 1 [Source:HGNC Symbol;Acc:HGNC:16244]",0.07899999999999999
+"POLE3",0.069,0.148,"DNA polymerase epsilon 3, accessory subunit [Source:HGNC Symbol;Acc:HGNC:13546]",0.07899999999999999
+"PARP4",0.069,0.148,"poly(ADP-ribose) polymerase family member 4 [Source:HGNC Symbol;Acc:HGNC:271]",0.07899999999999999
+"MIA2",0.069,0.148,"MIA SH3 domain ER export factor 2 [Source:HGNC Symbol;Acc:HGNC:18432]",0.07899999999999999
+"CSNK1D",0.069,0.148,"casein kinase 1 delta [Source:HGNC Symbol;Acc:HGNC:2452]",0.07899999999999999
+"PHTF1",0.069,0.148,"putative homeodomain transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:8939]",0.07899999999999999
+"PYHIN1",0.069,0.148,"pyrin and HIN domain family member 1 [Source:HGNC Symbol;Acc:HGNC:28894]",0.07899999999999999
+"GNPAT",0.069,0.148,"glyceronephosphate O-acyltransferase [Source:HGNC Symbol;Acc:HGNC:4416]",0.07899999999999999
+"QARS",0.069,0.148,"glutaminyl-tRNA synthetase [Source:HGNC Symbol;Acc:HGNC:9751]",0.07899999999999999
+"MANBA",0.069,0.148,"mannosidase beta [Source:HGNC Symbol;Acc:HGNC:6831]",0.07899999999999999
+"BAK1",0.069,0.148,"BCL2 antagonist/killer 1 [Source:HGNC Symbol;Acc:HGNC:949]",0.07899999999999999
+"MPC1",0.069,0.148,"mitochondrial pyruvate carrier 1 [Source:HGNC Symbol;Acc:HGNC:21606]",0.07899999999999999
+"MRPL32",0.069,0.148,"mitochondrial ribosomal protein L32 [Source:HGNC Symbol;Acc:HGNC:14035]",0.07899999999999999
+"C9orf78",0.069,0.148,"chromosome 9 open reading frame 78 [Source:HGNC Symbol;Acc:HGNC:24932]",0.07899999999999999
+"LCN8",0.069,0.148,"lipocalin 8 [Source:HGNC Symbol;Acc:HGNC:27038]",0.07899999999999999
+"PAXX",0.069,0.148,"PAXX non-homologous end joining factor [Source:HGNC Symbol;Acc:HGNC:27849]",0.07899999999999999
+"TRIM8",0.069,0.148,"tripartite motif containing 8 [Source:HGNC Symbol;Acc:HGNC:15579]",0.07899999999999999
+"MDM2",0.069,0.148,"MDM2 proto-oncogene [Source:HGNC Symbol;Acc:HGNC:6973]",0.07899999999999999
+"BAZ1A",0.069,0.148,"bromodomain adjacent to zinc finger domain 1A [Source:HGNC Symbol;Acc:HGNC:960]",0.07899999999999999
+"KATNBL1",0.069,0.148,"katanin regulatory subunit B1 like 1 [Source:HGNC Symbol;Acc:HGNC:26199]",0.07899999999999999
+"ZFAND6",0.069,0.148,"zinc finger AN1-type containing 6 [Source:HGNC Symbol;Acc:HGNC:30164]",0.07899999999999999
+"DEF8",0.069,0.148,"differentially expressed in FDCP 8 homolog [Source:HGNC Symbol;Acc:HGNC:25969]",0.07899999999999999
+"BECN1",0.069,0.148,"beclin 1 [Source:HGNC Symbol;Acc:HGNC:1034]",0.07899999999999999
+"NFATC1",0.069,0.148,"nuclear factor of activated T cells 1 [Source:HGNC Symbol;Acc:HGNC:7775]",0.07899999999999999
+"SNRNP70",0.441,0.519,"small nuclear ribonucleoprotein U1 subunit 70 [Source:HGNC Symbol;Acc:HGNC:11150]",0.07800000000000001
+"HVCN1",0.255,0.333,"hydrogen voltage gated channel 1 [Source:HGNC Symbol;Acc:HGNC:28240]",0.07800000000000001
+"RPS6",0.922,1,"ribosomal protein S6 [Source:HGNC Symbol;Acc:HGNC:10429]",0.07799999999999996
+"BLOC1S2",0.108,0.185,"biogenesis of lysosomal organelles complex 1 subunit 2 [Source:HGNC Symbol;Acc:HGNC:20984]",0.077
+"CCNL2",0.108,0.185,"cyclin L2 [Source:HGNC Symbol;Acc:HGNC:20570]",0.077
+"COL9A2",0.108,0.185,"collagen type IX alpha 2 chain [Source:HGNC Symbol;Acc:HGNC:2218]",0.077
+"SRSF8",0.108,0.185,"serine and arginine rich splicing factor 8 [Source:HGNC Symbol;Acc:HGNC:16988]",0.077
+"DDHD1",0.108,0.185,"DDHD domain containing 1 [Source:HGNC Symbol;Acc:HGNC:19714]",0.077
+"EWSR1",0.108,0.185,"EWS RNA binding protein 1 [Source:HGNC Symbol;Acc:HGNC:3508]",0.077
+"ALG13",0.108,0.185,"ALG13 UDP-N-acetylglucosaminyltransferase subunit [Source:HGNC Symbol;Acc:HGNC:30881]",0.077
+"CLK1",0.186,0.259,"CDC like kinase 1 [Source:HGNC Symbol;Acc:HGNC:2068]",0.07300000000000001
+"DAXX",0.039,0.111,"death domain associated protein [Source:HGNC Symbol;Acc:HGNC:2681]",0.07200000000000001
+"BAZ1B",0.039,0.111,"bromodomain adjacent to zinc finger domain 1B [Source:HGNC Symbol;Acc:HGNC:961]",0.07200000000000001
+"AAAS",0.039,0.111,"aladin WD repeat nucleoporin [Source:HGNC Symbol;Acc:HGNC:13666]",0.07200000000000001
+"DLGAP1-AS1",0.039,0.111,"DLGAP1 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:31676]",0.07200000000000001
+"FAF2",0.039,0.111,"Fas associated factor family member 2 [Source:HGNC Symbol;Acc:HGNC:24666]",0.07200000000000001
+"SLC25A28",0.039,0.111,"solute carrier family 25 member 28 [Source:HGNC Symbol;Acc:HGNC:23472]",0.07200000000000001
+"NADK",0.039,0.111,"NAD kinase [Source:HGNC Symbol;Acc:HGNC:29831]",0.07200000000000001
+"LINC00339",0.039,0.111,"long intergenic non-protein coding RNA 339 [Source:HGNC Symbol;Acc:HGNC:25011]",0.07200000000000001
+"C1orf122",0.039,0.111,"chromosome 1 open reading frame 122 [Source:HGNC Symbol;Acc:HGNC:24789]",0.07200000000000001
+"FOXJ3",0.039,0.111,"forkhead box J3 [Source:HGNC Symbol;Acc:HGNC:29178]",0.07200000000000001
+"POMGNT1",0.039,0.111,"protein O-linked mannose N-acetylglucosaminyltransferase 1 (beta 1,2-) [Source:HGNC Symbol;Acc:HGNC:19139]",0.07200000000000001
+"MIGA1",0.039,0.111,"mitoguardin 1 [Source:HGNC Symbol;Acc:HGNC:24741]",0.07200000000000001
+"ISG20L2",0.039,0.111,"interferon stimulated exonuclease gene 20 like 2 [Source:HGNC Symbol;Acc:HGNC:25745]",0.07200000000000001
+"SMG7",0.039,0.111,"SMG7 nonsense mediated mRNA decay factor [Source:HGNC Symbol;Acc:HGNC:16792]",0.07200000000000001
+"UCHL5",0.039,0.111,"ubiquitin C-terminal hydrolase L5 [Source:HGNC Symbol;Acc:HGNC:19678]",0.07200000000000001
+"R3HDM1",0.039,0.111,"R3H domain containing 1 [Source:HGNC Symbol;Acc:HGNC:9757]",0.07200000000000001
+"RBMS1",0.039,0.111,"RNA binding motif single stranded interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:9907]",0.07200000000000001
+"IFIH1",0.039,0.111,"interferon induced with helicase C domain 1 [Source:HGNC Symbol;Acc:HGNC:18873]",0.07200000000000001
+"MTX2",0.039,0.111,"metaxin 2 [Source:HGNC Symbol;Acc:HGNC:7506]",0.07200000000000001
+"PPIL3",0.039,0.111,"peptidylprolyl isomerase like 3 [Source:HGNC Symbol;Acc:HGNC:9262]",0.07200000000000001
+"ATG4B",0.039,0.111,"autophagy related 4B cysteine peptidase [Source:HGNC Symbol;Acc:HGNC:20790]",0.07200000000000001
+"CMC1",0.039,0.111,"C-X9-C motif containing 1 [Source:HGNC Symbol;Acc:HGNC:28783]",0.07200000000000001
+"UBA3",0.039,0.111,"ubiquitin like modifier activating enzyme 3 [Source:HGNC Symbol;Acc:HGNC:12470]",0.07200000000000001
+"ARMC8",0.039,0.111,"armadillo repeat containing 8 [Source:HGNC Symbol;Acc:HGNC:24999]",0.07200000000000001
+"DNAJB11",0.039,0.111,"DnaJ heat shock protein family (Hsp40) member B11 [Source:HGNC Symbol;Acc:HGNC:14889]",0.07200000000000001
+"MAN2B2",0.039,0.111,"mannosidase alpha class 2B member 2 [Source:HGNC Symbol;Acc:HGNC:29623]",0.07200000000000001
+"CISD2",0.039,0.111,"CDGSH iron sulfur domain 2 [Source:HGNC Symbol;Acc:HGNC:24212]",0.07200000000000001
+"TCERG1",0.039,0.111,"transcription elongation regulator 1 [Source:HGNC Symbol;Acc:HGNC:15630]",0.07200000000000001
+"DCTN4",0.039,0.111,"dynactin subunit 4 [Source:HGNC Symbol;Acc:HGNC:15518]",0.07200000000000001
+"TRIM41",0.039,0.111,"tripartite motif containing 41 [Source:HGNC Symbol;Acc:HGNC:19013]",0.07200000000000001
+"TRIM26",0.039,0.111,"tripartite motif containing 26 [Source:HGNC Symbol;Acc:HGNC:12962]",0.07200000000000001
+"SRF",0.039,0.111,"serum response factor [Source:HGNC Symbol;Acc:HGNC:11291]",0.07200000000000001
+"SNX14",0.039,0.111,"sorting nexin 14 [Source:HGNC Symbol;Acc:HGNC:14977]",0.07200000000000001
+"FAM126A",0.039,0.111,"family with sequence similarity 126 member A [Source:HGNC Symbol;Acc:HGNC:24587]",0.07200000000000001
+"NSUN5",0.039,0.111,"NOP2/Sun RNA methyltransferase 5 [Source:HGNC Symbol;Acc:HGNC:16385]",0.07200000000000001
+"BET1",0.039,0.111,"Bet1 golgi vesicular membrane trafficking protein [Source:HGNC Symbol;Acc:HGNC:14562]",0.07200000000000001
+"LRWD1",0.039,0.111,"leucine rich repeats and WD repeat domain containing 1 [Source:HGNC Symbol;Acc:HGNC:21769]",0.07200000000000001
+"AC004918.1",0.039,0.111,"novel transcript, antisense to AGK",0.07200000000000001
+"INSIG1",0.039,0.111,"insulin induced gene 1 [Source:HGNC Symbol;Acc:HGNC:6083]",0.07200000000000001
+"NBN",0.039,0.111,"nibrin [Source:HGNC Symbol;Acc:HGNC:7652]",0.07200000000000001
+"NMRK1",0.039,0.111,"nicotinamide riboside kinase 1 [Source:HGNC Symbol;Acc:HGNC:26057]",0.07200000000000001
+"AUH",0.039,0.111,"AU RNA binding methylglutaconyl-CoA hydratase [Source:HGNC Symbol;Acc:HGNC:890]",0.07200000000000001
+"STX17",0.039,0.111,"syntaxin 17 [Source:HGNC Symbol;Acc:HGNC:11432]",0.07200000000000001
+"DPM2",0.039,0.111,"dolichyl-phosphate mannosyltransferase subunit 2, regulatory [Source:HGNC Symbol;Acc:HGNC:3006]",0.07200000000000001
+"ARRDC1",0.039,0.111,"arrestin domain containing 1 [Source:HGNC Symbol;Acc:HGNC:28633]",0.07200000000000001
+"MARCH5",0.039,0.111,"membrane associated ring-CH-type finger 5 [Source:HGNC Symbol;Acc:HGNC:26025]",0.07200000000000001
+"EXOSC1",0.039,0.111,"exosome component 1 [Source:HGNC Symbol;Acc:HGNC:17286]",0.07200000000000001
+"PPP2R2D",0.039,0.111,"protein phosphatase 2 regulatory subunit Bdelta [Source:HGNC Symbol;Acc:HGNC:23732]",0.07200000000000001
+"DNAJC24",0.039,0.111,"DnaJ heat shock protein family (Hsp40) member C24 [Source:HGNC Symbol;Acc:HGNC:26979]",0.07200000000000001
+"APAF1",0.039,0.111,"apoptotic peptidase activating factor 1 [Source:HGNC Symbol;Acc:HGNC:576]",0.07200000000000001
+"KMT5A",0.039,0.111,"lysine methyltransferase 5A [Source:HGNC Symbol;Acc:HGNC:29489]",0.07200000000000001
+"WBP4",0.039,0.111,"WW domain binding protein 4 [Source:HGNC Symbol;Acc:HGNC:12739]",0.07200000000000001
+"COG3",0.039,0.111,"component of oligomeric golgi complex 3 [Source:HGNC Symbol;Acc:HGNC:18619]",0.07200000000000001
+"ERCC5",0.039,0.111,"ERCC excision repair 5, endonuclease [Source:HGNC Symbol;Acc:HGNC:3437]",0.07200000000000001
+"IFT43",0.039,0.111,"intraflagellar transport 43 [Source:HGNC Symbol;Acc:HGNC:29669]",0.07200000000000001
+"GOLGA5",0.039,0.111,"golgin A5 [Source:HGNC Symbol;Acc:HGNC:4428]",0.07200000000000001
+"DICER1-AS1",0.039,0.111,"DICER1 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:43017]",0.07200000000000001
+"BOLA2",0.039,0.111,"bolA family member 2 [Source:HGNC Symbol;Acc:HGNC:29488]",0.07200000000000001
+"SIAH1",0.039,0.111,"siah E3 ubiquitin protein ligase 1 [Source:HGNC Symbol;Acc:HGNC:10857]",0.07200000000000001
+"ADCY7",0.039,0.111,"adenylate cyclase 7 [Source:HGNC Symbol;Acc:HGNC:238]",0.07200000000000001
+"ATP6V0D1",0.039,0.111,"ATPase H+ transporting V0 subunit d1 [Source:HGNC Symbol;Acc:HGNC:13724]",0.07200000000000001
+"SLC7A6",0.039,0.111,"solute carrier family 7 member 6 [Source:HGNC Symbol;Acc:HGNC:11064]",0.07200000000000001
+"GIT1",0.039,0.111,"GIT ArfGAP 1 [Source:HGNC Symbol;Acc:HGNC:4272]",0.07200000000000001
+"SLC35B1",0.039,0.111,"solute carrier family 35 member B1 [Source:HGNC Symbol;Acc:HGNC:20798]",0.07200000000000001
+"SPATA20",0.039,0.111,"spermatogenesis associated 20 [Source:HGNC Symbol;Acc:HGNC:26125]",0.07200000000000001
+"MAFG",0.039,0.111,"MAF bZIP transcription factor G [Source:HGNC Symbol;Acc:HGNC:6781]",0.07200000000000001
+"RNF138",0.039,0.111,"ring finger protein 138 [Source:HGNC Symbol;Acc:HGNC:17765]",0.07200000000000001
+"ZNF397",0.039,0.111,"zinc finger protein 397 [Source:HGNC Symbol;Acc:HGNC:18818]",0.07200000000000001
+"ZNF266",0.039,0.111,"zinc finger protein 266 [Source:HGNC Symbol;Acc:HGNC:13059]",0.07200000000000001
+"ARRDC2",0.039,0.111,"arrestin domain containing 2 [Source:HGNC Symbol;Acc:HGNC:25225]",0.07200000000000001
+"ZNF708",0.039,0.111,"zinc finger protein 708 [Source:HGNC Symbol;Acc:HGNC:12945]",0.07200000000000001
+"CNOT3",0.039,0.111,"CCR4-NOT transcription complex subunit 3 [Source:HGNC Symbol;Acc:HGNC:7879]",0.07200000000000001
+"LENG1",0.039,0.111,"leukocyte receptor cluster member 1 [Source:HGNC Symbol;Acc:HGNC:15502]",0.07200000000000001
+"ZNF587B",0.039,0.111,"zinc finger protein 587B [Source:HGNC Symbol;Acc:HGNC:37142]",0.07200000000000001
+"CDS2",0.039,0.111,"CDP-diacylglycerol synthase 2 [Source:HGNC Symbol;Acc:HGNC:1801]",0.07200000000000001
+"L3MBTL1",0.039,0.111,"L3MBTL histone methyl-lysine binding protein 1 [Source:HGNC Symbol;Acc:HGNC:15905]",0.07200000000000001
+"UCKL1",0.039,0.111,"uridine-cytidine kinase 1 like 1 [Source:HGNC Symbol;Acc:HGNC:15938]",0.07200000000000001
+"PI4KA",0.039,0.111,"phosphatidylinositol 4-kinase alpha [Source:HGNC Symbol;Acc:HGNC:8983]",0.07200000000000001
+"CRKL",0.039,0.111,"CRK like proto-oncogene, adaptor protein [Source:HGNC Symbol;Acc:HGNC:2363]",0.07200000000000001
+"NCAPH2",0.039,0.111,"non-SMC condensin II complex subunit H2 [Source:HGNC Symbol;Acc:HGNC:25071]",0.07200000000000001
+"ASMTL",0.039,0.111,"acetylserotonin O-methyltransferase like [Source:HGNC Symbol;Acc:HGNC:751]",0.07200000000000001
+"WWC3",0.039,0.111,"WWC family member 3 [Source:HGNC Symbol;Acc:HGNC:29237]",0.07200000000000001
+"RPGR",0.039,0.111,"retinitis pigmentosa GTPase regulator [Source:HGNC Symbol;Acc:HGNC:10295]",0.07200000000000001
+"PGRMC1",0.039,0.111,"progesterone receptor membrane component 1 [Source:HGNC Symbol;Acc:HGNC:16090]",0.07200000000000001
+"SENP6",0.078,0.148,"SUMO specific peptidase 6 [Source:HGNC Symbol;Acc:HGNC:20944]",0.06999999999999999
+"SMC5",0.078,0.148,"structural maintenance of chromosomes 5 [Source:HGNC Symbol;Acc:HGNC:20465]",0.06999999999999999
+"LUC7L",0.078,0.148,"LUC7 like [Source:HGNC Symbol;Acc:HGNC:6723]",0.06999999999999999
+"RICTOR",0.078,0.148,"RPTOR independent companion of MTOR complex 2 [Source:HGNC Symbol;Acc:HGNC:28611]",0.06999999999999999
+"KDM7A",0.078,0.148,"lysine demethylase 7A [Source:HGNC Symbol;Acc:HGNC:22224]",0.06999999999999999
+"PIP4P1",0.078,0.148,"phosphatidylinositol-4,5-bisphosphate 4-phosphatase 1 [Source:HGNC Symbol;Acc:HGNC:19299]",0.06999999999999999
+"DUS1L",0.078,0.148,"dihydrouridine synthase 1 like [Source:HGNC Symbol;Acc:HGNC:30086]",0.06999999999999999
+"U2AF2",0.078,0.148,"U2 small nuclear RNA auxiliary factor 2 [Source:HGNC Symbol;Acc:HGNC:23156]",0.06999999999999999
+"CRLS1",0.078,0.148,"cardiolipin synthase 1 [Source:HGNC Symbol;Acc:HGNC:16148]",0.06999999999999999
+"FMR1",0.078,0.148,"fragile X mental retardation 1 [Source:HGNC Symbol;Acc:HGNC:3775]",0.06999999999999999
+"ATP11A",0.118,0.185,"ATPase phospholipid transporting 11A [Source:HGNC Symbol;Acc:HGNC:13552]",0.067
+"DOCK10",0.118,0.185,"dedicator of cytokinesis 10 [Source:HGNC Symbol;Acc:HGNC:23479]",0.067
+"STRAP",0.118,0.185,"serine/threonine kinase receptor associated protein [Source:HGNC Symbol;Acc:HGNC:30796]",0.067
+"ARL16",0.157,0.222,"ADP ribosylation factor like GTPase 16 [Source:HGNC Symbol;Acc:HGNC:27902]",0.065
+"DDX5",0.863,0.926,"DEAD-box helicase 5 [Source:HGNC Symbol;Acc:HGNC:2746]",0.06300000000000006
+"RBM27",0.049,0.111,"RNA binding motif protein 27 [Source:HGNC Symbol;Acc:HGNC:29243]",0.062
+"FBXO11",0.049,0.111,"F-box protein 11 [Source:HGNC Symbol;Acc:HGNC:13590]",0.062
+"SENP5",0.049,0.111,"SUMO specific peptidase 5 [Source:HGNC Symbol;Acc:HGNC:28407]",0.062
+"YIPF3",0.049,0.111,"Yip1 domain family member 3 [Source:HGNC Symbol;Acc:HGNC:21023]",0.062
+"TMEM87A",0.049,0.111,"transmembrane protein 87A [Source:HGNC Symbol;Acc:HGNC:24522]",0.062
+"AEBP2",0.049,0.111,"AE binding protein 2 [Source:HGNC Symbol;Acc:HGNC:24051]",0.062
+"DNAJC16",0.049,0.111,"DnaJ heat shock protein family (Hsp40) member C16 [Source:HGNC Symbol;Acc:HGNC:29157]",0.062
+"SDHB",0.049,0.111,"succinate dehydrogenase complex iron sulfur subunit B [Source:HGNC Symbol;Acc:HGNC:10681]",0.062
+"NFYC",0.049,0.111,"nuclear transcription factor Y subunit gamma [Source:HGNC Symbol;Acc:HGNC:7806]",0.062
+"HYI",0.049,0.111,"hydroxypyruvate isomerase (putative) [Source:HGNC Symbol;Acc:HGNC:26948]",0.062
+"ZNF692",0.049,0.111,"zinc finger protein 692 [Source:HGNC Symbol;Acc:HGNC:26049]",0.062
+"SMC6",0.049,0.111,"structural maintenance of chromosomes 6 [Source:HGNC Symbol;Acc:HGNC:20466]",0.062
+"MOGS",0.049,0.111,"mannosyl-oligosaccharide glucosidase [Source:HGNC Symbol;Acc:HGNC:24862]",0.062
+"SMPD4",0.049,0.111,"sphingomyelin phosphodiesterase 4 [Source:HGNC Symbol;Acc:HGNC:32949]",0.062
+"NMI",0.049,0.111,"N-myc and STAT interactor [Source:HGNC Symbol;Acc:HGNC:7854]",0.062
+"CRTAP",0.049,0.111,"cartilage associated protein [Source:HGNC Symbol;Acc:HGNC:2379]",0.062
+"GORASP1",0.049,0.111,"golgi reassembly stacking protein 1 [Source:HGNC Symbol;Acc:HGNC:16769]",0.062
+"QRICH1",0.049,0.111,"glutamine rich 1 [Source:HGNC Symbol;Acc:HGNC:24713]",0.062
+"KLHL24",0.049,0.111,"kelch like family member 24 [Source:HGNC Symbol;Acc:HGNC:25947]",0.062
+"MAGEF1",0.049,0.111,"MAGE family member F1 [Source:HGNC Symbol;Acc:HGNC:29639]",0.062
+"STAP1",0.049,0.111,"signal transducing adaptor family member 1 [Source:HGNC Symbol;Acc:HGNC:24133]",0.062
+"ZNF76",0.049,0.111,"zinc finger protein 76 [Source:HGNC Symbol;Acc:HGNC:13149]",0.062
+"CASP8AP2",0.049,0.111,"caspase 8 associated protein 2 [Source:HGNC Symbol;Acc:HGNC:1510]",0.062
+"MAP3K7",0.049,0.111,"mitogen-activated protein kinase kinase kinase 7 [Source:HGNC Symbol;Acc:HGNC:6859]",0.062
+"LTV1",0.049,0.111,"LTV1 ribosome biogenesis factor [Source:HGNC Symbol;Acc:HGNC:21173]",0.062
+"TULP4",0.049,0.111,"TUB like protein 4 [Source:HGNC Symbol;Acc:HGNC:15530]",0.062
+"MEPCE",0.049,0.111,"methylphosphate capping enzyme [Source:HGNC Symbol;Acc:HGNC:20247]",0.062
+"TOP1MT",0.049,0.111,"DNA topoisomerase I mitochondrial [Source:HGNC Symbol;Acc:HGNC:29787]",0.062
+"C9orf72",0.049,0.111,"C9orf72-SMCR8 complex subunit [Source:HGNC Symbol;Acc:HGNC:28337]",0.062
+"SURF1",0.049,0.111,"SURF1 cytochrome c oxidase assembly factor [Source:HGNC Symbol;Acc:HGNC:11474]",0.062
+"NOLC1",0.049,0.111,"nucleolar and coiled-body phosphoprotein 1 [Source:HGNC Symbol;Acc:HGNC:15608]",0.062
+"NUP98",0.049,0.111,"nucleoporin 98 [Source:HGNC Symbol;Acc:HGNC:8068]",0.062
+"FAM111A",0.049,0.111,"family with sequence similarity 111 member A [Source:HGNC Symbol;Acc:HGNC:24725]",0.062
+"IPO8",0.049,0.111,"importin 8 [Source:HGNC Symbol;Acc:HGNC:9853]",0.062
+"CSAD",0.049,0.111,"cysteine sulfinic acid decarboxylase [Source:HGNC Symbol;Acc:HGNC:18966]",0.062
+"SART3",0.049,0.111,"spliceosome associated factor 3, U4/U6 recycling protein [Source:HGNC Symbol;Acc:HGNC:16860]",0.062
+"ZNF84",0.049,0.111,"zinc finger protein 84 [Source:HGNC Symbol;Acc:HGNC:13159]",0.062
+"NPTN",0.049,0.111,"neuroplastin [Source:HGNC Symbol;Acc:HGNC:17867]",0.062
+"GNPTG",0.049,0.111,"N-acetylglucosamine-1-phosphate transferase subunit gamma [Source:HGNC Symbol;Acc:HGNC:23026]",0.062
+"HMOX2",0.049,0.111,"heme oxygenase 2 [Source:HGNC Symbol;Acc:HGNC:5014]",0.062
+"CLN3",0.049,0.111,"CLN3 lysosomal/endosomal transmembrane protein, battenin [Source:HGNC Symbol;Acc:HGNC:2074]",0.062
+"CBFA2T3",0.049,0.111,"CBFA2/RUNX1 partner transcriptional co-repressor 3 [Source:HGNC Symbol;Acc:HGNC:1537]",0.062
+"ZNF414",0.049,0.111,"zinc finger protein 414 [Source:HGNC Symbol;Acc:HGNC:20630]",0.062
+"DDX39A",0.049,0.111,"DExD-box helicase 39A [Source:HGNC Symbol;Acc:HGNC:17821]",0.062
+"CAPN12",0.049,0.111,"calpain 12 [Source:HGNC Symbol;Acc:HGNC:13249]",0.062
+"LIG1",0.049,0.111,"DNA ligase 1 [Source:HGNC Symbol;Acc:HGNC:6598]",0.062
+"ARFGEF2",0.049,0.111,"ADP ribosylation factor guanine nucleotide exchange factor 2 [Source:HGNC Symbol;Acc:HGNC:15853]",0.062
+"TRIOBP",0.049,0.111,"TRIO and F-actin binding protein [Source:HGNC Symbol;Acc:HGNC:17009]",0.062
+"WDR13",0.049,0.111,"WD repeat domain 13 [Source:HGNC Symbol;Acc:HGNC:14352]",0.062
+"GPRASP1",0.049,0.111,"G protein-coupled receptor associated sorting protein 1 [Source:HGNC Symbol;Acc:HGNC:24834]",0.062
+"IRAK1",0.049,0.111,"interleukin 1 receptor associated kinase 1 [Source:HGNC Symbol;Acc:HGNC:6112]",0.062
+"FAM117A",0.088,0.148,"family with sequence similarity 117 member A [Source:HGNC Symbol;Acc:HGNC:24179]",0.06
+"UBE2E3",0.088,0.148,"ubiquitin conjugating enzyme E2 E3 [Source:HGNC Symbol;Acc:HGNC:12479]",0.06
+"NOL8",0.088,0.148,"nucleolar protein 8 [Source:HGNC Symbol;Acc:HGNC:23387]",0.06
+"CDC25B",0.088,0.148,"cell division cycle 25B [Source:HGNC Symbol;Acc:HGNC:1726]",0.06
+"BRWD1",0.088,0.148,"bromodomain and WD repeat domain containing 1 [Source:HGNC Symbol;Acc:HGNC:12760]",0.06
+"ARID1A",0.088,0.148,"AT-rich interaction domain 1A [Source:HGNC Symbol;Acc:HGNC:11110]",0.06
+"PREPL",0.088,0.148,"prolyl endopeptidase like [Source:HGNC Symbol;Acc:HGNC:30228]",0.06
+"ZSCAN16-AS1",0.088,0.148,"ZSCAN16 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:48982]",0.06
+"STK38",0.088,0.148,"serine/threonine kinase 38 [Source:HGNC Symbol;Acc:HGNC:17847]",0.06
+"PCED1B",0.088,0.148,"PC-esterase domain containing 1B [Source:HGNC Symbol;Acc:HGNC:28255]",0.06
+"ITGB7",0.088,0.148,"integrin subunit beta 7 [Source:HGNC Symbol;Acc:HGNC:6162]",0.06
+"RNF166",0.088,0.148,"ring finger protein 166 [Source:HGNC Symbol;Acc:HGNC:28856]",0.06
+"TGIF1",0.088,0.148,"TGFB induced factor homeobox 1 [Source:HGNC Symbol;Acc:HGNC:11776]",0.06
+"AP1S2",0.088,0.148,"adaptor related protein complex 1 subunit sigma 2 [Source:HGNC Symbol;Acc:HGNC:560]",0.06
+"OTUD5",0.088,0.148,"OTU deubiquitinase 5 [Source:HGNC Symbol;Acc:HGNC:25402]",0.06
+"OGT",0.353,0.407,"O-linked N-acetylglucosamine (GlcNAc) transferase [Source:HGNC Symbol;Acc:HGNC:8127]",0.05399999999999999
+"TPCN1",0.059,0.111,"two pore segment channel 1 [Source:HGNC Symbol;Acc:HGNC:18182]",0.052000000000000005
+"AHI1",0.059,0.111,"Abelson helper integration site 1 [Source:HGNC Symbol;Acc:HGNC:21575]",0.052000000000000005
+"NXF1",0.059,0.111,"nuclear RNA export factor 1 [Source:HGNC Symbol;Acc:HGNC:8071]",0.052000000000000005
+"METTL4",0.059,0.111,"methyltransferase like 4 [Source:HGNC Symbol;Acc:HGNC:24726]",0.052000000000000005
+"C1orf52",0.059,0.111,"chromosome 1 open reading frame 52 [Source:HGNC Symbol;Acc:HGNC:24871]",0.052000000000000005
+"BDP1",0.059,0.111,"B double prime 1, subunit of RNA polymerase III transcription initiation factor IIIB [Source:HGNC Symbol;Acc:HGNC:13652]",0.052000000000000005
+"PURA",0.059,0.111,"purine rich element binding protein A [Source:HGNC Symbol;Acc:HGNC:9701]",0.052000000000000005
+"MDN1",0.059,0.111,"midasin AAA ATPase 1 [Source:HGNC Symbol;Acc:HGNC:18302]",0.052000000000000005
+"FIG4",0.059,0.111,"FIG4 phosphoinositide 5-phosphatase [Source:HGNC Symbol;Acc:HGNC:16873]",0.052000000000000005
+"PARP10",0.059,0.111,"poly(ADP-ribose) polymerase family member 10 [Source:HGNC Symbol;Acc:HGNC:25895]",0.052000000000000005
+"AP3M1",0.059,0.111,"adaptor related protein complex 3 subunit mu 1 [Source:HGNC Symbol;Acc:HGNC:569]",0.052000000000000005
+"BLNK",0.059,0.111,"B cell linker [Source:HGNC Symbol;Acc:HGNC:14211]",0.052000000000000005
+"CHST15",0.059,0.111,"carbohydrate sulfotransferase 15 [Source:HGNC Symbol;Acc:HGNC:18137]",0.052000000000000005
+"EDRF1",0.059,0.111,"erythroid differentiation regulatory factor 1 [Source:HGNC Symbol;Acc:HGNC:24640]",0.052000000000000005
+"CTSD",0.059,0.111,"cathepsin D [Source:HGNC Symbol;Acc:HGNC:2529]",0.052000000000000005
+"NADSYN1",0.059,0.111,"NAD synthetase 1 [Source:HGNC Symbol;Acc:HGNC:29832]",0.052000000000000005
+"TBRG1",0.059,0.111,"transforming growth factor beta regulator 1 [Source:HGNC Symbol;Acc:HGNC:29551]",0.052000000000000005
+"LETMD1",0.059,0.111,"LETM1 domain containing 1 [Source:HGNC Symbol;Acc:HGNC:24241]",0.052000000000000005
+"SP1",0.059,0.111,"Sp1 transcription factor [Source:HGNC Symbol;Acc:HGNC:11205]",0.052000000000000005
+"CALCOCO1",0.059,0.111,"calcium binding and coiled-coil domain 1 [Source:HGNC Symbol;Acc:HGNC:29306]",0.052000000000000005
+"DYRK2",0.059,0.111,"dual specificity tyrosine phosphorylation regulated kinase 2 [Source:HGNC Symbol;Acc:HGNC:3093]",0.052000000000000005
+"FOXO1",0.059,0.111,"forkhead box O1 [Source:HGNC Symbol;Acc:HGNC:3819]",0.052000000000000005
+"SPG21",0.059,0.111,"SPG21 abhydrolase domain containing, maspardin [Source:HGNC Symbol;Acc:HGNC:20373]",0.052000000000000005
+"NGRN",0.059,0.111,"neugrin, neurite outgrowth associated [Source:HGNC Symbol;Acc:HGNC:18077]",0.052000000000000005
+"KLHDC4",0.059,0.111,"kelch domain containing 4 [Source:HGNC Symbol;Acc:HGNC:25272]",0.052000000000000005
+"DNMT1",0.059,0.111,"DNA methyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:2976]",0.052000000000000005
+"ILF3-DT",0.059,0.111,"ILF3 divergent transcript [Source:HGNC Symbol;Acc:HGNC:27115]",0.052000000000000005
+"CHERP",0.059,0.111,"calcium homeostasis endoplasmic reticulum protein [Source:HGNC Symbol;Acc:HGNC:16930]",0.052000000000000005
+"DCAF8",0.098,0.148,"DDB1 and CUL4 associated factor 8 [Source:HGNC Symbol;Acc:HGNC:24891]",0.04999999999999999
+"CHD1",0.098,0.148,"chromodomain helicase DNA binding protein 1 [Source:HGNC Symbol;Acc:HGNC:1915]",0.04999999999999999
+"HSPA4",0.098,0.148,"heat shock protein family A (Hsp70) member 4 [Source:HGNC Symbol;Acc:HGNC:5237]",0.04999999999999999
+"DMTF1",0.098,0.148,"cyclin D binding myb like transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:14603]",0.04999999999999999
+"DGKA",0.098,0.148,"diacylglycerol kinase alpha [Source:HGNC Symbol;Acc:HGNC:2849]",0.04999999999999999
+"GGA3",0.098,0.148,"golgi associated, gamma adaptin ear containing, ARF binding protein 3 [Source:HGNC Symbol;Acc:HGNC:17079]",0.04999999999999999
+"HLA-B",0.951,1,"major histocompatibility complex, class I, B [Source:HGNC Symbol;Acc:HGNC:4932]",0.049000000000000044
+"BNIP2",0.137,0.185,"BCL2 interacting protein 2 [Source:HGNC Symbol;Acc:HGNC:1083]",0.04799999999999999
+"DENND4B",0.137,0.185,"DENN domain containing 4B [Source:HGNC Symbol;Acc:HGNC:29044]",0.04799999999999999
+"TIA1",0.137,0.185,"TIA1 cytotoxic granule associated RNA binding protein [Source:HGNC Symbol;Acc:HGNC:11802]",0.04799999999999999
+"ADAM17",0.069,0.111,"ADAM metallopeptidase domain 17 [Source:HGNC Symbol;Acc:HGNC:195]",0.041999999999999996
+"NR2C2",0.069,0.111,"nuclear receptor subfamily 2 group C member 2 [Source:HGNC Symbol;Acc:HGNC:7972]",0.041999999999999996
+"ZNF506",0.069,0.111,"zinc finger protein 506 [Source:HGNC Symbol;Acc:HGNC:23780]",0.041999999999999996
+"UNC50",0.069,0.111,"unc-50 inner nuclear membrane RNA binding protein [Source:HGNC Symbol;Acc:HGNC:16046]",0.041999999999999996
+"REV1",0.069,0.111,"REV1 DNA directed polymerase [Source:HGNC Symbol;Acc:HGNC:14060]",0.041999999999999996
+"FGD5-AS1",0.069,0.111,"FGD5 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:40410]",0.041999999999999996
+"ABRAXAS1",0.069,0.111,"abraxas 1, BRCA1 A complex subunit [Source:HGNC Symbol;Acc:HGNC:25829]",0.041999999999999996
+"DCTD",0.069,0.111,"dCMP deaminase [Source:HGNC Symbol;Acc:HGNC:2710]",0.041999999999999996
+"SCAF8",0.069,0.111,"SR-related CTD associated factor 8 [Source:HGNC Symbol;Acc:HGNC:20959]",0.041999999999999996
+"PIK3C2A",0.069,0.111,"phosphatidylinositol-4-phosphate 3-kinase catalytic subunit type 2 alpha [Source:HGNC Symbol;Acc:HGNC:8971]",0.041999999999999996
+"CCDC82",0.069,0.111,"coiled-coil domain containing 82 [Source:HGNC Symbol;Acc:HGNC:26282]",0.041999999999999996
+"KLHDC2",0.069,0.111,"kelch domain containing 2 [Source:HGNC Symbol;Acc:HGNC:20231]",0.041999999999999996
+"SLC12A6",0.069,0.111,"solute carrier family 12 member 6 [Source:HGNC Symbol;Acc:HGNC:10914]",0.041999999999999996
+"XAF1",0.069,0.111,"XIAP associated factor 1 [Source:HGNC Symbol;Acc:HGNC:30932]",0.041999999999999996
+"LGALS9",0.069,0.111,"galectin 9 [Source:HGNC Symbol;Acc:HGNC:6570]",0.041999999999999996
+"COASY",0.069,0.111,"Coenzyme A synthase [Source:HGNC Symbol;Acc:HGNC:29932]",0.041999999999999996
+"TMUB2",0.069,0.111,"transmembrane and ubiquitin like domain containing 2 [Source:HGNC Symbol;Acc:HGNC:28459]",0.041999999999999996
+"SS18",0.069,0.111,"SS18 subunit of BAF chromatin remodeling complex [Source:HGNC Symbol;Acc:HGNC:11340]",0.041999999999999996
+"SMAD4",0.069,0.111,"SMAD family member 4 [Source:HGNC Symbol;Acc:HGNC:6770]",0.041999999999999996
+"MFNG",0.069,0.111,"MFNG O-fucosylpeptide 3-beta-N-acetylglucosaminyltransferase [Source:HGNC Symbol;Acc:HGNC:7038]",0.041999999999999996
+"ZRSR2",0.069,0.111,"zinc finger CCCH-type, RNA binding motif and serine/arginine rich 2 [Source:HGNC Symbol;Acc:HGNC:23019]",0.041999999999999996
+"RBBP4",0.108,0.148,"RB binding protein 4, chromatin remodeling factor [Source:HGNC Symbol;Acc:HGNC:9887]",0.039999999999999994
+"WHRN",0.108,0.148,"whirlin [Source:HGNC Symbol;Acc:HGNC:16361]",0.039999999999999994
+"HSPA5",0.108,0.148,"heat shock protein family A (Hsp70) member 5 [Source:HGNC Symbol;Acc:HGNC:5238]",0.039999999999999994
+"POLR2A",0.147,0.185,"RNA polymerase II subunit A [Source:HGNC Symbol;Acc:HGNC:9187]",0.038000000000000006
+"ZBTB32",0.147,0.185,"zinc finger and BTB domain containing 32 [Source:HGNC Symbol;Acc:HGNC:16763]",0.038000000000000006
+"ODC1",0.147,0.185,"ornithine decarboxylase 1 [Source:HGNC Symbol;Acc:HGNC:8109]",0.038000000000000006
+"UPF3B",0.078,0.111,"UPF3B regulator of nonsense mediated mRNA decay [Source:HGNC Symbol;Acc:HGNC:20439]",0.033
+"SDCBP",0.078,0.111,"syndecan binding protein [Source:HGNC Symbol;Acc:HGNC:10662]",0.033
+"INTS6L",0.078,0.111,"integrator complex subunit 6 like [Source:HGNC Symbol;Acc:HGNC:27334]",0.033
+"PLK3",0.078,0.111,"polo like kinase 3 [Source:HGNC Symbol;Acc:HGNC:2154]",0.033
+"SLC35F5",0.078,0.111,"solute carrier family 35 member F5 [Source:HGNC Symbol;Acc:HGNC:23617]",0.033
+"CNOT9",0.078,0.111,"CCR4-NOT transcription complex subunit 9 [Source:HGNC Symbol;Acc:HGNC:10445]",0.033
+"RREB1",0.078,0.111,"ras responsive element binding protein 1 [Source:HGNC Symbol;Acc:HGNC:10449]",0.033
+"KBTBD2",0.078,0.111,"kelch repeat and BTB domain containing 2 [Source:HGNC Symbol;Acc:HGNC:21751]",0.033
+"TNFRSF10B",0.078,0.111,"TNF receptor superfamily member 10b [Source:HGNC Symbol;Acc:HGNC:11905]",0.033
+"PUF60",0.078,0.111,"poly(U) binding splicing factor 60 [Source:HGNC Symbol;Acc:HGNC:17042]",0.033
+"CD6",0.078,0.111,"CD6 molecule [Source:HGNC Symbol;Acc:HGNC:1691]",0.033
+"CPSF7",0.078,0.111,"cleavage and polyadenylation specific factor 7 [Source:HGNC Symbol;Acc:HGNC:30098]",0.033
+"FBXO33",0.078,0.111,"F-box protein 33 [Source:HGNC Symbol;Acc:HGNC:19833]",0.033
+"FCER2",0.078,0.111,"Fc fragment of IgE receptor II [Source:HGNC Symbol;Acc:HGNC:3612]",0.033
+"DCAF15",0.078,0.111,"DDB1 and CUL4 associated factor 15 [Source:HGNC Symbol;Acc:HGNC:25095]",0.033
+"DIDO1",0.078,0.111,"death inducer-obliterator 1 [Source:HGNC Symbol;Acc:HGNC:2680]",0.033
+"GDI1",0.078,0.111,"GDP dissociation inhibitor 1 [Source:HGNC Symbol;Acc:HGNC:4226]",0.033
+"CCDC69",0.118,0.148,"coiled-coil domain containing 69 [Source:HGNC Symbol;Acc:HGNC:24487]",0.03
+"RNF220",0.118,0.148,"ring finger protein 220 [Source:HGNC Symbol;Acc:HGNC:25552]",0.03
+"SUGP2",0.118,0.148,"SURP and G-patch domain containing 2 [Source:HGNC Symbol;Acc:HGNC:18641]",0.03
+"NAA10",0.118,0.148,"N(alpha)-acetyltransferase 10, NatA catalytic subunit [Source:HGNC Symbol;Acc:HGNC:18704]",0.03
+"KLF2",0.304,0.333,"Kruppel like factor 2 [Source:HGNC Symbol;Acc:HGNC:6347]",0.029000000000000026
+"CDC42SE1",0.157,0.185,"CDC42 small effector 1 [Source:HGNC Symbol;Acc:HGNC:17719]",0.027999999999999997
+"JADE1",0.088,0.111,"jade family PHD finger 1 [Source:HGNC Symbol;Acc:HGNC:30027]",0.023000000000000007
+"TXLNA",0.088,0.111,"taxilin alpha [Source:HGNC Symbol;Acc:HGNC:30685]",0.023000000000000007
+"CNOT8",0.088,0.111,"CCR4-NOT transcription complex subunit 8 [Source:HGNC Symbol;Acc:HGNC:9207]",0.023000000000000007
+"GABBR1",0.088,0.111,"gamma-aminobutyric acid type B receptor subunit 1 [Source:HGNC Symbol;Acc:HGNC:4070]",0.023000000000000007
+"CNTRL",0.088,0.111,"centriolin [Source:HGNC Symbol;Acc:HGNC:1858]",0.023000000000000007
+"PYROXD1",0.088,0.111,"pyridine nucleotide-disulphide oxidoreductase domain 1 [Source:HGNC Symbol;Acc:HGNC:26162]",0.023000000000000007
+"AP1G2",0.088,0.111,"adaptor related protein complex 1 subunit gamma 2 [Source:HGNC Symbol;Acc:HGNC:556]",0.023000000000000007
+"SDR39U1",0.088,0.111,"short chain dehydrogenase/reductase family 39U member 1 [Source:HGNC Symbol;Acc:HGNC:20275]",0.023000000000000007
+"ULK3",0.088,0.111,"unc-51 like kinase 3 [Source:HGNC Symbol;Acc:HGNC:19703]",0.023000000000000007
+"CHMP7",0.127,0.148,"charged multivesicular body protein 7 [Source:HGNC Symbol;Acc:HGNC:28439]",0.02099999999999999
+"SRSF6",0.167,0.185,"serine and arginine rich splicing factor 6 [Source:HGNC Symbol;Acc:HGNC:10788]",0.017999999999999988
+"LENG8",0.353,0.37,"leukocyte receptor cluster member 8 [Source:HGNC Symbol;Acc:HGNC:15500]",0.017000000000000015
+"EXOSC8",0.098,0.111,"exosome component 8 [Source:HGNC Symbol;Acc:HGNC:17035]",0.012999999999999998
+"FUBP1",0.098,0.111,"far upstream element binding protein 1 [Source:HGNC Symbol;Acc:HGNC:4004]",0.012999999999999998
+"TAF15",0.098,0.111,"TATA-box binding protein associated factor 15 [Source:HGNC Symbol;Acc:HGNC:11547]",0.012999999999999998
+"RPS27",0.99,1,"ribosomal protein S27 [Source:HGNC Symbol;Acc:HGNC:10416]",0.010000000000000009
+"RPS27A",0.99,1,"ribosomal protein S27a [Source:HGNC Symbol;Acc:HGNC:10417]",0.010000000000000009
+"MT-CYB",0.99,1,"mitochondrially encoded cytochrome b [Source:HGNC Symbol;Acc:HGNC:7427]",0.010000000000000009
+"SPG11",0.108,0.111,"SPG11 vesicle trafficking associated, spatacsin [Source:HGNC Symbol;Acc:HGNC:11226]",0.0030000000000000027
+"MT-ATP6",1,1,"mitochondrially encoded ATP synthase membrane subunit 6 [Source:HGNC Symbol;Acc:HGNC:7414]",0
+"EEF1A1",1,1,"eukaryotic translation elongation factor 1 alpha 1 [Source:HGNC Symbol;Acc:HGNC:3189]",0
+"CSKMT",0.118,0.111,"citrate synthase lysine methyltransferase [Source:HGNC Symbol;Acc:HGNC:33113]",-0.006999999999999992
+"RIPOR1",0.118,0.111,"RHO family interacting cell polarization regulator 1 [Source:HGNC Symbol;Acc:HGNC:25836]",-0.006999999999999992
+"AKAP8L",0.118,0.111,"A-kinase anchoring protein 8 like [Source:HGNC Symbol;Acc:HGNC:29857]",-0.006999999999999992
+"ZNF655",0.157,0.148,"zinc finger protein 655 [Source:HGNC Symbol;Acc:HGNC:30899]",-0.009000000000000008
+"RASGRP2",0.127,0.111,"RAS guanyl releasing protein 2 [Source:HGNC Symbol;Acc:HGNC:9879]",-0.016
+"CYCS",0.108,0.074,"cytochrome c, somatic [Source:HGNC Symbol;Acc:HGNC:19986]",-0.034
+"PHF10",0.147,0.111,"PHD finger protein 10 [Source:HGNC Symbol;Acc:HGNC:18250]",-0.03599999999999999
+"FAM160B2",0.108,0.037,"family with sequence similarity 160 member B2 [Source:HGNC Symbol;Acc:HGNC:16492]",-0.07100000000000001
+"ZNF92",0.147,0.074,"zinc finger protein 92 [Source:HGNC Symbol;Acc:HGNC:13168]",-0.073
+"ID3",0.559,0.481,"inhibitor of DNA binding 3, HLH protein [Source:HGNC Symbol;Acc:HGNC:5362]",-0.07800000000000007
+"PIGR",0.108,0,"polymeric immunoglobulin receptor [Source:HGNC Symbol;Acc:HGNC:8968]",-0.108
+"TFPI2",0.108,0,"tissue factor pathway inhibitor 2 [Source:HGNC Symbol;Acc:HGNC:11761]",-0.108
+"PCED1A",0.147,0.037,"PC-esterase domain containing 1A [Source:HGNC Symbol;Acc:HGNC:16212]",-0.10999999999999999
+"CD24",0.206,0.074,"CD24 molecule [Source:HGNC Symbol;Acc:HGNC:1645]",-0.132
+"PGGHG",0.206,0.037,"protein-glucosylgalactosylhydroxylysine glucosidase [Source:HGNC Symbol;Acc:HGNC:26210]",-0.16899999999999998
+"AC103591.3",0.225,0,"novel transcript, antisense to DNAJB4",-0.225
+"SNHG9",0.353,0.111,"small nucleolar RNA host gene 9 [Source:HGNC Symbol;Acc:HGNC:33102]",-0.242
+"SNHG25",0.745,0.259,"small nucleolar RNA host gene 25 [Source:HGNC Symbol;Acc:HGNC:51534]",-0.486
