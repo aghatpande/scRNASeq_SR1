@@ -14,3 +14,5 @@ The results are stored on the local computer (macbookair) in the results folder 
 The SessionInfo is stored in the sessioninfo_scrnaseq_07282021.txt file ending in latest date.
 
 The slide deck is in the cll_seurat_analysis_slides_ver2.zip file and is a Keynote file and the full list of 1685 differentially expressed, annotated genes is in "results/CLL_DE_genes.csv" which can be imported into Excel for viewing.
+
+21st Sept 2021: the latest analysis is in "CLL_separate_analysis_30thaug21.Rmd". The latest slide deck is "...ver3" slides
