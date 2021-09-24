@@ -658,6 +658,11 @@ DE_treatd_cluster4cells <-  treatd_cluster4cells %>%
 View(DE_treatd_cluster4cells)
 
 ```
+```{r} 
+# write out the differentially expressed genes in cluster 4 as a .csv file
+ write_csv(DE_treatd_cluster4cells, "results/DE_treated_cluster4cells")
+```
+
 
 ### DE between cluster 5 and clusters 0,1,2 of 'treat' data
 ```{r}
@@ -685,6 +690,10 @@ DE_treatd_cluster5cells <-  treatd_cluster5cells %>%
   arrange(desc(pct_treat_clust5_cells_minus_pct_other))
 
 View(DE_treatd_cluster5cells)
+```
+```{r}
+# write out the differentially expressed genes in cluster 5 as a .csv file
+ write_csv(DE_treatd_cluster5cells, "results/DE_treated_cluster5cells")
 ```
 
 
