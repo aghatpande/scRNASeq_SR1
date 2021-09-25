@@ -596,7 +596,7 @@ filtered_phased_treat_seurat <- NormalizeData(filtered_phased_treat_seurat, verb
 # DotPlot using most variable features and other known markers
 DotPlot(filtered_phased_ctrl_seurat,features = c("CD79A","MS4A1", "CD19","CCR7"))
 
-DotPlot(filtered_phased_treat_seurat,features = c("CD79A","MS4A1", "CD19","CCR7"))
+DotPlot(filtered_phased_treat_seurat,features = c("CD79A","MS4A1", "CD19","CCR7", "CD29", "CD44", "HLA-DRA"))
 ```
 Major T cell (CD3D, CD4, CD8A and IL7R) markers were not found in the data
 
